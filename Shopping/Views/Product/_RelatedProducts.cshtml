@@ -1,0 +1,102 @@
+﻿@*<div class="ppg-similar-products">
+        <h2>similar products</h2>
+        <span class="noData"></span>
+
+        <div class="ppg-mobile-overflow">
+            <ul>
+                <li><img src="img/card-image.png" width="252" height="130">Product name</li>
+                <li><img src="img/card-image.png" width="252" height="130">Product name</li>
+                <li><img src="img/card-image.png" width="252" height="130">Product name</li>
+            </ul>
+        </div>
+    </div>*@
+<style>
+    .disabled {
+        display: none !important;
+    }
+
+    h2.blkTitle {
+        border-bottom: none;
+        font-size: 26px;
+        font-weight: 600;
+        color: var(--sir-blue);
+    }
+
+    #product_display .product_list {
+        width: 22%;
+        margin-right: 5%;
+    }
+
+    .bottom-line2 {
+        border-color: var(--sir-blue);
+        border-width: 2px;
+        margin-top: 362px;
+        width: calc(100% - 366px);
+    }
+</style>
+<div id="relatedProducts" style="display: none;">
+    <h2 class="blkTitle">Related Products</h2>
+</div>
+<div id="products_view" class="pd_gridView">
+    <div id="product_display">
+        <div class="product_data" ng-switch="(relatedView | filter:search).length">
+            <span class="jplist-no-results" id="loadMsg" style="display: none;">Loading Results...</span>
+            <span class="jplist-no-results" style="display: none;" id="noResultMsg">No results found</span>
+            <div class="product_list" data-ng-repeat="rlProduct in relatedView | orderBy:sortType:sortReverse  | startFrom: currentPage*productsPerPage | limitTo:pageSize" ng-switch-default>
+
+                <div data-ng-if="rlProduct.StockAvailable <= 0 && rlProduct.IsUmbrellaProduct != true &&  rlProduct.Inventoried == true &&  rlProduct.BackorderAvailable == true && rlProduct.PreorderAvailableDate == null" data-bo="{{rlProduct.BackorderAvailable}}" id="bo" class="backOrder"> ON BACKORDER</div>
+                <div data-ng-if="rlProduct.StockAvailable <= 0 && rlProduct.IsUmbrellaProduct != true &&  rlProduct.Inventoried == true &&  rlProduct.BackorderAvailable == true && rlProduct.PreorderAvailableDate != null" data-bo="{{rlProduct.BackorderAvailable}}" id="bo" class="backOrder">PRE-ORDER AVAILABLE</div>
+                <div style="height:20px;">
+                    <a class="umbrellaFlag" href="javascript:;" onclick="viewProduct('/Login/Index')" tooltips data-ng-attr-tooltip-content="{{sesCustomerId !=''? '<b>Only for Member</b>':'<b>Only for Member</b><br />Click on badge to login'}}" tooltip-side="bottom" data-ture="{{rlProduct.IsUmbrellaProduct}}" data-ng-show="rlProduct.IsMemberOnly" data-userinfo="{{sesCustomerId}}">
+                        <img src="~/Images/members-only.jpg" alt="Members Only" />
+                    </a>
+                </div>
+                <div class="book_img">
+                    <img data-ng-src="{{rlProduct.ProductImage}}" no-image>
+                </div>
+                <div class="product_details ">
+                    <h3 class="product_title thumbView"><span limit-desc data-limit="40">{{rlProduct.ProductName}}</span> <span class="formatLbl">{{rlProduct.Format}}</span></h3>
+                    <h3 class="product_title listView"><a href="javascript:;" data-ng-init="url='/Product/viewproduct/?ProductId='" data-ng-click="viewProduct(url + rlProduct.ProductId)">{{rlProduct.ProductName}}</a> @*<span class="formatLbl">Format: {{rlProduct.Format}}</span>*@</h3>
+                    <p class="desc" id="description" data-ng-bind-html="rlProduct.ShortDescription | sanitize" limit-desc data-limit="250"></p>
+
+
+
+                    <div class="cart_actions">
+                        <span style="display: none;">{{rlProduct.AvailableQty}}</span>
+                        <span id="aQval" style="display: none;">
+                            <span data-ng-class="rlProduct.IsUmbrellaProduct != true? 'ng-show': 'ng-hide'">{{rlProduct.StockAvailable}}</span>
+                        </span>
+
+                        <p class="pp">
+                            <span>SPECIAL PRICING FOR MEMBERS!</span>
+                            <br>
+                            <span class="priceview">Member:</span>
+                            <span class="priceview" data-ng-show="{{!rlProduct.IsUmbrellaProduct}}">{{rlProduct.MemberPrice | currency}}</span>
+                            <span class="priceview dblPrice" data-ng-show="{{rlProduct.IsUmbrellaProduct}}">As low as {{rlProduct.MinMemberPrice | currency}}</span>
+                            <br>
+                            <span class="priceview">List:</span>
+                            <span class="priceview" data-ng-show="{{!rlProduct.IsUmbrellaProduct}}">{{rlProduct.Price | currency}}</span>
+                            <span class="priceview dblPrice" data-ng-show="{{rlProduct.IsUmbrellaProduct}}">As low as {{rlProduct.MinListPrice | currency}}</span>
+                            <br>
+                        </p>
+
+                        <button class="view_detail_btn" data-id="{{rlProduct.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='" onclick="viewProduct($(this).attr('data-id'))" data-ng-class="rlProduct.IsUmbrellaProduct != true  ? 'ng-show': 'ng-hide'">View Details</button>
+                        <button class="view_detail_btn single_vd" data-id="{{rlProduct.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='" onclick="viewProduct($(this).attr('data-id'))"
+                                data-ng-class="rlProduct.IsUmbrellaProduct == true  ? 'ng-show': 'ng-hide'">
+                            View Details
+                        </button>
+
+                    </div>
+                    <!--cart_actions-->
+                </div>
+                <!--product_details-->
+
+            </div>
+            <div style="clear: both;"></div>
+
+        </div>
+    </div>
+
+</div>
+<hr class="bottom-line2" />
+

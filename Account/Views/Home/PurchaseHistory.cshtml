@@ -1,0 +1,591 @@
+﻿@model SL.Data.Purchase
+
+@{
+    ViewBag.Title = "PurchaseHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .fl {
+        float: left;
+    }
+
+    .p-10 {
+        padding: 10px;
+    }
+
+    .mb-5 {
+        margin-bottom: 10px;
+    }
+
+    .fr {
+        float: right;
+    }
+
+    .detailstable {
+        font-size: smaller;
+    }
+
+    .ic-minus {
+        background: transparent url(./Images/ic-minus.png) center center no-repeat;
+    }
+
+    .ic-plus {
+        background: transparent url(./Images/ic-plus.png) center center no-repeat;
+    }
+
+    .icon24 {
+        display: inline-block;
+        vertical-align: middle;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+    }
+</style>
+
+<h1 class="page_title">Purchase History</h1>
+
+<div id="myModal" class="modal col-sm-12">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3>Invoice</h3>
+        </div>
+        <div class="modal-body">
+            <div id="invoice">
+            </div>
+        </div>
+        <div class="modal-footer">
+            @*<h4>Modal Footer</h4>*@
+        </div>
+
+    </div>
+
+</div>
+
+<div id='myModalEmail' class="modal col-sm-4">
+    
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close emailClose">&times;</span>
+                <h3>Email to Another Address:</h3>
+            </div>
+                <div id="SendInvoiceEmail">
+                    <div class="row">
+                        <div class="col-md-4" id="test">
+                            Email To*:
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control required email" maxlength="50" value="" id="email" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4" id="test">
+                            Email From*:
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control required email"  maxlength="50" value="" id="emailFrom" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4" id="test">
+                            Subject*:
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control required" maxlength="500" value="" id="subject" />
+                        </div>
+                    </div>
+                    <br /><br />
+                    <div class="row text-center">
+                        <input type="button" name="btnSaveAddress" value="Submit" onclick="SendEmail()" class="btn btn-primary" id="btnSaveAddress" />
+                        <a onclick="Cancel()" class="btn normal btncancel">Cancel</a>
+                    </div>
+                </div>
+           
+        </div>
+
+</div> 
+
+<script id="pdetails-template-grid" type="text/x-handlebars-template">
+    <table class="table table-bordered detailstable">
+        <thead>
+            <tr>
+                <td>Item Name</td>
+                <td>Status</td>
+                <td style="width: 100px;" class="text-right">Total</td>
+                <td style="width: 100px;" class="text-right">Paid</td>
+                <td style="width: 100px;" class="text-right">Balance Due</td>
+            </tr>
+        </thead>
+        {{#each Products}}
+        <tr>
+            <td><span>{{Description}}</span></td>
+            <td><span>{{Status}}</span></td>
+            <td class="text-right"><span>$ {{formatMoney TotalAmount}} {{../CurrencyCode}}</span></td>
+            <td class="text-right">
+                {{#compare ../ReceiptAmount 0 operator="!="}}
+                <span>$ {{formatMoney TotalAmount}} {{../CurrencyCode}}</span>
+                {{else}}
+                <span>$ {{formatMoney 0}} {{../CurrencyCode}}</span>
+                {{/compare}}
+            </td>
+            <td class="text-right">
+                {{#compare ../ReceiptAmount 0 operator="!="}}
+                <span>${{formatMoney 0}} {{../CurrencyCode}}</span>
+                {{else}}
+                <span>$ {{formatMoney TotalAmount}} {{../CurrencyCode}}</span>
+                {{/compare}}
+             </td>
+        </tr>
+        {{/each}}
+    </table>
+</script>
+
+<script id="invoice-template-grid" type="text/x-handlebars-template">
+    <div style="padding: 15px;">
+        <div class="oAddressDiv col-xs-12">
+            <div class="col-xs-8">
+            <div class="billAddress col-xs-6">
+                <h4>Billing Address</h4>
+                <address>{{breaklines BillAddress}}</address>
+            </div>
+            <div class="shipAddress col-xs-6 shippinginfo">
+                <h4>Shipping Address</h4>
+                <address>{{breaklines ShipAddress}}</address>
+            </div>
+            </div>
+            <div class="col-xs-4 logo text-right">
+                <img src='@Url.Content("~/Images/print_logo.png")' width="150" />
+            </div>
+        </div>
+        <div class="links">
+            <a href="javasctiprt:;" id="printInvoice">Printable View</a>
+            <span>| </span>
+            <a onclick="showEmailModelpopUp()"  class="Pointer"  id="emailInvoice">Email to Another Address</a>
+        </div>
+        <div>
+            <h3>Order Number : {{OrderNumber}}</h3>
+        </div>
+        <div class="oDetails">
+            <table class="table table-striped">
+                {{#each Products}}
+                <tr class="cart_item" DeliveryMethodCode="{{DeliveryMethodCode}}">
+                    <td>{{Description}}</td>
+                    <td class="oQty">{{Quantity}}</td>
+                    <td class="text-right">$<span class="uPrice">{{formatMoney UnitPrice}}</span> {{../CurrencyCode}}</td>
+                </tr>
+                {{/each}}
+            </table>
+            <div>
+                <table class="text-right">
+                    <tr style="border-top: 1px solid lightgray;">
+                        <td>Sub Total:</td>
+                        <td style="width: 120px;">$<span class="tPrice">{{formatMoney UnitPrice}}</span> {{CurrencyCode}}</td>
+                    </tr>
+                    <tr>
+                        <td>Tax: </td>
+                        <td>${{formatMoney TaxAmount}} {{CurrencyCode}}</td>
+                    </tr>
+                    <tr class="shippinginfo">
+                        <td>Shipping: </td>
+                        <td>${{formatMoney ShippingAmount}} {{CurrencyCode}}</td>
+                    </tr>
+                    <tr>
+                        <td>Order Total: </td>
+                        <td>${{formatMoney TotalAmount}} {{CurrencyCode}}</td>
+                    </tr>
+                    <tr style="border-top: 1px solid lightgray;">
+                        {{#compare ReceiptAmount 0 operator="!="}}
+                            <td colspan="2">Paid on: {{formatDate ReceiptDate}} with {{ReceiptType}} ending in {{PartialCrediCardNumber}} for ${{formatMoney ReceiptAmount}} {{ReceiptCurrency}}</td>
+                        {{else}}
+                            <td>Paid: </td>
+                            <td>${{formatMoney ReceiptAmount}}  {{CurrencyCode}}</td>
+                        {{/compare}}
+                    </tr>
+                    <tr>
+                        <td>Balance: </td>
+                        <td>${{formatMoney BalanceAmount}}  {{CurrencyCode}}</td>
+                    </tr>
+                    <tr>
+                        <td>Amount: </td>
+                        <td>${{formatMoney BalanceAmount}} {{CurrencyCode}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="col-sm-12">
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <span>Keyword/Order #:</span>@*Keyword/*@
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" value="" id="Keyword" />
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <span>Show Purchases:</span>
+        </div>
+        <div class="col-md-8">
+            <select id="ShowPurchases" class="form-control">
+                <option value="ALL">All</option>
+                <option value="PAID">Paid for</option>
+                <option value="RECEIVED">Received</option>
+                <option value="ALL">Paid for or received</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <span>Product Type:</span>
+        </div>
+        <div class="col-md-8">
+            <select id="ProductType" class="form-control">
+                @foreach (var item in @ViewBag.ProductType)
+                    {
+                <option value="@item.Value">@item.Text</option>
+                    }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-8">
+            <input type="button" value="Search" id="search" class="btn btn-default" />
+        </div>
+    </div>
+    <div class="row p-10 mb-5">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-8">
+            <a href="~/PurchaseHistory">Clear</a><br />
+            <input type="checkbox" id="filterbo" />
+            Only show orders with a balance
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-12 p-10">
+    <div class="row">
+        <div class="col-sm-4">
+            <span class="control-label">Date Range:</span>
+        </div>
+        <div class="col-sm-8">
+            <select id="DateRange" class="form-control">
+                <option value="">ALL</option>
+                <option value="30">Past 30 Days</option>
+                <option value="60">Past 60 Days</option>
+                <option value="90">Past 90 Days</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-8">
+            <br />
+            <a href="javascript:;" id="printOrders" class="p-10">Printable View</a>
+            @*<a href="" id="expandAll">Expand All</a> |  *@
+            <a href="javascript:;" id="collapseAll" class="p-10">Collapse All</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-12 p-10">
+    <div class="purchasehistory clearfix" id="orderHistory">
+
+        @if (Model.PurchaseHistory != null && Model.PurchaseHistory.Count > 0)
+        {
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <td></td>
+                        <td>Order Number</td>
+                        <td><a href="javascript:;" id="orderdate">Order Date</a></td>
+                        <td class="text-right">Total</td>
+                        <td class="text-right">Balance Due</td>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.PurchaseHistory)
+                {
+                    <tr class="text-center">
+                        <td style="width: 10px"><i style="cursor: pointer" class="icon24 ic-plus iconexpand"></i></td>
+                        <td><a href="javascript:;" class="ordernumber">@item.OrderNumber</a></td>
+
+                        @if (!string.IsNullOrEmpty(item.OrderDate.ToString()))
+                    {
+                            <td><span class="orderdate">@Convert.ToDateTime(item.OrderDate).ToString("MM/dd/yyyy")</span></td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                        <td class="text-right">$ <span class="totalamount">@item.TotalAmount</span> <span>@item.CurrencyCode</span></td>
+                        <td class="text-right"><span id="dueamount">$ @item.BalanceAmount</span> <span>@item.CurrencyCode</span></td>
+                    </tr>
+                    <tr class="ordersummary" style="display: none">
+                        <td colspan="5">
+                            <table class="table table-striped"></table>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info text-center">
+                No orders found.
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+
+        // Get the modal
+        var modal = document.getElementById('myModal');
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // Get the modal
+        var modalE = document.getElementById('myModalEmail');
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("emailClose")[0];
+        span.onclick = function () {
+            modalE.style.display = "none";
+        }
+
+        var ShowInvoice = true;
+        $(document).on('click', '.iconexpand, .ordernumber', function () {
+            ShowInvoice = true;
+            //
+            if ($(this).hasClass('iconexpand')) {
+                ShowInvoice = false;
+            }
+            var orderDetails = $(this).closest('tr').next();
+
+            if ($(orderDetails).is(":visible") && $(this).hasClass('iconexpand')) {
+                $(this).closest('tr').next().hide();
+                $(this).closest('tr').find(".iconexpand").removeClass('ic-minus').addClass('ic-plus');
+            }
+            else {
+                if (ShowInvoice == false) {
+                    $(this).closest('tr').find(".iconexpand").removeClass('ic-plus').addClass('ic-minus');
+                    $(this).closest('tr').next().show();
+                }
+                var ordNum = $(this).closest('tr').next().find("#orderNumber").text();
+
+                if (ordNum.length == 0)
+                    GetOrderDetails($(this).closest('tr'));
+            }
+        });
+        var allOrderInfo;
+        var isshippable = false;
+        function CalculateTotal() {
+            //cart_item
+            var total = 0;
+            $(".cart_item").each(function () {
+                //Check if shippable item exists
+                var dmc = $(this).attr('DeliveryMethodCode');
+                if (dmc != undefined && dmc!=null && dmc.length>0)
+                    isshippable = true;
+                //Get Quantity
+                var qty = $(this).find('.oQty').text(); console.log('Qty : ' + qty);
+                //Get Price
+                var price = parseFloat($(this).find('.uPrice').text()); console.log('price : ' + price);
+                //Multiply
+                //$(this).find('.tPrice').text((qty * price).formatMoney());
+
+                total += (qty * price);
+
+            });
+            if (isshippable == false)
+            {
+                //Hide shipping values
+                $(".shippinginfo").hide();
+            }
+            $('.tPrice').html(total.formatMoney());
+        };
+        function SearchResult(keyword, showpurchases, producttype, daterange, sortbyorderdate, onlywithbalance) {
+
+            $.ajax(
+         {
+             url: '@Url.Action("SearchPurchases", "Home")',
+             contentType: 'application/json; charset=utf-8',
+             datatype: 'json',
+             type: "GET",
+             data: {
+                 KeyWord: keyword,
+                 ShowPurchases: showpurchases,
+                 ProductType: producttype,
+                 DateRange: daterange,
+                 SortByOrderDate: sortbyorderdate,
+                 orderwithbal: onlywithbalance
+             },
+             success: function (data) {
+                 if (data != null) {
+                     allOrderInfo = data;
+                     $(".purchasehistory").html(data);
+                     //Details
+                 }
+             }
+         });
+        }
+        $(document).on('click', '#filterbo', function () {
+            $("#search").trigger('click');
+        });
+        $("#search").click(function () {
+            var keyWord = $("#Keyword").val();
+            var showPurchases = $("#ShowPurchases").val();
+            var productType = $("#ProductType").val();
+            var dateRange = $("#DateRange").val();
+            var onlywithbalance = $("#filterbo").is(":checked");
+            SearchResult(keyWord, showPurchases, productType, dateRange, true, onlywithbalance);
+        });
+
+        $(document).on('click', '#expandAll', function () {
+            $(".ordersummary").show();
+            $(".iconexpand").removeClass('ic-plus').addClass('ic-minus');
+        });
+
+        $(document).on('click', '#collapseAll', function () {
+            $(".ordersummary").hide();
+            $(".iconexpand").removeClass('ic-minus').addClass('ic-plus');
+        });
+
+        $(document).on('change', '#DateRange', function () {
+            var keyWord = $("#Keyword").val();
+            var showPurchases = $("#ShowPurchases").val();
+            var productType = $("#ProductType").val();
+            var dateRange = $("#DateRange").val();
+            var onlywithbalance = $("#filterbo").is(":checked");
+            SearchResult(keyWord, showPurchases, productType, dateRange, true, onlywithbalance);
+        });
+
+        var sortbyOrderDate = "desc";
+        $(document).on('click', '#orderdate', function () {
+
+            var keyWord = $("#Keyword").val();
+            var showPurchases = $("#ShowPurchases").val();
+            var productType = $("#ProductType").val();
+            var dateRange = $("#DateRange").val();
+            var onlywithbalance = $("#filterbo").is(":checked");
+            if (sortbyOrderDate == "desc") {
+                sortbyOrderDate = "asc";
+                SearchResult(keyWord, showPurchases, productType, dateRange, sortbyOrderDate, onlywithbalance);
+            }
+            else {
+                sortbyOrderDate = "desc";
+                SearchResult(keyWord, showPurchases, productType, dateRange, sortbyOrderDate, onlywithbalance);
+            }
+        });
+
+        //for Popup
+        function GetOrderDetails(e) {
+            console.log('icon clicked');
+            var currentRow = e;
+            var ordernumber = currentRow.find(".ordernumber").text();
+            var orderdate = currentRow.find(".orderdate").text();
+            $.ajax(
+            {
+                url: '@Url.Action("GetOrderSummary", "Home")',
+                contentType: 'application/json; charset=utf-8',
+                datatype: 'json',
+                type: "GET",
+                data: {
+                    orderno: ordernumber,
+                    orderdate: orderdate
+                },
+                success: function (data) {
+                    if (data != null && data.Success == true) {
+                        console.log(data);
+                        var pdetailsSource;
+                        if (ShowInvoice)
+                            pdetailsSource = jQuery('#invoice-template-grid').html();
+                        else
+                            pdetailsSource = jQuery('#pdetails-template-grid').html();
+
+                        var pdetailstemplate = Handlebars.compile(pdetailsSource);
+                        
+                        pdetails = pdetailstemplate(data.Details);
+
+                        if (ShowInvoice) {
+                            //invoice
+                            $("#invoice").html(pdetails);
+                            //Show in popup
+                            modal.style.display = "block";
+                            CalculateTotal();
+                        }
+                        else {
+                            $(currentRow).next().find('td').html(pdetails);
+                        }
+                    }
+                }
+            });
+        }
+
+        //printOrders
+        $(document).on('click', '#printOrders', function () {
+            printOrder('#orderHistory');
+        });
+        $(document).on('click', '#printInvoice', function () {
+            printOrder('#myModal');
+        });
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+
+    function showEmailModelpopUp()
+    {
+        var modalEmail = document.getElementById('myModalEmail');
+        modalEmail.style.display = "block";
+    }
+
+    function SendEmail()
+    {        
+         
+        var text = $("#myModal").html();
+        var email = $("#email").val();
+        var emailFrom = $("#emailFrom").val();
+        var subject = $("#subject").val();
+
+        $.ajax(
+                   {
+                       url: '@Url.Action("SendEmail", "Home")',
+                       contentType: 'application/json; charset=utf-8',
+                       datatype: 'json',
+                       type: "POST",
+                       data:JSON.stringify({ message: text,To:email,From:emailFrom,sub:subject }),
+                       success: function (data) {
+                           
+                           console.log(data);
+                           if (data.Success == true) {
+                               alert("Sent Email");
+                               Cancel();
+                           }
+                           else { }
+                       }
+                   });
+
+    }
+    function Cancel() {
+        
+        // Get the modal
+        var modalE = document.getElementById('myModalEmail');
+        modalE.style.display = "none";
+
+    }
+
+</script>

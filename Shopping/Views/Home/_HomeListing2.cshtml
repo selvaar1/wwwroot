@@ -1,0 +1,12 @@
+﻿    <div data-ng-repeat="Category in Categories" data-ng-click="getItemByCategory($event)" class="{{$odd ? 'fortysixty reverse' : 'fortysixty'}}">
+
+        <img src="~/img/card-image.png" alt="image of two women">
+        <div class="fortysixty-content">
+            <h2>{{Category.CategoryName}}</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo omnis et suscipit corporis! Sint neque expedita praesentium, velit eos sit quos ex tempora accusamus minus odio, temporibus beatae mollitia quam?</p>
+            <div class="fortysixty-button" role="button"><a href="~/Listing/?category={{Category.CategoryId}}" style="text-decoration: none; color: rgb(246, 246, 245);">View Products</a></div>
+        </div>
+
+    </div>
+
+    

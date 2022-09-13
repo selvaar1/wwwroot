@@ -1,0 +1,418 @@
+﻿@{
+    ViewBag.Title = "Addresses";
+    List<SL.Data.Address> addresses = null;
+    if (ViewBag.Addresses != null)
+    {
+        addresses = ViewBag.Addresses as List<SL.Data.Address>;
+    }
+
+    List<SL.Data.Country> countries = ViewBag.Countries;
+    Dictionary<string, string> addresstypes = new Dictionary<string, string>();
+    Dictionary<string, string> states = new Dictionary<string, string>();
+}
+<script src="~/js/handlebars.js"></script>
+
+<style>
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .contentBox {
+        margin-bottom: 20px;
+    }
+
+    .cb_body {
+        padding: 10px;
+    }
+</style>
+<div id="viewaddresses">
+
+    <h1 class="page_title">@ViewBag.Title</h1>
+    <div class="row">
+        @if (addresses != null)
+        {
+            foreach (var item in addresses)
+            {
+                <div class="col-sm-12">
+                    <div class="divAddress contentBox">
+                        <div class="cb_header">
+                            @if (item.IsPrimary)
+                            {
+                                <span style="float: left;">Primary Address</span>
+                            }
+                            else
+                            {
+                                <span style="float: left;">Additional Address (@System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(item.AddressTypeCodeString))</span>
+                            }
+                            <div style="float: right;">
+                                <a href="javascript:;" class="editaddress" data-addrid="@item.CustomerAddressId"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                @if (!item.IsPrimary)
+                                {
+                                    <span>&nbsp;&nbsp;&nbsp;</span>
+                                    <a href="javascript:;" class="deleteaddress" data-addrid="@item.CustomerAddressId"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                }
+                            </div>
+                        </div>
+                        <div class="cb_body">
+                            <address>
+                                <span>@item.LabelName</span><br />
+                                @Html.Raw(item.FormattedAddress.Replace("\n", "</br>"))
+                                @if (item.BillToFlag == true)
+                                {
+                                    <div class="checkbox checkbox-primary">
+                                        <input type="checkbox" checked disabled /><label>Bill To address</label>
+                                    </div>
+                                }
+                                @if (item.ShipToFlag == true)
+                                {
+                                    <div class="checkbox checkbox-primary">
+                                        <input type="checkbox" checked disabled /><label>Ship To Address</label>
+                                    </div>
+                                }
+                                @if (item.WebMobileDirectory == true)
+                                {
+                                    <div class="checkbox checkbox-primary">
+                                        <input type="checkbox" checked disabled /><label>Include in Online Directories</label>
+                                    </div>
+                                }
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="col-sm-12">
+        <a href="javascript:;" id="addaddress">Add Address</a>
+    </div>
+</div>
+
+
+<div id="address" class="contentBox">
+
+</div>
+
+<script id="address-template-grid" type="text/x-handlebars-template">
+    <div class="cb_header">
+        <span id="actiontext">Edit</span> Address
+        <div class="cb_header_info">* Required</div>
+    </div>
+    <div class="form-horizontal datagrid">
+        <table class="table table-striped cb_body">
+            <tr>
+                <td class="col-sm-4">{{COUNTRYCAPTION}}@*{{#if COUNTRYREQUIRED}}<span class="asteriskField">*</span>{{/if}}*@:</td>
+                
+                <td class="col-sm-8">
+                    <select class="input-md input_text {{COUNTRYREQUIRED}} form-control" id="COUNTRY" style="margin-right: 20px;">
+                        {{#each COUNTRYOPTIONS}}
+                        <option value="{{VALUE}}" {{SELECTED}}>{{TEXT}}</option>
+                        {{/each}}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-sm-4">Address Type:</td>
+                <td class="col-sm-8">
+                    <select class="input_text  form-control" id="addresstype">
+                        @foreach (var item in @ViewBag.AddressType)
+                        {
+                            <option value="@item.VALUE" @item.SELECTED>@item.TEXT</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-sm-4">{{ADDRESS1CAPTION}}@*{{#if ADDRESS1REQUIRED}}<span class="asteriskField">*</span>{{/if}}*@:</td>
+                <td class="col-sm-8">
+                    <input type="text" class="input_text form-control {{ADDRESS1REQUIRED}}" value="" id="ADDRESS_1" maxlength="{{ADDRESS1MAXLENGTH}}" />
+                </td>
+            </tr>
+            <tr>
+                <td class="col-sm-4">{{ADDRESS2CAPTION}}@*{{#if ADDRESS2REQUIRED}}<span class="asteriskField">*</span>{{/if}}*@:</td>
+                <td class="col-sm-8">
+                    <input type="text" class="input_text form-control {{ADDRESS2REQUIRED}}" value="" id="ADDRESS_2" maxlength="{{ADDRESS2MAXLENGTH}}" />
+                </td>
+            </tr>
+            {{#if ADDRESS3CAPTION}}
+            <tr>
+                <td class="col-sm-4">{{ADDRESS3CAPTION}}@*{{#if ADDRESS3REQUIRED}}<span class="asteriskField">*</span>{{/if}}*@:</td>
+                <td class="col-sm-8">
+                    <input type="text" class="input_text form-control {{ADDRESS3REQUIRED}}" value="" id="ADDRESS_3" maxlength="{{ADDRESS3MAXLENGTH}}" />
+                </td>
+            </tr>
+            {{/if}}
+            {{#if ADDRESS4CAPTION}}
+            <tr>
+                <td class="col-sm-4">{{ADDRESS4CAPTION}}@*{{#if ADDRESS4REQUIRED}}<span class="asteriskField">*</span>{{/if}}*@:</td>
+                <td class="col-sm-8">
+                    <input type="text" class="input_text form-control {{ADDRESS4REQUIRED}}" value="" id="ADDRESS_4" maxlength="{{ADDRESS4MAXLENGTH}}" />
+                </td>
+            </tr>
+            {{/if}}
+            {{#if CITYCAPTION}}
+            <tr>
+                <td class="col-sm-4">{{CITYCAPTION}}@*{{#if CITYREQUIRED}}<span class="asteriskField">*</span>{{/if}}*@:</td>
+                <td class="col-sm-8">
+                    <input type="text" class="input_text form-control {{CITYREQUIRED}}" value="" id="CITY" maxlength="CITYMAXLENGTH">
+                </td>
+            </tr>
+            {{/if}}
+            {{#if STATECAPTION}}
+            <tr>
+                <td class="col-sm-4">{{STATECAPTION}}@*{{#if STATEREQUIRED}}<span class="asteriskField">*</span>{{/if}}*@:</td>
+                <td class="col-sm-8">
+                    {{#if STATEOPTIONS}}
+                    <select class="input_text form-control {{STATEREQUIRED}} form-control" id="STATE">
+                        {{#each STATEOPTIONS}}
+                        <option value="{{VALUE}}" {{SELECTED}}>{{TEXT}}</option>
+                        {{/each}}
+                    </select>
+                    {{else}}
+                    <input type="text" class="input_text form-control" value="" id="STATE" maxlength="STATEMAXLENGTH" />
+                    {{/if}}
+                </td>
+            </tr>
+            {{/if}}
+            {{#if POSTALCODECAPTION}}
+            <tr>
+                <td class="col-sm-4">{{POSTALCODECAPTION}}@*{{#if POSTALCODEREQUIRED}}<span class="asteriskField">*</span>{{/if}}*@:</td>
+                <td class="col-sm-8">
+                    <input type="text" class="input_text form-control {{POSTALCODEREQUIRED}}" value="" id="POSTAL_CODE" maxlength="POSTALCODEMAXLENGTH" />
+                </td>
+            </tr>
+            {{/if}}
+            <tr>
+                <td class="col-sm-4"></td>
+                <td class="col-sm-8">
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="chkbilltoaddr" value="Bill" /><label>Bill To address</label>
+                    </div>
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="chkshiptoaddr" value="Ship" /><label>Ship To address</label>
+                    </div>
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="chkincludeweb" value="Web" /><label>Include in Online Directories</label>
+                    </div>
+                </td>
+            </tr>
+            <tr class="cb_footer">
+                <td class="col-sm-4"></td>
+                <td class="col-sm-8 btnActions text-right">
+                    <input type="button" name="btnSaveAddress" value="Save" class="btn btn-primary" id="btnSaveAddress" />
+                    <a href="javascript:;" class="btn normal btncancel">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</script>
+
+<script>
+    $(document).ready(function () {
+        var addressToEdit = null;
+        $('#divAddAddress').hide();
+        $('#address').hide();
+
+        $("#addaddress").click(function () {
+            //ClearAddressForm();
+            $('#viewaddresses').hide();
+            addressToEdit = null;
+            BuildAddress("USA");
+            $('#address').show();
+            $('#actiontext').html('Add');
+            $('#COUNTRY').removeAttr('disabled');
+            $('#addresstype').removeAttr('disabled');
+        });
+
+        $('body').on('click', '.btncancel', function () {
+            $('#viewaddresses').show();
+            $('#address').hide();
+        });
+
+
+        $('body').on('change', '#COUNTRY', function () {
+            var c = $(this).val();
+            //console.log("c", c);
+            if (c.length > 0) {
+                BuildAddress(c);
+            }
+        });
+
+        function BuildAddress(country) {
+            $.ajax({
+                url: '@Url.Action("GetAddressStructures", "Home", new { p = Session["pid"] })',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { country: country },
+                success: function (response) {
+                    //console.log('Success', response, response.length);
+                    if (response != null) {
+                        var addresstemplatesource1 = jQuery('#address-template-grid').html();
+                        var addresstemplate1 = Handlebars.compile(addresstemplatesource1);
+                        address1 = addresstemplate1(response);
+                        ////console.log("address1", address1);
+                        jQuery('#address').html(address1);
+                        FillAddressInfo();
+                        $('#address').show();
+                    }
+
+                },
+                error: function () { nalert('Error'); }
+            });
+        }
+
+        function FillAddressInfo() {
+            var addr = addressToEdit;
+            $('#actiontext').html('Add');
+            if (addr != null || addr != undefined) {
+                $('#COUNTRY').val(addr.CountryCode);
+                $('#addresstype').val(addr.AddressTypeCodeString);
+                $('#COUNTRY').attr('disabled', 'disabled')
+                $('#addresstype').attr('disabled', 'disabled')
+
+                //$('#nameformailing').val(addr.LabelName);
+                $('#ADDRESS_1').val(addr.Address1);
+                $('#ADDRESS_2').val(addr.Address2);
+                $('#ADDRESS_3').val(addr.Address3);
+                $('#ADDRESS_4').val(addr.Address3);
+                $('#CITY').val(addr.City);
+                $('#STATE').val(addr.State);
+                $('#POSTAL_CODE').val(addr.PostalCode);
+
+                $("#ChkRM").is(":checked");
+                if (addr.BillToFlag) {
+                    $('#chkbilltoaddr').prop('checked', true);
+                }
+                if (addr.ShipToFlag) {
+                    $('#chkshiptoaddr').prop('checked', true);
+                }
+                if (addr.WebMobileDirectory) {
+                    $('#chkincludeweb').prop('checked', true);
+                }
+                $('#actiontext').html('Edit');
+            }
+
+        }
+
+        $('body').on('click', '.editaddress', function () {
+
+            $('#chkbilltoaddr').removeAttr('checked');
+            $('#chkshiptoaddr').removeAttr('checked');
+            $('#chkincludeweb').removeAttr('checked');
+
+            var addrid = $(this).data('addrid');
+            //GetAddress Details by Id
+            $.ajax(
+           {
+               url: '@Url.Action("GetAddressById", "Home")',
+               contentType: 'application/json; charset=utf-8',
+               datatype: 'json',
+               type: "GET",
+               data: {
+                   addressid: addrid
+               },
+               success: function (data) {
+                   if (data.Success == true) {
+                       var addr = data.SelectedAddress;
+                       addressToEdit = addr;
+                       $('#viewaddresses').hide();
+                       BuildAddress(addr.CountryCode);
+                   }
+                   else {
+                       alert('Address Not Found!');
+                   }
+               }
+           });
+        });
+
+        function ValidateRequiredFields() {
+            var isvalid = true;
+            $(".required").each(function (index, el) {
+                var name = $(this).attr('id');
+                if ($(this).val().trim().length == 0) {
+                    var labelval = $(this).parent().parent().find("td:first").html();
+                    labelval = labelval.replace('*', '').replace(':', '');
+                    nalert("" + labelval + " can not be blank"); $(this).focus();
+                    isvalid = false;
+                    return false;
+                }
+            });
+            return isvalid;
+        }
+
+        //btnSaveAddress
+        $('body').on('click', '#btnSaveAddress', function () {
+
+            var addrid = 0;
+            if (addressToEdit != null || addressToEdit != undefined) {
+                addrid = addressToEdit.CustomerAddressId;
+            }
+            if (ValidateRequiredFields()) {
+                //Save
+                $.ajax(
+                   {
+                       url: '@Url.Action("SaveAddress", "Home")',
+                       contentType: 'application/json; charset=utf-8',
+                       datatype: 'json',
+                       type: "POST",
+                       data: JSON.stringify({
+                           'AddressId': addrid,
+                           'country': $('#COUNTRY').val(),
+                           'addresstype': $('#addresstype').val(),
+                           'address_1': $('#ADDRESS_1').val(),
+                           'address_2': $('#ADDRESS_2').val(),
+                           'address_3': $('#ADDRESS_3').val(),
+                           'address_4': $('#ADDRESS_4').val(),
+                           'city': $('#CITY').val(),
+                           'state': $('#STATE').val(),
+                           'postal_code': $('#POSTAL_CODE').val(),
+                           'shiptoflag': $('#chkshiptoaddr').is(":checked"),
+                           'billtoflag': $('#chkbilltoaddr').is(":checked"),
+                           'includeweb': $('#chkincludeweb').is(":checked"),
+
+                       }),
+                       success: function (data) {
+                           if (data.Success == true) {
+                               nalert('Success!');
+                               location.reload();
+                           }
+                           else {
+                               nalert(data.Message);
+                           }
+                       }
+                   });
+                }
+        });
+
+        //Delete Address
+        $('body').on('click', '.deleteaddress', function () {
+            if (confirm("Are you sure you wish to delete this record?")) {
+                var addrid = $(this).data('addrid');
+                //GetAddress Details by Id
+                $.ajax(
+               {
+                   url: '@Url.Action("RemoveAddress", "Home")',
+                   contentType: 'application/json; charset=utf-8',
+                   datatype: 'json',
+                   type: "GET",
+                   data: {
+                       addressid: addrid
+                   },
+                   success: function (data) {
+                       if (data.Success == true) {
+                           location.reload();
+                       }
+                       else {
+                           if (data.Message.length > 0) {
+                               nalert(data.Message);
+                           }
+                           else {
+                               nalert("An error occured. Please try again.");
+                           }
+                       }
+                   }
+               });
+            }
+        });
+        //End
+    });
+</script>

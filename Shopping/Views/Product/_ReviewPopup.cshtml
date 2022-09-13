@@ -1,0 +1,67 @@
+﻿<div class="cart-popup" id="reviewPopup">
+    <div class="cart-popup-container">
+        <h3>User Review</h3>
+        <a href="#0" class="cart-popup-close"></a>
+        <div class="cart-popup-form">
+            <div class="popLoader" id="popLoader" style="display: none;"><span>Please wait... </span></div>
+
+            <table style="width: 100%">
+                @*<tr>
+                    <td style="width:30%">Review Title
+                    </td>
+                    <td>
+                        <input type="text" data-ng-model="comments.Title" style="width: 100%" />
+                    </td>
+                </tr>*@
+                <tr>
+                    <td>Your Comments
+                    </td>
+                    <td>
+                        <textarea data-ng-model="commentsInput" rows="5" style="width: 100%" data-ng-keyup="checklenth($event)"></textarea>
+                        <span>{{currentInputLength}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Your Review
+                    </td>
+                    <td>
+                        <script>
+                            try {
+                                //Getting Review
+                                var currentUserRating = '';
+                                $('#ratings :radio.star').rating();
+                                $(function () {
+                                    $('div.star-rating a').click(function () {
+                                        currentUserRating = $(this).text();
+                                    });
+                                });
+                            } catch (e) {
+
+                            }
+                        </script>
+                        <!--<div id="tab-Testing">
+                            <form id="ratings" data-ng-model="ratings">-->
+                                @*<input class="star {split:2}" type="radio" name="test-1-rating-3" value="0.5" />*@
+                                <!--<input class="star {split:1}" type="radio" name="test-1-rating-3" value="1" />-->
+                                @*<input class="star {split:2}" type="radio" name="test-1-rating-3" value="1.5" />*@
+                                <!--<input class="star {split:1}" type="radio" name="test-1-rating-3" value="2" />-->
+                                @*<input class="star {split:2}" type="radio" name="test-1-rating-3" value="2.5" />*@
+                                <!--<input class="star {split:1}" type="radio" name="test-1-rating-3" value="3" />-->
+                                @*<input class="star {split:2}" type="radio" name="test-1-rating-3" value="3.5" />*@
+                                <!--<input class="star {split:1}" type="radio" name="test-1-rating-3" value="4" />-->
+                                @*<input class="star {split:2}" type="radio" name="test-1-rating-3" value="4.5" />*@
+                                <!--<input class="star {split:1}" type="radio" name="test-1-rating-3" value="5" />
+                            </form>-->
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="my_cart_actions">
+                <button class="back step_trigger continue_form" data-ng-click="addReviews()">Submit</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+

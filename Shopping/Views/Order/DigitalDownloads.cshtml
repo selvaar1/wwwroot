@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Digital Downloads";
+    Layout = "~/Views/Shared/_Products.cshtml";
+}
+
+<div class="popLoader" id="popLoader" style="display: none;"><span>Please wait... </span></div>
+
+<h1 class="page_title" id="ShowDDtitle" style="display:none">Digital Downloads</h1>
+<h1 class="page_title" id="ShowNoDDtitle" style="display:none">No Digital Downloads Found</h1>
+<div id="divDigitalDownloads" style="display:none">    
+    <div class="page_content_main" id="mainDiv" data-ng-init="digitalDownloads()">
+        <div id="page_head" style="margin-bottom: 25px">
+            Following are the links for Digital Download files that you have ordered :
+        </div>
+        <div id="digitalDownloadDetails" data-ng-repeat="item in repDigitalDownloads" style="margin-bottom: 25px;">
+            <div id="orderDetails" class="orNo">
+                <h2>
+                    Order Number: {{item.OrderNumber}}
+                    <span>
+                        Purchase Date: {{item.OrderDate| jsDate | date:"MM/dd/yyyy"}}
+                    </span>
+                </h2>
+            </div>
+            <div id="productDetails" class="prdInfo" style="margin-bottom: 10px">
+                <div id="productImage" class="prdImg">
+                    <img ng-src="{{item.ProductImage}}" no-image>
+                </div>
+                <div class="prdDetails">                    
+                    <div id="productId">
+                        <span>Product ID</span>: {{item.ProductId}}
+                    </div>                
+                    <div id="noofDownloads">
+                        <span>No. of Downloads</span>: {{item.DownloadsCount}}
+                    </div>
+                    <div id="remainingDownloads">
+                        <span>Remaining Downloads</span>: {{item.DownloadsRemaining}}
+                    </div>
+                    <div id="fileName">
+                        <span>File Name</span>: {{item.FileName}}                        
+                    </div>
+                    <div id="ecdfileDownload" >
+                        <span ng-if="(item.DownloadsRemaining>0) && ((item.DownloadUntilDate|jsDate) > currentdate)">
+                            <a href="" id="DownloadAttachment" type="button" data-filename="{{item.FileName}}" data-prodid="{{item.ProductId}}"  
+                                data-fileid="{{item.FileId}}" data-ordernumber="{{item.OrderNumber}}" data-orderlinenumber="{{item.OrderLineNumber}}" 
+                                class="download" >Download
+                            </a>
+                        </span>
+                        <span ng-if="(item.DownloadsRemaining<=0) || ((item.DownloadUntilDate|jsDate) < currentdate)">Download Not Available</span>
+                    </div>                    
+                </div>
+                <div style="clear:both;"></div>
+                <div style="height:1px; margin: 20px 0 0 0; clear:both; background-color:#EEE;" data-ng-show="{{item.length > 1}}" data-ng-test="{{item.length > 1}}"></div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+<!--page_content_main-->
+
+<script>
+    $(function () {
+        $(document).on('click', '.download', function () {
+            document.getElementById("preloader").style.display = "block";
+            var filename = $(this).data('filename');
+            var prodid = $(this).data('prodid');
+            var fileid = $(this).data('fileid');
+            var ordernumber = $(this).data('ordernumber');
+            var orderlinenumber = $(this).data('orderlinenumber');
+
+            $.ajax(
+            {
+                url: '@Url.Action("DownloadAttachment", "Order")',
+                contentType: 'application/json; charset=utf-8',
+                datatype: 'json',
+                data: {
+                    filename: filename,
+                    prodid: prodid,
+                    fileid: fileid,
+                    ordernumber: ordernumber,
+                    orderlinenumber: orderlinenumber
+                },
+                type: "GET",
+                success: function (data) {
+                    if (data == "Success") {                       
+                        window.location = '@Url.Action("Download", "Order")';
+                        var scope = angular.element(document.querySelectorAll("[ng-controller='viewProductController']")).scope();
+                        document.getElementById("preloader").style.display = "none";
+                        scope.digitalDownloads();
+                    }
+                    else {
+                        document.getElementById("preloader").style.display = "none";
+                    }
+                }
+            });
+        });
+    });
+</script>

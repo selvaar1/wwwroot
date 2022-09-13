@@ -1,0 +1,403 @@
+﻿@{
+    ViewBag.Title = "Pay Open Balances";
+}
+
+<style>
+
+    .checkbox {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    .paymentSection .radiobtn {
+        width: auto;
+    }
+    .paymentSection  label {
+        font-weight: normal;
+    }
+</style>
+
+<h1 class="page_title">@ViewBag.Title </h1>
+<div>
+    <div id="showdues">
+        
+    </div>
+</div>
+<script id="due-template-grid" type="text/x-handlebars-template">
+    {{#if Result}}
+    <div>
+        <table class="table table-striped" style="max-height: 500px;overflow-y: auto;">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Qty</td>
+                    <td class="text-right">Amount</td>
+                </tr>
+            </thead>
+            {{#each Result }}
+            <tr>
+                <td></td>
+                <td colspan="3">
+                    <strong>Order Number: {{@@key }}</strong>
+                    {{#each this}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                        <input type="checkbox" class="lineitemselect" line="{{Line.OrderNumber}}-{{Line.OrderLineNumber}}" id="line{{Line.OrderNumber}}-{{Line.OrderLineNumber}}"/>
+                    
+                </td>
+                <td width="100%">
+                    <label for="line{{Line.OrderNumber}}-{{Line.OrderLineNumber}}" style="font-weight: normal;">{{{Line.Description}}}</label>
+                </td>
+                <td>
+                    <span>{{{Line.OrderQuantity}}}</span>
+                </td>
+                <td class="text-right" style=" white-space: nowrap;">
+                    $<span class="lineamount text-right">{{formatMoney Line.Amount}}</span> USD
+                </td>
+            </tr>
+            {{/each}}
+            {{/each}}
+
+            <tr style="font-weight: bold;">
+                <td colspan="3" class="text-right">Total </td>
+                <td class="text-right">
+                    <input type="hidden" id="totalamount" />
+                    <span id="totalamountHTML"></span>
+                </td>
+            </tr>
+        </table>
+        <br />
+
+        <div class="paymentSection row" style="display: none;">
+
+            <div class="col-sm-12">
+                <h4>Payment :</h4>
+
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <td colspan="3">
+                            @foreach (var cctype in ViewBag.CCTypes)
+                            {
+                                if (string.Compare(cctype.ReceiptCode, "AE", true) == 0)
+                                {
+                                    <label for="@("cctype" + cctype.ReceiptCode)">
+                                        <img src="images/american_express_logo_3.gif" style="margin-left: 20px;" />
+                                    </label>
+                                }
+                                if (string.Compare(cctype.ReceiptCode, "DS", true) == 0)
+                                {
+                                    <label for="@("cctype" + cctype.ReceiptCode)">
+                                        <img src="images/discover_logo_3.gif" style="margin-left: 20px;" />
+                                    </label>
+                                }
+                                if (string.Compare(cctype.ReceiptCode, "MS", true) == 0)
+                                {
+                                    <label for="@("cctype" + cctype.ReceiptCode)">
+                                        <img src="images/mastercard_logo_3.gif" style="margin-left: 20px;" />
+                                    </label>
+                                }
+                                if (string.Compare(cctype.ReceiptCode, "VS", true) == 0)
+                                {
+                                    <label for="@("cctype" + cctype.ReceiptCode)">
+                                        <img src="images/new_visa.gif" style="margin-left: 20px;" />
+                                    </label>
+                                }
+                                <input type="radio" name="cardType" class="radiobtn" id="@("cctype" + cctype.ReceiptCode)" value="@cctype.ReceiptCode" /> <label for="@("cctype" + cctype.ReceiptCode)">@cctype.ReceiptDescription</label>
+
+                            }
+                            <span class="errorMsg"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Card Holder Name</td>
+                        <td>
+                            <input type="text" id="CCName" name="CCName" alpha-numberic="[^a-zA-Z0-9\-\s]" placeholder="Card Holder Name" value="" class="form-control" />
+                            <span class="errorMsg"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Credit Card Number</td>
+                        <td>
+                            <input type="text" id="CCNumber" class="ccNumInput form-control" placeholder="Credit Card Number" maxlength="19" required value="" />
+                            <span class="errorMsg"></span>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>Credit Card CVV Number</td>
+                        <td>
+                            <input type="text" id="CCcvv" placeholder="Credit Card Cvv Number" class="ccNumInput form-control" required maxlength="4" value="" class="frmInput" />
+                            <span class="errorMsg"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Expire Month</td>
+                        <td>
+                            <select id="months" required class="form-control">
+                                @for (int i = 1; i <= 12; i++)
+                                {
+                                    if (i == DateTime.Now.Month)
+                                    {
+                                        <option value="@i" selected="selected">@i</option>}
+                                    else
+                                    {
+                                        <option value="@i">@i</option>}
+                                }
+                            </select>
+                            <span class="errorMsg"></span>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>Expire Year</td>
+                        <td>
+                            <select id="years" required class="form-control">
+                                @for (int i = DateTime.Now.Year; i < DateTime.Now.Year + 15; i++)
+                                {
+                                    if (i == DateTime.Now.Year)
+                                    {
+                                        <option value="@i" selected="selected">@i</option>}
+                                    else
+                                    {
+                                        <option value="@i">@i</option>}
+                                }
+                            </select>
+                            <span class="errorMsg"></span>
+                        </td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td colspan="2">
+                            <input type="checkbox" id="saveCCCard" style="color: yellowgreen;" />&nbsp;&nbsp;Save this credit card
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-sm-6" style="padding-left: 25px;">
+                
+                    <input type="checkbox" id="terms" name="terms" value="terms"  /> <label for="terms" style="line-height: 1.42;margin-left: 12px;">I accept ATA's <a href="http://www.trucking.org/Terms_of_Use.aspx" target="_blank">Terms of Use </a></label>
+                
+            </div>
+                <div class="col-sm-6 text-right">
+                    <input type="button" id="btnPay" value="Pay" class="btn btn-success" disabled="disabled" />
+                </div>
+            </div>
+
+    </div>
+    {{/if}}
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        GetOutstanding();
+
+        //lineitemselect
+        $('body').on('click', '.lineitemselect', function () {
+            CalculateTotal();
+        });
+
+        $('body').on('click', '#btnPay', function () {
+            console.log('#btnPay');
+
+            SaveSelectedLines();
+        });
+
+        function SaveSelectedLines() {
+            var orderstopay = "";
+            $(".lineitemselect").each(function (index, el) {
+                if ($(this).is(':checked')) {
+                    var line = $(this).attr('line');
+                    
+                    if (orderstopay.length > 0) orderstopay += "|";
+                    orderstopay += line;
+                }
+            });
+            console.log("orderstopay", orderstopay);
+            if (orderstopay.length > 0)
+            {
+                if (ValidateCC()) {
+                    console.log("orderstopay 2", orderstopay);
+                    AddLinesForPayment(orderstopay);
+                }
+            }
+            else
+            {
+                nalert('Select order lines to pay.');
+            }
+
+        }
+
+        function AddLinesForPayment(orderstopay) {
+
+            console.log("AddLinesForPayment", orderstopay);
+            var totalAmount = parseFloat($('#totalamount').val());
+
+            var ccinfo = null;
+
+                var ccType = $('input[name=cardType]:checked').val();
+                var ccName = $('#CCName').val();
+                var ccNumber = $('#CCNumber').val();
+                var ccv2 = $('#CCcvv').val();
+                var ccMonth = $('#months').val();
+                var ccYear = $('#years').val();
+           
+           $.ajax({
+                url: '@Url.Action("Payment", "Home")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: {
+                    "orderstopay": orderstopay, 'totalAmount': totalAmount, 'Type': ccType, 'Name': ccName, 'Number': ccNumber, 'Cvv2': ccv2, 'Month': ccMonth, 'Year': ccYear },
+                success: function (response) {
+                    if (response.Success == true) {
+                        //nalert('Success');
+
+                        location.href = '@Url.Action("Confirmation", "Home")';
+                    }
+                    else {
+                        nalert(response.Message);
+                    }
+
+                },
+                error: function (x) {
+                    nalert(x);
+                }
+            });
+        }
+
+        function CalculateTotal() {
+            var totalamount = 0;
+            $(".lineitemselect:checked").each(function (index, el) {
+
+                    var amount = $(this).parent().parent().find('.lineamount').html();
+                    if (amount != null) amount = amount.replace(",", "");
+                    console.log("amount", amount);
+                    totalamount = parseFloat(totalamount) + parseFloat(amount);
+                    console.log("totalamount", totalamount);
+                
+            });
+            $('#totalamount').val(totalamount.toFixed(2));
+            $('#totalamountHTML').html("$" + totalamount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + " USD");
+
+            if (totalamount > 0) {
+                $('.paymentSection').show();
+            }
+            else {
+                $('.paymentSection').hide();
+            }
+
+        }
+
+        //Get Outstanding Balances
+        function GetOutstanding() {
+            $.ajax({
+                url: '@Url.Action("GetOutstanding", "Home")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: "",
+                success: function (response) {
+                    console.log('Success', response);
+                    if (response.Success == true) {
+
+                        var result = {
+                            Result: response.Result.reduce(function (result, current) {
+                                result[current.OrderNumber] = result[current.OrderNumber] || [];
+                                result[current.OrderNumber].push({ Line: current });
+                                return result;
+                            }, {})
+                        };
+
+                        console.log("result", result);
+
+                        var templatesource = jQuery('#due-template-grid').html();
+                        var template = Handlebars.compile(templatesource);
+                        dues = template(result);
+                        jQuery('#showdues').html(dues);
+                        CalculateTotal();
+                    }
+                    else {
+                        nalert(response.Message);
+                    }
+
+                },
+                error: function (x) {
+                    nalert(x);
+                }
+            });
+        }
+
+        function ValidateCC() {
+            valid = true;
+            var totalAmount = parseFloat($('#totalamount').val());
+
+            if (totalAmount > 0) {
+                if (!$('input[name=cardType]').is(':checked')) {
+                    $('input[name=cardType]').parent().find('.errorMsg').text('Please select card type!');
+                    valid = false;
+
+                } else {
+                    $('input[name=cardType]').parent().find('.errorMsg').empty();
+                }
+
+                if (CCName.value == '') {
+                    $('#CCName').next().text('Please enter the Card Holder name!');
+                    valid = false;
+                } else {
+                    $('#CCName').next().empty();
+                }
+                if (CCNumber.value == '') {
+                    $('#CCNumber').next().text('Please enter the Credit Card Number!');
+                    valid = false;
+                } else {
+                    $('#CCNumber').next().empty();
+                }
+                if (CCcvv.value == '') {
+                    $('#CCcvv').next().text('Please enter the CVV Number!');
+                    valid = false;
+                } else {
+                    $('#CCcvv').next().empty();
+                }
+                var today, someday;
+                var exMonth = $('#months').val();
+                var exYear = $('#years').val();
+                today = new Date();
+                someday = new Date();
+                someday.setFullYear(exYear, exMonth, 1);
+
+                if (someday < today) {
+                    $('#years').next().text("The expiry date is before today's date. Please select a valid expiry date!");
+                    valid = false;
+                } else {
+                    $('#years').next().empty();
+                }
+            }
+
+            console.log("ValidateCC", valid);
+            return valid;
+        }
+
+        function AcceptTerms() {
+
+            var isChecked = document.getElementById('terms').checked;
+            console.log('isChecked', isChecked);
+            if (isChecked) {
+                $('#btnPay').attr('disabled', false)
+            }
+            else {
+                $('#btnPay').attr('disabled', true)
+            }
+        }
+        $('body').on('click', '#terms', function () {
+            console.log('terms');
+            AcceptTerms();
+        });
+
+    });
+</script>

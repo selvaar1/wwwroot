@@ -1,0 +1,226 @@
+﻿@{
+    ViewBag.Title = "Confirmation";
+    App.BO.OrderSummary oSummary = ViewBag.OrderSummary;
+    List<SL.Business.UserInfo> users = (List<SL.Business.UserInfo>)Session["users"];
+}
+<script>
+    (function (global) {
+        //To restrict browser backbutton
+        if (typeof (global) === "undefined") {
+            throw new Error("window is undefined");
+        }
+        var _hash = "!";
+        var noBackPlease = function () {
+            global.location.href += "#";
+            global.setTimeout(function () {
+                global.location.href += "!";
+            }, 50);
+        };
+        global.onhashchange = function () {
+            if (global.location.hash !== _hash) {
+                global.location.hash = _hash;
+            }
+        };
+        global.onload = function () {
+            noBackPlease();
+            document.body.onkeydown = function (e) {
+                var elm = e.target.nodeName.toLowerCase();
+                if (e.which === 8 && (elm !== 'input' && elm !== 'textarea')) {
+                    e.preventDefault();
+                }
+                e.stopPropagation();
+            };
+        };
+    })(window);
+</script>
+<div class="registration_form col-sm-12">
+    <h2 class="page_title">Confirmation</h2>
+    @if (oSummary != null)
+    {
+        <div class="page_content_left order-confirmation">
+            <div class="order_received_details">
+                <h4>
+                    Thank you for your order!
+                    <span>Your order summary is below and a confirmation will be sent to you at <strong>@users[0].Email</strong> within 30 minutes.</span>
+                </h4>
+                <div class="col-sm-12">
+                    <a href="javascript:;" id="printInvoice">Print</a>
+                    <a href="#" class="print_email" style="display: none;">Email</a>
+                </div>
+                <div class="order_print">
+                    <div class="col-sm-12">
+                        <h4>Order Number:@oSummary.OrderNumber</h4>
+                        @if (HttpContext.Current.Session["RENEW"].ToString() == "false")
+                        {
+                            <h4>Order Date: @String.Format("{0:MM/dd/yyyy}", oSummary.OrderDate)</h4>
+                        }
+                    </div>
+
+                    <div class="item_purchase_table col-sm-12 ">
+                        <table id="cart_table" class="table table-bordered table-striped noMargin">
+                            <thead>
+                                <tr>
+                                    <th class="col-sm-6">Item</th>
+                                    <th class="text-center col-sm-2">Quantity</th>
+                                    <th class="text-right col-sm-2">Price</th>
+                                    <th class="text-right col-sm-2">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in oSummary.Products)
+                                {
+                                    <tr>
+                                        <td class="purchase_item col-sm-6">
+
+                                            <span class="purchase_item_right">
+                                                @if (item.ProductTypeCode != "M" && item.ProductTypeCode != "I")
+                                                {
+                                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;@item.Description</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>@item.Description</p>
+
+                                                }
+                                            </span>
+                                        </td>
+                                        <td class="text-center col-sm-2"><span>@item.Quantity</span></td>
+                                        <td class="text-right col-sm-2">
+                                            @if (!item.IsOldItem)
+                                            {
+                                                <span>$</span><span>@(String.Format("{0:0.00}", item.UnitPrice))</span> @oSummary.CurrencyCode
+
+                                            }
+                                            else
+                                            {
+                                                <span>Already Purchased</span>
+                                            }
+
+                                        </td>
+                                        <td class="text-right col-sm-2">
+                                            @if (!item.IsOldItem)
+                                            {
+                                                <span>$</span><span>@(String.Format("{0:0.00}", (item.UnitPrice * item.Quantity)))</span> @oSummary.CurrencyCode
+                                            }
+                                            else
+                                            {
+                                                <span>Already Purchased</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-12 text-right">
+                        <table class="table table-bordered table-striped noMargin">
+                            <tr>
+                                <td class="col-sm-6">Item(@oSummary.NumberOfItems)</td>
+                                <td class="col-sm-6">$<span>@(String.Format("{0:0.00}", (oSummary.TotalAmount - oSummary.TaxAmount - oSummary.ShippingAmount)))</span> @oSummary.CurrencyCode</td>
+                            </tr>
+                            @if (!string.IsNullOrWhiteSpace(oSummary.ShipViaCode))
+                            {
+                                <tr>
+                                    <td class="col-sm-8">Shipping (@oSummary.ShipViaCode)</td>
+                                    <td class="col-sm-4">$<span id="shippingHandling">@String.Format("{0:0.00}", oSummary.ShippingAmount)</span> @oSummary.CurrencyCode</td>
+                                </tr>
+                            }
+                            <tr>
+                                <td class="col-sm-8">Tax </td>
+                                <td class="col-sm-4">$<span id="tax">@String.Format("{0:0.00}", oSummary.TaxAmount)</span> @oSummary.CurrencyCode</td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-8">Total: </td>
+                                <td class="col-sm-4">$<span>@String.Format("{0:0.00}", oSummary.TotalAmount)</span> @oSummary.CurrencyCode</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div class="col-sm-12 ">
+                        <table class="table table-bordered table-striped noMargin">
+                            <thead class="addInfo">
+                                <tr>
+                                    <td style="width:50%;">Billing Info:</td>
+                                    <td>Shipping Info:</td>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td><span class="white-space-pre-line">@oSummary.BillAddress </span></td>
+                                <td><span class="white-space-pre-line">@oSummary.ShipAddress</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Payment Method</strong>: @oSummary.ReceiptType @oSummary.PartialCrediCardNumber</td>
+                                <td><strong>Shipping Method</strong>: @oSummary.ShipViaCode</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $(".cartCount").load(" .cartCount");
+
+        $(document).on('click', '#printInvoice', function () {
+            printOrder('.order_print');
+        });
+        //printInvoice
+        function printOrder(div) {
+            var divToPrint = $(div).html();
+            var contents = $(div).html();
+            var frame1 = document.createElement('iframe');
+            frame1.name = "frame1";
+            frame1.style.position = "absolute";
+            frame1.style.top = "-1000000px";
+            document.body.appendChild(frame1);
+            var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
+            frameDoc.document.open();
+            frameDoc.document.write('<html><head><link href="../css/custom.css" rel="stylesheet" type="text/css"></head><title>Order Contents</title>');
+            frameDoc.document.write('</head><body>');
+            frameDoc.document.write(contents);
+            frameDoc.document.write('</body></html>');
+            frameDoc.document.close();
+            setTimeout(function () {
+                window.frames["frame1"].focus();
+                window.frames["frame1"].print();
+                document.body.removeChild(frame1);
+            }, 500);
+            return false;
+        };
+    });
+</script>
+
+
+
+<!-- Facebook Pixel Code -->
+<script>
+    !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2163979337250238');
+    fbq('track', 'CompleteRegistration');
+</script>
+<noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=2163979337250238&ev=PageView&noscript=1" />
+</noscript>
+<!-- End Facebook Pixel Code -->
+
+
+
+<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=1130522&conversionId=1155666&fmt=gif" />
+
+
+<script type="text/javascript" src="https://apps4.highroadsolution.com/clients/ata/scripts/capture_purchase.js"></script>

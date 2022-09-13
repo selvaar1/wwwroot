@@ -1,0 +1,31 @@
+﻿    <div class="product-filters categories">
+        <span id="hideFilter">X</span>
+
+        @{ Html.RenderPartial("~/Views/Home/_Listing0.cshtml");}
+
+        <h2 id="filter-header-products">Filter Products:</h2>
+        <!--filter_widget-->
+        <div class="filter-products-box">
+            <h3>Product Type<a href="javascript:;" class="clsFilt" data-ng-click="clsFil($event)" id="Category">Clear All</a></h3>
+            <ul class="filters">
+                <li class="filter-type" data-ng-repeat="Category in Categories" data-ng-click="getItemByCategory($event)">
+                    <input type="checkbox" id="{{Category.CategoryId}}" data-ng-checked="{{Category.selected}}" class="category" />
+                    <label class="checkbox-label">{{Category.CategoryName}}</label>
+                </li>
+
+            </ul>
+
+            <h3>Topics <a href="javascript:;" class="clsFilt" data-ng-click="clsFil($event)" id="Topic">Clear All</a></h3>
+            <ul class="filters">
+                <li class="filter-type" data-ng-repeat="Topic in Topics" data-ng-click="getItemByCategory($event)">
+                    <input type="checkbox" id="{{Topic.TopicID}}" data-ng-checked="{{Topic.selected}}" class="topic" />
+                    <label class="checkbox-label">{{Topic.TopicDescription}}</label>
+
+                    @*<input type="hidden" id="topicCode"  value="{{Topic.TopicCode}}" />*@
+
+                    <input type="text" id="{{Topic.TopicCode}}" class="topicCode" style="display: none" value="{{Topic.TopicCode}}" />
+                </li>
+            </ul>
+        </div>
+
+    </div>

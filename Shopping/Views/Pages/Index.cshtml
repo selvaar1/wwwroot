@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_Pages.cshtml";
+    ViewBag.Title = "Pages";
+}
+
+@if (ViewBag.param == "20tmcfleetspecial")
+{
+    ViewBag.Title = "TMC20";
+
+<div class="embed-responsive embed-responsive-4by3">
+    <iframe class="embed-responsive-item" src="https://app.versiform.net/Apps/46/Forms/Embed/2c22f1c5-8fc6-4a25-baec-6f5c07b8e1cd"></iframe>
+</div>
+
+<style>
+    @@media only screen and (max-width: 680px) {
+        .embed-responsive-4by3 {
+            padding-bottom: 180%;
+        }
+    }
+    @@media only screen and (min-width: 681px) and (max-width: 1080px){
+        .embed-responsive-4by3 {
+            padding-bottom: 100%;
+        }
+    }
+
+</style>
+}

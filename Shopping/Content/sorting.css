@@ -1,0 +1,463 @@
+/**
+jPList - jQuery Data Grid Controls - http://jplist.com 
+Copyright 2014 jPList Software. All rights reserved.
+*/
+
+.jplist-hidden {
+    display: none;
+}
+
+.jplist-sticky {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    background: #f1f1f1;
+    padding-bottom: 5px;
+}
+
+.sticky-demo .panel > .center {
+    max-width: 100%;
+}
+
+.sticky-demo .jplist-sticky > .center {
+    max-width: 95%;
+}
+
+.no-cssgradients .sorting_navigation button:hover {
+    background: #f4f4f4;
+}
+
+.sorting_navigation {
+    color: #27252a;
+}
+
+    .sorting_navigation button {
+        float: left;
+        height: 30px;
+        border: 1px solid #dbdbdb;
+        color: #27252a;
+        cursor: pointer;
+        margin:5px 2px;
+    }
+
+        .sorting_navigation button:hover {
+            color: #0381bb;
+            background: #f2f2f2;
+        }
+
+        .sorting_navigation button.jplist-disabled {
+            background: #e3e3e3;
+            color: #6c6c6c;
+            cursor: default;
+        }
+
+        .sorting_navigation button.jplist-selected {
+            color: #f03800;
+        }
+
+    .sorting_navigation input[type="text"] {
+        float: left;
+        height: 30px;
+        color: #27252a;
+        width: 150px;
+        text-indent: 5px;
+        background: #fff;
+    }
+
+    .sorting_navigation input[type="checkbox"], .sorting_navigation input[type="radio"] {
+        float: left;
+        display: inline-block;
+        height: 30px;
+        background: #fff;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        box-sizing: border-box;
+        color: #27252a;
+    }
+
+    .sorting_navigation label {
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 5px;
+        display: inline-block;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        box-sizing: border-box;
+        color: #27252a;
+        cursor: pointer;
+    }
+
+
+
+
+
+
+
+.jplist-icon {
+    float: left;
+    height: 30px;
+    box-shadow: 0 0 1px #fff;
+    background: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #fff;
+    color: #27252a;
+    display: inline-block;
+    line-height: 30px;
+    padding: 0 10px;
+    border-right: 0;
+}
+
+    .jplist-icon:hover {
+        color: #0381bb;
+    }
+
+.jplist-label {
+    float: left;
+    height: 30px;
+    box-shadow: 0 0 1px #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #fff;
+    color: #27252a;
+    line-height: 30px;
+    padding: 0 10px;
+    margin: 10px 10px 0 0;
+    background: #fff;
+    background: -moz-linear-gradient(top, #fff 0, #efefef 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(100%, #efefef));
+    background: -webkit-linear-gradient(top, #fff 0, #efefef 100%);
+    background: -o-linear-gradient(top, #fff 0, #efefef 100%);
+    background: -ms-linear-gradient(top, #fff 0, #efefef 100%);
+    background: linear-gradient(to bottom, #fff 0, #efefef 100%);
+}
+
+.jplist-selected {
+    color: #ca3f1a;
+}
+
+.jplist-box {
+    float: left;
+    height: 30px;
+    margin: 10px 10px 0 0;
+}
+
+/* Pagination */
+.sorting_navigation .jplist-pagination {
+    cursor: pointer;
+    float: right;
+    line-height: 30px;
+}
+
+    .sorting_navigation .jplist-pagination button {
+        display: block;
+        text-decoration: none;
+        color: #fff;
+        background: #B0B0B0;
+        width: 23px;
+        height: 23px;
+        line-height: 15px;
+        text-align: center;
+        -moz-border-radius: 100%;
+        -webkit-border-radius: 100%;
+        -khtml-border-radius: 100%;
+        border-radius: 100%;
+        -o-border-radius: 100%;
+        font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
+        margin-left: 3px;
+        border: none;
+        letter-spacing: -1px;
+    }
+
+    .sorting_navigation .jplist-pagination .jplist-pagingprev, .sorting_navigation .jplist-pagination .jplist-pagingmid, .sorting_navigation .jplist-pagination .jplist-pagingnext {
+        float: left;
+    }
+
+        .sorting_navigation .jplist-pagination .jplist-pagingprev button, .sorting_navigation .jplist-pagination .jplist-pagingnext button {
+            font-size: 0px;
+            font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
+        }
+
+        .sorting_navigation .jplist-pagination .jplist-pagingnext button {
+            background: url(../images/next.png) center no-repeat #EFAC15;
+        }
+
+            .sorting_navigation .jplist-pagination .jplist-pagingnext button:hover {
+                background: url(../images/next.png) center no-repeat #D39509;
+            }
+
+        .sorting_navigation .jplist-pagination .jplist-pagingprev button {
+            background: url(../images/prev.png) center no-repeat #EFAC15;
+        }
+
+            .sorting_navigation .jplist-pagination .jplist-pagingprev button:hover {
+                background: url(../images/prev.png) center no-repeat #D39509;
+            }
+
+.jplist-pagingprev .jplist-first, .jplist-pagingnext .jplist-next {
+    display: none !important;
+}
+
+.sorting_navigation .jplist-pagination button.jplist-current, .sorting_navigation .jplist-pagination button:hover {
+    background: #008AB8;
+}
+
+.jplist-one-page {
+    display: none;
+}
+
+.jplist-empty {
+    display: none;
+}
+
+/* Sorting Control */
+.sorting_navigation .pdViews {
+    float: left;
+}
+
+    .sorting_navigation .pdViews .pdView {
+        float: left;
+        height: 18px;
+        cursor: pointer;
+        width: 18px;
+    }
+
+    .sorting_navigation .pdViews .pd_listView {
+        background: url('../images/list.png') no-repeat bottom;
+        height: 18px;
+        width: 18px;
+        border: 0px;
+    }
+
+    .sorting_navigation .pdViews .pd_gridView {
+        background: url('../images/grid.png') no-repeat top;
+        height: 18px;
+        width: 18px;
+        border: 0px;
+    }
+
+.pd_gridView .sorting_navigation .pdViews .pd_gridView:hover {
+    background: url('../images/grid.png') no-repeat top;
+}
+
+.pd_gridView .sorting_navigation .pdViews .pd_listView:hover {
+    background: url('../images/list.png') no-repeat bottom;
+}
+
+.sorting_navigation .pdViews .pd_gridView:hover, .pd_gridView .sorting_navigation .pdViews .pd_gridView:focus {
+    background: url('../images/grid.png') no-repeat bottom;
+}
+
+.sorting_navigation .pdViews .pd_listView:hover, .sorting_navigation .pdViews .pd_listView:focus {
+    background: url('../images/list.png') no-repeat bottom;
+}
+
+.pd_gridView .sorting_navigation .pdViews .pd_listView {
+    background: url('../images/list.png') no-repeat top;
+}
+
+.pd_gridView .sorting_navigation .pdViews .pd_gridView {
+    background: url('../images/grid.png') no-repeat bottom;
+}
+
+.jplist-thumbs-view .sorting_navigation .pdViews .pd_listView {
+    background: url('../images/list.png') no-repeat bottom;
+}
+
+.jplist-thumbs-view .sorting_navigation .pdViews .pd_gridView {
+    background: url('../images/grid.png') no-repeat bottom;
+}
+
+.jplist-no-results {
+    float: left;
+    width: 100%;
+    padding: 60px 10px 20px 10px;
+    text-align: center;
+    font-size: 22px;
+    color: #008AB8;
+    font-weight: normal;
+}
+
+
+@media only screen and (max-width:600px) {
+    .sorting_navigation {
+        display: block;
+    }
+}
+
+.jplist-drop-down {
+    float: left;
+    height: 24px;
+    width: 150px;
+    padding: 2px 0px 2px 0px;
+    position: relative;
+    background: url(../images/light-grey-btn.png) repeat-x bottom;
+    border: 1px solid #929292;
+    margin-left: 3px;
+    color: #555555;
+    font-size: 13px;
+    font-family: 'open_sanssemibold', Arial, Helvetica, sans-serif;
+}
+
+    .jplist-drop-down:hover {
+        background: #DFDFDF;
+    }
+
+    .jplist-drop-down .jplist-dd-panel {
+        overflow: hidden;
+        cursor: pointer;
+        text-indent: 7px;
+    }
+
+        .jplist-drop-down .jplist-dd-panel:after {
+            content: " ";
+            height: 22px;
+            width: 24px;
+            background: url(../images/arrow1.png) no-repeat center #929292;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+
+    .jplist-drop-down ul {
+        border: 1px solid #929292;
+        position: relative;
+        top: 2px;
+        left: -1px;
+        z-index: 1000;
+        width: 150px;
+        display: none;
+        overflow: hidden;
+        background: url(../images/grey-bg.png) repeat-x bottom #fff;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        -moz-box-shadow: 0 0 10px #969696;
+        -webkit-box-shadow: 0 0 10px #969696;
+        box-shadow: 0 0 10px #969696;
+        -moz-border-radius: 0 0 5px 5px;
+        -webkit-border-radius: 0 0 5px 5px;
+        -khtml-border-radius: 0 0 5px 5px;
+        border-radius: 0 0 5px 5px;
+        -o-border-radius: 0 0 5px 5px;
+    }
+
+        .jplist-drop-down ul li {
+            width: 100%;
+            float: left;
+            height: 28px;
+            line-height: 28px;
+            text-indent: 10px;
+            cursor: pointer;
+            font-family: 'open_sansregular', Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            color: #2F2F2F;
+            border-bottom: 1px solid #C8C8C8;
+        }
+
+            .jplist-drop-down ul li:hover {
+                background-color: #D9F6FF;
+                color: #008AB8;
+            }
+
+            .jplist-drop-down ul li.active {
+                background-color: #D9F6FF;
+                font-family: 'open_sanssemibold', Arial, Helvetica, sans-serif;
+                color: #008AB8;
+            }
+
+            .jplist-drop-down ul li:last-child {
+                border-bottom: none;
+            }
+
+    .jplist-drop-down:hover .jplist-dd-panel {
+        color: #000;
+    }
+
+        .jplist-drop-down:hover .jplist-dd-panel:after {
+            color: #000;
+        }
+
+.jplist-select {
+    height: 30px;
+    box-shadow: 0 0 1px #fff;
+    background: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #fff;
+    color: #27252a;
+    float: left;
+    margin: 10px 10px 0 0;
+    padding: 5px;
+    text-shadow: none;
+}
+
+.jplist-ios-button {
+    display: none;
+}
+
+@media only screen and (max-width:650px) {
+    .jplist-ios-button {
+        display: none;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+        font-size: 15px;
+        line-height: 30px;
+        float: left;
+        height: 30px;
+        box-shadow: 0 0 1px #fff;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        box-sizing: border-box;
+        border: 1px solid #dbdbdb;
+        border-radius: 3px;
+        text-shadow: 1px 1px 1px #fff;
+        color: #27252a;
+        background: #fff;
+        background: -moz-linear-gradient(top, #fff 0, #efefef 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(100%, #efefef));
+        background: -webkit-linear-gradient(top, #fff 0, #efefef 100%);
+        background: -o-linear-gradient(top, #fff 0, #efefef 100%);
+        background: -ms-linear-gradient(top, #fff 0, #efefef 100%);
+        background: linear-gradient(to bottom, #fff 0, #efefef 100%);
+    }
+
+        .jplist-ios-button:hover {
+            background: #f2f2f2;
+            background: -moz-linear-gradient(top, #fafafa 0, #ededed 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fafafa), color-stop(100%, #ededed));
+            background: -webkit-linear-gradient(top, #fafafa 0, #ededed 100%);
+            background: -o-linear-gradient(top, #fafafa 0, #ededed 100%);
+            background: -ms-linear-gradient(top, #fafafa 0, #ededed 100%);
+            background: linear-gradient(to bottom, #fafafa 0, #ededed 100%);
+        }
+
+    .jplist-ios-show {
+        display: block;
+    }
+}

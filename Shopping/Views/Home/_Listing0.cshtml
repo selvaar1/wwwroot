@@ -1,0 +1,9 @@
+﻿
+
+    <h2 id="filter-header-categories">Categories:</h2>
+    <ul class="product-categories">
+        <li class="product-category"data-ng-repeat="Category in Categories" data-ng-click="getItemByCategory($event)" role="button">
+
+             <a href="~/Listing/?category={{Category.CategoryId}}" style="text-decoration: none; color: rgb(112, 112, 112);">{{Category.CategoryName}}</a>
+        </li>
+    </ul>

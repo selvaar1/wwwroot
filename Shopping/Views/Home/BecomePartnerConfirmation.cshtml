@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "BECOME A PARTNER CONFIRMATION";
+    Layout = "~/Views/Shared/_TopHeaderLayout.cshtml";
+}
+<style>
+        .button-box{ box-sizing: border-box;}
+            .button-box a {
+                background-color: var(--sir-green-light);
+                text-transform: uppercase;
+                text-decoration: none;
+                color: var(--sir-white);
+                width: fit-content;
+                cursor: pointer;
+                padding: 17px 43px;
+                font-size: 19px;
+                font-weight: 500;
+                display: block;
+                margin: 0px auto;
+                margin-bottom: 1.5rem;
+            }
+</style>
+
+
+<div id="content-box" class="content mx-auto">
+    <h1 class="text-center">Affinity Partner Inquiry Sent</h1>
+    <p>Thank you for submitting your query, an SIR team member will get in contact with you for more information.</p>
+    <div class="button-box">
+        @Html.ActionLink("Back to Home", "Index","Home", new { @class= ""})
+    </div>
+</div>

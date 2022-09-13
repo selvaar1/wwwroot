@@ -1,0 +1,497 @@
+﻿@{
+    ViewBag.PageTitle = "Login";
+}
+@{
+    ViewBag.Title = "Login";
+}
+@section featured {
+    <div>
+
+
+    </div>
+    <div>
+        <i>Enter your Username and Password in the Login box to see what services are available to you.</i>
+    </div>
+    <h1 class="page_title">@ViewBag.Title</h1>
+}
+
+<style>
+    div#loginform div {
+        margin-bottom: 10px;
+    }
+</style>
+<div class="panel panel-default lblclass" id="loginform">
+
+    <div style="margin-left: 10%; width: 60%;" id="divCredential">
+
+        <div class="row">
+            <div class="col-md-6 text-right">
+                <label id="test1">Username:</label>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" value="@ViewBag.Email" id="username" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class=" col-md-6 text-right" id="test">
+                <label id="test2">Password:</label>
+            </div>
+            <div class="col-md-6">
+                <input type="password" class="form-control" value="" id="password" />
+            </div>
+        </div>
+
+
+
+        <div class="row">
+
+            <div class="col-md-offset-3 col-md-3">
+                <a href='@ViewBag.ForgotUsernameURL' id="forgotusername">Forgot Username</a>
+                <br />
+                <a href='@ViewBag.ForgotPasswordURL' id="forgotpassword">Forgot Password</a>
+            </div>
+            <div class="col-md-6 text-right">
+
+                <a href='@Url.Action("Register", "Home", new { ReturnURL = Request["ReturnURL"], SSOL = "Y" })' class="btn btn-default" id="register">Create an Account</a>
+                <input type="submit" class="btn btn-primary" id="login" value="Login" />
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+    <div id="divResetPassword" style="margin-left: 10%; width: 60%;">
+        <div class="row">
+            <span style="font-weight: bold;">Please enter the e-mail address for your account and you will receive password reset instructions via e-mail.</span>
+        </div>
+        <div class="row">
+            <div class="col-md-6 text-right">
+                <label class="fl">E-mail Address *</label>
+            </div>
+            <div class="col-md-6">
+                <input type="email" class="input_text form-control" value="" id="resetpwdEmail" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 text-right">
+            </div>
+            <div class="col-md-12 text-right">
+
+                <input class="btn btn-default cancel_btn" value="Cancel" />
+                <input type="submit" class="submit_btn btn btn-primary" id="SendResetPwd" value="Send Reset Password" />
+            </div>
+        </div>
+    </div>
+    <div id="divResetUserName" style="margin-left: 10%; width: 60%;">
+        <div class="row">
+            <span style="font-weight: bold;">Please enter the e-mail address for your account and you will receive username reset instructions via e-mail.</span>
+        </div>
+        <div class="row">
+            <div class="col-md-6 text-right">
+                <label class="fl">E-mail Address *</label>
+            </div>
+            <div class="col-md-6">
+                <input type="email" class="input_text form-control" value="" id="resetunmEmail">
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12 text-right">
+                <input class="btn btn-default cancel_btn" value="Cancel">
+
+                <input type="submit" class="btn btn-primary" id="SendResetUnm" value="Send Reset Username">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cart-popup" style="display:none;" id="GDPRPopup">
+    <div class="cart-popup-container">
+        <h3></h3>
+
+        <div class="cart-popup-form">
+            <div style="width:100%;border:1px dotted black;">
+                <p style="padding: 10px">
+                    As you know, the EU's General Data Protection Regulation (GDPR) entered into effect on May 25,2018 and applied
+                    new rules around the collection and use of data of anyone in the EU.
+                </p>
+
+                <p style="padding: 10px">
+                    We have updated our Privacy Policy to provide more information on how we collect and use data and to give
+                    you background on your rights under the GDPR. We encourage you to review the new Privacy policy here <a href="https://www.trucking.org/Privacy_Policy.aspx" target="_blank">here</a>.
+                    You continued use of ATA products and services will be subject to the updated terms effective May 25, 2018.
+
+                </p>
+                <p style="padding: 10px">
+                    If you have any questions or comments, please send them to our legal department at <a href="mailto:lawdept@trucking.org">lawdept@trucking.org</a>.
+                </p>
+            </div>
+            <br />
+            <br />
+            <div>
+                <button class="back step_trigger continue_form" onclick="SaveGDPR()">I AGREE *</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function SaveGDPR() {
+
+        $.ajax({
+            url: '@Url.Action("SaveGDPR", "Home")',
+            method: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+
+            success: function (response) {
+                console.log('Success', response, response.length);
+
+            if (response != null) {
+
+                if (response.COMPANY == true) {
+
+                    $('#GDPRPopup').css("display", "none");
+                    $('#GDPRPopup').removeClass('is-visible');
+
+
+                    $('#SSOURL').attr('href', response.SSOURL);
+
+                    $('#COMPANYPopup').css("display", "block");
+                    $('#COMPANYPopup').addClass('is-visible');
+
+                }
+                else {
+                    location.href = response.SSOURL;
+                }
+                
+
+            }
+
+            }
+            });
+
+
+    }
+
+
+
+    $(document).ready(function () {
+        console.log("ready");
+        $('#divResetUserName').hide();
+        $('#divResetPassword').hide();
+        if ('@System.Configuration.ConfigurationManager.AppSettings["jshelpers"]' == 'true') {
+
+            $('body').on('click', '#test1', function () {
+                $('#username').val('a01@test.com');
+                $('#password').val('a01@test.com');
+            });
+
+
+            $('body').on('click', '#test2', function () {
+                $('#password').val('test123');
+            });
+
+
+
+
+        }
+        $('.cancel_btn').click(function () {
+            $('#divCredential').show();
+            $('#divResetUserName').hide();
+            $('#divResetPassword').hide();
+        });
+
+        $("#username, #password").keyup(function (event) {
+            if (event.keyCode == 13) {
+                $("#login").click();
+            }
+        });
+
+        $('.registration_form').on('keydown', '#username', function () {
+            $('#login').hide();
+        });
+
+        $('#forgotpassword').click(function () {
+            $('#divCredential').hide();
+            $('#divResetPassword').show();
+        });
+
+        $('#forgotusername').click(function () {
+            $('#divCredential').hide();
+            $('#divResetUserName').show();
+        });
+
+        $('#SendResetPwd').click(function () {
+            var email = $('#resetpwdEmail').val();
+            if (!(email.length > 0) || !isEmail(email)) {
+                nalert("Invalid email address");
+                return false;
+            }
+            else {
+                $.ajax({
+                    url: '@Url.Action("SendResetPasswordToEmail", "Home", new { p = Session["pid"] })',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: { Email: email },
+                    success: function (response) {
+                        if (response != null) {
+                            if (response.Success == true) { // 1 user found, show password
+                                nalert("An email has been sent to you.");
+                                //location.reload();
+                                $('#divCredential').show();
+                                $('#divResetUserName').hide();
+                                $('#divResetPassword').hide();
+                            }
+                            else {
+                                if (response.ErrorMessage != null && response.ErrorMessage.length > 0) {
+                                    nalert("Please enter a valid Email-ID");
+                                }
+                            }
+                        }
+                    },
+                    error: function (x) { nalert(x); }
+                })
+            }
+        });
+
+        $('#SendResetUnm').click(function () {
+            var email = $('#resetunmEmail').val();
+            if (!(email.length > 0) || !isEmail(email)) {
+                nalert("Invalid email address");
+                return false;
+            }
+            else {
+                $.ajax({
+                    url: '@Url.Action("SendResetUsernameToEmail", "Home", new { p = Session["pid"] })',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: { Email: email },
+                    success: function (response) {
+                        if (response != null) {
+
+                            if (response.Success == true) { // 1 user found, show password
+                                nalert("An email has been sent to you.");
+                                //location.reload();
+                                $('#divCredential').show();
+                                $('#divResetUserName').hide();
+                                $('#divResetPassword').hide();
+                            }
+                            else {
+                                if (response.ErrorMessage != null && response.ErrorMessage.length > 0) {
+                                    nalert("Please enter a valid Email-ID");
+                                }
+                            }
+                        }
+                    },
+                    error: function (x) { nalert(x); }
+                })
+            }
+        });
+
+        /*
+        $('body').on('click', '#register', function () {
+            var href = $(this).attr('href');
+            href += '?email=' + $('#email').val();
+            $(this).attr('href', href);
+
+            //return false;
+
+        });
+        */
+
+        @*$('#lookup').click(function () {
+
+            console.log("lookup");
+
+            var username = $('#username').val();
+
+            username = username.replace(/%/g, '');
+
+            console.log("lookup", username);
+
+            if (!(username.length > 0)) {
+                nalert("Username missing");
+                return false;
+            }
+
+            /*
+
+            if (!(email.length > 0) || !isEmail(email)) {
+                nalert("Invalid email address");
+                return false;
+            }
+            */
+
+
+            $.ajax({
+                url: '@Url.Action("SearchUserByForLogin", "Home")',
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 data: { username: username },
+                 success: function (response) {
+                     console.log('Success', response);
+
+                     if (response != null) {
+
+                         if (response.Success == true) { // user in SSO
+                             console.log('Success =1');
+                             //$('#passwordrow').show();
+                             $('#lookuprow').show();
+                             //$('#newuser').hide();
+                             $('#lookuprowno, #lookuprowno2').hide();
+
+                             //$('#lookup').val("Look up again").removeClass('btn-primary').addClass('btn-default');
+                             $('#lookup').hide();
+                             $('#login').show();
+
+                         }
+                         else {
+                             console.log('Success<1');
+                             $('#login').hide();
+                             //$('#passwordrow').hide();
+                             $('#lookuprow').hide();
+                             $('#lookuprowno, #lookuprowno2').show();
+
+                             $('#lookup').val("Look up again").removeClass('btn-primary').addClass('btn-default').show();
+
+
+                             //$('#newuser').show();
+                         }
+
+                     }
+
+                 },
+                 error: function () { nalert('No user found'); }
+            })
+
+
+            return false;
+        });*@
+
+
+        $('#login').click(function () {
+
+            console.log("login");
+
+            var username = $('#username').val();
+            var password = $('#password').val();
+
+            console.log("login", username);
+            if (!(username.length > 0)) {
+                nalert("Username missing");
+                return false;
+            }
+            if (!(password.length > 0)) {
+                nalert("Password missing");
+                return false;
+            }
+
+
+            /*
+
+            if (!(email.length > 0) || !isEmail(email)) {
+                nalert("Invalid email address");
+                return false;
+            }
+            */
+            $("#ajax_loader").show();
+
+            $.ajax({
+                url: '@Url.Action("Login", "Home")',
+                method : 'POST',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ username: username, password: password, ReturnURL: '@Request["ReturnURL"]' }),
+                success: function (response) {
+                    console.log('Success', response, response.length);
+
+                    if (response != null) {
+
+                        //redirect to SSO and back to next page
+
+                        if (response.Success == true) { // 1 user found, show password
+                            //
+
+                            console.log('Success', response, response.length);
+
+                            if (response.GDPR == true)
+
+                                if (response.COMPANY == true) {
+
+
+                                    $('#SSOURL').attr('href', response.SSOURL);
+
+                                    $('#COMPANYPopup').css("display", "block");
+                                    $('#COMPANYPopup').addClass('is-visible');
+
+                                    
+                                }
+                                else {
+                                    location.href = response.SSOURL;
+                                }
+                                
+                            else {
+                                $("#ajax_loader").hide();
+
+                                //$('#GDPRPopup').dialog("open");
+                                $('#GDPRPopup').css("display", "block");
+                                $('#GDPRPopup').addClass('is-visible');
+                            }
+
+                        }
+                        else {
+                            $("#ajax_loader").hide();
+                            if (response.Message != null && response.Message.length > 0) {
+                                nalert(response.Message);
+                            }
+                            else {
+                                nalert('Login Failed. Username or Password wrong. Remember Passwords are case sensitive.');
+                            }
+
+
+                        }
+
+                    }
+                    else {
+                        $("#ajax_loader").hide();
+                    }
+
+                },
+                error: function () { $("#ajax_loader").hide(); nalert('Error (2)'); }
+            })
+
+
+            return false;
+        });
+
+
+    });
+
+</script>
+
+
+
+<div class="cart-popup" style="display:none;" id="COMPANYPopup">
+    <div class="cart-popup-container">
+        <h3></h3>
+
+        <div class="cart-popup-form">
+            <div style="width:100%;border:1px dotted black;">
+                <p style="padding: 10px;">
+                    You are currently logged in with a company account and not as an individual. Company accounts have restricted access and are meant for paying membership invoices and updating company info. Please log in with your individual account to access the store to make other purchases or register for meetings. Thank you!
+                </p>
+
+                <p style="text-align: center">
+                    <a href="/Account" id="SSOURL" class="btn btn-primary">Go To Account</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

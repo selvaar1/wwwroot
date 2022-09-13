@@ -1,0 +1,114 @@
+﻿
+<ul class="product-list" ng-switch="(Products | filter:search).length">
+    <span class="jplist-no-results" id="loadMsg" style="display: none;">Loading Results...</span>
+    <span class="jplist-no-results" style="display: none;" id="noResultMsg">No results found</span>
+    <li class="product-list-item" data-ng-repeat="product in Products  | orderBy:sortType:sortReverse  | startFrom: currentPage*productsPerPage | limitTo:pageSize" ng-switch-default data-ng-repeat-load-finish="ngRepeatFinished">
+
+        <div class="pl-tag">{{product.FormatDescription}}</div>
+        <div class="pl-image" data-id="{{product.ProductId}}" data-ProductName="{{product.ProductName}}" data-ng-init="url='/Product/viewproduct/?ProductId='" onclick="viewProduct($(this).attr('data-id'),$(this).attr('data-ProductName'))"><img data-ng-src="{{product.ProductImage}}" no-image></div>
+        <div class="pl-title">{{product.ProductName}}</div>
+    <div class="pl-description" data-ng-bind-html="product.ShortDescription | sanitize" limit-desc data-limit="150">
+    </div>
+    @*<ul>
+            <li class="pl-description" data-ng-bind-html="product.ShortDescription | sanitize" limit-desc data-limit="150">
+            </li>
+        </ul>*@
+    @*<ul>
+            <li limit-desc data-limit="150">{{product.ShortDescription | sanitize}}</li>
+
+        </ul>*@
+
+    <div class="pl-price">
+        <div class="pl-member-price" data-ng-show="{{!product.IsUmbrellaProduct}}">
+            <div>Member:</div> 
+            <div>{{product.MemberPrice | currency}}</div>
+        </div>
+        <div class="pl-non-member-price" data-ng-show="{{!product.IsUmbrellaProduct}}">
+            <div>Non-member:</div> 
+            <div>{{product.Price | currency}}</div>
+        </div>
+        @*<div class="pl-utility-links">
+                <span role="button" class="pl-add-to-cart-link">Add to cart</span>
+                <span rold="button" class="pl-save-link">Save for later</span>
+            </div>*@
+    </div>
+    <div class="pl-buttons">
+
+        <button role="button" class="pl-view-button" data-ProductName="{{product.ProductName}}" data-id="{{product.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='"
+                onclick="viewProduct($(this).attr('data-id'),$(this).attr('data-ProductName'))"
+                data-ng-if="product.IsCustom != true && product.Discontinued != true && product.IsUmbrellaProduct != true">
+            view product
+        </button>
+        <button role="button" class="pl-customize-button" data-ProductName="{{product.ProductName}}" data-id="{{product.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='"
+                onclick="viewProduct($(this).attr('data-id'),$(this).attr('data-ProductName'))"
+                data-ng-if="product.IsCustom == true || product.Discontinued == true || product.IsUmbrellaProduct == true">
+            view product
+        </button>
+    </div>
+
+
+
+    <!--product_details-->
+    </li>
+</ul>
+
+        <style>
+            .disabled {
+                display: none !important;
+            }
+            .pl-title {
+                font-weight: 500;
+                height: 46px;
+                font-family: roboto,sans-serif;
+            }
+            .pl-description {
+                font-family: roboto,sans-serif;
+                font-size: 18px;
+                line-height: 1.6rem;
+                overflow:unset;
+                
+            }
+                .pl-description:after {
+                    content: "";
+                    height: 2px;
+                    width: calc(100% - 20px);
+                    position: absolute;
+                    background-color: var(--sir-green-dark);
+                    bottom: -49px;
+                    left: 10px;
+                }
+            .pl-price  {
+                margin-top: 10%;
+                font-family: roboto,sans-serif;
+               
+            }
+            .pl-buttons {
+                margin-top: 10%;
+                font-family: roboto,sans-serif;
+            }
+            .pl-member-price {
+                display:flex;
+                flex-direction:row;
+                justify-content:space-between;
+            }
+            .pl-non-member-price {
+                margin-top: 0.5rem;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .pl-buttons {
+                margin-left: 15px;
+            }
+            .product-pagination {
+                font-size: 18px;
+                font-weight: 500;
+                font-family: roboto,sans-serif;
+                padding: 17px 22px;
+                margin-top: 5%;
+            }
+            #filter-header-categories{
+                margin-top:5%;
+            }
+        </style>
+

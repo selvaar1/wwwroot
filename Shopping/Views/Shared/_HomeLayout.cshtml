@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <title>SIR Business Center - @ViewBag.Title</title>
+
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    @*<link rel="manifest" href="site.webmanifest">*@
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+
+
+    @*<link rel="stylesheet" href="~/bootstrap/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="~/bootstrap/js/bootstrap.min.js"></script>*@
+
+
+    <link rel="stylesheet" href="~/css/normalize.css">
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/mod.css">
+    <link rel="stylesheet" href="~/css/splide.min.css">
+    <link rel="stylesheet" href="~/Content/jquery-ui.css">
+
+    @RenderSection("metatags", false)
+    <title>@ViewBag.Title</title>
+    @*@System.Web.Optimization.Styles.Render("~/Content/styles")*@
+    @*<script>document.write('<base href="' + document.location + '" />');</script>*@
+    @System.Web.Optimization.Scripts.Render("~/bundles/angular")
+
+    @*
+        <!--[if (gte IE 6)&(lte IE 8)]>
+            <link href="css/ie8.css" type="text/css" rel="stylesheet" media="all">
+            <script type="text/javascript" src="js/selectivizr.js"></script>
+        <![endif]-->
+
+        <script>
+            function popUpClosed() {
+                //  window.location.reload();
+                window.location.href = window.location.href;
+            }
+        </script>
+    *@
+</head>
+<style>
+    .ui-autocomplete{
+        height:350px!important;
+        overflow:hidden;
+    }
+</style>
+
+<body ng-app="AoaShopping" ng-controller="AoaShoppingController" class="ng-cloak scrollable">
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    @Html.AntiForgeryToken()
+
+
+    <content id="content-box" class="content">
+        <div class="homepage-slider-element">
+            <div class="breadcrumb breadcrumb--frontpage" role="navigation">@ViewBag.Title</div>
+            <div class="statement-box"><p>An online marketplace for IRs, a platform that connects stakeholders to obtain key resources, buy services/products via an e-commerce platform.</p></div>
+            <div class="slider" id="main-slider" data-splide='{"type":"loop"}'>
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <picture>
+                                <source media="(max-width: 834px)"
+                                        srcset="~/img/slide-1-mobile.png">
+                                <source srcset="~/img/slide-1.png">
+                                <img src="img/~/slide-1.png" alt="slide-1">
+                            </picture>
+                        </li>
+                        <li class="splide__slide">
+                            <picture>
+                                <source media="(max-width: 834px)"
+                                        srcset="~/img/slide-1-mobile.png">
+                                <source srcset="~/img/slide-1.png">
+                                <img src="~/img/slide-2.png" alt="slide-2">
+                            </picture>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        @*<div class="card-grid">
+            <div class="card card-one" role="button">
+                <img src="img/card-image.png" alt="card-image">
+                <div class="card-content-box">
+                    <div class="card-content">
+                        <div id="card-number">1</div>
+                        <h2>Card Title</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-two">
+                <img src="img/card-image.png" alt="card-image">
+                <div class="card-content-box">
+                    <div class="card-content">
+                        <div id="card-number">1</div>
+                        <h2>Card Title</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-three">
+                <img src="img/card-image.png" alt="card-image">
+                <div class="card-content-box">
+                    <div class="card-content">
+                        <div id="card-number">1</div>
+                        <h2>Card Title</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-four">
+                <img src="img/card-image.png" alt="card-image">
+                <div class="card-content-box">
+                    <div class="card-content">
+                        <div id="card-number">1</div>
+                        <h2>Card Title</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-five">
+                <img src="img/card-image.png" alt="card-image">
+                <div class="card-content-box">
+                    <div class="card-content">
+                        <div id="card-number">1</div>
+                        <h2>Card Title</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-six">
+                <img src="img/card-image.png" alt="card-image">
+                <div class="card-content-box">
+                    <div class="card-content">
+                        <div id="card-number">1</div>
+                        <h2>Card Title</h2>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+        @{ Html.RenderPartial("~/Views/Home/_HomeListing1.cshtml");}
+
+
+
+
+        @*<div class="fortysixty">
+            <img src="img/card-image.png" alt="image of two women">
+            <div class="fortysixty-content">
+                <h2>Title</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo omnis et suscipit corporis! Sint neque expedita praesentium, velit eos sit quos ex tempora accusamus minus odio, temporibus beatae mollitia quam?</p>
+                <div class="fortysixty-button" role="button">View Products</div>
+            </div>
+        </div>
+        <div class="fortysixty reverse">
+            <img src="img/card-image.png" alt="image of two women">
+            <div class="fortysixty-content">
+                <h2>Title</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo omnis et suscipit corporis! Sint neque expedita praesentium, velit eos sit quos ex tempora accusamus minus odio, temporibus beatae mollitia quam?</p>
+                <div class="fortysixty-button" role="button">View Products</div>
+            </div>
+        </div>*@
+
+
+        @{ Html.RenderPartial("~/Views/Home/_HomeListing2.cshtml");}
+
+        <div class="affinity-partners-block">
+            <h2>Affinity Partnerships</h2>
+            <div id="affinity-slider" data-splide='{"type":"loop","arrows":false}'>
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <ul>
+                                <li><img src="~/img/partner-logos/Cerner.png" alt="cerner logo"></li>
+                                <li><img src="~/img/partner-logos/Epic.png" alt="epic logo"></li>
+                                <li><img src="~/img/partner-logos/Nuance.png" alt="nuance logo"></li>
+                                <li><img src="~/img/partner-logos/NVoc.png" alt="nvoc logo"></li>
+                            </ul>
+                        </li>
+                        <li class="splide__slide">
+                            <ul>
+                                <li><img src="~/img/partner-logos/Cerner.png"></li>
+                                <li><img src="~/img/partner-logos/Epic.png"></li>
+                                <li><img src="~/img/partner-logos/Nuance.png"></li>
+                                <li><img src="~/img/partner-logos/NVoc.png"></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fortysixty-button" role="button">Learn More</div>
+        </div>
+
+    </content>
+
+    <hr />
+
+    @RenderBody()
+
+    
+
+    
+
+
+
+    @System.Web.Optimization.Scripts.Render("~/bundles/app")
+
+
+    <!-- @Session["ct"] -->
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+
+
+    <script src="~/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/splide.min.js"></script>
+
+    <script>
+        new Splide('#main-slider').mount();
+        new Splide('#affinity-slider').mount();
+    </script>
+
+</body>
+</html>

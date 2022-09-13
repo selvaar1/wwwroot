@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+.filter_widget input[type=radio], .filter_widget input[type=checkbox] {
+    position: absolute;
+    left: 10px;
+    top: 7px;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+    width: 15px;
+    height: 15px;
+	border:0px
+}
+
+.add_cart_btn_single{width:140px;max-width:140px;}

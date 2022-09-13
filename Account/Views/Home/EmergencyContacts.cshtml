@@ -1,0 +1,300 @@
+﻿@{
+    ViewBag.Title = "EmergencyContacts";
+}
+
+<style>
+    .form-group {
+        margin-bottom: 10px;
+    }
+</style>
+
+<h1 class="page_title">Emergency Contacts</h1>
+
+<div id="divEC">
+    <script id="ec-template-grid" type="text/x-handlebars-template">
+    </script>
+    <div id="divECView" >
+        <div class="contentBox">
+            <div class="datagrid">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="text-center">
+                            <td>Move</td>
+                            <td>Priority</td>
+                            <td>ContactName</td>
+                            <td>Relationship</td>
+                            <td>Phone Type</td>
+                            <td>Phone Number</td>
+                            <td>Comments</td>
+                            <td>Actions</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.EmergencyContacts != null)
+                        {
+                            foreach (var c in ViewBag.EmergencyContacts)
+                            {
+                            <tr>
+                                <td class="text-center">
+                                    <a href="#"><span data-ecid="@c.EmergencyContactId" data-move="Up" class="glyphicon glyphicon-triangle-top updown"></span></a>
+                                    <a href="#"><span data-ecid="@c.EmergencyContactId" data-move="Down" class="glyphicon glyphicon-triangle-bottom updown"></span></a>
+                                </td>
+                                <td id="Priority_@c.EmergencyContactId">@c.Priority</td>
+                                <td id="ContactName_@c.EmergencyContactId">@c.ContactName</td>
+                                <td id="Relationship_@c.EmergencyContactId">@c.Relationship</td>
+                                <td id="PhoneType_@c.EmergencyContactId">@c.PhoneType</td>
+                                <td id="PhoneNumber_@c.EmergencyContactId">@c.PhoneNumber</td>
+                                <td id="Comments_@c.EmergencyContactId">@c.Comments</td>
+                                <td class="text-center">
+                                    <a href="javascript:;" data-ecid="@c.EmergencyContactId" class="editEC"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="javascript:;" data-ecid="@c.EmergencyContactId" class="deleteEC"><span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+                            </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <a href="javascript:;" id="addEC">Add New Emergency Contact</a>
+    </div>
+    <div id="divECAdd" style="display: none;" class="contentBox">
+        <div class="cb_header">
+            <span id="actiontext">Edit</span> Emergency Contact
+            <div class="cb_header_info">* Required</div>
+        </div>
+        <div class="datagrid">
+            <table class="table table-striped">
+                <tr>
+                    <td class="col-sm-3"><span class="fieldlabel">Contact Name</span><span class="asteriskField">*</span></td>
+                    <td class="col-sm-9"><input class="input-md  textinput textInput form-control required" id="txtContactName" maxlength="30"  placeholder="Enter emergency Contact Name" style="margin-bottom: 10px" type="text" /><span class="errorMsg"></span></td>
+                </tr>
+                <tr>
+                    <td class="col-sm-3"><span class="fieldlabel">Relationship</span><span class="asteriskField">*</span></td>
+                    <td class="col-sm-9"><input class="input-md  textinput textInput form-control required" id="txtRelationship" maxlength="30"  placeholder="Enter Relationship" style="margin-bottom: 10px" type="text" /><span class="errorMsg"></span></td>
+                </tr>
+                <tr>
+                    <td class="col-sm-3"><span class="fieldlabel">Phone Type</span><span class="asteriskField">*</span></td>
+                    <td class="col-sm-9">
+                        <select id="txtPhoneType" class="input-md  form-control required">
+                            <option value="CELL">Cell</option>
+                            <option value="HOME">Home</option>
+                            <option value="WORK">Work</option>
+                        </select>
+                        <span class="errorMsg"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-3"><span class="fieldlabel">Phone Number</span><span class="asteriskField">*</span></td>
+                    <td class="col-sm-9"><input class="input-md  textinput textInput form-control required" id="txtPhoneNumber" maxlength="30"  placeholder="Enter Phone Number" style="margin-bottom: 10px" type="text" />
+                        <span class="errorMsg"></span>
+            </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-3">Comments</td>
+                    <td class="col-sm-9">
+                        <textarea class="input-md form-control" id="txtComments" maxlength="30"  placeholder="Enter Comments" style="margin-bottom: 10px"></textarea>
+                        <span class="errorMsg"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-3"></td>
+                    <td class="col-sm-9">
+                        <input type="submit" name="btnSave" value="Save" class="btn btn-primary btn btn-info" id="btnSaveEC" />
+                        <input type="button" name="Cancel" value="Cancel" class="btn btn btn-primary cancel" />
+                    </td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        //console.log('ready');
+
+        var ecid = 0;
+        $('#divECAdd').hide();
+        $('#divEC').on('click', '#addEC', function () {
+            ecid = 0;
+            clearvalues();
+            $('#txtPhoneType').val('CELL');
+            $('#divECAdd').show();
+            $('#divECView').hide();
+        });
+        $('#divEC').on('click', '.cancel', function () {
+            $('#divECView').show();
+            $('#divECAdd').hide();
+            $('.errorMsg').each(function (index, el) {
+                $(this).text('');
+            });
+        });
+
+        function clearvalues() {
+            $('#txtContactName').val('');
+            $('#txtRelationship').val('');
+            $('#txtPhoneType').val('');
+            $('#txtPhoneNumber').val('');
+            $('#txtComments').val('');
+        }
+        function ValidateRequiredFields() {
+            var isvalid = true;
+            $(".required").each(function (index, el) {
+                var name = $(this).attr('id');
+                if ($(this).val().trim().length == 0) {
+                    //var labelval = $(this).parent().parent().find("td:first").html();
+                    //labelval = labelval.replace('*', '').replace(':', '');
+                    //nalert("" + labelval + " can not be blank"); $(this).focus();
+                    var labelval = $(this).parent().parent().find('.fieldlabel').html();
+                    $(this).parent().find('.errorMsg').text('Please enter ' + convertToTitlecase(labelval));
+                    isvalid = false;
+                    //return false;
+                }
+            });
+            return isvalid;
+        }
+
+        $('body').on('keyup', '.required', function (event) {
+            if ($(this).val().trim().length > 0) {
+                $(this).parent().find('.errorMsg').text('');
+            }
+            else {
+                var fname = $(this).parent().parent().find('.fieldlabel').html();
+                $(this).parent().find('.errorMsg').text('Please enter ' + convertToTitlecase(fname));
+            }
+        });
+
+        function convertToTitlecase(str) {
+            return str.split(' ')
+               .map(w => w[0].toUpperCase() + w.substr(1).toLowerCase())
+               .join(' ');
+        }
+
+        function SaveEC() {
+            $.ajax(
+           {
+               url: '@Url.Action("AddEmergencyContacts", "Home")',
+               contentType: 'application/json; charset=utf-8',
+               datatype: 'json',
+               type: "POST",
+               data: JSON.stringify({
+                   'ecid': ecid,
+                   'ecname': $('#txtContactName').val(),
+                   'ecrelationship': $('#txtRelationship').val(),
+                   'phonetype': $('#txtPhoneType').val(),
+                   'phoneno': $('#txtPhoneNumber').val(),
+                   'priority': 0,
+                   'comments': $('#txtComments').val(),
+               }),
+               success: function (data) {
+                   if (data.Success == true) {
+                       //alert('Success!');
+                       location.reload();
+                   }
+                   else {
+                       alert('Error!');
+                   }
+               }
+           });
+        }
+        
+        $('#divEC').on('click', '#btnSaveEC', function () {
+            
+            if (ValidateRequiredFields()) {
+                SaveEC();
+            }
+        });
+
+        //editEC
+        $('#divEC').on('click', '.editEC', function () {
+            ecid = $(this).data('ecid');
+            //Fill the form from the values
+            $('#txtContactName').val($('#ContactName_' + ecid).html());
+            $('#txtRelationship').val($('#Relationship_' + ecid).html());
+            $('#txtPhoneType').val($('#PhoneType_' + ecid).html());
+            $('#txtPhoneNumber').val($('#PhoneNumber_' + ecid).html());
+            $('#txtComments').val($('#Comments_' + ecid).html());
+
+            //Show Form
+            $('#divECAdd').show();
+            $('#divECView').hide();
+        });
+
+        //editEC
+        $('#divEC').on('click', '.deleteEC', function () {
+            ecid = $(this).data('ecid');
+            if (confirm("Are you sure you wish to delete this record?")) {
+                $.ajax(
+               {
+                   url: '@Url.Action("DeleteEmergencyContacts", "Home")',
+                   contentType: 'application/json; charset=utf-8',
+                   datatype: 'json',
+                   type: "POST",
+                   data: JSON.stringify({
+                       'ecid': ecid
+                   }),
+                   success: function (data) {
+                       if (data.Success == true) {
+                           //alert('Success!');
+                           location.reload();
+                       }
+                       else {
+                           alert('Error!');
+                       }
+                   }
+               });
+            }
+        });
+
+        //ChangePriority
+        $('#divEC').on('click', '.updown', function () {
+            ecid = $(this).data('ecid');
+            var priority = $(this).data('move');
+
+            $.ajax(
+           {
+               url: '@Url.Action("ChangePriorityEmergencyContacts", "Home")',
+               contentType: 'application/json; charset=utf-8',
+               datatype: 'json',
+               type: "POST",
+               data: JSON.stringify({
+                   'ecid': ecid,
+                   'priority': priority
+               }),
+               success: function (data) {
+                   if (data.Success == true) {
+                       //alert('Success!');
+                       location.reload();
+                   }
+                   else {
+                       alert('Error!');
+                   }
+               }
+           });
+        });
+        //End of JQuery
+
+        //GetEC();
+        function GetEC() {
+            $.ajax(
+           {
+               url: '@Url.Action("GetEmergencyContacts", "Home")',
+               contentType: 'application/json; charset=utf-8',
+               datatype: 'json',
+               type: "GET",
+               success: function (response) {
+                   if (response.Success == true) {
+                       //console.log(response);
+                       var addresstemplatesource1 = jQuery('#ec-template-grid').html();
+                       var addresstemplate1 = Handlebars.compile(addresstemplatesource1);
+                       ec1 = addresstemplate1(response);
+                       jQuery('#address').html(ec1);
+                   }
+                   else {
+                       alert('Error!');
+                   }
+               }
+           });
+        }
+    });
+</script>

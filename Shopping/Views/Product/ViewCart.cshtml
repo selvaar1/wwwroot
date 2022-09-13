@@ -1,0 +1,129 @@
+﻿@{
+    Layout = "~/Views/Shared/_Products.cshtml";
+}
+
+<div class="page_content_main">
+
+    <div class="page_content_left">
+        <div class="full_width cart_row">
+            <h4 class="addr_title">Shipping Address:</h4>
+            <p class="address">
+                James Hartman<br>
+                13800 Coppermine RD, Suite#247<br>
+                Herndon, VA 20171.<br>
+            </p>
+            <span class="change_btn">
+                <button class="add_cart_btn_change">Change</button></span>
+        </div>
+
+
+        <div class="item_purchase_table" ng-switch="(viewCartData).length">
+          
+            <table id="cart_table">
+                <thead>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="cartItem in viewCartData" ng-switch-default>
+                        <td class="purchase_item">
+                            <span class="product-thumbnail">
+                                <img ng-src="{{cartItem.product.ProductImage}}" no-image></span>
+                            <span class="purchase_item_right">
+                                <h4>{{cartItem.product.ProductName}}</h4>
+                                <p>{{cartItem.product.CartDescription}}</p>
+                            </span>
+                        </td>
+                        <td>
+                            <input type="number" id="{{cartItem.product.ProductId}}" ng-model="cartItem.Quantity" ng-change="UpdateToCart('viewcart')" class="qty" value="{{cartItem.Quantity}}"></td>
+                        <td class="price"><span>{{cartItem.product.Price | currency}}</span></td>
+                        <td class="price"><span>{{cartItem.product.Price * cartItem.Quantity | currency}}</span></td>
+                    </tr>
+                      <tr ng-switch-when="0">
+                        <td colspan="4">No items added</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="full_width cart_row payment_method">
+            <h4 class="addr_title payment">Payment Method:</h4>
+            @*<p class="address payment">
+                <input type="radio" id="one" name="first_item" value="1" /><label for="one">Visa ending in 3454</label>
+            </p>*@
+            <span class="credit_cart_btn">
+                <button class="add_credit_cart_btn" ng-click="cctpl=true">Add a New credit Cart</button>
+            </span>
+            <div style="clear: both"></div>
+            <div id="#CCTpl" ng-show="cctpl">
+                <h1>Add New Credit Card</h1>
+                <table style="width: 60%;">
+                    <tr>
+                        <td colspan="3">
+                            <input type="radio" name="cardType" class="radiobtn" value="Master Card" />
+                            Master Card 
+                            <input type="radio" name="cardType" class="radiobtn" value="Visa Card" />
+                            Visa Card
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Credit Card Number</td>
+                        <td>
+                            <input type="text" id="CCNumber" class="ccNumInput" ng-model="CCNumber" min="0" maxlength="12" required value="" style="width: 250px;" /></td>
+                    </tr>
+                    <tr>
+                        <td>Credit Card CVV Number</td>
+                        <td>
+                            <input type="text" id="CCcvv" class="ccNumInput" ng-model="CCcvv" required min="0" maxlength="3" value="" style="width: 250px;" /></td>
+                    </tr>
+                    <tr>
+                        <td>Expire Month</td>
+                        <td>
+                            <select ng-model="months" id="months" required ng-options="month for month in monthList" style="width: 250px;"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Expire Year</td>
+                        <td>
+                            <select ng-model="years" id="years" required ng-options="year for year in yearList" style="width: 250px;"></select></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: right;">
+                            <button value="Save" class="add_credit_cart_btn" ng-click="saveCreditCardDetails()" style="width: 250px;">Save</button>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div style="clear: both"></div>
+            <ul class="ccDetails">
+                <h4>Select Card for Payment</h4>
+                <li ng-repeat="card in creditCardDetails track by $index">
+                    @*<span>Card Type</span>: {{card.CardType}}<br />*@
+                    <input type="radio" ng-model="selCard" ng-value="selCard" name="selCard" />
+                    <span>Credit Card Number</span>: {{card.CardType}} ending in {{card.CreditCardNumber | limitTo: -4}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!----page-content-left---->
+    <div class="page_sidebar">
+        <div class="sidebar_widget order_sum_widget">
+            <h4>Order Summary</h4>
+            <ul>
+                <li>Item({{TotalItems}})<span>{{TotalPrice | currency}}</span></li>
+                <li>Shipping Handling<span>$10.40</span></li>
+                <li>Tax<span>$2.30</span></li>
+                <li class="item_total" ng-init="tax=2.30;Shipping=10.40">Total: {{ TotalPrice + tax + Shipping | currency}}</li>
+                <li class="place_order_btn">
+
+                    <button class="add_cart_btn_order">
+                        <a style="text-decoration: none; color: white" href="~/Product/orderConfirmation">Place Your Order</a>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!----page-sidebar---->
+</div>

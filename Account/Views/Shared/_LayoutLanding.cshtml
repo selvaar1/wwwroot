@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.PageTitle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <!-- Bootstrap -->
+
+    <link href='@Url.Content("~/css/bootstrap.min.css")' rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if (lt IE 9)]>
+        <script src="~/css/html5shiv.min.js"></script>
+        <script src="~/css/respond.min.js"></script>
+    <![endif]-->
+    <link href='@Url.Content("~/css/animate.css")' rel="stylesheet" />
+    <link href='@Url.Content("~/css/headerfooter.css")' rel="stylesheet" />
+    <link href='@Url.Content("~/css/navigation.css")' rel="stylesheet" />
+    <link href='@Url.Content("~/css/custom.css")' rel="stylesheet" />
+
+    <!--[if !IE]> -->
+    <script src='@Url.Content("~/js/jquery.min.js")'></script>
+    <!-- <![endif]-->
+    <!--[if IE]>
+        <script src="@Url.Content("~/js/jquery1.min.js")"></script>
+    <![endif]-->
+    <script src='@Url.Content("~/js/bootstrap.min.js")'></script>
+    <script src='@Url.Content("~/js/modernizr.js")'></script>
+    <script src='@Url.Content("~/js/handlebars.js")'></script>
+    <script src='@Url.Content("~/js/scripts.js")"></script>
+    <script src='@Url.Content("~/js/jquery.meanmenu.js")'></script>
+
+</head>
+<body>
+
+    <div id='ajax_loader' style="display: none;">
+        <img src='@Url.Content("~/images/Loading.gif")' />
+    </div>
+    <div class="text-right headerfooter">
+        @Html.Partial("_Header", null)
+    </div>
+
+    <div class="container">
+        <div class="row">
+            @RenderSection("featured", required: false)
+            <div class="col-sm-12">
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+
+    <div class="headerfooter">
+        @Html.Partial("_Footer", null)
+    </div>
+
+
+
+    @if (System.Configuration.ConfigurationManager.AppSettings["jshelpers"] == "true")
+    {
+
+        if (HttpContext.Current.Session["users"] != null && ((List<SL.Business.UserInfo>)HttpContext.Current.Session["users"]) != null)
+        {
+            Html.Raw("<div class='row panel panel-default'>");
+            List<SL.Business.UserInfo> users = (List<SL.Business.UserInfo>)HttpContext.Current.Session["users"];
+            Html.Raw("</div");
+        }
+    }
+
+
+</body>
+</html>
+

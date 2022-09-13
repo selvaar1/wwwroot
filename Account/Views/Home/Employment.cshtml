@@ -1,0 +1,540 @@
+﻿@{
+    ViewBag.PageTitle = "Employment";
+}
+@{
+    ViewBag.Title = "Employment";
+}
+
+@section featured {
+   
+}
+
+
+                <h1 class="page_title">@ViewBag.Title</h1>
+                <h2>@ViewBag.Message</h2>
+
+
+<div class="registration_form" style="min-height: 400px;">
+    <div class="form_row_submit" style="text-align: left;">
+
+        <h3 class="rand">Employment Information:</h3>
+
+        <div id="list" class="datagrid" style="margin-bottom: 20px;">
+            Loading...
+        </div>
+        
+     
+
+        <div id="edit" class="datagrid affiliate" style="display: none; margin-bottom: 20px;">
+        </div>
+
+   
+    </div>
+</div>
+
+
+
+<script id="template-list" type="text/x-handlebars-template">
+
+
+{{#if Data.length}}
+    
+<table class="table table-striped contentBox">
+
+<tr class="rowheader">
+    <th>
+  Primary
+    </th>
+    <th>
+   Employer Name
+    </th>
+
+    <th>
+   Classification
+    </th>
+
+    <th>
+    Department/Institute
+    </th>
+
+    <th>
+    Industry Type
+    </th>
+
+    <th>
+    Primary Type of Work
+    </th>
+
+
+    <th>
+        
+    </th>
+</tr>
+
+
+{{#each Data }}
+
+
+<tr>
+    <td>
+     <div class="checkbox checkbox-primary" style=" margin-top: 0px; margin-bottom: 0px;">
+        <input type="checkbox" name="PrimaryEmployerFlag" {{checkedIf PrimaryEmployerFlag }} disabled/>
+        <label></label>
+        </div>
+    </td>
+    <td>
+    {{RelatedName}}
+    </td>
+
+    <td>
+    {{EmployerClassificationString}}
+    </td>
+
+    <td>
+    {{DepartmentString}}
+    </td>
+
+    <td>
+    {{IndustryTypeString}}
+    </td>
+
+    <td>
+    {{TypeOfWorkString}}
+    </td>
+
+    <td class="action" style="white-space:nowrap;">
+        <i class="fa fa-trash-o addthisuser delete" data="{{CustomerRelationshipId}}" aria-hidden="true"></i>
+        <i class="fa fa-pencil addthisuser edit" data="{{@@index}}" aria-hidden="true"></i>
+        <i id="add" class="fa fa-plus addthisuser" aria-hidden="true"></i>
+    </td>
+</tr>
+{{/each}}
+
+{{else}}
+     
+{{/if}}
+
+@*{{#if Data.length}}
+<tr>
+    <td colspan="5"></td>
+    <td >
+        <i id="add" class="fa fa-plus addthisuser" aria-hidden="true"></i>
+    </td>
+</tr>
+</table>
+{{/if}}*@
+
+</script>
+
+
+<script id="template-edit" type="text/x-handlebars-template">
+
+<form id="editform" class="{{Data.EmployerClassification}}">
+<input type="hidden" name="CustomerRelationshipId" value="{{Data.CustomerRelationshipId}}" />
+
+<table class="form-group">
+
+<tr>
+    <td id="test" width="30%">
+    Employer Name *
+    </td>
+    <td>
+             <input type="hidden" name="RelatedMasterCustomerId" class="form-control" value="{{Data.RelatedMasterCustomerId}}" />
+
+              <input name="RelatedName" class="form-control required" value="{{Data.RelatedName}}" />
+    </td>
+</tr>
+    
+<tr>
+    <td>
+    Classification
+    </td>
+    <td>
+        <select name="EmployerClassification" class="form-control">
+                <option value="">Select</option>
+                {{#each StaticData.CLASSIFICATION}}
+                    <option value="{{Code}}" {{selectedIf Code ../Data.EmployerClassification}} >{{Description}}</option>
+                {{/each}}
+        </select>
+    </td>
+</tr>    
+
+<tr class="DEPARTMENT">
+    <td>
+    Department/Institute
+    </td>
+    <td>
+        <select name="Department" class="form-control">
+                <option value="">Select</option>
+                {{#each StaticData.DEPARTMENT}}
+                    <option value="{{SubCode}}" {{selectedIf SubCode ../Data.Department}} >{{Description}}</option>
+                {{/each}}
+        </select>
+    </td>
+</tr>
+
+<tr class="INDUSTRYCL">
+    <td>
+     Industry Type
+    </td>
+    <td>
+        <select name="IndustryType" class="form-control">
+                <option value="">Select</option>
+                {{#each StaticData.INDUSTRYCL}}
+                    <option value="{{VALUE}}" {{selectedIf VALUE ../Data.IndustryType}} {{PROPERTY}}>{{TEXT}}</option>
+                {{/each}}
+        </select>
+    </td>
+</tr>
+    
+    <tr class="JOB_FUNCTION">
+    <td>
+     Primary Type of Work
+    </td>
+    <td>
+        <select name="TypeOfWork" class="form-control">
+                <option value="">Select</option>
+                {{#each StaticData.JOB_FUNCTION}}
+                    <option value="{{Code}}" {{selectedIf Code ../Data.TypeOfWork}} >{{Description}}</option>
+                {{/each}}
+        </select>
+    </td>
+</tr>
+
+<tr class="BeginDate">
+    <td>
+   Start Date
+    </td>
+    <td>
+    <div class="input-group date form_date data-date="" data-date-format="mm/dd/yyyy">
+        <input name="BeginDate" class="form-control required" value="{{Data.BeginDate}}" />
+        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+    </div>
+    </td>
+</tr>
+
+<tr class="EndDate">
+    <td>
+   End Date
+    </td>
+    <td>
+    <div class="input-group date form_date" data-date="" data-date-format="mm/dd/yyyy">
+        <input name="EndDate" class="form-control" value="{{Data.EndDate}}" />
+        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+    </div>
+    </td>
+</tr>
+
+<tr class="PrimaryEmployerFlag">
+    <td>
+     Primary Employer
+    </td>
+    <td>
+         <div class="checkbox checkbox-primary">
+        <input type="checkbox" value="true" name="PrimaryEmployerFlag" {{checkedIf Data.PrimaryEmployerFlag }} />
+             <label></label>
+        </div>
+    </td>
+</tr>
+
+   
+
+<tr>
+    <td colspan="2">
+    <button id="save" class="addthisuser btn btn-primary" style="float: none;">Save</button>
+    <button id="cancel" class="addthisuser btn btn-default" style="float: none;">Cancel</button>
+
+        </td>
+</tr>
+
+    </table>
+
+</form>
+</script>
+
+
+
+
+
+<script>
+    function AutoComplete() {
+
+        console.log("AutoComplete", RELATEDNAMES);
+
+        var institutions = $.map(RELATEDNAMES, function (obj) { return { data: obj.masterCustomerID, value: obj.label }; });
+
+
+        //console.log("AutoComplete", institutions);
+        $('[name=RelatedName').autocomplete({
+            // serviceUrl: '/autosuggest/service/url',
+            minChars: 3,
+            appendTo: document.body,
+            lookup: institutions,
+            lookupFilter: function (suggestion, originalQuery, queryLowerCase) {
+
+
+                //console.log("suggestion", suggestion.length, originalQuery, queryLowerCase);
+                var re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi');
+                var rez = re.test(suggestion.value);
+                //console.log("rez", rez);
+
+
+                //console.log("suggestion", suggestion, originalQuery, queryLowerCase, rez);
+
+
+
+                return rez;
+            },
+            onSelect: function (suggestion) {
+                console.log('You selected: ' + suggestion.value + ', ' + suggestion.data);
+
+                $("[name=RelatedMasterCustomerId]").val(suggestion.data);
+
+            },
+            onHint: function (hint) {
+                console.log("hint", hint);
+            },
+            onInvalidateSelection: function () {
+                console.log('You selected: none');
+                $("[name=RelatedMasterCustomerId]").val('');
+            }
+        });
+
+        /*
+        jQuery("#INSTITUTION").autocomplete({
+            delay: 0,
+            minLength: 3,
+            source: listdata.StaticData.INSTITUTIONS,
+            open: function () {
+                $(this).autocomplete('widget').css('z-index', 100);
+                return false;
+            },
+            focus: function (event, ui) {
+                $("#INSTITUTION").val(ui.item.label);
+                return false;
+            },
+            close: function (event, ui) {
+                var institution_found = false;
+
+                if (ui == null || ui.item == null || ui.item.mastercustomerid == null || parseInt(ui.item.mastercustomerid) == NaN || ui.item.mastercustomerid <= 0) {
+                    for (var i = 0; i < institutions.length; i++) {
+                        if (institutions[i].label.toUpperCase() == $("[id$=View_txtInstitutionName]").val().toUpperCase()) {
+                            $("#INSTITUTION").val(institutions[i].label);
+                            //$("#ctl_InstitutionMasterCustomerID").val(institutions[i].mastercustomerid);
+                            institution_found = true;
+                            break;
+                        }
+                    }
+                } else {
+                    institution_found = true;
+                }
+
+                var display = institution_found ? "none" : "block";
+                $("[id$=View_lblEducationMasterRecordNotFoundWarning]").css("display", display);
+
+                return false;
+            },
+            select: function (event, ui) {
+                $("##INSTITUTION").val(ui.item.label);
+                //$("#ctl_InstitutionMasterCustomerID").val(ui.item.mastercustomerid);
+                return false;
+            }
+        });
+        */
+    }
+</script>
+
+
+<script>
+
+    //INSTITUTIONS
+
+    var purchasinggroups = null;
+
+    var RELATEDNAMES = null;
+
+    var listdata = null;
+    var listdata2 = null;
+    var listdata3 = null;
+    var products = null;
+
+
+    function ShowEdit(id, template, data) {
+        renderTemplate(data, template, id);
+        if (typeof set_date_input === 'function') set_date_input();
+        AutoComplete();
+
+        $('#list').hide();
+        
+    }
+
+    function ShowListdata() {
+        console.log("ShowListdata", listdata);
+        if (listdata != null && listdata.Data != null && listdata.Data.length < 1) {
+            $('#list').hide();
+            ShowEdit('#edit', '#template-edit', { "Data": { "CustomerRelationshipId": "0", "PrimaryEmployerFlag": true }, "StaticData": listdata.StaticData });
+        }
+        else {
+            $('#list').show();
+            renderTemplate(listdata, '#template-list', '#list');
+        }
+    }
+
+
+ 
+    function page_init() {
+
+
+        $('body').on('click', '#test', function () {
+            $('#editform [name=ProgDegreeCode]').val('MS');
+            $('#editform [name=ProgTypeCode]').val('ECONOMICS');
+            $('#editform [name=Institution]').val('001000117');
+            $('#editform [name=InstitutionName]').val('CASE WESTERN RESERVE UNIVERSITY');
+            $('#editform [name=BeginDate]').val('1/1/2015');
+            $('#editform [name=EndDate]').val('1/1/2018');
+        });
+
+       
+
+
+        $('body').on('change', '[name=EmployerClassification]', function () {
+
+            
+            var c = $(this).val();
+            $('#editform').removeClass().addClass(c);
+
+            console.log("change EmployerClassification", c);
+        });
+
+        $('body').on('click', '#add', function () {
+
+            console.log("add", listdata.StaticData);
+            ShowEdit('#edit', '#template-edit', { "Data": { "CustomerRelationshipId": "0", "PrimaryEmployerFlag": true }, "StaticData": listdata.StaticData });
+        });
+
+     
+
+        callProxy(
+            "GetEmployer",
+            null,
+            function (response) {
+                listdata = response;
+
+                if (RELATEDNAMES == null) {
+                    RELATEDNAMES = listdata.StaticData.RELATEDNAMES;
+                }
+
+                ShowListdata();
+            }
+        );
+
+       
+
+     $('body').on('click', '.edit', function () {
+
+            console.log("edit");
+
+            var i = jQuery(this).attr('data');
+            console.log("edit", i, listdata.Data[i]);
+            if (listdata != null && listdata.Data != null && listdata.Data.length > 0 && listdata.Data.length > i) {
+
+                console.log("edit renderTemplate", listdata.StaticData);
+
+                ShowEdit('#edit', '#template-edit', { "Data": listdata.Data[i], "StaticData": listdata.StaticData });
+            }
+
+            return false;
+        });
+
+      
+
+        $('body').on('click', '#cancel', function () {
+            $('#edit').hide();
+            $('#list').show();
+        });
+
+        $('body').on('click', '#save', function () {
+
+            console.log("save");
+
+            if (!Validate('#edit')) {
+
+                nalert("Missing or Invalid entries");
+                return false;
+            }
+
+            //var $form = $("#editform");
+            var data = {
+                CustomerRelationshipId: $('#editform [name=CustomerRelationshipId]').val(),
+                RelatedMasterCustomerId: $('#editform [name=RelatedMasterCustomerId]').val(),
+                RelatedName: $('#editform [name=RelatedName]:visible').val(),
+                EmployerClassification: $('#editform [name=EmployerClassification]:visible').val(),
+                Department: ($('#editform [name=Department]:visible').length>0) ? $('#editform [name=Department]:visible').val() : null,
+                IndustryType: ($('#editform [name=IndustryType]:visible').length > 0) ? $('#editform [name=IndustryType]:visible').val() : null,
+                TypeOfWork: ($('#editform [name=TypeOfWork]:visible').length > 0) ? $('#editform [name=TypeOfWork]:visible').val() : null,
+                PrimaryEmployerFlag: ($('#editform [name=PrimaryEmployerFlag]:visible:checked').length > 0 ) ? true : false,
+                BeginDate: ($('#editform [name=BeginDate]:visible').length > 0) ? $('#editform [name=BeginDate]:visible').val() : null,
+                EndDate: ($('#editform [name=EndDate]:visible').length > 0) ? $('#editform [name=EndDate]:visible').val() : null,
+            };
+            console.log("save data", data);
+
+            callProxy(
+                "SaveEmployer",
+                data,
+            function (response) {
+                listdata = response;
+
+                jQuery('#edit').hide();
+
+                ShowListdata();
+
+                //renderTemplate(response, '#template-list', '#list');
+            }
+            );
+
+            return false;
+        });
+
+
+    
+
+
+        $('body').on('click', '.delete', function () {
+
+            if (confirm("Are you sure you want to delete this record?") == true) {
+                console.log("delete");
+
+                var value = jQuery(this).attr('data');
+
+                callProxy(
+                    "DeleteEmployer",
+                    { CustomerRelationshipId: value },
+                function (response) {
+                    listdata = response;
+                    //renderTemplate(response, '#template-list', '#list')
+                    ShowListdata();
+
+                }
+                );
+            }
+            return false;
+        });
+
+      
+
+
+    }
+</script>
+
+
+<script>
+
+    $(document).ready(function () {
+        console.log("ready");
+
+        page_init();
+
+
+    });
+
+</script>

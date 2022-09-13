@@ -1,0 +1,115 @@
+﻿@using MyResource = ResourceFile
+<div id="mbrdetails">
+</div>
+
+<script id="mbrdetails-template-grid" type="text/x-handlebars-template">
+    <div class="contentBox">
+        <div class="cb_body">
+            {{#if User}}
+            <div class="dynamicActions">
+                {{#compare  User.MembershipExists  false  operator="==" }}
+                {{#compare  User.RenewalExists  false  operator="==" }}
+                <div id="joinNow">
+                    <span>Join ATA!</span>
+                    <a href="@System.Configuration.ConfigurationManager.AppSettings["JoinURL"]">Join Now</a>
+                </div>
+                {{/compare}}
+                {{/compare}}
+                <br />
+                <div>
+                    {{#if User.FirstName}}
+                    <span>Welcome to @MyResource.ResourceFile.VendoreName  {{User.FirstName}}</span>
+                    {{/if}}
+                </div>
+                {{#if User.RenewalExists}}
+                {{#compare  User.RenewalExists  true  operator="==" }}
+                <div id="renew" class="btnActions">
+                    <span>Renew Your Membership</span>
+
+                    @*<a href="@System.Configuration.ConfigurationManager.AppSettings["JoinURL"]?orderno={{User.OrderNo}}">Renew</a>*@
+
+                    
+                    <a class="Pointer" style="font-size:medium;color:#fff;background-color: #5cb85c;border-color:#4cae4c; padding: 6px 25px;" onclick="ValiateCart()">Renew</a>
+                </div>
+                {{/compare}}
+                {{else}}
+                {{#if User.AddonExists}}
+                {{#compare  User.AddonExists  true  operator="==" }}
+                <div id="renew2" class="btnActions Pointer">
+                    <span>Renew Your Membership</span>
+                    @*<a href="/AddOnsFromOrder?orderno={{User.OrderNo}}">Renew</a>*@
+                    <a   style="font-size:medium;color:#fff;background-color: #5cb85c;border-color:#4cae4c; padding: 6px 25px;" onclick="ValiateCart()">Renew</a>
+                </div>
+                {{/compare}}
+                {{/if}}
+                {{/if}}
+                <div id="myAccount">
+                    <span></span>
+                    <a href="/MyAccount">Go to My Account</a>
+                </div>
+                {{#if User.MembershipExists}}
+                {{#compare  User.MembershipExists  true  operator="==" }}
+                {{#if User.OutstandingExists}}
+                {{#compare  User.OutstandingExists  true  operator="==" }}
+                <div id="payOutStanding">
+                    <span></span>
+                    <a href="/PayBalancesDue">Pay Outstanding Balance</a>
+                </div>
+                {{/compare}}
+                {{/if}}
+                {{/compare}}
+                {{/if}}
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        GetMembershipDetails();
+        function GetMembershipDetails() {
+            $.ajax({
+                url: '@Url.Action("GetMemberships", "Home")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: "",
+                success: function (response) {
+                    console.log('Success', response);
+                    if (response != null) {
+                        var templatesource = jQuery('#mbrdetails-template-grid').html();
+                        var template = Handlebars.compile(templatesource);
+                        mbrdata = template(response);
+                        jQuery('#mbrdetails').html(mbrdata);
+                    }
+
+                },
+                error: function (x) { nalert(x); }
+            });
+        }
+    });
+
+    function ValiateCart()
+    {
+            $.ajax({
+                url: '@Url.Action("ValiateCart", "Home")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: "",
+                success: function (response) {
+                  
+                    if (response != null && response.Success == true) {
+                        
+                        if (response.AllowtoCart == false)
+                            alert("Please complete purchase of existing items from the cart or remove them from cart before starting a meeting modification");
+                        else
+                            window.location = response.path;
+                    }
+
+                },
+                error: function (x) { nalert(x); }
+            });
+    }
+
+</script>

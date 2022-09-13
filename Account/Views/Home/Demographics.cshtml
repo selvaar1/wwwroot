@@ -1,0 +1,387 @@
+﻿@{
+    ViewBag.Title = "Name & Demographics";
+}
+
+
+<style>
+    .form_date {
+        width: 200px;
+    }
+
+    .panel-heading {
+        font-size: 13px;
+    }
+
+    .panel-heading,
+    .panel-body .control-label {
+        font-weight: bold;
+    }
+
+    .panel-body .control-label,
+    .panel-body span,
+    .panel-body input[type="text"],
+    .panel-body select {
+        font-size: 12px;
+    }
+
+    .panel-body .form-group {
+        margin: 5px;
+    }
+</style>
+
+
+<div id="addressview">
+</div>
+
+<script id="demographics-template-grid" type="text/x-handlebars-template">
+
+    <h1 class="page_title">@ViewBag.Title</h1>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Name <a href="javascript:;" id="showeditName" class="viewName" style="float: right"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                <div class="panel-body">
+                    <div class="form-group row">
+                        <label class="control-label col-sm-4 fieldlabel" for="email">Prefix:</label>
+                        <div class="col-sm-8">
+                            <span class="viewName" id="viewprefix">{{Prefix}}</span>
+                            <select class="editName form-control" id="prefix">
+                                <option value="">Select</option>
+                                @if (ViewBag.Prefixes != null)
+                                {
+                                    foreach (var item in @ViewBag.Prefixes)
+                                    {
+                                        <option value="@item.VALUE">@item.TEXT</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-sm-4 fieldlabel" for="email">First Name*:</label>
+                        <div class="col-sm-8">
+                            <span class="viewName">{{FirstName}}</span>
+                            <input type="text" id="firstname" class="editName form-control required" value="{{FirstName}}" maxlength="50" />
+                            <span class="errorMsg"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-sm-4 fieldlabel" for="email">Middle Name:</label>
+                        <div class="col-sm-8">
+                            <span class="viewName">{{MiddleName}}</span>
+                            <input type="text" id="middlename" class="editName form-control" value="{{MiddleName}}" maxlength="50" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-sm-4 fieldlabel" for="email">Last Name*:</label>
+                        <div class="col-sm-8">
+                            <span class="viewName">{{LastName}}</span>
+                            <input type="text" id="lastname" class="editName form-control required" value="{{LastName}}" maxlength="50" />
+                            <span class="errorMsg"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-sm-4 fieldlabel" for="email">Suffix:</label>
+                        <div class="col-sm-8">
+                            <span class="viewName" id="viewsuffix">{{Suffix}}</span>
+                            @*<input type="text" id="suffix" class="edit" />*@
+                            <select class="editName form-control" id="suffix">
+                                <option value="">Select</option>
+                                @if (ViewBag.Suffixs != null)
+                                {
+                                    foreach (var item in @ViewBag.Suffixs)
+                                    {
+                                        <option value="@item.VALUE" @item.SELECTED>@item.TEXT</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="editName btnActions text-right form-group row">
+                        <input type="button" id="btnsavedemographics1" class="btnsavedemographics" value="Save" />
+                        <a href="javascript:;" class="btn btn-default btncancelName normal">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Demographics<a href="javascript:;" id="showeditDemographics" class="viewDemographics" style="float: right"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                <div class="panel-body">
+                    <div class="form-group row" hidden>
+                        <label class="control-label col-sm-4 fieldlabel" for="email">Birth Year:</label>
+                        <div class="col-sm-8">
+                            <span class="viewDemographics">{{BirthYear}}</span>
+                            <input type="text" id="birthyear" class="form-control editDemographics" value="{{BirthYear}}" />
+                            <span class="errorMsg"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row" hidden>
+                        <label class="control-label col-sm-4 fieldlabel" for="email">Race / Ethnic Identity:</label>
+                        <div class="col-sm-8">
+                            <span class="viewDemographics" id="viewrace">{{Race}}</span>
+                            <select class="editDemographics form-control" id="race">
+                                <option value="">Select</option>
+                                @if (ViewBag.Ethnicities != null)
+                {
+                    foreach (var item in @ViewBag.Ethnicities)
+                    {
+                        <option value="@item.VALUE" @item.SELECTED>@item.TEXT</option>
+    }
+}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-sm-4 fieldlabel" for="email">Gender:</label>
+                        <div class="col-sm-8">
+                            <span class="viewDemographics" id="viewgender">{{Gender}}</span>
+                            <select class="editDemographics form-control" id="gender">
+                                <option value="">Select</option>
+                                @if (ViewBag.Genders != null)
+                {
+                    foreach (var item in @ViewBag.Genders)
+                    {
+                        <option value="@item.VALUE" @item.SELECTED>@item.TEXT</option>
+    }
+}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+            <label class="control-label col-sm-4 fieldlabel" for="email">Job Title:</label>
+            <div class="col-sm-8">
+                <span class="viewDemographics">{{Title}}</span>
+                <input type="text" id="jobtitle" class="editDemographics form-control" value="{{Title}}" />
+            </div>
+        </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-sm-4 fieldlabel" for="email">Job Function:</label>
+                        <div class="col-sm-8">
+                            <span class="viewDemographics" id="viewJobFunction">{{JobFunction}}</span>
+                            <select class="editDemographics form-control" id="jobFun">
+                                <option value="">Select</option>
+                                @if (ViewBag.JOBFUNCTION != null)
+                {
+                    foreach (var item in @ViewBag.JOBFUNCTION)
+                    {
+                        <option value="@item.VALUE" @item.SELECTED>@item.TEXT</option>
+    }
+}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="editDemographics btnActions text-right form-group row">
+                        <input type="button" id="btnsavedemographics2" class="btnsavedemographics" value="Save" />
+                        <a href="javascript:;" class="btn btn-default btncancelDemographics normal">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script>
+    $(document).ready(function () {
+        //$("#birthdate").datepicker({
+        //    dateFormat: 'mm-dd-yy'
+        //});
+        $('.editName').hide();
+        $('.editDemographics').hide();
+
+        $('body').on('click', '#showeditName', function () {
+            if (typeof set_date_input === 'function') set_date_input();
+            $("#prefix option").filter(function () {
+                return $(this).text() == $('#viewprefix').html();
+            }).prop('selected', true);
+            $("#suffix option").filter(function () {
+                return $(this).text() == $('#viewsuffix').html();
+            }).prop('selected', true);
+            editNameClick = true;
+            editDemographicsClick = false;
+            $('.viewName').hide();
+            $('.editName').show();
+        });
+        $('body').on('click', '#showeditDemographics', function () {
+            if (typeof set_date_input === 'function') set_date_input();
+            $("#race option").filter(function () {
+                return $(this).text() == $('#viewrace').html();
+            }).prop('selected', true);
+            $("#gender option").filter(function () {
+                return $(this).text() == $('#viewgender').html();
+            }).prop('selected', true);
+            $("#jobFun option").filter(function () {
+                 
+               return $(this).val() == $('#viewJobFunction').html();
+                
+            }).prop('selected', true);
+
+            $("#JobFunction option").each(function () {
+                if ($(this).text() == $("#viewJobFunction").html()) {
+                    $(this).attr('selected', 'selected');
+                }
+            });
+
+            editNameClick = false;
+            editDemographicsClick = true;
+
+            $('.viewDemographics').hide();
+            $('.editDemographics').show();
+        });
+        $('body').on('click', '.btncancelName', function () {
+            $('.viewName').show();
+            $('.editName').hide();
+            $('.errorMsg').each(function (index, el) {
+                $(this).text('');
+            });
+        });
+        $('body').on('click', '.btncancelDemographics', function () {
+            $('.viewDemographics').show();
+            $('.editDemographics').hide();
+            $('.errorMsg').each(function (index, el) {
+                $(this).text('');
+            });
+        });
+        $('body').on('keyup', '#firstname,#lastname', function (event) {
+            if ($(this).val().trim().length > 0) {
+                $(this).parent().find('.errorMsg').text('');
+            }
+            else {
+                var fname = $(this).parent().parent().find('.fieldlabel').html();
+                $(this).parent().find('.errorMsg').text('Please enter ' + convertToTitlecase(fname));
+            }
+        });
+
+        function convertToTitlecase(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+        $('body').on('click', '.btnsavedemographics', function () {
+            var isvalid = true;
+            var firstname = $('#firstname').val().trim();
+            if (firstname.length <= 0) {
+                //nalert("Firstname can not be blank");
+                //$('#firstname').focus();
+                $('#firstname').parent().find('.errorMsg').text('Please enter First Name');
+                isvalid= false;
+            }
+            var lastname = $('#lastname').val().trim();
+            if (lastname.length <= 0) {
+                //nalert("Lastname can not be blank");
+                //$('#lastname').focus();
+                $('#lastname').parent().find('.errorMsg').text('Please enter Last Name');
+                isvalid= false;
+            }
+
+            var birthyear = $('#birthyear').val();
+            if (birthyear.length > 0 && (parseInt(birthyear) < 1900 || parseInt(birthyear) > new Date().getFullYear()))
+            {
+                //nalert("Birth Year can not be less than 1900 and more than current year.");
+                //$('#birthyear').focus();
+                $('#birthyear').parent().find('.errorMsg').text('Birth Year can not be less than 1900 and more than current year');
+                isvalid= false;
+            }
+            if(isvalid==false)
+                return isvalid;
+
+            var middlename = $('#middlename').val();
+
+            var prefix = $("#prefix option:selected").val();
+            var suffix = $("#suffix option:selected").val();
+            var race = $("#race option:selected").val();
+            var gender = $("#gender option:selected").val();
+
+            //var birthdate = $('#birthdate').val();
+            var jobtitle = $('#jobtitle').val();
+            var JobFunction = $("#jobFun option:selected").val();
+
+            var demodata = JSON.stringify({
+                "Prefix": prefix,
+                "Suffix": suffix,
+                "Race": race,
+                "Gender": gender,
+                "FirstName": firstname,
+                "MiddleName": middlename,
+                "LastName": lastname,
+                "JobTitle": jobtitle,
+                "JobFunction": JobFunction,
+                "BirthYear":birthyear,
+            });
+
+            //save data
+            $.ajax(
+            {
+                url: '@Url.Action("SaveDemographics", "Home")',
+                contentType: 'application/json; charset=utf-8',
+                datatype: 'json',
+                type: "POST",
+                data: demodata,
+                success: function (data) {
+                    if (data.Success == true) {
+
+                        GetUserInfo();
+                    }
+                    else {
+                        nalert(data.Message);
+                    }
+                }
+            });
+        });
+
+        GetUserInfo();
+        function GetUserInfo() {
+            $.ajax(
+            {
+                url: '@Url.Action("GetDemographics", "Home")',
+                contentType: 'application/json; charset=utf-8',
+                datatype: 'json',
+                type: "GET",
+                success: function (data) {
+                    console.log(data);
+                    if (data.Success == true) {
+                        var demographicstemplate = jQuery('#demographics-template-grid').html();
+                        var demotemplate = Handlebars.compile(demographicstemplate);
+                        demographics = demotemplate(data.Demographics);
+                        jQuery('#addressview').html(demographics);
+                        $('.editName').hide();
+                        $('.editDemographics').hide();
+                        $("#prefix option").each(function() {
+                            if($(this).text() == $("#viewprefix").html()) {
+                                $(this).attr('selected', 'selected');
+                            }
+                        });
+
+                        $("#suffix option").each(function() {
+                            if($(this).text() == $("#viewsuffix").html()) {
+                                $(this).attr('selected', 'selected');
+                            }
+                        });
+
+                        $("#race option").each(function() {
+                            if($(this).text() == $("#viewrace").html()) {
+                                $(this).attr('selected', 'selected');
+                            }
+                        });
+
+                        $("#gender option").each(function() {
+                            if($(this).text() == $("#viewgender").html()) {
+                                $(this).attr('selected', 'selected');
+                            }
+                        });
+                        $("#JobFunction option").each(function () {
+                            if ($(this).text() == $("#viewJobFunction").html()) {
+                                $(this).attr('selected', 'selected');
+                            }
+                        });
+
+
+                    }
+                    else {
+                        nalert('data not found!');
+                    }
+                }
+            });
+        }
+    });
+</script>

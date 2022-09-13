@@ -1,0 +1,237 @@
+﻿@using MyResource = ResourceFile
+@{
+    ViewBag.PageTitle = "Donations";
+    Layout = "~/Views/Shared/_LayoutLanding.cshtml";
+}
+@{
+    ViewBag.Title = "Donations";
+}
+@*@section featured {
+    
+}*@
+
+
+
+
+
+<div class="registration_form">
+    <div class="form_row_submit" style="text-align: left;">
+        <h1 class="page_title">@ViewBag.Title</h1>
+        <h2>@ViewBag.Message</h2>
+        
+        <h4 class="info">@MyResource.ResourceFile.DonationMessage</h4>
+        <div id="list3" class="datagrid" style="margin-top: 30px;">
+            Loading...
+        </div>
+
+        <h4 class="info">(Minimum donation is $10)</h4>
+
+        
+        <div style="text-align: right;">
+            
+            @if (!string.IsNullOrEmpty(ViewBag.orderno))
+            {
+                string nextpageURL = System.Configuration.ConfigurationManager.AppSettings["ShoppingCartURL"];
+                nextpageURL += "?orderno=" + @ViewBag.orderno;
+                
+                <a href="@nextpageURL" id="skip" class="addthisuser btn btn-default">Skip</a>
+            }
+
+            <button id="next" class="addthisuser btn btn-primary">Next</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script id="template-list3" type="text/x-handlebars-template">
+
+
+    {{#if Data.length}}
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Donation Type
+            </th>
+            <th>
+                Donation Amount
+            </th>
+        </tr>
+        {{#each Data }}
+
+
+        <tr>
+            <td>
+                <label name="description{{ProductId}}" for="product{{ProductId}}">{{ShortName}}</label>
+            </td>
+            <td>
+                <input name="price{{ProductId}}" class="form-control price" value="{{Selected}}" />
+            </td>
+        </tr>
+
+
+        {{/each}}
+
+        {{#if_even Data.length}}
+        <tr></tr>
+        {{/if_even}}
+
+        <!--
+        <tr><td colspan="2" style="border-top: 1px solid #DBDBDB;">
+             <div class="checkbox checkbox-primary">
+                  <input type="checkbox" name="anonymous" id="anonymous" /> <label for="anonymous">Make donation anonymous</label>
+                </div>
+        </td></tr>
+            -->
+
+        <tr>
+            <td colspan="2">
+                 <div class="checkbox checkbox-primary"> 
+            <input type="checkbox" name="anonymous" id="anonymous" >
+            <label for="anonymous">Make donation anonymous.</label>
+        </div>
+            </td>
+        </tr>
+    </table>
+    {{else}}
+
+    {{/if}}
+
+
+</script>
+
+
+<script>
+
+
+
+    var listdata3 = null;
+
+
+
+    function ShowListdata3() {
+        $('#list3').show();
+        renderTemplate(listdata3, '#template-list3', '#list3');
+    }
+
+    function page_init() {
+
+
+        
+        callProxy(
+           "GetDonations",
+             { "orderno": '@ViewBag.orderno' },
+           function (response) {
+               listdata3 = response;
+
+               ShowListdata3();
+
+               if (response.ErrorMessage == "checked") {
+                   $('#anonymous').attr('checked', true);
+               }
+
+               $('.price').mask('0000000', { reverse: true });
+           }
+       );
+
+
+
+
+        $('body').on('click', '#next', function () {
+
+            var data = [];
+
+            var isValid = true;
+
+            $('.price').each(function () {
+                var price = $(this).val();
+
+                if (price.length > 0 && price > 0 && price < 10) {
+                    isValid = false; console.log('invalid', price, this);
+                    $(this).addClass('invalid');
+                }
+                else {
+                    $(this).removeClass('invalid');
+                }
+
+
+                console.log('price');
+                if (price > 0) {
+
+                    console.log('name', $(this).attr('name'));
+
+                    var productid = $(this).attr('name').replace('price', '');
+
+                    console.log('productid', productid);
+                    var product = price;
+                    var description = $('[name=description' + productid + ']').text();
+                    console.log('description', description);
+
+                    data.push(
+                    {
+                        productid: productid,
+                        product: price,
+                        description: description
+
+                    });
+                }
+            });
+
+            if (isValid == false) {
+                nalert("Invalid Donation Amount");
+                return false;
+            }
+
+
+            //if (p.length > 0) {
+
+            //}
+            //else {
+            //    nalert("Please select a product");
+            //    return false;
+            //}
+
+
+
+            //var $form = $("#editform2");
+            var data = { "g": data, "anonymous": ($('#anonymous:checked').length > 0), "orderno": '@ViewBag.orderno' };
+
+            console.log("save donations", data);
+
+            //return false;
+
+            callProxy(
+                "SaveDonations",
+               data,
+            function (response) {
+                listdata2 = response;
+
+                location.href = response.nextpageURL;
+                //redirect
+            }
+            );
+
+
+
+            return false;
+        });
+
+
+
+    }
+</script>
+
+
+<script>
+
+    $(document).ready(function () {
+        console.log("ready");
+
+        page_init();
+
+
+    });
+
+</script>

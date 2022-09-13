@@ -1,0 +1,558 @@
+﻿@{
+    ViewBag.Title = "Contacts";
+    List<SL.Data.ContactInfo> contacts = ViewBag.Contacts;
+    SL.Data.PhoneStructure ps = ViewBag.PhoneStructure;
+}
+<style>
+    .action {
+        padding: 15px;
+    }
+</style>
+<h1 class="page_title">Contact Information</h1>
+<div class="contentBox">
+    <div class="cb_header">
+        <span style="float: left;">Phone</span>
+    </div>
+    <div id="phones">
+        <div class="cb_body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Phone Location</td>
+                        <td>Phone Number</td>
+                        <td class="text-center">Main</td>
+                        <td class="text-center">Do Not Call</td>
+                        <td class="text-center">Actions</td>
+                    </tr>
+                </thead>
+                @if (contacts != null && contacts.Count > 0)
+                {
+                    foreach (var item in contacts)
+                    {
+                        if (item.Type.ToUpper() == "PHONE")
+                        {
+                    <tr>
+                        <td class="phoneloc">@item.Location</td>
+                        <td><span>@item.PhoneAreaCode</span> <span>@item.PhoneNumber</span> <span>@item.PhoneExtention</span> </td>
+                        <td class="text-center">
+                            @if (item.IsPrimary)
+                            {
+                                <a href="javascript:;"><span class="fa fa-check-circle"></span></a>
+                            }
+                        </td>
+                        <td class="text-center">
+                            @if (item.IsDoNotCall)
+                            {
+                                <a href="javascript:;"><span class="fa fa-check-circle"></span></a>
+                            }
+                        </td>
+                        <td class="text-center">
+                            <a href="javascript:;" data-cnt="@item.Contact" data-loc="@item.Location" class="edit"><span class="fa fa-pencil"></span></a>
+                            @if (!item.IsPrimary)
+                            {
+                            <a href="javascript:;" data-cnt="@item.Contact" data-loc="@item.Location" class="delete"><span class="fa fa-trash-o"></span></a>
+                            }
+                        </td>
+                    </tr>
+                        }
+                    }
+
+                }
+            </table>
+            <div class="action">
+                <a href="javascript:;" id="addPhone">Add New Phone Number</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="datagrid" id="divAddPhone">
+    <table class="table">
+        <tr>
+            <td class="col-sm-3">Phone Location*:</td>
+            <td class="col-sm-9">
+                <select class="input_text  form-control" id="phoneLocation">
+                    @* @if (ViewBag.AddressType != null)
+                    {
+                        foreach (var item in @ViewBag.AddressType)
+                        {
+                        <option value="@item.VALUE">@item.TEXT</option>
+                        }
+                    }*@
+                    <option value="HOME">Home</option>
+                    <option value="MOBILE">Mobile</option>
+                    <option value="OFFICE">Office</option>
+                    <option value="OTHER">Other</option>
+                    <option value="UNKNOWN">UnKnown</option>
+                </select>
+                <span class="errorMsg"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td>
+                <select class="input_text  form-control" id="country">
+                    @if (ViewBag.Countries != null)
+                    {
+                        foreach (var item in @ViewBag.Countries)
+                        {
+                        <option value="@item.CountryCode" >@item.CountryDescription</option>
+                        }
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Phone Number*:</td>
+            <td>
+                <div id="phone">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" class="checkBox primary" id="chkPrimaryP">
+                    <label>Mark as Primary</label></div><span class="errorMsg"></span>
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" class="checkBox" id="chkDoNotCall">
+                <label>Do Not Call</label></div>
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" class="checkBox" id="chkIncludeInWeb">
+                    <label>Include in Online Directory</label></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-right">
+                <button id="savephone" class="btn btn-primary">Save</button>
+                <button class="btn btn-default cancel">Cancel</button>
+                <input type="hidden" value="" id="phoneId"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="contentBox">
+    <div class="cb_header">
+        <span style="float: left;">Email</span>
+    </div>
+
+    <div id="mails">
+        <div class="cb_body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Email Location</td>
+                        <td>Email Address</td>
+                        <td class="text-center">Main</td>
+                        <td class="text-center">Actions</td>
+                    </tr>
+                </thead>
+                @if (contacts != null && contacts.Count > 0)
+                {
+                    foreach (var item in contacts)
+                    {
+                        if (item.Type.ToUpper() == "EMAIL")
+                        {
+                    <tr>
+                        <td class="mailloc">@item.Location</td>
+                        <td>@item.Contact</td>
+                        <td class="text-center">
+                            @if (item.IsPrimary)
+                            {
+                                <a href="javascript:;"><span class="fa fa-check-circle"></span></a>
+                            }
+                        </td>
+                        <td class="text-center">
+                            <a href="javascript:;" data-cnt="@item.Contact" data-loc="@item.Location" class="edit"><span class="fa fa-pencil"></span></a>
+                             @if (!item.IsPrimary)
+                            {
+                            <a href="javascript:;" data-cnt="@item.Contact" data-loc="@item.Location" class="delete"><span class="fa fa-trash-o"></span></a>
+                             }
+                        </td>
+                    </tr>
+                        }
+                    }
+                }
+            </table>
+
+        </div>
+    </div>
+    <div class="action">
+        <a href="javascript:;" id="addEmail">Add New Email Address</a>
+    </div>
+</div>
+<div class="contentBox" id="divAddEmail">
+    <table class="table table-striped">
+        <tr>
+            <td class="col-sm-3">Email Location*:</td>
+            <td class="col-sm-9">
+                <select class="input_text  form-control" id="emailLocation">
+                    <option value="HOME">Home</option>
+                    <option value="MOBILE">Mobile</option>
+                    <option value="OFFICE">Office</option>
+                    <option value="OTHER">Other</option>
+                    <option value="UnKnown">UnKnown</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Email Address:</td>
+            <td>
+                <input type="email" class="input_text form-control" id="Email" />
+                <span class="errorMsg"></span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div class="checkbox checkbox-primary">
+                <input type="checkbox" class="checkBox primary" id="chkPrimaryE" />
+                <label>Mark as Primary</label></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-right">
+                <button id="savemail" class="btn btn-primary">Save</button>
+                <button class="btn btn-default cancel">Cancel</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<script id="phone-template-grid" type="text/x-handlebars-template">
+    {{#if PHONE_AREA_CODE}}
+        <input type="text" class="input_text col-sm-2 onlynumber required" value="" id="PHONE_AREA_CODE" maxlength="{{PHONE_AREA_CODE_MAXLENGTH}}" />
+    <label class="col-sm-1 "></label>
+    {{/if}}
+    {{#if PHONE_NUMBER}}
+         <input type="text" class="input_text col-sm-4 onlynumber required" value="" id="PHONE_NUMBER" maxlength="{{PHONE_NUMBER_MAXLENGTH}}" />
+    {{/if}}
+    {{#if PHONE_EXTENSION}}
+         <label class="col-sm-2 text-right">Ext:</label>
+    <input type="text" class="input_text col-sm-3 onlynumber" value="" id="PHONE_EXTENSION" maxlength="{{PHONE_EXTENSION_MAXLENGTH}}" />
+    {{/if}}
+    <span class="errorMsg"></span>
+</script>
+
+
+
+<script>
+    $(document).ready(function () {
+        var editData;
+        var isOperationForPhone = true;
+
+        $('#divAddPhone').hide();
+        $('#divAddEmail').hide();
+
+        $('body').on('click', '#addPhone, #addFax', function () {
+            id = $(this).prop('id');
+            console.log(id);
+            if (id == 'addPhone')
+                isOperationForPhone = true;
+            else
+                isOperationForPhone = false;
+
+            console.log(isOperationForPhone);
+
+            editData = null;
+            $('#country').val('USA');
+            BuildPhone("USA");
+            $('.checkBox').prop('checked', false);
+
+            //Disable existing mail locations
+            $(".phoneloc").each(function (index, el) {
+                $("#phoneLocation option[value*='"+$(this).html()+"']").prop('disabled',true);
+            });
+            //Select first enabled email
+            $('#phoneLocation').children('option:enabled').eq(0).prop('selected',true);
+
+        });
+
+        $('body').on('click', '#addEmail', function () {
+            $("#Email").val('');
+            $('#divAddEmail').show();
+            $('#mails').hide();
+            $("#emailLocation").removeAttr('disabled', 'disabled');
+            $('.checkBox').prop('checked', false);
+            //Disable existing mail locations
+            $(".mailloc").each(function (index, el) {
+                $("#emailLocation option[value*='"+$(this).html()+"']").prop('disabled',true);
+            });
+            //Select first enabled email
+            $('#emailLocation').children('option:enabled').eq(0).prop('selected', true);
+            $(".primary").removeAttr("disabled");
+        });
+
+        $('body').on('click', '.cancel', function () {
+            $('#divAddPhone').hide();
+            $('#divAddEmail').hide();
+            $('#phones').show();
+            $('#mails').show();
+            $("#phoneLocation").removeAttr('disabled');
+            $('.errorMsg').each(function (index, el) {
+                $(this).text('');
+            });
+        });
+
+        function ValidateRequiredFields() {
+            var isvalid = true;
+            $(".required").each(function (index, el) {
+                var name = $(this).attr('id');
+                if ($(this).val().trim().length == 0) {
+                    var labelval = $(this).attr('id').replace(/_/gi, ' ');
+                    //nalert("" + labelval + " can not be blank"); $(this).focus();
+                    $(this).parent().find('.errorMsg').text('Please enter ' + convertToTitlecase(labelval));
+                    isvalid = false;
+                    //return false;
+                }
+            });
+            var pno = ($("#PHONE_AREA_CODE").val()!=undefined?$("#PHONE_AREA_CODE").val():"") + $("#PHONE_NUMBER").val();
+
+            if (isvalid && pno.length != 10) {
+                //nalert('Phone number should be of 10 digits.');
+                $('#phone .errorMsg').text('Phone number should be of 10 digits.');
+                isvalid = false;
+            }
+            //check if phone location already exist
+            var selectedpno = $("#phoneLocation").val();
+            $(".phoneloc").each(function (index, el) {
+                if($(this).html() == selectedpno && selectedPhoneForEdit != selectedpno )
+                {
+                    $('#phoneLocation').parent().find('.errorMsg').text('Contact for selected Location already exists.');
+                    isvalid = false;
+                }
+            });
+            return isvalid;
+        }
+
+        $('body').on('keyup', '.required', function (event) {
+            if ($(this).val().trim().length > 0) {
+                $(this).parent().find('.errorMsg').text('');
+            }
+            else {
+                var fname = $(this).attr('id').replace(/_/gi, ' ');
+                $(this).parent().find('.errorMsg').text('Please enter ' + convertToTitlecase(fname));
+            }
+        });
+
+        function convertToTitlecase(str) {
+            return str.split(' ')
+               .map(w => w[0].toUpperCase() + w.substr(1).toLowerCase())
+               .join(' ');
+        }
+
+        function ValidateEmail() {
+            var isvalid=true;
+            if ($("#Email").val().trim().length == 0) {
+                //nalert("Email can not be blank"); $(this).focus();
+                $("#Email").parent().find('.errorMsg').text('Please enter Email');
+                isvalid = false;
+            }
+            //check if phone location already exist
+            var selectedpno = $("#emaillocation").val();
+            $(".mailloc").each(function (index, el) {
+                if($(this).html() == selectedpno)
+                {
+                    $('#emaillocation').parent().find('.errorMsg').text('Email for selected Location already exists.');
+                    isvalid = false;
+                }
+            });
+            
+            return isvalid;
+        }
+        //SavePhone
+        var commdata;
+        $('body').on('click', '#savephone', function () {
+            $('#phoneLocation').parent().find('.errorMsg').text('');
+            if (ValidateRequiredFields()) {
+                commdata = {
+                    "ID": 0,
+                    "Type": "PHONE",
+                    "Location": $("#phoneLocation").val(),
+                    "Contact": "",
+                    "CountryCode": $("#country").val(),
+                    "PhoneAreaCode": $("#PHONE_AREA_CODE").val(),
+                    "PhoneNumber": $("#PHONE_NUMBER").val(),
+                    "PhoneExtention": $("#PHONE_EXTENSION").val(),
+                    "IsPrimary": $("#chkPrimaryP").is(":checked"),
+                    "IsDoNotCall": $('#chkDoNotCall').is(":checked"),
+                    "IsInWebDirectory": $('#chkIncludeInWeb').is(":checked")
+                };
+                SaveCommunication();
+            }
+        });
+
+
+        //Save Email
+        $('body').on('click', '#savemail', function () {
+            
+            if (ValidateEmail()) {
+                commdata = {
+                    "ID": 0,
+                    "Contact": $("#Email").val(),
+                    "CountryCode": "",
+                    "IsPrimary": $("#chkPrimaryE").is(":checked"),
+                    "Location": $("#emailLocation").val(),
+                    "PhoneAreaCode": "",
+                    "PhoneExtention": "",
+                    "PhoneNumber": "",
+                    "Type": "EMAIL",
+                };
+                SaveCommunication();
+            }
+        });
+
+        function SaveCommunication() {
+            console.log(commdata);
+            $.ajax(
+            {
+                url: '@Url.Action("SaveCommunicationInfo", "Home")',
+                contentType: 'application/json; charset=utf-8',
+                datatype: 'json',
+                type: "POST",
+                data: JSON.stringify({ 'contact': commdata }),
+                success: function (data) {
+                    console.log(data);
+                    if (data.Success) {
+                        //nalert('Success');
+                        location.reload();
+                    }
+                    else {
+                        nalert(data.Message);
+                    }
+                }
+            });
+        }
+        //delete
+        $('body').on('click', '.delete', function () {
+            var cnt = $(this).data('cnt');
+            var loc = $(this).data('loc');
+            if (confirm("Are you sure you wish to delete this record?")) {
+                $.ajax({
+                    url: '@Url.Action("DeleteCommunicationInfo", "Home")',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: { contact: cnt, location: loc },
+                    success: function (response) {
+                        if (response != null && response.Success) {
+                            location.reload();
+                        }
+                        else { nalert('Delete Fail'); }
+                    },
+                    error: function (x) { nalert(x); }
+                });
+                }
+        });
+
+        $('body').on('click', '.edit', function () {
+            var cnt = $(this).data('cnt');
+            var loc = $(this).data('loc');
+
+            
+
+            $.ajax({
+                url: '@Url.Action("GetCusCommByContact", "Home")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { contact: cnt, location: loc },
+                success: function (response) {
+                    if (response != null && response.data != null) {
+                        editData = response.data;
+                        if (response.data.Type == "PHONE") {
+                            isOperationForPhone = true;
+                            var country = response.data.CountryCode;
+                            if (country == undefined || country.length <= 0)
+                                country = "USA";
+                            $('#country').val(country);
+                            BuildPhone(country);
+                           
+                            if (editData.IsPrimary)
+                                $(".primary").attr("disabled", 'disabled');
+                            else
+                                $(".primary").removeAttr("disabled");
+
+                        }
+
+                        else if (response.data.Type == "EMAIL") {
+                            $('#divAddEmail').show();
+                            $('#mails').hide();
+                            //Fill 
+                            $("#chkPrimaryE").prop('checked', response.data.IsPrimary);
+                            $("#Email").val(response.data.Contact);
+                            $("#emailLocation").val(response.data.Location);
+                            $("#emailLocation").attr('disabled', 'disabled');
+                           
+                            if (editData.IsPrimary)
+                                $(".primary").attr("disabled", 'disabled');
+                            else
+                                $(".primary").removeAttr("disabled");
+                        }
+                    }
+
+                },
+                error: function (x) { nalert(x); }
+            });
+        });
+        var selectedPhoneForEdit;
+        function BuildPhone(country) {
+            $.ajax({
+                url: '@Url.Action("GetCustomerPhoneStructures", "Home", new { p = Session["pid"] })',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { country: country },
+                success: function (response) {
+                    if (response != null) {
+                        var phonetemplatesource1 = jQuery('#phone-template-grid').html();
+                        var phonetemplate1 = Handlebars.compile(phonetemplatesource1);
+                        phone1 = phonetemplate1(response);
+
+                        if (isOperationForPhone) {
+                            jQuery('#phone').html(phone1);
+                            $('#divAddPhone').show();
+                            $('#phones').hide();
+                        }
+
+                        if (editData != null) {
+                            console.log(editData)
+                            selectedPhoneForEdit = editData.Location;
+                            $("#PHONE_AREA_CODE").val(editData.PhoneAreaCode);
+                            $("#PHONE_NUMBER").val(editData.PhoneNumber);
+                            $("#PHONE_EXTENSION").val(editData.PhoneExtention);
+                            $('#chkDoNotCall').prop('checked', editData.IsDoNotCall);
+                            $('#chkIncludeInWeb').prop('checked', editData.IsInWebDirectory);
+                            if (isOperationForPhone) {
+                                $("#chkPrimaryP").prop('checked', editData.IsPrimary);
+                                $("#phoneLocation").val(editData.Location);
+                            }
+                            else {
+                                $("#chkPrimaryF").prop('checked', editData.IsPrimary);
+                            }
+
+                           // $("#phoneLocation").attr('disabled', 'disabled');
+                        }
+                        else {
+                            $("#phoneLocation").removeAttr('disabled');
+                        }
+
+                    }
+
+                },
+                error: function (x) { nalert(x); }
+            });
+        }
+
+        $('body').on('change', '#country, #faxcountry', function () {
+            var c = $(this).val();
+            if (c.length > 0) {
+                BuildPhone($(this).val());
+            }
+        });
+        $('body').on('keypress', '.onlynumber', function () {
+            if (event.which != 8 && isNaN(String.fromCharCode(event.which))) {
+                event.preventDefault(); //stopping character from entering input
+            }
+        });
+
+    });
+</script>

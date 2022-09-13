@@ -1,0 +1,151 @@
+﻿@using MyResource = ResourceFile
+@{
+    ViewBag.Title = "Committees";
+    SL.Data.Committees committees = ViewBag.Committees;
+}
+
+<h1 class="page_title">Committees</h1>
+
+<div class="col-sm-12 alert alert-info">
+    <span>
+        Please contact @MyResource.ResourceFile.VendoreName at (703) 838-1700 if you have any questions or need to make changes to your Committee information
+    </span>
+</div>
+<div class="col-sm-12" id="content">
+    <div class="contentBox">
+        <div class="cb_header">
+            Current Positions
+        </div>
+        <div class="datagrid">
+            @if (committees != null && committees.CurrentPositions != null && committees.CurrentPositions.Count > 0)
+            {
+                
+                <div class="withdata">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Committee Name</td>
+                                <td>Committee Position</td>
+                                <td>Start Date</td>
+                                <td>End Date</td>
+                            </tr>
+                        </thead>
+                        @foreach (var item in committees.CurrentPositions)
+                        {
+                            <tr>
+                                <td>@item.CommitteeName</td>
+                                <td>@item.Position</td>
+                                <td>@item.StartDate.ToString("MM/dd/yyyy")</td>
+
+                                @if (item.EndDate.ToString("MM/dd/yyyy") != "01-01-2050")
+                                {
+                                    <td> @item.EndDate.ToString("MM/dd/yyyy")</td>
+                                }
+                                    @if (item.EndDate.ToString("MM/dd/yyyy") == "01-01-2050")
+                                    {
+                                <td> </td>
+                                    }
+                            </tr>
+                        }
+                    </table>
+                </div>
+                
+            }
+            else
+            {
+                <div class="nodata text-center">No Current Positions Found</div>
+            }
+
+        </div>
+    </div>
+    <div class="contentBox">
+        <div class="cb_header">
+            Future Positions
+        </div>
+        <div class="datagrid">
+            @if (committees != null && committees.FuturePositions != null && committees.FuturePositions.Count > 0)
+            {
+                
+                <div class="withdata">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Committee Name</td>
+                                <td>Committee Position</td>
+                                <td>Start Date</td>
+                                <td>End Date</td>
+                            </tr>
+                        </thead>
+                        @foreach (var item in committees.FuturePositions)
+                        {
+                            <tr>
+                                <td>@item.CommitteeName</td>
+                                <td>@item.Position</td>
+                                <td>@item.StartDate.ToString("MM/dd/yyyy")</td>
+                                @if (item.EndDate.ToString("MM/dd/yyyy") != "01-01-2050")
+                                {
+                                    <td> @item.EndDate.ToString("MM/dd/yyyy")</td>
+                                }
+                                @if (item.EndDate.ToString("MM/dd/yyyy") == "01-01-2050")
+                                {
+                                    <td> </td>
+                                }
+                            </tr>
+                        }
+                    </table>
+                </div>
+                
+            }
+            else
+            {
+                <div class="nodata text-center">No Future Positions Found</div>
+            }
+
+        </div>
+    </div>
+    <div class="contentBox">
+        <div class="cb_header">
+            Past Positions
+        </div>
+        <div class="datagrid">
+            @if (committees != null && committees.PastPositions != null && committees.PastPositions.Count > 0)
+            {
+                
+                <div class="withdata">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Committee Name</td>
+                                <td>Committee Position</td>
+                                <td>Start Date</td>
+                                <td>End Date</td>
+                            </tr>
+                        </thead>
+                        @foreach (var item in committees.PastPositions)
+                        {
+                            <tr>
+                                <td>@item.CommitteeName</td>
+                                <td>@item.Position</td>
+                                <td>@item.StartDate.ToString("MM/dd/yyyy")</td>
+                                @if (item.EndDate.ToString("MM/dd/yyyy") != "01-01-2050")
+                                {
+                                    <td> @item.EndDate.ToString("MM/dd/yyyy")</td>
+                                }
+                                @if (item.EndDate.ToString("MM/dd/yyyy") == "01-01-2050")
+                                {
+                                    <td> </td>
+                                }
+                            </tr>
+                        }
+                    </table>
+                </div>
+                
+            }
+            else
+            {
+                <div class="nodata text-center">No Past Positions Found</div>
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,236 @@
+﻿@{
+    Layout = "~/Views/Shared/_Products.cshtml";
+    Layout = "~/Views/Shared/_TopHeaderLayout.cshtml";
+
+}
+@System.Web.Optimization.Scripts.Render("~/bundles/viewprod")
+
+<style>
+    .breadcrumbTwo {
+        height: 72px;
+        width: 368px;
+    }
+
+    .product-page-grid .vp-heading {
+        font-size: 28px;
+        font-weight: 300;
+        margin-top: 0;
+        text-transform: capitalize;
+        color: var(--sir-white) !important;
+        line-height: 0px;
+        padding: 30px;
+        background-color: var(--sir-green-dark);
+        grid-row: 1;
+        grid-column: 1/3;
+    }
+</style>
+
+<input type="hidden" id="opid" value="@(string.IsNullOrEmpty(Request["opid"])? "0" : Request["opid"])" />
+
+
+<content id="content-box" class="content">
+    
+    <span id="parentId" style="display: none;">{{viewProduct.ProductId}}</span>
+
+    <div class="product-page-grid">
+        <h1 class="vp-heading">{{viewProduct.ProductName}}</h1>
+
+        <div class="ppg-image-box" data-ng-if="IsUmbrellaProductAddToCart != true" id="nPrd">
+            <div class="ppg-tag">{{viewProduct.FormatDescription}}</div>
+            <a href="{{viewProduct.ProductImage}}" data-ng-if="viewProduct.ProductGalleryImgs == null" data-ng-repeat-load-finish="ngRepeatFinished" class="col-xs-12 text-center" style="padding: 0; background-color: #FFF;">
+                <img ng-src="{{viewProduct.ProductImage}}" alt="" class="col-xs-12 img-responsive" style="margin: 0px;" />
+            </a>
+            <div class="ppg-image-picker">
+                <a href="{{ProductGalleryImg}}">
+                    <ul>
+
+                        <li data-ng-if="viewProduct.ProductGalleryImgs != null" data-ng-repeat="ProductGalleryImg in viewProduct.ProductGalleryImgs track by $index" data-ng-repeat-load-finish="ngRepeatFinished"><img ng-src="{{ProductGalleryImg}}" alt="" class="img-responsive" /></li>
+                    </ul>
+                </a>
+
+            </div>
+
+
+        </div>
+
+        <div class="ppg-image-box" data-ng-if="IsUmbrellaProductAddToCart == true" id="uPrd">
+            <div class="ppg-tag">{{viewProduct.FormatDescription}}</div>
+            <img src="img/card-image.png" alt="product image">
+
+
+
+            <div class="ppg-image-picker">
+                <a href="{{ProductImg}}">
+                    <ul>
+                        <li data-ng-repeat="ProductImg in viewUmbrellSelectProduct.ProductGalleryImgs track by $index" data-ng-repeat-load-finish="ngRepeatFinished" class="img-responsive"><img ng-src="{{ProductImg}}" alt="" />></li>
+
+                    </ul>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="ppg-details">
+            <div class="ppg-description">
+                <!--<p data-ng-bind-html="viewProduct.ShortDescription | sanitize" data-ng-class="IsUmbrellaProductElements != true? 'ng-show': 'ng-hide'">-->@*{{viewProduct.ShortDescription}}*@<!--</p>-->
+                <div data-ng-if="(viewProduct.Component).length > 0">
+                    <h4>Includes</h4>
+                    <ul>
+                        <li data-ng-repeat="comName in viewProduct.Component">
+                            <a data-ng-class="comName.IsMainProduct == true? 'ng-show': 'ng-hide'" href='@Url.Action("viewproduct", "product")/?ProductId={{comName.ComponentID}}'>({{comName.NoOfQtyInKit * comName.AvailableInQuantitiesOf}}) {{comName.ComponentName}}</a>
+                            <span data-ng-class="comName.IsMainProduct != true? 'ng-show': 'ng-hide'">({{comName.NoOfQtyInKit * comName.AvailableInQuantitiesOf}}) {{comName.ComponentName}}</span>
+                            <span data-ng-class="comName.BackorderAvailable == true && comName.Inventoried == true && comName.StockAvailable < comName.NoOfQtyInKit ? 'ng-show': 'ng-hide'">(BACKORDERED) </span>
+                        </li>
+                    </ul>
+                </div>
+                <a href="javascript:;" data-ng-model="collapsed" data-ng-click="collapsed=!collapsed">{{toggleText}}</a>
+                <p data-ng-bind-html="viewUmbrellSelectProduct.ShortDescription | sanitize" data-true="{{viewProduct.IsUmbrellaProduct}}" data-ng-class="viewProduct.IsUmbrellaProduct == true? 'ng-show': 'ng-hide'">{{viewUmbrellSelectProduct.ShortDescription}}</p>
+                <div data-ng-if="viewProduct.Discount > 0" style="padding: 0% 5%;">
+                    <span style="font-weight: bold; color: #028BB9">You are saving {{viewProduct.Discount}}% by purchasing these items as a package!</span>
+                </div>
+
+                <ul>
+                    <li class="umbrellaFlag" href="javascript:;" tooltips tooltip-content="<b>Only for Member</b>" tooltip-side="bottom" data-ture="{{viewProduct.IsUmbrellaProduct}}" data-ng-show="viewProduct.IsMemberOnly">
+                        <img src="~/Images/members-only.jpg" alt="" />
+                    </li>
+                    <li data-ng-if="viewProduct.Discontinued == true" class="disconti">LIMITED QUANTITY</li>
+                    <li data-ng-if="viewProduct.StockAvailable <= 0 && viewProduct.IsUmbrellaProduct != true &&  viewProduct.BackorderAvailable == true && viewProduct.Inventoried == true && viewProduct.PreorderAvailableDate == null" data-bo="{{viewProduct.BackorderAvailable}}" id="bo" class="backOrderInView">ON BACKORDER</li>
+                    <li data-ng-if="viewProduct.StockAvailable <= 0 && viewProduct.BackorderAvailable == true && viewProduct.Inventoried == true && viewProduct.PreorderAvailableDate != null " data-bo="{{viewProduct.BackorderAvailable}}" id="bo" class="backOrderInView">PRE-ORDER AVAILABLE</li>
+                    <li data-ng-class="viewProduct.IsUmbrellaProduct == true && viewUmbrellSelectProduct.StockAvailable <= 0 && viewUmbrellSelectProduct.BackorderAvailable == true && viewUmbrellSelectProduct.Inventoried == true? 'ng-show': 'ng-hide'" class="backOrderInView">ON BACKORDER</li>
+
+                    <li id="aQval1">
+                        <span data-ng-class="viewProduct.IsUmbrellaProduct != true? 'ng-show': 'ng-hide'">Available in quantities of {{viewProduct.AvailableQty}}</span>
+                        <span data-ng-class="viewProduct.IsUmbrellaProduct == true && viewUmbrellSelectProduct.AvailableQty > 0? 'ng-show': 'ng-hide'">Available in quantities of {{viewUmbrellSelectProduct.AvailableQty}}</span>
+                    </li>
+                    <li id="aQval" style="display: none;">
+                        <span data-ng-class="viewProduct.IsUmbrellaProduct != true? 'ng-show': 'ng-hide'">{{viewProduct.StockAvailable}}</span>
+                        <span data-ng-class="viewProduct.IsUmbrellaProduct == true? 'ng-show': 'ng-hide'">{{viewUmbrellSelectProduct.StockAvailable}}</span>
+                    </li>
+
+                </ul>
+                <hr class="bottom-line">
+            </div>
+            <div class="ppg-item-details">
+
+                <p data-ng-class="viewProduct.IsUmbrellaProduct == true? 'ng-show': 'ng-hide'" data-true="{{viewProduct.IsUmbrellaProduct}}">
+                    @*viewUmbrellProductDD*@
+                    <span>{{viewUmbrellProducts.SubProductOption01[0].OptionDescription}} </span>
+                    <br />
+                    <!--class="selectpicker" -->
+                    <select data-ng-model="prdQuantity" id="prdQuantity" class="selectSkin" data-ng-change="onProductChange($event)" style="box-shadow: 0px 0px 2px #FF0000;" required data-ng-options="UmbrellProduct as UmbrellProduct.OptionMasterListDescription for UmbrellProduct in viewUmbrellProducts.SubProductOption01 track by UmbrellProduct.OptionMasterListCode">
+                        @*<select data-ng-model="viewUmbrellProductDD" id="viewUmbrellProductDD" data-ng-change="onProductChange($event)" required>*@
+                        <option value="">Select {{viewUmbrellProducts.SubProductOption01[0].OptionDescription}} </option>
+                        @*
+                            <option value="Standard">Standard</option>
+                            <option value="Custom">Custom</option>
+                        *@
+                    </select><br />
+                    <br />
+                    <span data-ng-class="(viewUmbrellProducts.SubProductOption02).length == 0? 'ng-hide': 'ng-show'">{{viewUmbrellProducts.SubProductOption02[0].OptionDescription}} </span>
+                    <br />
+                    <select data-ng-class="(viewUmbrellProducts.SubProductOption02).length == 0? 'ng-hide': 'ng-show'" data-ng-model="viewUmbrellProductDD" style="box-shadow: 0px 0px 2px #FF0000;" id="viewUmbrellProductDD" class="selectSkin" data-ng-change="onProductChange($event)" required data-ng-options="UmbrellProduct as UmbrellProduct.OptionMasterListDescription for UmbrellProduct in viewUmbrellProducts.SubProductOption02 track by UmbrellProduct.OptionMasterListCode">
+                        <option value="">Select {{viewUmbrellProducts.SubProductOption02[0].OptionDescription}}</option>
+
+                    </select>
+                </p>
+
+
+                <div class="moreDetails" data-datalength1="{{viewProduct.LongDescription.length}}" data-datalength2="{{viewUmbrellSelectProduct.LongDescription.length}}" data-ng-if="viewProduct.LongDescription.length > 0 || viewUmbrellSelectProduct.LongDescription.length > 0">
+                    <h2 class="item-detail">Item Details</h2>
+
+                    <p data-ng-bind-html="viewProduct.LongDescription | sanitize" data-ng-class="IsUmbrellaProductElements != true? 'ng-show': 'ng-hide'"></p>
+                    <p data-ng-bind-html="viewUmbrellSelectProduct.LongDescription | sanitize" data-ng-class="viewProduct.IsUmbrellaProduct == true? 'ng-show': 'ng-hide'"></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="ppg-summary">
+            <h2>Summary</h2>
+            <ul class="prices" data-ng-class="viewProduct.IsUmbrellaProduct != true? 'ng-show': 'ng-hide'">
+                <li><span>Member: </span>{{viewProduct.MemberPrice | currency}}</li>
+                <li data-ng-class="viewProduct.IsMemberOnly != true? 'ng-show': 'ng-hide'"><span>Non-member: </span>{{viewProduct.Price | currency}}</li>
+            </ul>
+
+
+            @*<ul class="prices" data-ng-class="viewProduct.IsUmbrellaProduct == true? 'ng-show': 'ng-hide'">
+                    <li><span>Member:</span>{{viewProduct.MinMemberPrice == viewProduct.MaxMemberPrice ? (viewProduct.MinMemberPrice | currency) : (viewProduct.MinMemberPrice | currency) + ' to ' + (viewProduct.MaxMemberPrice | currency)}}</li>
+                    <li data-ng-class="viewProduct.IsMemberOnly != true? 'ng-show': 'ng-hide'"><span>Non-member:</span> {{viewProduct.MinListPrice == viewProduct.MaxListPrice ? (viewProduct.MinListPrice | currency) : (viewProduct.MinListPrice | currency) + ' to ' + (viewProduct.MaxListPrice | currency)}}</li>
+                </ul>*@
+
+
+            <ul class="prices" data-ng-class="IsUmbrellaProductElements == true? 'ng-show': 'ng-hide'">
+                <li><span>Member: </span>{{viewUmbrellSelectProduct.MemberPrice | currency}}</li>
+                <li><span>Non-member: </span>{{viewUmbrellSelectProduct.Price | currency}}</li>
+            </ul>
+
+
+            <ul class="actions" data-ng-if="viewProduct.SubSystem == 'MTG'">
+                <li data-id="{{viewProduct.ProductId}}"
+                    onclick="ViewMeetingProduct($(this).attr('data-id'))">Register</li>
+            </ul>
+
+            <ul class="actions" data-ng-if="viewProduct.SubSystem != 'MTG' && viewProduct.NoAddToCartFlag != true">
+                <li class="qty" style="border: 0;">Quantity<input type="number" min="1" class="ProductQuantity" id="avalQuantity" value=@ViewBag.Quantity></li>
+
+                <li data-ng-click="AddToCart(viewProduct.ProductId, $event, 'view')" data-umb="{{IsUmbrellaProductAddToCart}}" data-ng-class="viewProduct.IsUmbrellaProduct != true && viewProduct.IsCustom != true ? 'ng-show': 'ng-hide'" data-ng-if="viewProduct.Discontinued != true ">Add to Cart</li>
+                <li data-prdid="{{viewUmbrellSelectProduct.ProductId}}" data-ng-click="AddToCart(viewUmbrellSelectProduct.ProductId, $event, 'view')" data-parenetid="{{viewProduct.ProductId}}" data-umb="{{IsUmbrellaProductAddToCart}}" data-ng-class="IsUmbrellaProductAddToCart == true && viewUmbrellSelectProduct.IsCustom != true ? 'ng-show': 'ng-hide'" data-ng-if="viewProduct.Discontinued != true ">Add to Cart</li>
+                <li data-prdid="{{viewUmbrellSelectProduct.ProductId}}" data-ng-click="ProductCompose(viewUmbrellSelectProduct.ProductId, '', viewUmbrellSelectProduct.ProductId)" data-true="{{IsUmbrellaProductAddToCart}}" data-ng-class="IsUmbrellaProductAddToCart == true && viewUmbrellSelectProduct.IsCustom? 'ng-show': 'ng-hide'" data-ng-if="viewProduct.Discontinued != true ">Add to Cart</li>
+                <li data-ng-click="ProductCompose(viewProduct.ProductId, '', viewProduct.ProductId)" data-ng-class="viewProduct.IsUmbrellaProduct != true && viewProduct.IsCustom != false ? 'ng-show': 'ng-hide'">Add to Cart</li>
+
+                <li id="checkout" style="display: none;"><a href="@(System.Configuration.ConfigurationManager.AppSettings["CartUrl"]+(!string.IsNullOrEmpty(Convert.ToString(Session["ct"])) ? "?ct="+Session["ct"]: ""))">Checkout Now</a></li>
+
+
+            </ul>
+
+            @*<div class="savings" id="ppg-sum-savings">member savings: $900</div>*@
+
+            @if (HttpContext.Current.Session["token"] == null)
+            {
+                <div class="become" id="ppg-sum-member">(Become a Member)</div>
+
+            }
+        </div>
+    </div>
+    <hr class="bottom-line2" />
+    @{ Html.RenderPartial("~/Views/Product/_RelatedProducts.cshtml");}
+</content>
+
+
+
+
+
+
+@*<div id="recentlyViewdProducts" style="display: none;">
+        <h2 class="blkTitle">Recently Viewed Products</h2>
+        <span class="noData"></span>
+        @{ Html.RenderPartial("~/Views/Product/_RecentlyViewedProducts.cshtml");}
+    </div>*@
+
+
+
+@*<div class="sidebar_widget" style="border: none;" data-ng-if="viewProduct.QuantityDiscounts.length>0 || viewUmbrellSelectProduct.QuantityDiscounts.length>0">
+        <h4>Purchase More & Save!</h4>
+        <div class="widget_content" style="padding: 0px;">
+            <table style="text-align: center;">
+                <thead>
+                    <tr style="background-color: #008AB8; color: #fff;">
+                        <td>Quantity Purchased</td>
+                        <td>Savings</td>
+                    </tr>
+                </thead>
+                <tr data-ng-if="IsUmbrellaProductTrue==true && viewProduct.QuantityDiscounts.length>0" data-ng-repeat="disc in viewProduct.QuantityDiscounts">
+                    <td>{{disc.QtyFrom}} - {{disc.QtyTo}}</td>
+                    <td>{{disc.DiscPercentage}}%</td>
+                </tr>
+                <tr data-ng-if="IsUmbrellaProductTrue==false && viewUmbrellSelectProduct.QuantityDiscounts.length>0" data-ng-repeat="disc in viewUmbrellSelectProduct.QuantityDiscounts">
+                    <td>{{disc.QtyFrom}} - {{disc.QtyTo}}</td>
+                    <td>{{disc.DiscPercentage}}%</td>
+                </tr>
+            </table>
+        </div>
+    </div>*@

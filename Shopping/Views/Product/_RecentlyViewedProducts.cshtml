@@ -1,0 +1,76 @@
+﻿<div id="products_view" class="pd_gridView">
+    <div id="product_display">
+        <div class="product_data" data-ng-switch="(recentView | filter:search).length">
+            <span class="jplist-no-results" id="loadMsg" style="display: none;">Loading Results...</span>
+            <span class="jplist-no-results" style="display: none;" id="noResultMsg">No results found</span>
+            <div class="product_list" data-ng-repeat="product in recentView | orderBy:sortType:sortReverse  | startFrom: currentPage*productsPerPage | limitTo:pageSize" ng-switch-default>
+
+                @*<div data-ng-show="product.StockAvailable == 0" class="backOrder">ON BACKORDER</div>*@
+        <div data-ng-if="product.StockAvailable <= 0 && product.IsUmbrellaProduct != true &&  product.Inventoried == true &&  product.BackorderAvailable == true && product.PreorderAvailableDate == null" data-bo="{{product.BackorderAvailable}}" id="bo" class="backOrder"> ON BACKORDER</div>
+        <div data-ng-if="product.StockAvailable <= 0 && product.IsUmbrellaProduct != true &&  product.Inventoried == true &&  product.BackorderAvailable == true && product.PreorderAvailableDate != null" data-bo="{{product.BackorderAvailable}}" id="bo" class="backOrder">PRE-ORDER AVAILABLE</div>
+            <div style="height:20px;">
+                <a class="umbrellaFlag" href="javascript:;" onclick="viewProduct('/Login/Index')" tooltips data-ng-attr-tooltip-content="{{sesCustomerId !=''? '<b>Only for Member</b>':'<b>Only for Member</b><br />Click on badge to login'}}" tooltip-side="bottom" data-ture="{{product.IsUmbrellaProduct}}" data-ng-show="product.IsMemberOnly" data-userinfo="{{sesCustomerId}}">
+                    <img src="~/Images/members-only.jpg" alt="Members Only" /></a>
+            </div>
+                <div class="book_img">
+                    <img data-ng-src="{{product.ProductImage}}" no-image>
+                </div>
+                <div class="product_details ">
+                    <h3 class="product_title thumbView"><span limit-desc data-limit="40">{{product.ProductName}}</span> @*<span class="formatLbl">{{product.Format}}</span>*@</h3>
+                    <h3 class="product_title listView"><a href="javascript:;" data-ng-init="url='/Product/viewproduct/?ProductId='" data-ng-click="viewProduct(url + product.ProductId)">{{product.ProductName}}</a> @*<span class="formatLbl">Format: {{product.Format}}</span>*@</h3>
+                    <p class="desc" id="description" data-ng-bind-html="product.ShortDescription | sanitize" limit-desc data-limit="250"></p>
+
+                    
+<div class="cart_actions">
+                <span style="display: none;">{{product.AvailableQty}}</span>
+                <span id="aQval" style="display: none;">
+                    <span data-ng-class="product.IsUmbrellaProduct != true? 'ng-show': 'ng-hide'">{{product.StockAvailable}}</span>
+                </span>
+
+                <p class="pp">
+                    <span>SPECIAL PRICING FOR MEMBERS!</span>
+                    <br>
+                        <span class="priceview">Member:</span>
+                        <span class="priceview" data-ng-show="{{!product.IsUmbrellaProduct}}">{{product.MemberPrice | currency}}</span>
+                        <span class="priceview dblPrice" data-ng-show="{{product.IsUmbrellaProduct}}">As low as {{product.MinMemberPrice | currency}}</span>
+                    <br>
+                        <span class="priceview">List:</span>
+                        <span class="priceview" data-ng-show="{{!product.IsUmbrellaProduct}}">{{product.Price | currency}}</span>                  
+                        <span class="priceview dblPrice" data-ng-show="{{product.IsUmbrellaProduct}}">As low as {{product.MinListPrice | currency}}</span>
+                    <br>                 
+                </p>
+
+                @*<p class="pp">
+                    <span style="font-size:x-small;">List Price:</span>
+                    <span data-ng-show="{{!product.IsUmbrellaProduct}}">{{product.Price | currency}}</span>
+                    <span data-ng-show="{{product.IsUmbrellaProduct}}" class="dblPrice">As low as: {{product.MinListPrice | currency}}</span>
+                </p>
+                <p class="pp">
+                    <span style="font-size:x-small;">Member Price:</span>
+                    <span data-ng-show="{{!product.IsUmbrellaProduct}}">{{product.MemberPrice | currency}}</span>
+                    <span data-ng-show="{{product.IsUmbrellaProduct}}" class="dblPrice">As low as: {{product.MinMemberPrice | currency}}</span>
+                </p>*@
+                
+                @*<button class="add_cart_btn" id="{{product.ProductId}}" data-ng-click="AddToCart(product.ProductId, $event, 'recent')" data-ng-class="product.IsUmbrellaProduct != true  ? 'ng-show': 'ng-hide'" data-ng-if="product.Discontinued != true"></button>*@
+                <button class="view_detail_btn" data-id="{{product.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='" onclick="viewProduct($(this).attr('data-id'))" data-ng-class="product.IsUmbrellaProduct != true  ? 'ng-show': 'ng-hide'" >View Details</button>
+                <button class="view_detail_btn single_vd" data-id="{{product.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='" onclick="viewProduct($(this).attr('data-id'))"data-ng-class="product.IsUmbrellaProduct == true  ? 'ng-show': 'ng-hide'" >View Details</button>
+                </div>
+                    <!--cart_actions-->
+                </div>
+                <!--product_details-->
+
+            </div>
+            <div style="clear: both;"></div>
+
+        </div>
+    </div>
+</div>
+<style>
+    .disabled {
+        display: none !important;
+    }
+    #product_display .product_list {
+        width:18.8%;
+    }
+</style>
+

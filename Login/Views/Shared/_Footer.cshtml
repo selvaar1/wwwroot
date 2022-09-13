@@ -1,0 +1,57 @@
+﻿
+<footer role="contentinfo">
+    <div class="footer-left">
+        <div>
+            Society of Interventional Radiology<br />
+            3975 Fair Ridge Drive • Suite 400 North • Fairfax, Virginia 22033<br />
+            (703) 691-1805  • Fax (703) 691-1855
+        </div>
+        <div role="menu">
+            <a role="menuitem" href="#">Terms of Use</a>
+            <a role="menuitem" href="#">Privacy Policy</a>
+            <a role="menuitem" href="#">Content, Links and Copyright</a>
+            <a role="menuitem" href="#">Advertise</a>
+        </div>
+        <div>
+            <img src="~/img/sir-logo-white.svg" alt="SIR logo">
+        </div>
+        <div>TRANSLATE</div>
+        <div>&copy; @DateTime.Now.Year The Society of Interventional Radiology. All rights reserved.</div>
+    </div>
+
+    <div class="footer-product-types" role="menu">
+        <p>PRODUCT TYPES</p>
+        <ul>
+            <li role="menuitem"><a href="#">Discharge Summaries</a></li>
+            <li role="menuitem"><a href="#">Operations Toolkits</a></li>
+            <li role="menuitem"><a href="#">Marketing Toolkits</a></li>
+            <li role="menuitem"><a href="#">Staffing Toolkits</a></li>
+            <li role="menuitem"><a href="#">Equipment Booklet</a></li>
+            <li role="menuitem"><a href="#">Coding Guidances</a></li>
+            <li role="menuitem"><a href="#">Reimbursement & Claims Templates</a></li>
+            <li role="menuitem"><a href="#">Revenue Cycle Management Audit</a></li>
+            <li role="menuitem"><a href="#">Facilities Guidelines</a></li>
+            <li role="menuitem"><a href="#">EHR Medical Templates</a></li>
+            <li role="menuitem"><a href="#">Informed Consent Forms</a></li>
+        </ul>
+    </div>
+</footer>
+
+@if (Session["token"] != null)
+{
+    if (!string.IsNullOrEmpty(Convert.ToString(Session["CustomerName"])))
+    {
+        <a href="@System.Configuration.ConfigurationManager.AppSettings["MyAccountURL"]" role="menuitem" class="lebel">
+            Welcome &nbsp; <span style="color: #f00">
+                @Convert.ToString(Session["CustomerName"])
+            </span>
+        </a>
+    }
+
+    <li><a href='@(System.Configuration.ConfigurationManager.AppSettings["SSOLoginURL"] + "/Logout?ReturnURL=" + System.Configuration.ConfigurationManager.AppSettings["StoreURL"] )' role="menuitem">Logout</a></li>
+
+}
+else
+{
+    <a href="@(System.Configuration.ConfigurationManager.AppSettings["SSOLoginURL"] + "?ReturnURL="+ Request.Url.AbsoluteUri)">Login</a>
+}

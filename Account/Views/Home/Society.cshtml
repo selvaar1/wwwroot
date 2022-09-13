@@ -1,0 +1,251 @@
+﻿@{
+    ViewBag.PageTitle = "Society Memberships";
+}
+@{
+    ViewBag.Title = "Society memberships";
+}
+@*@section featured {
+
+                    <h1 class="page_title">@ViewBag.Title</h1>
+                    <h2>@ViewBag.Message</h2>
+    }*@
+
+
+
+
+<div class="registration_form">
+    <h1 class="page_title">@ViewBag.PageTitle</h1>
+    <div class="form_row_submit" style="text-align: left;">
+
+        <div id="list2" class="datagrid list2" style="display: none; margin-bottom: 20px;">
+        </div>
+
+        <h4 class="info" style="font-size: 1em;">* Memberships that qualify for the discounted reciprocity rate.</h4>
+
+
+      
+    </div>
+</div>
+
+
+<style>
+    .memberships-selected {
+        margin: 5px;
+    }
+
+        .memberships-selected label {
+            font-size: 17px;
+            font-weight: normal !important;
+            margin-left: 10px;
+            margin-bottom: 3px !important;
+        }
+</style>
+
+<script id="template-list2" type="text/x-handlebars-template">
+
+    {{#if Data.length}}
+    <div class="contentBox clearfix">
+        <div class="clearfix">
+            {{#each Data }}
+                {{#if SELECTED}}
+                    <div class="memberships-selected">
+                        <label for="SOC_{{VALUE}}">{{TEXT}}{{PROPERTY}}</label>
+                    </div>
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+
+    <div>
+        <button class="btn btn-primary" id="addeditSM">Add/Edit Society Memberships</button>
+    </div>
+
+</script>
+
+
+<script id="template-list-all" type="text/x-handlebars-template">
+
+    {{#if Data.length}}
+    <div class="contentBox clearfix">
+        <div class="clearfix">
+            {{#each Data }}
+            <div class="col-lg-6 clearfix">
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" value="{{VALUE}}" {{SELECTED}} name="SOC_{{VALUE}}" class="society" />&nbsp;<label for="SOC_{{VALUE}}">{{TEXT}}{{PROPERTY}}</label>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <div>
+        <button class="btn btn-primary" id="save2">Save</button> <button class="btn btn-primary" id="cancel">Cancel</button>
+    </div>
+    {{/if}}
+</script>
+
+
+
+
+
+<script>
+
+    var listdata2 = null;
+
+    var toadd = [];
+    var todelete = [];
+
+
+    function ShowListdata2() {
+        $('#list2').show();
+        renderTemplate(listdata2, '#template-list2', '#list2');
+    }
+
+    function page_init() {
+
+
+        callProxy(
+           "GetSocieties",
+           null,
+           function (response) {
+               listdata2 = response;
+
+               ShowListdata2();
+
+
+           }
+       );
+
+
+        $('body').on('change', '.society', function () {
+
+            console.log("save2");
+
+            var society = $(this).val();
+
+            //var data = {
+            //    society: society
+
+            //};
+            //console.log("save data2", data);
+
+            if ($(this).is(':checked')) {
+
+                toadd.push(society);
+
+                //callProxy(
+                //    "AddSocieties",
+                //    data,
+                //function (response) {
+                //    listdata2 = response;
+                //    ShowListdata2();
+                //}
+                //);
+            }
+            else {
+                todelete.push(society);
+                // callProxy(
+                //"DeleteSocieties",
+                //data,
+                // function (response) {
+                //     listdata2 = response;
+
+                //     ShowListdata2();
+
+                // }
+                // );
+            }
+
+            return false;
+        });
+
+        $('body').on('click', '#save2', function () {
+
+            var data = {
+                toadd: toadd.join(','),
+                todelete: todelete.join(',')
+            };
+
+            callProxy(
+           "UpdateSocieties",
+           data,
+            function (response) {
+
+                toadd = [];
+                todelete = [];
+                listdata2 = response;
+
+                ShowListdata2();
+
+            }
+            );
+        });
+
+        $('body').on('click', '#cancel', function () {
+            callProxy(
+          "GetSocieties",
+          null,
+          function (response) {
+              listdata2 = response;
+              ShowListdata2();
+          });
+        });
+
+
+        @*        $('body').on('click', '.society', function () {
+
+            console.log("save2");
+
+            var society = "";
+
+            $('.society:checked').each(function () {
+                if (society.length > 0) society += "|";
+                society += $(this).val();
+            });
+
+            var data = {
+                society: society
+
+            };
+            console.log("save data2", data);
+
+            callProxy(
+                "SaveSocieties",
+                data,
+            function (response) {
+                listdata2 = response;
+
+		ShowListdata2();
+
+		location.href= '@Url.Action("Index", "Home")';
+
+            }
+            );
+
+            return false;
+        });*@
+
+
+        $('body').on('click', '#addeditSM', function () {
+            renderTemplate(listdata2, '#template-list-all', '#list2');
+        });
+
+       
+        
+
+    }
+</script>
+
+
+<script>
+
+    $(document).ready(function () {
+        console.log("ready");
+
+        page_init();
+
+
+    });
+
+</script>

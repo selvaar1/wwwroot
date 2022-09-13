@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Product Details";
+}
+
+<div class="registration_form col-sm-12">
+    <h1 class="page_title">@ViewBag.Title</h1>
+    <input type="hidden" id="hdnpid" value="@ViewBag.ProductId" />
+    <div id="pdetails">
+    </div>
+    <a href='~/'>Back To Cart</a>@*@System.Configuration.ConfigurationManager.AppSettings["ShoppingCartURL"]*@
+</div>
+<script id="details-template-grid" type="text/x-handlebars-template">
+    {{#if Details}}
+        <div>
+            <div class="contentbox">
+                <div class="cb_header">
+                    <span>{{Details.ProductName}}</span>
+                </div>
+                <div class="cb_body">
+                    <p>
+                        Format : {{Details.ProductClass}}
+                    </p>
+                    <p>
+                        {{Details.ProductName}}
+                    </p>
+                    <p>
+                        Item Details :<br />
+                        <span>{{{Details.LongDescription}}}</span>
+                    </p>
+                </div>
+                <div class="cb_footer">
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <span>No Detials Found</span>
+    {{/if}}
+</script>
+<script>
+    $(document).ready(function () {
+       
+        GetProductDetails();
+        function GetProductDetails() {
+            var pid = $('#hdnpid').val();
+            $.ajax(
+                {
+                    url: '@Url.Action("GetProductDetails", "Home")',
+                    contentType: 'application/json; charset=utf-8',
+                    datatype: 'json',
+                    data: JSON.stringify({ 'pid': pid }),
+                    type: "POST",
+                    success: function (data) {
+                        if (data.Success == true) {
+                            console.log(data);
+                            var template = jQuery('#details-template-grid').html();
+                            var compiledtemplate = Handlebars.compile(template);
+                            items = compiledtemplate(data);
+                            jQuery('#pdetails').html(items);
+                        }
+                        else {
+                            nalert(data.ErrorMessage);
+                        }
+                    }
+                });
+        }
+    });
+</script>
+

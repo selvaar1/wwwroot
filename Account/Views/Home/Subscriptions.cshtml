@@ -1,0 +1,212 @@
+﻿@using MyResource = ResourceFile
+@{
+    ViewBag.PageTitle = "Manage Subscriptions";
+    ViewBag.Title = "Manage Subscriptions";
+    Layout = "~/Views/Shared/_LayoutLanding.cshtml";
+}
+
+
+<h1 class="page_title">@ViewBag.Title</h1>
+<h2>@ViewBag.Message</h2>
+
+@*<h2>We cannot find a qualifying order on your account</h2>*@
+
+
+
+<div class="row" style="margin-top: 6px;">
+
+    <div class="col-md-12">
+
+        @if (ViewBag.Order != null)
+        {
+            <form action="@Url.Action("ResetSubscriptions", "Home")" method="POST" style="float: right;">
+
+                <input type="submit" id="ResetSubscriptions" value="Clear All" class="btn btn-secondary" />
+            </form>
+        }
+    <form action="@Url.Action("UploadOrder", "Home")" method="POST">
+
+        <label for="order">Order Number:</label>
+        <input type="text" name="order" id="order" value="@(ViewBag.Order != null ? ViewBag.Order.OrderNumber : "")">
+        <label for="order">Line Number:</label>
+        <input type="text" name="orderline" id="orderline" value="@(ViewBag.Order != null ? ViewBag.Order.OrderLineNumber : "1")" style="width: 40px;">
+        <input type="submit" id="SearchOrder" value="Search" class="btn btn-primary" />
+    </form>
+
+        @if (ViewBag.Order == null)
+        {
+            <div style="height: 100px;">
+
+            </div>
+        }
+
+    </div>
+</div>
+<hr/>
+
+@if (ViewBag.Order != null)
+{
+    <div class="row" style="margin-top: 6px;">
+
+        <div class="col-md-12 customTable">
+
+            <table>
+                <tr>
+                    <td><b>Order Number</b></td>
+                    <td>
+                        @ViewBag.Order.OrderNumber
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Order Line Number</b></td>
+                    <td>@ViewBag.Order.OrderLineNumber</td>
+                </tr>
+                <tr>
+                    <td><b>Label Name</b></td>
+                    <td>@ViewBag.Order.LabelName</td>
+                </tr>
+                <tr>
+                    <td><b>Product Name</b></td>
+                    <td>@ViewBag.Order.ProductName</td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+    <hr />
+    <div class="row" style="margin-top: 6px;">
+
+        <div class="col-md-6">
+            <form action="@Url.Action("UploadSubscriptions", "Home")" method="POST" enctype="multipart/form-data">
+
+                <label class="btn btn-primary" for="file">
+                    <input type="file" name="file" id="file" accept=".xls,.xlsx" style="display:none;" onchange="$('#UploadExcel').show(); $('#upload-file-info').html(this.files[0].name)">
+                    Browse Excel...
+                </label>
+                <span class='label label-info' id="upload-file-info"></span>
+                <input type="submit" id="UploadExcel" value="Upload Excel" class="btn btn-primary" style="display: none;" />
+            </form>
+
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="~/sample/subscription.xlsx">Sample Excel File</a>
+        </div>
+    </div>
+
+    <style>
+        .customTable {
+            margin: 10px;
+            border-collapse: collapse;
+        }
+
+            .customTable table td, .customTable table th {
+                padding: 3px 6px;
+                vertical-align: top;
+                border: solid 1px #CCCCCC;
+            }
+
+        .customTable .Message{
+            color: red;
+        }
+    </style>
+
+    <hr/>
+
+    <div class="customTable" id="personDataTable">
+    </div>
+
+    <form action="@Url.Action("SubmitSubscriptions", "Home")" method="POST" style="float: right;">
+        <input type="submit" value="Process" class="btn btn-primary" id="btnid" style="display: none;" />
+    </form>
+
+    <script>
+
+            var datacolumnStart = 10;
+            var datacolumnEnd = 17;
+
+        function insertSpaces(string) {
+    string = string.replace(/([a-z])([A-Z])/g, '$1 $2');
+    string = string.replace(/([A-Z])([A-Z][a-z])/g, '$1 $2')
+    return string;
+        }
+
+        $.makeTable = function (mydata) {
+
+            console.log(mydata);
+    var table = $('<table>');
+
+             var i = 0;
+            $.each(mydata, function (index, value) {
+                var TableRow = "";
+
+                TableRow += "<tr>";
+                $.each(value, function (key, val) {
+                    i++;
+                    if (i <= datacolumnStart || i > datacolumnEnd) {
+                        TableRow += "<th>" + insertSpaces(key) + "</th>";
+                    }
+                    else {
+                        if (i==datacolumnEnd-1) TableRow += "<th>Subscription(s)</th>";
+                    }
+                    });
+                
+                 TableRow += "</tr>";
+                $(table).append(TableRow);
+                return false;
+            });
+
+    $.each(mydata, function (index, value) {
+        var TableRow = "";
+
+        var i = 0;
+        var sub = "";
+        TableRow += "<tr>";
+        $.each(value, function (key, val) {
+
+            i++;
+            if (i <= datacolumnStart || i> datacolumnEnd ) {
+                TableRow += "<td class='"+key+"'>" + val + "</td>";
+            }
+            else {
+
+                if (val.length > 0) {
+                    if (sub.length > 0) sub += "<br/>";
+                    sub += insertSpaces(key);
+                }
+
+                if (i == datacolumnEnd - 1) {
+                    TableRow += "<td class='"+key+"'>" + sub + "</td>";
+                }
+            }
+        });
+
+        
+        TableRow += "</tr>";
+
+        $(table).append(TableRow);
+    });
+    return ($(table));
+};
+
+        $(document).ready(function () {
+            console.log("ready");
+            @if (@ViewBag.data != null)
+            {
+                    <text>
+
+            var mydata = @Html.Raw(ViewBag.data);
+            if (mydata != null && mydata.length > 0) {
+                var table = $.makeTable(mydata);
+                $(table).appendTo("#personDataTable");
+                $('#btnid').show();
+            }
+            </text>
+            }
+
+            });
+
+    </script>
+}

@@ -1,0 +1,142 @@
+﻿<header role="banner">
+    <div class="logo-box">
+        <div class="logo" role="contentinfo">
+            <a href="@(System.Configuration.ConfigurationManager.AppSettings["StoreURL"]+(!string.IsNullOrEmpty(Convert.ToString(Session["ct"])) ? "?ct="+Session["ct"]: ""))"><img src="~/img/sir-bc-logo.svg" alt="SIR Business Center Logo"></a>
+        </div>
+        <div class="searchandshop">
+            <div class="search" role="search">
+                <div class="search-form">
+
+                    @*<div class="form-group has-feedback">
+                        <form id="header-search-form" action="/special-pages/search/" method="get">
+                            <input type="search" name="search" class="form-control" placeholder="Search" id="topSearch" data-ng-keyup="SearchProducts('topSearch')">
+                            <span class="searchclear" style="display: none;"></span>
+                            <button id="collapse" class="search-btn form-control-feedback" aria-label="Search Button" ng-click="SearchProducts('topSearch')">
+                                <i><img src="~/img/search-button.svg" alt="search button"></i>
+                            </button>
+                        </form>
+                    </div>*@
+                </div>
+            </div>
+            <div class="shopping-cart" role="button">
+                @*
+        <a id="toolTip" href="@(System.Configuration.ConfigurationManager.AppSettings["CartUrl"] + (!string.IsNullOrEmpty(Convert.ToString(Session["ct"])) ? "?ct=" + Session["ct"] : ""))" role="menuitem" class="shoppingicon cart_quantity">
+
+            <text class="cartCount" style="align-content:flex-start">{{CartDetailsLength}}</text>
+            <i class="cartMsg" id="cartMsg" style="display: none;">Product added to cart</i>
+        </a>
+                *@
+
+
+                <a id="toolTip" href="@(System.Configuration.ConfigurationManager.AppSettings["ShoppingCartURL"] + (!string.IsNullOrEmpty(Convert.ToString(Session["ct"])) ? "?ct=" + Session["ct"] : ""))">
+                    <img src="~/img/shopping-cart.svg" alt="Shopping Cart">
+                </a>
+            </div>
+        </div>
+    </div>
+    <nav role="navigation" class="hamburger">
+        <img width="30" height="30" src="~/img/hamburger.svg" alt="Hamburger Menu" class="hamburger-open">
+        <img width="20" height="20" style="padding:5px;" src="~/img/hamburger-cross.svg" alt="Close the menu" class="hamburger-close">
+    </nav>
+    <nav role="navigation" class="main-menu">
+        <div class="nav-product-categories">
+            <span class="nav-product-categories-title">Product categories</span>
+            <ul role="menu">
+                <li role="menuitem"><a href="category-page.html">Patient engagement & education</a></li>
+                <li role="menuitem"><a href="category-page.html">Brand & Marketing</a></li>
+                <li role="menuitem"><a href="category-page.html">Coding, billing & reimbursement</a></li>
+                <li role="menuitem"><a href="category-page.html">Private practice operations & management</a></li>
+                <li role="menuitem"><a href="category-page.html">Setting Up an IR Private Practice</a></li>
+                <li role="menuitem"><a href="category-page.html">Electronic health records</a></li>
+            </ul>
+        </div>
+        <div class="nav-utility-links">
+            <ul>
+                <li>affinity partners</li>
+                <li>Partnership Directory</li>
+                <li>Become a Partner</li>
+                <li>About</li>
+                <li>Contact</li>
+                <li>Sirweb.org</li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+
+
+
+<script>
+
+        function Logout() {
+
+            $.ajax({
+                           url: '@Url.Action("Logout", "Home")',
+                type: "POST",
+                crossDomain: true,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                //data: { Email: email, Password: password },
+                success: function (response) {
+                               debugger;
+                               LogoutMeeting();
+                               //window.location.href = response;
+
+                           },
+                error: function () { }
+                       })
+
+        }
+                   function ValiateCart() {
+            $.ajax({
+                           url: '@Url.Action("ValiateCart", "Home")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: "",
+                success: function (response) {
+
+                               if (response != null && response.Success == true) {
+                                   debugger;
+                                   if (response.AllowtoCart == false)
+                                       alert("Please complete purchase of existing items from the cart or remove them from cart before starting a meeting modification");
+                                   else
+                                       window.location = response.path;
+                               }
+
+                           },
+                error: function (x) { nalert(x); }
+                       });
+                   }
+
+</script>
+
+
+
+
+@*<script>
+
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function () { myFunction() };
+
+    // Get the header
+    var header = document.getElementById("menu");
+
+    // Get the offset position of the navbar
+    var sticky = header.offsetTop;
+    console.log("sticky", sticky);
+    console.log("pageYOffset", window.pageYOffset);
+
+    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+        if ($(window).width() > 768) {
+            header.classList.add("sticky");
+        }
+        else {
+            header.classList.remove("sticky");
+        }
+    }
+
+    myFunction();
+
+</script>*@

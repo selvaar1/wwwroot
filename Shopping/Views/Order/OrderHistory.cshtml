@@ -1,0 +1,256 @@
+﻿@{
+    ViewBag.Title = "Order History";
+    Layout = "~/Views/Shared/_Products.cshtml";
+}
+<style>
+    ul.oh-fliters {
+        padding: 0;
+        margin: 0;
+        float: right;
+    }
+
+        ul.oh-fliters li {
+            display: inline-block;
+        }
+
+            ul.oh-fliters li .submit_btn {
+                position: static;
+                top: 0;
+                float: none;
+            }
+
+    .disabled {
+        display: none !important;
+    }
+</style>
+
+<link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery-ui-1.8.20.js")" type="text/javascript"></script>
+
+<script>
+    $(function () {
+        $("#SearchStartDate").datepicker();
+        $("#SearchEndDate").datepicker();
+        $(document).on('change', '#SearchType', function () {
+            $("#SearchOrderHistory").val("");
+        });
+    });
+</script>
+<script>
+    var WebTrackURL = '@System.Configuration.ConfigurationManager.AppSettings["TrackURL"].ToString()';
+    var re = /&amp;/gi; var str = WebTrackURL; var newstr = str.replace(re, "&");
+    WebTrackURL = newstr;
+</script>
+
+<div class="popLoader" id="popLoader" style="display: none;"><span>Please wait... </span></div>
+<div class="search_with_category">
+    <div class="search_with_category" style="width: 40%; float: left;">
+        <div class="dP_cat">
+            <select id="SearchType" style="height: 36px; width: 150%; background: url(../images/dd_arrow.png) 132px 17px no-repeat;" class="selectSkin">
+                <option value="OrderNo">Order Number</option>
+                <option value="ProductDesc">Product Description</option>
+            </select>
+        </div>
+        <input type="search" name="searchorderhistory" id="SearchOrderHistory" value="" class="search_input" style="padding: 0px 105px 0px 165px;">
+        <input type="button" class="submit_btn" id="SearchOrderHistoryDetails" value="Search" ng-click="SearchOrderHistory(0,2)">
+    </div>
+    <div style="width: 60%; float: right;">
+        <ul class="oh-fliters">
+            <li>
+                <div>
+                    By Date :
+                    <input type="text" name="searchstartdate" id="SearchStartDate" style="height: 36px;" placeholder="Start Date" readonly="readonly">
+                    <input type="text" name="searchenddate" id="SearchEndDate" style="height: 36px;" placeholder="End Date" readonly="readonly">
+                </div>
+            </li>
+            <li>
+                <div>
+                    <input type="button" class="submit_btn" id="SearchOrderHistoryByDates" value="Search" ng-click="SearchOrderHistoryByDates(0,2)" style="position: relative; float: none;">
+                </div>
+            </li>
+            <li>
+                <div>
+                    <input type="button" id="SearchReset" value="Reset" class="resetBtn" ng-click="SearchReset(0,2)">
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<h1 class="page_title" id="ShowOHtitle" style="display:none">Order History</h1>
+<h1 class="page_title" id="ShowNoOHtitle" style="display:none">No Order History Found</h1>
+
+<div id="divOrderHistory" style="display:none">
+    <div class="sorting_navigation">
+        <!--jplist-views-->
+        <div class="pageInfo" style="border-left:none">
+            {{pageStartIndex}} - {{pageDynamicCount}} of {{totalOrders}}
+        </div>
+        <!-- Pagination Control -->
+        <div class="jplist-pagination">
+            <div class="pagination">
+                <ul>
+                    <li ng-class="prevPageDisabled()" id="prev">
+                        <a href="javascript:;" ng-click="prevPage()">« Prev</a>
+                    </li>
+                    <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                        <a href="javascript:;">{{n+1}}</a>
+                    </li>
+                    <li ng-class="nextPageDisabled()" id="next">
+                        <a href="javascript:;" ng-click="nextPage()">Next »</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="page_content_main" data-ng-init="orderHistory(0,2)" style="margin-top:25px">
+        <div id="orderhistoryDetails" data-ng-repeat="order in repOrderHistory | startFrom: currentPage*ordersPerPage | limitTo:pageSize">
+            <div id="orderDetails" class="orNo">
+                <h2>
+                    <div id="orderFullDetails" class="orderFullDetails" ng-click="orderFullDetails(order.OrderNumber,0,2)">Order Number: {{order.OrderNumber}}</div>
+                    <span>
+                        Purchase Date: {{order.OrderDate| jsDate | date:"MM/dd/yyyy"}},
+                        Total Amount: <i ng-if="repCpSaving==null">{{order.TotalAmount - order.TaxAmount - order.ShippingAmount | currency}}</i>
+                                      <i ng-if="repCpSaving!=null">{{order.TotalAmount- order.TaxAmount - order.ShippingAmount + repCpSaving  | currency}}</i>,
+                        Quantity: {{order.NumberOfItems}}, <br />
+                        Shipped Address: {{order.ShipAddress}}
+                    </span>
+                </h2>
+                <div id="orderBtns">
+                    <button id="orderReorder" class="add_cart_btn_single" data-ng-reorder="{{order.OrderNumber}}" ng-click="orderReorder(order.OrderNumber,0,2)">Re-order</button>                   
+                    <button id="orderInvoice" class="order_invoice_btn" data-orderdate="{{order.OrderDate| jsDate | date:'MM/dd/yyyy'}}" ng-click="orderInvoiceByOrNo(order.OrderNumber)" >Order Invoice</button>                       
+                    @*<a href={{order.TrackURL}} target="_blank" data-ng-show="order.TrackURL != ''">
+                        <button id="trackOrder" class="track_order_btn" data-ng-trackorder="{{order.OrderTrackNo}}" >Track Order</button>                       
+                    </a>  *@            
+                </div>
+            </div>
+            <div id="productDetails" class="prdInfo" data-ng-repeat="product in order.Products">
+            <div>
+                <a href={{product.TrackURL}} target="_blank" data-ng-show="product.TrackURL != ''">
+                    <button id="trackOrder" class="track_order_btn" data-ng-trackorder="{{product.TrackingNo}}" >Track Item</button>                       
+                </a> 
+            </div>
+                <div id="productImage" class="prdImg">
+                    <img ng-src="{{product.ProductImage}}" no-image>
+                </div>
+                <div class="prdDetails">
+                    @*<div id="productId">
+                        <span>Product ID</span>: {{product.ProductID}}
+                    </div>*@
+                    <div id="productDiscontinued">
+                        <span data-ng-if="product.Discontinued == true" class="disconti ng-scope">LIMITED QUANTITY</span>
+                    </div>
+                    
+                    <div id="productDescription">
+                        <span>Product Description</span>: {{product.Description}}
+                    </div>                    
+                    <div id="productPrice">
+                        <span>Product Price</span>:
+
+                        @* Member Price *@
+                        <i ng-if="sesUserIsMember == '1'">{{product.MemberPrice | currency}}</i>
+
+                        @* User Price *@
+                        <i ng-if="sesUserIsMember != '1'">{{product.UnitPrice | currency}}</i>                  
+
+                    </div>                  
+                    <div data-ng-if="(product.ECDFileName).length > 0" style="margin-top: -5px;">
+                        @*<div id="noofDownloads">
+                                <span>No. of Downloads</span>: {{product.ECDDownloadsCount}}
+                            </div>
+                            <div id="remainingDownloads">
+                                <span>Remaining Downloads</span>: {{product.ECDDownloadsRemaining}}
+                            </div>*@
+                        <div id="fileName">
+                            <span>File Name</span>: {{product.ECDFileName}}
+                        </div>
+                        <div id="ecdfileDownload">
+                            <span ng-if="product.ECDDownloadsRemaining>0 && ((product.ECDDownloadUntilDate|jsDate) > currentdate)">
+                                <a href="" class="download" data-filename="{{product.ECDFileName}}" data-prodid="{{product.ProductID}}"
+                                data-fileid="{{product.ECDFileId}}" data-ordernumber="{{order.OrderNumber}}" data-orderlinenumber="{{product.RelatedLineNumber}}" 
+                                class="download" >Download</a>
+                            </span>
+                            <span ng-if="product.ECDDownloadsRemaining<=0 || ((product.ECDDownloadUntilDate|jsDate) < currentdate)">Download Not Available</span>
+                        </div>
+                         
+                    </div>
+                    <div data-ng-if="(product.Components).length > 0">
+                        <strong>Items included in package :</strong>
+                        <ul class="showDetails" style="margin-top:10px">
+                            <li data-ng-repeat="comName in product.Components">
+                                <span>{{comName.Description}} 
+                            </li>
+                        </ul>
+                    </div>                    
+                </div>
+                <div style="clear:both;"></div>
+                <div style="height:1px; margin: 20px 0 0 0; clear:both; background-color:#EEE;" data-ng-show="{{(order.Products).length > 1}}" data-ng-test="{{(order.Products).length > 1}}"></div>
+            
+</div>
+
+        </div>
+    </div>
+    <div class="sorting_navigation">
+        <!--jplist-views-->
+        <div class="pageInfo" style="border-left:none">
+            {{pageStartIndex}} - {{pageDynamicCount}} of {{totalOrders}}
+        </div>
+        <!-- Pagination Control -->
+        <div class="jplist-pagination">
+            <div class="pagination">
+                <ul>
+                    <li ng-class="prevPageDisabled()" id="prev">
+                        <a href="javascript:;" ng-click="prevPage()">« Prev</a>
+                    </li>
+                    <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                        <a href="javascript:;">{{n+1}}</a>
+                    </li>
+                    <li ng-class="nextPageDisabled()" id="next">
+                        <a href="javascript:;" ng-click="nextPage()">Next »</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $(document).on('click', '.download', function () {
+            document.getElementById("preloader").style.display = "block";
+            var filename = $(this).data('filename');
+            var prodid = $(this).data('prodid');
+            var fileid = $(this).data('fileid');
+            var ordernumber = $(this).data('ordernumber');
+            var orderlinenumber = $(this).data('orderlinenumber');
+
+            $.ajax(
+            {
+                url: '@Url.Action("DownloadAttachment", "Order")',
+                contentType: 'application/json; charset=utf-8',
+                
+                datatype: 'json',
+                data: {
+                    filename: filename,
+                    prodid: prodid,
+                    fileid: fileid,
+                    ordernumber: ordernumber,
+                    orderlinenumber: orderlinenumber
+                },
+                type: "GET",
+                success: function (data) {
+                    if (data == "Success") {
+                        window.location = '@Url.Action("Download", "Order")';
+                        document.getElementById("preloader").style.display = "none";
+                        var scope = angular.element(document.querySelectorAll("[ng-controller='viewProductController']")).scope();
+                        //scope.SearchOrderHistory(0,2);
+                        scope.orderHistory(0, 2);
+                    }
+                    else {
+                        document.getElementById("preloader").style.display = "none";
+                    }
+                }
+            });
+        });
+    });
+</script>

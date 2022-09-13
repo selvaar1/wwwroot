@@ -1,0 +1,12 @@
+﻿<a href="javascript:void(0);" id="show_banner1" style="display: none;">Hide Banner</a>
+<div style="visibility: hidden;" id="show_banner"></div>
+<div class="wonderful" id="slides">
+    <a href='http://store.aoa.org/Product/viewproduct/?ProductId=4205733' data-ng-repeat="img in FeatureProductImages" data-ng-repeat-load-finish="ngRepeatFinished">
+        @*<img data-ng-src="{{img.ProductImage}}" data-id="{{img.ProductId}}" alt="" class="slideImg"/>*@
+        <img data-ng-src="/Marketplace/images/2016 Mbag_Retail_Bag_large.jpg" data-id="{{img.ProductId}}" alt="" class="slideImg"/>
+        <div class="feaImgDesc">
+            <h3 class="product_title">{{img.ProductName}}</h3>
+            <p class="desc" data-ng-bind-html="img.ShortDescription | sanitize" limit-desc data-limit="150"></p>
+        </div>
+    </a>
+</div>

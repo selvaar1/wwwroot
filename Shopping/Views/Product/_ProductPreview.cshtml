@@ -1,0 +1,35 @@
+﻿<div class="cart-popup" id="ProductPreview">
+    <div class="cart-popup-container" id="ProductPreviewcontainer">
+        <h3>Compose Product</h3>
+        <a href="#0" class="cart-popup-close"></a>
+        <div class="cart-popup-form">
+            <div class="LoginpopLoader" id="PreviewpopLoader" style="display: none;"><span>Please wait... </span></div>
+            <input id="lblGroup" type="text" style="display: none" />
+            <input id="lblTemplatename" type="text" style="display: none" />
+            <input id="lblComposeId" type="text" style="display: none" />
+            <input id="lblProductId" type="text" style="display: none" />
+            <input id="lblCount" type="text" value="2" style="display: none" />
+            <input id="imagepath" type="text" value="2" style="display: none" />
+            <div style="overflow: auto; overflow-x: hidden; min-height: 50px; max-height: 450px; display: inline-block; width: 100%">
+                <div id="tblPreview" style="display: inline-block; width: 308px; float: left; vertical-align: top;margin-right: 15px;">
+                </div>
+                <div style="max-width: 600px; padding: 0 0 0 6px; float: left;border-color: gray;border-style: groove;border-width: thin;">
+                    <img id="Imgpreview" alt="" style="vertical-align: bottom" />
+                </div>
+            </div>
+            <div style="display: block; width: 100%; padding-top: 10px;">
+                @*<div style="display: inline-block; width: 30%;">
+                    *@
+                <button class="Signup" style="background-image: none;" id="PreviewCancel" data-ng-click="ComposePreviewClose()">Cancel</button>
+                    <button class="continue_form" data-ng-click="ComposePreview()" id="CreatePreview" style="background-image: none;">Preview</button>
+                    <button class="continue_form" id="CreateProof" style="background-image: none;" data-ng-click="ComposeAddCart($event, 'view')">Add to Cart</button>
+                    <span id="spanDDL"  hidden> <a id="hlkDownload" href="#" target="_blank">Click here</a> to download proof</span>
+                    @*
+                </div>
+                *@
+                <div style="display: inline-block; float:right; padding: 10px 20px 10px 60px;" id="DivPaging">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

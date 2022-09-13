@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="Home" controller="Home" action="Index">
+    <mvcSiteMapNode title="About Us" controller="Home" action="AboutUs"/>
+    <mvcSiteMapNode title="Featured Products" controller="Product" action="FeaturedProducts"/>
+    <mvcSiteMapNode title="View Product" controller="Product" action="ViewProduct"/>
+    <!--<mvcSiteMapNode title="View Cart" controller="Product" action="ViewCart"/>
+    <mvcSiteMapNode title="Place Order" controller="Product" action="PlaceOrder"/>
+    <mvcSiteMapNode title="Wishlist" controller="Product" action="WishList"/>
+    <mvcSiteMapNode title="Order Confirmation" controller="Product" action="orderConfirmation"/>
+    <mvcSiteMapNode title="Favorite" controller="Product" action="Favourites"/>
+    <mvcSiteMapNode title="My Orders" controller="Order" action="OrderHistory"/>
+    <mvcSiteMapNode title="Digital Downloads" controller="Order" action="DigitalDownloads"/>
+    <mvcSiteMapNode title="Order Invoice" controller="Order" action="OrderInvoice"/>
+    
+    <mvcSiteMapNode title="Customer Service" controller="Footer" action="CustomerService"/>
+    <mvcSiteMapNode title="Shipping and Delivery" controller="Footer" action="ShippingAndDelivery"/>
+    <mvcSiteMapNode title="Products And Policy" controller="Footer" action="ProductsAndPolicy"/>
+    <mvcSiteMapNode title="FAQ" controller="Footer" action="FAQ"/>-->
+  </mvcSiteMapNode>
+</mvcSiteMap>

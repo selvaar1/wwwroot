@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <Data>
+
+
+    <Section Name="Settings">
+      <Item Name="ProcessHTMLTags" Value="True" />
+
+      <Item Name="Diagnostics"
+				Enabled="True"
+				MailServer="[MAIL_DIAGNOSTICS_SMTPSERVER]"
+				LoggingLevel="Verbose"
+				MailFrom="[MAIL_DIAGNOSTICS_FROM]"
+				MailTo="[MAIL_DIAGNOSTICS_TO]"
+				MailCC="[MAIL_DIAGNOSTICS_CC]"
+				Path="c:\Temp"
+				Categories="TimssGlobalErrorHandler=Verbose"
+				DefaultVerbosityLevel="Verbose"
+				LogToFile="False"
+				LogToEmail="False"
+				LogToEventLog="True"
+			/>
+      <Item Name="WorkflowCanvas"
+         CanvasHeight="650"
+         CanvasWidth="900"
+				
+         ToolboxBackColorRed="255"
+         ToolboxBackColorGreen="255"
+         ToolboxBackColorBlue="255"
+				
+         ToolboxShapeFillColorRed="229"
+         ToolboxShapeFillColorGreen="220"
+         ToolboxShapeFillColorBlue="242"
+				
+         BackGroundColor1Red = "115"
+         BackGroundColor1Green = "127"
+         BackGroundColor1Blue = "153"
+				
+         BackGroundColor2Red = "146"
+         BackGroundColor2Green = "160"
+         BackGroundColor2Blue = "187"
+				
+         CanvasGradientAngle="90"
+            
+         ArrowHeadSize="3"
+         ArrowColor="84,98,137"
+         ArrowHeadShape="Triangle"
+			/>
+
+      <Item Name="Workflow"
+				WorkflowType="File"
+				WorkflowApplicationName="Personify"
+				Enabled="True"
+				WebFormsWorkflowPath=""
+				Base_Or_Custom ="Base"
+				TemplateName = "WORKFLOW_TEMPLATE"
+			/>
+
+      <Item Name="UserInterface"
+				SplashScreen="False"
+				ApplicationHostType="MDIMain"
+				StartupCommand="file://./HTMLPages\startscreen5.html"
+				ConfigFolder="Config"
+				DefaultRole="CallCenterRep"
+				AdvancedThemes="True"
+				DefaultTheme="TIMSS_Default.isl"
+				CustomerProfileURL="http://YourClientWebSite/CustomerProfile/Main.aspx"
+				RememberPassword="True"
+				RememberUserId="True"
+				EnableActiveDirectoryIntegration="False"
+				EnableLDAPIntegration="False"
+				ConstituentProfileURL="http://YourClientWebSite/ConstituentProfile/Main.aspx"
+				MailMergeDirectoryPath="C:\"
+				BroadcastingEnabled="True"
+				BroadcastingFrequency="30"
+        BroadcastMessageDisplayTimeout="15"
+				UnresolvedIssueAlertFrequencyInMinutes="5"
+				ReportTaskFormat="DESCRIPTION (CODE)"
+  			EnableDatabaseFilter="False"
+				AutomaticCapitalization="True"
+        EnableAddModOperatorAlias="True"
+			/>
+
+
+
+      <!-- These items are necessary for the remoting infrastructure -->
+      <!-- The basic seat information data -->
+	 			<Item Name="SeatInformation"
+				  AssociationName="SIR"
+				  EnvironmentName="SIR770TST"
+				  VersionName="7.7.0"
+				  AppTypeName="PLATFORM"
+				  DatabaseName="SIR770TST_P360"
+				  Login="orangeelement" Password="Cys0M#YF"
+			/>
+
+
+
+      <!-- This setting specifies the versioning token and is not used by the current environment -->
+      <Item Name="DatabaseMangling"
+				  VersionToken="_##_"
+			/>
+
+      <!-- The token expiration time. Currently is set to 7 days. -->
+      <!-- This value should be decreased down to 15 minutes once the version is stable (i.e. after 7/30). -->
+      <Item Name="ServerSideAuthentication"
+				  SecurityTokenExpirationTime="604800000"
+				  PasswordExpirationTime=""
+			/>
+
+      <!-- Define the URL where the Online Help Files can be found. -->
+      <Item Name="HelpViewer"
+            Context="Personify"
+            Server="http://personifyupdates.uapps.net/OnlineHelp/770"
+            ContentSensitiveHelp="index.htm?rhcsh=1&amp;rhmapid={0}"
+            TOCFile="index.htm"
+            IndexFile="index.htm"
+      />
+
+      <Item Name="Debug"
+				  TemporaryFileFolder="C:\Temp\Personify7\"
+			/>
+
+		<Item Name="Remoting" MessagingServiceUri="tcp://SIR770TSTapp.personifycloud.com:9001/MessagingService.rem" />
+
+
+      <!--Personify data cache refresh interval ( in minutes). Recommended value is 120 minutes -->
+      <Item Name="ApplicationDataCacheTimeout" Enabled="True" TimeoutInterval="120" />
+
+    </Section>
+
+    <Section Name="APILibraries">
+
+ 	<Item Name="TIMSS.API.UserSIRCustom" Layer="User" Type="Custom" RootNamespace="TIMSS.API.UserSIRCustom" FileName="bin\TIMSS.API.UserSIRCustom.dll" />
+	<Item Name="TIMSS.API.UserSIR" Layer="User" Type="Custom" RootNamespace="TIMSS.API.UserSIR" FileName="bin\TIMSS.API.UserSIR.dll" />
+      <Item Name="TIMSS.API.User.Generated" Layer="User" Type="Generated" RootNamespace="TIMSS.API.USER" FileName="bin\Personify.API.User.Generated.dll" />
+      <Item Name="TIMSS.API.Base" Layer="Base"  Type="Custom" RootNamespace="TIMSS.API.Base" FileName="bin\TIMSS.API.Base.dll" />
+      <Item Name="TIMSS.API.Generated" Layer="Base" Type="Generated" RootNamespace="TIMSS.API.Generated" FileName="bin\TIMSS.API.Generated.dll" />
+      <Item Name="TIMSS.API.Core" Layer="Core" Type="Custom" RootNamespace="TIMSS.API.Core" FileName="bin\TIMSS.API.Core.dll" />
+    </Section>
+
+    <Section Name="ApplicationDataCache">
+      <!-- Application Data Cache uses SQL Server Change Data Capture.
+      if CDC Enabled is true, mimimum polling interval can be 2 minutes + , else minimum polling interval should be 30 minutes.
+      The value is to be specified in milliseconds.-->
+      <Item Name="CDCEnabled" Value="False"/>
+      <Item Name="PollingInterval" Value="120000"/>
+    </Section>
+
+    <Section Name="FormLibraries">
+      <Item Name="TIMSS.API.Base" RootNamespace="TIMSS.API.Base" FileName="bin\TIMSS.API.Base.dll" />
+      <Item Name="TIMSS.API.Generated" RootNamespace="TIMSS.API.Generated" FileName="bin\TIMSS.API.Generated.dll" />
+    </Section>
+
+    <Section Name="Sources">
+      <Item Name="SharedResources" URI="TIMSS.Win.Designer.dll#TIMSS.Win.Designer" Type="EmbeddedResource" />
+      <Item Name="SharedResources" URI="TIMSS.Shared.dll#TIMSS" Type="EmbeddedResource" />
+      <Item Name="Config" URI="Config" Type="FileSystemFolder"/>
+      <Item Name="Forms" URI="Config/Forms" Type="FileSystemFolder" Layer="Base"/>
+      <Item Name="Forms" URI="Config/Forms/Custom" Type="FileSystemFolder" Layer="Custom"/>
+      <Item Name="Forms" URI="Config/Forms/Sandbox" Type="FileSystemFolder" Layer="Sandbox"/>
+      <Item Name="Forms" URI="Config/WebForms" Type="FileSystemFolder" Layer="WebBase"/>
+      <Item Name="Forms" URI="Config/WebForms/Custom" Type="FileSystemFolder" Layer="WebCustom"/>
+      <Item Name="Forms" URI="Config/WebForms/Sandbox" Type="FileSystemFolder" Layer="WebSandbox"/>
+      <Item Name="FormTemplates" URI="Config/FormTemplates" Type="FileSystemFolder"/>
+    </Section>
+
+    <Section Name="Designer">
+      <!-- In typical installation, replace "BaseDevelopment" with "CustomDevelopment" -->
+      <Item Name="Default" RelativePath="" Environment="CustomDevelopment"/>
+    </Section>
+
+    <Section Name="DataServices">
+      <Item Name="Publishing"
+                  BuildOutputPath="C:\Projects\Personify.DataServices\References\DataServicesBase"
+                  PublishLocalPath="C:\Projects\Personify.DataServices\Personify.DataServices\Current\Personify.DataServices.Base.Sol\PersonifyDataServicesBase"
+                  PublishServerUri=""
+                  PersonifyDlls ="g1client.dll, GenuineChannels.dll, ICSharpCode.SharpZipLib.dll, TIMSS.API.Base.dll, TIMSS.API.Core.dll, TIMSS.API.Generated.dll, TIMSS.API.Interfaces.dll, TIMSS.Client.Implementation.dll, TIMSS.CommunicationLayer.dll, TIMSS.Server.BusinessImplementation.dll, TIMSS.Server.Implementation.dll, TIMSS.Shared.dll"
+            />
+    </Section>
+
+    <!-- This section is configure and control the third party interfaces specific to that environment-->
+    <Section Name="ThirdPartyInterfaces">
+      <!-- This determines whether the Group1 Address validation is enabled in that specific environment-->
+      <Item Name="GroupOneValidation" Enabled="False"/>
+      <!-- This determines whether the CDQP Advance Duplicate Matching is enabled in that specific environment-->
+      <Item Name="GroupOneDupMatching" Enabled="False"/>
+      <!-- This determines whether the CDQP Geocoding is enabled in that specific environment-->
+      <Item Name="CDQPGeoCoding" Enabled="False"/>
+      <!-- This determines whether the user defined address validation service  is enabled in that specific environment-->
+      <Item Name="UserDefinedAddressValidatorService" Enabled="False"/>
+	<!-- If Set to False then DA launches outside of Personify in their default browser -->
+	<Item Name="LaunchDAWithinPersonify" Enabled="False"/>
+
+    </Section>
+
+    <Section Name="ExecutionEnvironment">
+      <!-- The DataSet packing strategy. -->
+      <SetupStrategy Path="TIMSS.Shared.dll" Name="TIMSS.DataAccess.PersonifyResultSetFactorySetupStrategy"/>
+
+
+      <!-- CLIENT-SIDE SECTION -->
+      <!-- This section constructs the client-side remoting chain and client-side services. -->
+      <!-- Sets up the remoting service to run / view  online and batch reports  -->
+      <!--<SetupStrategy Path="TIMSS.Server.Reporting.dll" Name="TIMSS.Server.Reporting.SetupStrategy"/>-->
+
+      <!-- Sets up the remoting service to handle the online credit card payments -->
+      <SetupStrategy Path="TIMSS.Server.UniversalPaymentHandler.dll" Name="TIMSS.Server.UniversalPaymentHandler.SetupStrategy"/>
+
+      <!-- Sets up the remoting service to handle the online address validation / correction -->
+      <!--<SetupStrategy Path="TIMSS.Server.UniversalAddressHandler.dll" Name="TIMSS.Server.UniversalAddressHandler.SetupStrategy"/>-->
+
+      <!-- Specifies the application context fetching strategy. This strategy is necessary
+					to untie TIMSS.Shared logic from TIMSS.API.Core. -->
+      <SetupStrategy Path="TIMSS.API.Core.dll" Name="TIMSS.API.Core.ApplicationContextFetchingStrategySetupStrategy"/>
+
+      <!-- Personify Over The Wire Dynamic Encryption & Compression -->
+      <SetupStrategy Path="TIMSS.CommunicationLayer.dll" Name="TIMSS.Transport.Tcp.PersonifyRemotingChannelSetupStrategy">
+        <name>Primary TCP channel</name>
+        <!--The protocol specified here MUST match the protocol used in the APPServer URI. Valid protocols are tcp or http -->
+        <protocol>tcp</protocol>
+        <!--Valid formatters are BINARY or SOAP. This value must match the setting defined on the Personify Application Server-->
+        <formatter>BINARY</formatter>
+        <Encrypted>True</Encrypted>
+        <Compressed>True</Compressed>
+        <port>0</port>
+        <suppressChannelData>false</suppressChannelData>
+        <timeout>1200000</timeout>
+      </SetupStrategy>
+
+      <SetupStrategy Path="TIMSS.CommunicationLayer.dll" Name="TIMSS.Messaging.ClientSideImplementation.SimpleMessageClientSetupStrategy"/>
+      <SetupStrategy Path="Personify.Server.CDQP.dll" Name="TIMSS.Server.CDQP.UserDefinedAddressValidator_SetupStrategy"/>
+    </Section>
+
+  </Data>
+</Configuration>

@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>@ViewBag.Title</title>
+
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta content="text/javascript" http-equiv="Content-Script-Type" />
+    <meta content="text/css" http-equiv="Content-Style-Type" />
+
+    @if (string.IsNullOrEmpty(((string)ViewBag.MetaDescription)))
+    {
+        <meta id="MetaDescription" name="DESCRIPTION" content="ATA Business Solutions" />}
+    else
+    {
+        <meta id="MetaDescription" name="DESCRIPTION" content="@ViewBag.MetaDescription" />
+    }
+    @if (string.IsNullOrEmpty(((string)ViewBag.MetaKeyword)))
+    {
+        <meta id="MetaKeywords" name="KEYWORDS" content="Trucking Trends, Trucking reports, Trucking safety awards, safety awards, trucking meetings, trucking events, Trucking forecasts, trucking products, Truck industry, economics,DotNetNuke,DNN" />
+    }
+    else
+    {
+        <meta id="MetaKeywords" name="KEYWORDS" content="@ViewBag.MetaKeyword" />
+    }
+
+    <meta id="MetaCopyright" name="COPYRIGHT" content="Powered by Personify eBusiness" />
+    <meta id="MetaGenerator" name="GENERATOR" content="DotNetNuke " />
+    <meta id="MetaAuthor" name="AUTHOR" content="ATA Business Solutions" />
+    <meta name="RESOURCE-TYPE" content="DOCUMENT" />
+    <meta name="DISTRIBUTION" content="GLOBAL" />
+    <meta id="MetaRobots" name="ROBOTS" content="INDEX, FOLLOW" />
+    <meta name="REVISIT-AFTER" content="1 DAYS" />
+
+    @System.Web.Optimization.Styles.Render("~/Content/styles")
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    @System.Web.Optimization.Scripts.Render("~/bundles/angular")
+    <!--[if (gte IE 6)&(lte IE 8)]>
+        <link href="css/ie8.css" type="text/css" rel="stylesheet" media="all">
+        <script type="text/javascript" src="js/selectivizr.js"></script>
+    <![endif]-->
+    <script>
+        function popUpClosed() {
+            // window.location.reload();
+            window.location.href = window.location.href;
+        }
+    </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-92376622-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <!-- BEGIN ADVERTSERVE CODE -->
+    <script type="text/javascript">
+        var _avp = _avp || [];
+        (function () {
+            var s = document.createElement('script');
+            s.type = 'text/javascript'; s.async = true; s.src = window.location.protocol + '//truckline.advertserve.com/js/libcode3.js';
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+    <!-- END ADVERTSERVE CODE -->
+
+</head>
+<body ng-app="AoaShopping" ng-controller="viewProductController">
+
+    <div id="site_main">
+        <div class="site_main_inner">
+
+            @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+            <div class="breadcrumb">
+                <ul>
+                    <li class="page_here">YOU ARE HERE</li>
+
+                        <li class="currentPage">@ViewBag.Title</li>
+                </ul>
+            </div>
+
+            <!--site_header-->
+
+            <div style="clear: both"></div>
+            <div id="content_area_main">
+                <div id="preloader" style="display: none"><span></span></div>
+                @RenderBody()
+                <!--page_content_main-->
+            </div>
+            <!--content_area_main-->
+
+            <br />
+            <br />
+            
+            <!--site_footer-->
+            <div style="clear: both"></div>
+
+            <!--site_footer-->
+            @Html.Partial("~/Views/Shared/_Footer.cshtml")
+
+        </div>
+
+        <!--.site_main_inner-->
+    </div>
+
+    @System.Web.Optimization.Scripts.Render("~/bundles/app")
+
+</body>
+</html>
+

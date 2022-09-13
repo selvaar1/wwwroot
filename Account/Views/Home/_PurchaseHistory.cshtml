@@ -1,0 +1,65 @@
+﻿<style>
+    .ic-minus {
+        background: transparent url(./Images/ic-minus.png) center center no-repeat;
+    }
+
+    .ic-plus {
+        background: transparent url(./Images/ic-plus.png) center center no-repeat;
+    }
+
+    .icon24 {
+        display: inline-block;
+        vertical-align: middle;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+    }
+</style>
+<div class="">@*datagrid*@
+    <h4 class="col-sm-12"></h4>
+    <div class="col-sm-12" id="orderHistory">
+        @if (Model.PurchaseHistory != null && Model.PurchaseHistory.Count > 0)
+        {
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <td></td>
+                        <td>Order Number</td>
+                        <td><a href="javascript:;" id="orderdate">Order Date</a></td>
+                        <td class="text-right">Total</td>
+                        <td class="text-right">Balance Due</td>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.PurchaseHistory)
+                {                    
+                <tr class="text-center">
+                    <td style="width: 10px"><i style="cursor: pointer" class="icon24 ic-plus iconexpand"></i></td>
+                    <td><a href="javascript:void(0)" class="ordernumber">@item.OrderNumber</a></td>
+
+                    @if (!string.IsNullOrEmpty(item.OrderDate.ToString()))
+                    {                       
+                        <td><span class="orderdate">@Convert.ToDateTime(item.OrderDate).ToString("MM/dd/yyyy")</span></td>
+                       
+                    }
+                    else
+                    {
+                        <td></td>
+                    
+                    }
+                    <td class="text-right">$ <span class="totalamount">@item.TotalAmount</span> <span>@item.CurrencyCode</span></td>
+                    <td class="text-right"><span id="dueamount">$ @item.BalanceAmount </span>@item.CurrencyCode</td>
+                </tr>
+                <tr class="ordersummary" style="display: none">
+                    <td colspan="5"></td>
+                </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info text-center">
+                No orders found.
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "SIR";
+    Layout = "~/Views/Shared/_Products.cshtml";
+}
+<div id="products_view" class="pd_listView">
+    <div id="product_display">
+        <div class="product_data" ng-switch="(WishListItems | filter:search).length">
+            <span ng-switch-when="0" class="jplist-no-results">No results found</span>
+            <div class="product_list" ng-repeat="product in WishListItems | orderBy:sortType:sortReverse" ng-switch-default>
+                <a href="javascript:;" data-ng-click="AddToWishList(product.ProductId, sesCustomerId)" class="wishListIcon">
+                    <img src="~/Images/ic_fav_active.png" alt="" />
+
+                </a>
+                <div class="book_img" data-id="{{product.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='" onclick="viewProduct($(this).attr('data-id'))" style="cursor:pointer">
+                    <img class="spinner" ng-show="loading" src="~/Images/ajax-loader-img.gif" />
+                    <img ng-src="{{product.ProductImage}}" no-image>
+                </div>
+                <div class="product_details ">
+                    <h3 class="product_title vu_details" data-id="{{product.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='" onclick="viewProduct($(this).attr('data-id'))">{{product.ProductName}}</h3>
+                    <p class="desc" style="display:none;">{{product.CartDescription}}</p>
+                    @*<p class="author"><span>Author: CDAuthor1</span></p>*@
+                    <div class="cart_actions">
+                        <p class="price">
+                            <span style="margin:0 10px 0 0;" data-ng-show="{{!product.IsUmbrellaProduct}}">List Price: {{product.Price | currency}}</span>
+                            <span style="margin:0 10px 0 0;" data-ng-show="{{product.IsUmbrellaProduct}}" class="dblPrice">List Price: As low as {{product.MinListPrice | currency}}</span>
+                        </p>
+                        <p class="price">
+                            <span data-ng-show="{{!product.IsUmbrellaProduct}}">Member Price: {{product.MemberPrice | currency}}</span>
+                            <span data-ng-show="{{product.IsUmbrellaProduct}}" class="dblPrice">Member Price: As low as {{product.MinMemberPrice | currency}}</span>
+                        </p>
+                        <span id="{{product.ProductId}}" style="display: none;">{{product.AvailableQty}}</span>
+                        @*<button class="add_cart_btn" data-ng-click="AddToCart(product.ProductId, $event, 'wishlist')"></button>*@
+                        <button class="view_detail_btn" data-id="{{product.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='" onclick="viewProduct($(this).attr('data-id'))">View Details</button>
+                        &nbsp;&nbsp;
+                        <button class="add_cart_btn_single" data-ng-click="AddToCart(product.ProductId, $event, 'view')">Add to Cart</button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

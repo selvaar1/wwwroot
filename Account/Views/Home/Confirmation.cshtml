@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "Confirmation";
+    SL.Data.AccountConfirmationInfo oSummary = ViewBag.oSummary;
+
+}
+<script>
+    (function (global) {
+        //To restrict browser backbutton
+        if (typeof (global) === "undefined") {
+            throw new Error("window is undefined");
+        }
+        var _hash = "!";
+        var noBackPlease = function () {
+            global.location.href += "#";
+            global.setTimeout(function () {
+                global.location.href += "!";
+            }, 50);
+        };
+        global.onhashchange = function () {
+            if (global.location.hash !== _hash) {
+                global.location.hash = _hash;
+            }
+        };
+        global.onload = function () {
+            noBackPlease();
+            document.body.onkeydown = function (e) {
+                var elm = e.target.nodeName.toLowerCase();
+                if (e.which === 8 && (elm !== 'input' && elm !== 'textarea')) {
+                    e.preventDefault();
+                }
+                e.stopPropagation();
+            };
+        };
+    })(window);
+</script>
+<div class="registration_form col-sm-12">
+    <h2 class="page_title">Confirmation</h2>
+
+    <div class="page_content_left order-confirmation">
+        <div class="order_received_details">
+            <h4>
+                Thank you for your payment!
+            </h4>
+            <div class="col-sm-12 text-right">
+                <a href="javascript:;" id="printInvoice">Print</a>
+            </div>
+            <br/><br />
+            <div class="order_print">
+                <div class="col-sm-12">
+                    <h4>Receipt Number: @oSummary.ReceiptNumber</h4>
+                </div>
+
+                <div class="item_purchase_table col-sm-12 ">
+                    <table id="cart_table" class="table table-bordered table-striped noMargin">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-1">Order Number</th>
+                                <th class="col-sm-1">Line Number</th>
+                                <th class="col-sm-8">Item</th>
+                                <th class="text-right col-sm-2">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in oSummary.Lines)
+                            {
+                                <tr>
+                                    <td class="purchase_item col-sm-1">
+
+                                        <span class="purchase_item_right">
+                                            @item.OrderNumber
+                                        </span>
+                                    </td>
+                                    <td class="purchase_item col-sm-1">
+
+                                        <span class="purchase_item_right">
+                                            @item.OrderLineNumber
+                                        </span>
+                                    </td>
+                                    <td class="purchase_item col-sm-8">
+
+                                        <span class="purchase_item_right">
+                                            @item.ShortName
+                                        </span>
+                                    </td>
+                                    <td class="text-right col-sm-2">
+                                        <span>@item.ActualAmount </span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div style="clear: both;"></div>
+                <div class="col-sm-12 ">
+                    <table class="table table-bordered table-striped noMargin">
+                        <tr>
+                            <td><strong>Payment Method</strong>: @oSummary.ReceiptType @oSummary.PartialCCAccountNumber</td>
+                            <td class="text-right"><strong>Total</strong>: <span>@oSummary.Amount </span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        
+        $(".cartCount").load(" .cartCount");
+
+        $(document).on('click', '#printInvoice', function () {
+            printOrder('.order_print');
+        });
+        //printInvoice
+        function printOrder(div) {
+            var divToPrint = $(div).html();
+            var contents = $(div).html();
+            var frame1 = document.createElement('iframe');
+            frame1.name = "frame1";
+            frame1.style.position = "absolute";
+            frame1.style.top = "-1000000px";
+            document.body.appendChild(frame1);
+            var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
+            frameDoc.document.open();
+            frameDoc.document.write('<html><head><link href="../css/custom.css" rel="stylesheet" type="text/css"></head><title>Order Contents</title>');
+            frameDoc.document.write('</head><body>');
+            frameDoc.document.write(contents);
+            frameDoc.document.write('</body></html>');
+            frameDoc.document.close();
+            setTimeout(function () {
+                window.frames["frame1"].focus();
+                window.frames["frame1"].print();
+                document.body.removeChild(frame1);
+            }, 500);
+            return false;
+        };
+    });
+</script>
+

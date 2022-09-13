@@ -1,0 +1,5 @@
+﻿            <ul role="menu">
+                <li role="menuitem" data-ng-repeat="Category in Categories" data-ng-click="getItemByCategory($event)">
+                    <a href="~/Listing/{{Category.CategoryId}}">{{Category.CategoryName}}</a>
+                </li>
+            </ul>

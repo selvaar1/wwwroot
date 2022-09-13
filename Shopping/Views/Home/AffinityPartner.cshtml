@@ -1,0 +1,87 @@
+@{
+    ViewBag.Title = "Affinity Partner";
+    Layout = "~/Views/Shared/_TopHeaderLayout.cshtml";
+    
+}
+
+<div class="scrollable">
+    <content id="content-box" class="content">
+        <div class="container">
+            <h1>Our Partners</h1>
+            <div class="ap-intro">
+                <p>
+                    The IR Business Center vendor directory is a solution provider for Interventional Radiology practices.  It is a convenient way to search for vendors that offer services<br><br>
+                    Disclaimer<br><br>
+                    IR Business Center vendor directory includes tools and services that are provided as a convenience to Interventional Radiology (IR) practices.  The information included in this vendor directory may be used to assist IR practices as they research potential vendors in support of their organizational requirements. The information is provided solely as a convenience to consumers.<br><br>
+                    Society of Interventional Radiology (SIR) does not endorse the products listed in the vendor directory and IR practices are not obligated to use them. SIR does not ensure the accuracy or completeness of vendor responses and does not endorse any vendors. SIR strongly suggests that all organizations perform their due diligence—including technical and financial reviews—before making any vendor decisions. Vendors may not explicitly state or imply otherwise through any means of communication.
+                </p>
+                <div class="ap-btn">
+                    @Html.ActionLink("Partner Directory", "PartnershipDirectory", "Home", new { @class = "" })
+                    @Html.ActionLink("Become a Partner", "BecomePartner", "Home", new { @class = "" })
+                </div>
+            </div>
+            <div class="ap-slider">
+                <ul>
+                    <li>
+                        <ul class="ap-slider-grid">
+                            <li>
+                                <img src="~/img/affinity-partners/SIR_logos_BostonS_468x360.jpg" alt="Boston Scientific">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vitae tenetur tempora, voluptatem sint harum?</p>
+                                <a href="@Url.Action("PartnershipDirectory", "Home")#boston">learn more</a>
+                            </li>
+                            <li>
+                                <img src="~/img/affinity-partners/SIR_logos_Medtronic_468x360.jpg" alt="Medtronic PVH">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vitae tenetur tempora, voluptatem sint harum?</p>
+                                <a href="@Url.Action("PartnershipDirectory", "Home")#medtronic">learn more</a>
+                            </li>
+                            <li>
+                                <img src="~/img/affinity-partners/SIR_logos_Penumbra_468x360.jpg" alt="Penumbra">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vitae tenetur tempora, voluptatem sint harum?</p>
+                                <a href="@Url.Action("PartnershipDirectory", "Home")#penumbra">learn more</a>
+                            </li>
+                            <li>
+                                <img src="~/img/affinity-partners/SIR_logos_Inari_468x360.jpg" alt="Inari Medical">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vitae tenetur tempora, voluptatem sint harum?</p>
+                                <a href="@Url.Action("PartnershipDirectory", "Home")#inari">learn more</a>
+                            </li>
+                            <li>
+                                <img alt="US Renal" src="~/img/affinity-partners/SIR_logos_RCCS_468x360.jpg">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vitae tenetur tempora, voluptatem sint harum?</p>
+                                <a href="@Url.Action("PartnershipDirectory", "Home")#us">learn more</a>
+                            </li>
+                            <li>
+                                <img src="~/img/affinity-partners/SIR_logos_RCCS_468x360.jpg" alt="img/affinity-partners/SIR_logos_RCCS_468x360.jpg">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vitae tenetur tempora, voluptatem sint harum?</p>
+                                <a href="@Url.Action("PartnershipDirectory", "Home")#rccs">learn more</a>
+                            </li>
+                            <li>
+                                <img alt="Margin Care" src="~/img/affinity-partners/SIR_logos_RCCS_468x360.jpg">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel vitae tenetur tempora, voluptatem sint harum?</p>
+                                <a href="@Url.Action("PartnershipDirectory", "Home")#margin">learn more</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="ap-benefits">
+                <img src="~/img/benefit-image.png" alt="two people at a table">
+                <div>
+                    <h2>Value to SIR members</h2>
+                    <ul>
+                        <li>Save member time by not having to search for vendors.</li>
+                        <li>LImprove the quality of your services.</li>
+                        <li>Increase operational or financial efficiencies.</li>
+                        <li>Reduce your costs.</li>
+                        <li>Expand the availability of your services.</li>
+                        <li>Accelerate service delivery.</li>
+                        <li>Focus on your core business functions.</li>
+                    </ul>
+                </div>
+                <div class="ap-buttons">
+                    @Html.ActionLink("Partner Directory", "PartnershipDirectory", "Home", new { @class = "" })
+                    @Html.ActionLink("Become a Partner", "BecomePartner", "Home", new { @class = "" })
+                </div>
+            </div>
+        </div>
+    </content>
+</div>

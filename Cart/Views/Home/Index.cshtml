@@ -1,0 +1,227 @@
+﻿@{
+    ViewBag.PageTitle = "Login";
+}
+@{
+    ViewBag.Title = "Login";
+}
+@section featured {
+   
+                <h1 class="page_title"  id="test2">@ViewBag.Title</h1>
+}
+
+
+<div class="panel panel-default" id="loginform">
+
+<div style="margin-left: 10%; width: 60%;">
+
+<div class="row">
+    <div class=" col-md-6 text-right" >
+        <label id="test">Username</label><label id="test3">:</label>
+    </div>
+    <div class="col-md-6">
+        <input type="text" class="form-control" value="" id="username"/>
+    </div>
+</div>
+
+<div class="row"  id="passwordrow" style="display: none;">
+    <div class=" col-md-6 text-right">
+        <label>Password:</label>
+    </div>
+    <div class="col-md-6">
+      <input type="password" class="form-control" value="" id="password"/>
+    </div>
+</div>
+
+</div>
+
+<div class="row" >
+    
+    <div class="col-md-offset-1 col-md-10 text-right">
+
+        <label id="lookuprowno" style="display: none;">No record found</label>
+        
+        <input type="submit" class="btn btn-primary" id="lookup" value="Next"/> 
+        
+         
+
+        <input type="submit" class="btn btn-primary" id="login" value="Next"  style="display: none;"/>
+    </div>
+</div>
+
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+        console.log("ready");
+
+        if ('@System.Configuration.ConfigurationManager.AppSettings["jshelpers"]' == 'true') {
+
+                $('body').on('click', '#test', function () {
+                    $('#username').val('a01test1com');
+                    $('#password').val('a01@test.com');
+                });
+
+                
+                $('body').on('click', '#test2', function () {
+                    $('#username').val('a' + Math.random(9999) * 9999 + 'a@test.com');
+                });
+
+                $('body').on('click', '#test3', function () {
+                    $('#username').val('020839035');
+                    $('#password').val('020839035');
+                });
+
+            
+        }        
+        
+        $('.registration_form').on('keydown', '#username', function () {
+            $('#login').hide();
+        });
+
+        /*
+        $('body').on('click', '#register', function () {
+            var href = $(this).attr('href');
+            href += '?email=' + $('#email').val();
+            $(this).attr('href', href);
+
+            //return false;
+
+        });
+        */
+
+        $('#lookup').click(function () {
+
+            console.log("lookup");
+
+            var username = $('#username').val();
+
+            username = username.replace(/%/g, '');
+
+            console.log("lookup", username);
+
+            if (!(username.length > 0)) {
+                nalert("Username missing");
+                return false;
+            }
+
+            /*
+
+            if (!(email.length > 0) || !isEmail(email)) {
+                nalert("Invalid email address");
+                return false;
+            }
+            */
+
+
+            $.ajax({
+                url: '@Url.Action("SearchUserByForLogin", "Home")',
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 data: { username: username },
+                 success: function (response) {
+                     console.log('Success', response);
+
+                     if (response != null) {
+
+                         if (response.Success == true) { // user in SSO
+                             console.log('Success =1');
+                             $('#passwordrow').show();
+                             $('#lookuprow').show();
+                             //$('#newuser').hide();
+                             $('#lookuprowno, #lookuprowno2').hide();
+                             
+                             //$('#lookup').val("Look up again").removeClass('btn-primary').addClass('btn-default');
+                             $('#lookup').hide();
+                             $('#login').show();
+
+                         }
+                         else { 
+                             console.log('Success<1');
+                             $('#login').hide();
+                             $('#passwordrow').hide();
+                             $('#lookuprow').hide();
+                             $('#lookuprowno, #lookuprowno2').show();
+                             
+                             $('#lookup').val("Look up again").removeClass('btn-primary').addClass('btn-default').show();
+                             
+
+                             //$('#newuser').show();
+                         }
+
+                     }
+
+                 },
+                 error: function () { nalert('No user found'); }
+            })
+
+      
+            return false;
+        });
+
+
+        $('#login').click(function () {
+
+            console.log("login");
+
+            var username = $('#username').val();
+            var password = $('#password').val();
+
+            console.log("login", username);
+            if (!(username.length > 0)) {
+                nalert("Username missing");
+                return false;
+            }
+
+            /*
+
+            if (!(email.length > 0) || !isEmail(email)) {
+                nalert("Invalid email address");
+                return false;
+            }
+            */
+
+            $.ajax({
+                url: '@Url.Action("Login", "Home")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { username: username, Password: password },
+                success: function (response) {
+                    console.log('Success', response, response.length);
+
+                    if (response != null) {
+
+                        //redirect to SSO and back to next page
+
+                        if (response.Success == true) { // 1 user found, show password
+                            
+                            location.href = response.SSOURL;
+
+                        }
+                        else {
+
+                            if (response.Message != null && response.Message.length > 0) {
+                                nalert(response.Message);
+                            }
+                            else {
+                                nalert('Invalid password');
+                            }
+
+                            
+                        }
+
+                    }
+
+                },
+                error: function () { nalert('Error (2)'); }
+            })
+
+
+            return false;
+        });
+
+
+    });
+
+</script>

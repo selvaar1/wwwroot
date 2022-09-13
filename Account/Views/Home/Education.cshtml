@@ -1,0 +1,710 @@
+﻿@using MyResource = ResourceFile
+@{
+    ViewBag.PageTitle = "Education";
+}
+@{
+    ViewBag.Title = "Education";
+}
+@section featured {
+}
+
+<h1 class="page_title">@ViewBag.Title</h1>
+<h2>@ViewBag.Message</h2>
+
+<style>
+    .action {
+        width: 70px;
+    }
+</style>
+<div class="registration_form">
+    <div class="form_row_submit" style="text-align: left;">
+
+        <h3 class="rand">Education Information:</h3>
+        <h4 class="info">A current education record is required to be eligible for student discounts.</h4>
+
+        <div id="list" class="datagrid" style="text-align: center; margin-bottom: 20px;">
+            Loading...
+        </div>
+
+        <div id="edit" class="datagrid" style="display: none; margin-bottom: 20px;">
+        </div>
+
+        <h3 class="rand">Student Chapter membership:</h3>
+        <h4 class="info">Please indicate if you are a member of a @MyResource.ResourceFile.VendoreName Student Chapter.</h4>
+        <div id="list2" class="datagrid" style="margin-bottom: 20px;">
+            Loading...
+        </div>
+
+        <div id="edit2" class="datagrid" style="display: none; margin-bottom: 20px;">
+        </div>
+
+
+
+    </div>
+</div>
+
+
+<script id="template-list" type="text/x-handlebars-template">
+
+
+    {{#if Data.length}}
+
+    <table class="table table-striped contentBox">
+
+        <tr class="rowheader">
+            <th>
+                Program or Degree
+            </th>
+
+            <th>
+                Program Type
+            </th>
+
+            <th>
+                Institution
+            </th>
+
+            <th>
+                Start Date
+            </th>
+
+            <th>
+                End Date
+            </th>
+
+
+            <th>
+
+            </th>
+        </tr>
+
+
+        {{#each Data }}
+
+
+        <tr>
+            <td>
+                {{ProgDegreeCodeDescription}}
+            </td>
+
+            <td>
+                {{ProgTypeCodeDescription}}
+            </td>
+
+            <td>
+                {{InstitutionName}}
+            </td>
+
+            <td>
+                {{BeginDate}}
+            </td>
+
+            <td>
+                {{EndDate}}
+            </td>
+
+            <td class="action">
+                <i class="fa fa-trash-o addthisuser delete" data="{{CustomerEducationId}}" aria-hidden="true"></i>
+                <i class="fa fa-pencil addthisuser edit" data="{{@@index}}" aria-hidden="true"></i>
+                <i id="add" class="fa fa-plus addthisuser" aria-hidden="true"></i>
+            </td>
+        </tr>
+        {{/each}}
+
+        {{else}}
+
+        {{/if}}
+
+        @*{{#if Data.length}}
+            <tr>
+                <td colspan="5"></td>
+                <td >
+                    <i id="add" class="fa fa-plus addthisuser" aria-hidden="true"></i>
+                </td>
+            </tr>
+            </table>
+            {{/if}}*@
+
+</script>
+
+
+<script id="template-edit" type="text/x-handlebars-template">
+
+    <form id="editform">
+        <input type="hidden" name="CustomerEducationId" value="{{Data.CustomerEducationId}}" />
+        <table class="table table-striped contentBox">
+
+            <tr>
+                <td id="test">
+                    Program or Degree *
+                </td>
+                <td>
+                    <select name="ProgDegreeCode" class="form-control required">
+                        <option value="">Select</option>
+                        {{#each StaticData.PROG_DEGREE}}
+                        <option value="{{Code}}" {{selectedIf Code ../Data.ProgDegreeCode}}>{{Description}}</option>
+                        {{/each}}
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Program Type
+                </td>
+                <td>
+                    <select name="ProgTypeCode" class="form-control">
+                        <option value="">Select</option>
+                        {{#each StaticData.PROG_TYPE}}
+                        <option value="{{Code}}" {{selectedIf Code ../Data.ProgTypeCode}}>{{Description}}</option>
+                        {{/each}}
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Institution *
+                </td>
+                <td>
+                    <input type="hidden" name="Institution" class="form-control" value="{{Data.Institution}}" />
+
+                    <input name="InstitutionName" class="form-control required" value="{{Data.InstitutionName}}" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Start Date *
+                </td>
+                <td>
+                    <div class="input-group date form_date" data-date="" data-date-format="mm/dd/yyyy">
+                        <input name="BeginDate" class="form-control required" value="{{Data.BeginDate.}}" style="width: auto;" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    End Date (or expected) *
+                </td>
+                <td>
+                    <div class="input-group date form_date" data-date="" data-date-format="mm/dd/yyyy">
+                        <input name="EndDate" class="form-control required" value="{{Data.EndDate}}" style="width: auto;" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td colspan="2" class="text-right">
+                    <button id="cancel" class="addthisuser btn btn-secondary">Cancel</button>
+                    <button id="save" class="addthisuser btn btn-default">Save</button>
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+</script>
+
+
+
+<script id="template-list2" type="text/x-handlebars-template">
+
+
+    {{#if Data.length}}
+
+    <table class="table table-striped contentBox">
+
+        <tr class="rowheader">
+            <th>
+                Chapter Name
+            </th>
+
+            <th>
+                Start Date
+            </th>
+
+            <th>
+                End Date
+            </th>
+
+
+            <th>
+
+            </th>
+        </tr>
+
+
+        {{#each Data }}
+
+
+        <tr>
+            <td>
+                {{RelatedName}}
+            </td>
+
+            <td>
+                {{BeginDate}}
+            </td>
+
+            <td>
+                {{EndDate}}
+            </td>
+
+            <td class="action">
+                <i class="fa fa-trash-o addthisuser delete2" data="{{CustomerRelationshipId}}" aria-hidden="true"></i>
+                <i class="fa fa-pencil addthisuser edit2" data="{{@@index}}" aria-hidden="true"></i>
+                <i id="add2" class="fa fa-plus addthisuser" aria-hidden="true"></i>
+            </td>
+        </tr>
+        {{/each}}
+
+        {{else}}
+
+        {{/if}}
+
+
+</script>
+
+<script id="template-edit2" type="text/x-handlebars-template">
+
+    <form id="editform2">
+        <input type="hidden" name="CustomerRelationshipId" value="{{Data.CustomerRelationshipId}}" />
+
+        <table class="table table-striped contentBox">
+
+            <tr>
+                <td id="test2">
+                    Chapter Name *
+                </td>
+                <td>
+                    <select name="RelatedMasterCustomerId" class="form-control required">
+                        <option value="">Select</option>
+                        {{#each StaticData.CHAPTERS}}
+                        <option value="{{MasterCustomerId}}" {{selectedIf MasterCustomerId ../Data.RelatedMasterCustomerId}}>{{LastFirstName}}</option>
+                        {{/each}}
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Start Date *
+                </td>
+                <td>
+                    <div class="input-group date form_date" data-date="" data-date-format="mm/dd/yyyy">
+                        <input name="BeginDate" class="form-control required" value="{{Data.BeginDate}}" style="width: auto;" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    End Date *
+                </td>
+                <td>
+                    <div class="input-group date form_date" data-date="" data-date-format="mm/dd/yyyy">
+                        <input name="EndDate" class="form-control required" value="{{Data.EndDate}}" style="width: auto;" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td colspan="2" class="text-right">
+                    <button id="cancel2" class="addthisuser btn btn-secondary">Cancel</button>
+                    <button id="save2" class="addthisuser btn btn-default">Save</button>
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+</script>
+
+
+
+
+
+
+<script>
+    function AutoComplete() {
+
+        //console.log("AutoComplete", listdata.StaticData.INSTITUTIONS);
+
+        var institutions = $.map(listdata.StaticData.INSTITUTIONS, function (obj) { return { data: obj.masterCustomerID, value: obj.label }; });
+
+
+        //console.log("AutoComplete", institutions);
+        $('[name=InstitutionName').autocomplete({
+            // serviceUrl: '/autosuggest/service/url',
+            minChars: 3,
+            appendTo: document.body,
+            lookup: institutions,
+            lookupFilter: function (suggestion, originalQuery, queryLowerCase) {
+
+
+                //console.log("suggestion", suggestion.length, originalQuery, queryLowerCase);
+                var re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi');
+                var rez = re.test(suggestion.value);
+                //console.log("rez", rez);
+
+
+                //console.log("suggestion", suggestion, originalQuery, queryLowerCase, rez);
+
+
+
+                return rez;
+            },
+            onSelect: function (suggestion) {
+                console.log('You selected: ' + suggestion.value + ', ' + suggestion.data);
+
+                $("[name=Institution]").val(suggestion.data);
+
+            },
+            onHint: function (hint) {
+                console.log("hint", hint);
+            },
+            onInvalidateSelection: function () {
+                console.log('You selected: none');
+                $("[name=Institution]").val('');
+            }
+        });
+
+        /*
+        jQuery("#INSTITUTION").autocomplete({
+            delay: 0,
+            minLength: 3,
+            source: listdata.StaticData.INSTITUTIONS,
+            open: function () {
+                $(this).autocomplete('widget').css('z-index', 100);
+                return false;
+            },
+            focus: function (event, ui) {
+                $("#INSTITUTION").val(ui.item.label);
+                return false;
+            },
+            close: function (event, ui) {
+                var institution_found = false;
+
+                if (ui == null || ui.item == null || ui.item.mastercustomerid == null || parseInt(ui.item.mastercustomerid) == NaN || ui.item.mastercustomerid <= 0) {
+                    for (var i = 0; i < institutions.length; i++) {
+                        if (institutions[i].label.toUpperCase() == $("[id$=View_txtInstitutionName]").val().toUpperCase()) {
+                            $("#INSTITUTION").val(institutions[i].label);
+                            //$("#ctl_InstitutionMasterCustomerID").val(institutions[i].mastercustomerid);
+                            institution_found = true;
+                            break;
+                        }
+                    }
+                } else {
+                    institution_found = true;
+                }
+
+                var display = institution_found ? "none" : "block";
+                $("[id$=View_lblEducationMasterRecordNotFoundWarning]").css("display", display);
+
+                return false;
+            },
+            select: function (event, ui) {
+                $("##INSTITUTION").val(ui.item.label);
+                //$("#ctl_InstitutionMasterCustomerID").val(ui.item.mastercustomerid);
+                return false;
+            }
+        });
+        */
+    }
+</script>
+
+
+<script>
+
+    //INSTITUTIONS
+
+    var purchasinggroups = null;
+
+    var listdata = null;
+    var listdata2 = null;
+    var products = null;
+
+
+    function ShowEdit(id, template, data) {
+        renderTemplate(data, template, id);
+        if (typeof set_date_input === 'function') set_date_input();
+        AutoComplete();
+    }
+
+    function ShowListdata() {
+        console.log("ShowListdata", listdata);
+        if (listdata != null && listdata.Data != null && listdata.Data.length < 1) {
+            $('#list').hide();
+            ShowEdit('#edit', '#template-edit', { "Data": { "CustomerEducationId": "0" }, "StaticData": listdata.StaticData });
+        }
+        else {
+            $('#list').show();
+            renderTemplate(listdata, '#template-list', '#list');
+        }
+    }
+
+
+    function ShowListdata2() {
+        if (listdata2 != null && listdata2.Data != null && listdata2.Data.length < 1) {
+            $('#list2').hide();
+            var BeginDate = ""
+            var EndDate = "";
+            if (listdata2 != null && listdata2.Data != null && listdata2.Data.length > 0 && listdata2.Data[0] != null) {
+                BeginDate = listdata2.Data[0].BeginDate;
+                EndDate = listdata2.Data[0].EndDate;
+            }
+
+            ShowEdit('#edit2', '#template-edit2', { "Data": { "CustomerRelationshipId": "0", "BeginDate": BeginDate, "EndDate": EndDate }, "StaticData": listdata2.StaticData });
+            $('#list2').hide();
+        }
+        else {
+            $('#list2').show();
+            renderTemplate(listdata2, '#template-list2', '#list2');
+        }
+    }
+
+
+    function page_init() {
+
+
+        $('body').on('click', '#test', function () {
+            $('#editform [name=ProgDegreeCode]').val('MS');
+            $('#editform [name=ProgTypeCode]').val('ECONOMICS');
+            $('#editform [name=Institution]').val('001000117');
+            $('#editform [name=InstitutionName]').val('CASE WESTERN RESERVE UNIVERSITY');
+            $('#editform [name=BeginDate]').val('1/1/2015');
+            $('#editform [name=EndDate]').val('1/1/2018');
+        });
+
+        $('body').on('click', '#test2', function () {
+            $('#editform2 [name=RelatedMasterCustomerId]').val('020105527');
+            $('#editform2 [name=BeginDate]').val('1/1/2015');
+            $('#editform2 [name=EndDate]').val('1/1/2018');
+        });
+
+        $('body').on('click', '#add', function () {
+
+            console.log("add", listdata.StaticData);
+            ShowEdit('#edit', '#template-edit', { "Data": { "CustomerEducationId": "0" }, "StaticData": listdata.StaticData });
+            $('#list').hide();
+        });
+
+        $('body').on('click', '#add2', function () {
+
+            console.log("add2", listdata2.StaticData);
+            ShowEdit('#edit2', '#template-edit2', { "Data": { "CustomerRelationshipId": "0" }, "StaticData": listdata2.StaticData });
+            $('#list2').hide();
+        });
+
+        callProxy(
+            "GetCustomerEducations",
+            null,
+            function (response) {
+                listdata = response;
+                ShowListdata();
+            }
+        );
+
+        callProxy(
+           "GetStudentChapterMemberships",
+           null,
+           function (response) {
+               listdata2 = response;
+
+               ShowListdata2();
+
+
+           }
+       );
+
+
+
+
+        $('body').on('click', '.edit', function () {
+
+            console.log("edit");
+
+            var i = jQuery(this).attr('data');
+            console.log("edit", i, listdata.Data[i]);
+            if (listdata != null && listdata.Data != null && listdata.Data.length > 0 && listdata.Data.length > i) {
+
+                console.log("edit renderTemplate", listdata.StaticData);
+
+                ShowEdit('#edit', '#template-edit', { "Data": listdata.Data[i], "StaticData": listdata.StaticData });
+                $('#list').hide();
+            }
+
+            return false;
+        });
+
+        $('body').on('click', '.edit2', function () {
+
+            console.log("edit2");
+
+            var i = jQuery(this).attr('data');
+            console.log("edit2", i, listdata2.Data[i]);
+            if (listdata2 != null && listdata2.Data != null && listdata2.Data.length > 0 && listdata2.Data.length > i) {
+
+                console.log("edit2 renderTemplate", listdata2.StaticData);
+
+                ShowEdit('#edit2', '#template-edit2', { "Data": listdata2.Data[i], "StaticData": listdata2.StaticData });
+                $('#list2').hide();
+            }
+
+            return false;
+        });
+
+
+
+        $('body').on('click', '#save', function () {
+
+            console.log("save");
+
+            if (!Validate('#edit')) {
+
+                nalert("Missing or Invalid entries");
+                return false;
+            }
+
+            //var $form = $("#editform");
+            var startdate = new Date($('#editform [name=BeginDate]').val());
+            var enddate = new Date($('#editform [name=EndDate]').val());
+            var data = {
+                CustomerEducationId: $('#editform [name=CustomerEducationId]').val(),
+                ProgDegreeCode: $('#editform [name=ProgDegreeCode]').val(),
+                ProgTypeCode: $('#editform [name=ProgTypeCode]').val(),
+                Institution: $('#editform [name=Institution]').val(),
+                InstitutionName: $('#editform [name=InstitutionName]').val(),
+                BeginDate: startdate.toISOString(),
+                EndDate: enddate.toISOString()
+
+
+            };
+            console.log("save data", data);
+
+            callProxy(
+                "SaveCustomerEducations",
+                data,
+            function (response) {
+                listdata = response;
+
+                jQuery('#edit').hide();
+
+                ShowListdata();
+                ShowListdata2();
+
+            }
+            );
+
+            return false;
+        });
+
+
+        $('body').on('click', '#save2', function () {
+
+            console.log("save2");
+
+            if (!Validate('#edit2')) {
+
+                nalert("Missing or Invalid entries");
+                return false;
+            }
+
+
+            //var $form = $("#editform2");
+            var startdate = new Date($('#editform2 [name=BeginDate]').val());
+            var enddate = new Date($('#editform2 [name=EndDate]').val());
+            var data = {
+                CustomerRelationshipId: $('#editform2 [name=CustomerRelationshipId]').val(),
+                RelatedMasterCustomerId: $('#editform2 [name=RelatedMasterCustomerId]').val(),
+                RelatedName: $('#editform2 [name=RelatedName]').val(),
+                BeginDate: startdate.toISOString(),
+                EndDate: enddate.toISOString()
+
+            };
+            console.log("save data2", data);
+
+            callProxy(
+                "SaveStudentChapterMemberships",
+                data,
+            function (response) {
+                listdata2 = response;
+                jQuery('#edit2').hide();
+                //renderTemplate(response, '#template-list2', '#list2');
+                ShowListdata2();
+
+            }
+            );
+
+            return false;
+        });
+
+
+        $('body').on('click', '.delete', function () {
+            if (confirm("Are you sure you want to delete this record?") == true) {
+                console.log("delete");
+
+                var value = jQuery(this).attr('data');
+
+                callProxy(
+                    "DeleteCustomerEducations",
+                    { CustomerEducationId: value },
+                function (response) {
+                    listdata = response;
+                    //renderTemplate(response, '#template-list', '#list')
+                    ShowListdata();
+                    ShowListdata2();
+
+                }
+                );
+            }
+            return false;
+        });
+
+        $('body').on('click', '.delete2', function () {
+
+            if (confirm("You are sure you want to delete this record?") == true) {
+                console.log("delete2");
+
+                var value = jQuery(this).attr('data');
+
+                callProxy(
+                    "DeleteRelationship",
+                    { CustomerRelationshipId: value },
+                function (response) {
+                    listdata2 = response;
+                    //renderTemplate(response, '#template-list2', '#list2')
+                    ShowListdata2();
+
+                }
+                );
+            }
+            return false;
+        });
+
+    }
+</script>
+
+
+<script>
+
+    $(document).ready(function () {
+        console.log("ready");
+
+        page_init();
+
+
+
+    });
+
+</script>

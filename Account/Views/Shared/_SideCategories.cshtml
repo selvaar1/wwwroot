@@ -1,0 +1,68 @@
+﻿<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">My Account</a>
+        </div>
+@if (HttpContext.Current.Session["users"] != null)
+{ 
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <div class="sideCategories">
+                        <h4>Account Info </h4>
+                        <ul class="links">
+                            <li><a href="~/MyAccount">My Account</a></li>
+                            <li><a href="~/Credential">Username / Password</a></li>
+                            @*<li><a href="~/AddOns">Membership Add-Ons</a></li>
+            <li><a href="~/Donation">Donation</a></li>*@
+                        </ul>
+
+                        <h4>Demographics</h4>
+                        <ul class="links">
+                            <li><a href="~/Demographics">Name & Demographics</a></li>
+                            <li><a href="~/Addresses">Addresses</a></li>
+                            @*<li><a href="~/Interests">Professional Interests</a></li>*@
+
+                        </ul>
+
+                        <h4>Membership & Participation</h4>
+                        <ul class="links">
+                            <li><a href="~/Memberships">Membership Details</a></li>
+                            <li><a href="~/Committees">Committees</a></li>
+                        </ul>
+                        @*
+                <h4>Employment & Affiliations</h4>
+                <ul class="links">
+                    <li><a href="~/Employment">Employment</a></li>
+                    <li><a href="~/Society">Society Memberships</a></li>
+                   <li><a href="~/Education">Educational Background</a></li>
+        </ul>
+                        *@
+                        <h4>Communication</h4>
+                        <ul class="links">
+                            <li><a href="~/CommunicationPreferences">Communication Preferences</a></li>
+                            <li><a href="~/Contacts">Contact Information</a></li>
+                            <li><a href="~/EmergencyContacts">Emergency Contacts</a></li>
+                            @*<li><a href="" target="_self">Opt In/Out</a></li>*@
+                        </ul>
+
+                        <h4>Purchases</h4>
+                        <ul class="links">
+                            <li><a href="~/PurchaseHistory">Purchase History</a></li>
+                            <li><a href="~/PayBalancesDue">Pay Open Balances</a></li>
+                            <li><a href="~/Downloads">Digital Content Access</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    }
+    </div><!-- /.container-fluid -->
+</nav>

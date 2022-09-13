@@ -1,0 +1,161 @@
+﻿
+
+<div style="width:auto" class="listView" >
+    <table  align="center">
+        <tbody>
+            <tr>
+                <td colspan="2" align="center"><h3>Providers of Endorsed ATA Featured Products</h3></td>
+            </tr>
+            <tr>
+                <td class="col-lg-1 table-bordered " align="center">
+                    <div class="Featuredproduct_list">
+                        <img alt="" style="width: 100px; height: 65px; vertical-align: middle;" src="~/Images/HelpLogo_prepass.png" />
+                        <br />
+                        <br />
+                        <h3>HELP Inc.-Provider of PrePas</h3>
+                    </div>
+                </td>
+                <td class="col-lg-1 table-bordered " align="center">
+                    <div class="Featuredproduct_list">
+
+                        <img alt="" style="width: 100px; height: 65px; vertical-align: middle;" src="~/Images/HireRight_logo_final.jpg" />
+                        <br />
+                        <br />
+                        <h3>Hire Right</h3>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-lg-3 table-bordered" align="center">
+                    <div class="container" style="width:65%">
+                        <div>
+                            <h4>ATA Corporate Partners</h4>
+<br/>
+                        </div>
+                        <!--The main div for carousel-->
+                        <div class="container text-center" style="width:105%">
+                            <div class="carousel slide row" data-ride="carousel" data-type="multi" data-interval="3000" id="fruitscarousel">
+
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <div class="col-md-3 col-sm-4 col-xs-12" >
+                                            <a href="http://www.safertrucks.com" target="_blank">
+                                                <img alt="1" style="width: 50px; height: 45px; vertical-align: middle;" src="~/Images/Bendix.jpg" />
+                                            </a>
+                                            <br />
+                                            <br />
+                                            <h4>Bendix</h4>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-md-3 col-sm-4 col-xs-12">
+                                            <a href="https://ebe-inc.com/" target="_blank">
+                                                <img alt="" style="width: 50%; height: 45px; vertical-align: middle;" src="~/Images/ebe-logo.png" />
+                                                <br />
+                                                <br />
+                                                <h4>Ebe Technology</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-md-3 col-sm-4 col-xs-12">
+                                            <a href="http://www.epicvue.com/" target="_blank">
+                                                <img alt="" style="width: 30px; height: 50px; vertical-align: middle;" src="~/Images/Epicvue-HR-jepg.jpg" />
+                                                <br />
+                                                <br />
+                                                <h4>EPICVue</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </td>
+
+                <td class="col-lg-3 table-bordered" align="center">
+                    <div class="container" style="width:65%">
+                        <div><h4>Providers of ATA Featured Products</h4><br/></div>
+
+                        <!--The main div for carousel-->
+                        <div class="container text-center" style="width:105%">
+                            <div class="carousel slide row" data-ride="carousel" data-type="multi" data-interval="3000" id="fruitscarousel">
+
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <div class="col-md-3 col-sm-4 col-xs-12" >
+                                            <img alt="" style="width: 50px; height: 45px; vertical-align: middle;" src="~/Images/ATandT.png" />
+                                            <br />
+                                            <br />
+                                            <h4>AT&T</h4>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-md-3 col-sm-4 col-xs-12">
+                                            <a href="http://www.bestpass.com" target="_blank">
+                                                <img alt="" style="width: 50px; height: 45px; vertical-align: middle;" src="~/Images/LogoDetailed.jpg" />
+                                                <br />
+                                                <br />
+                                                <h4>Bestpass</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-md-3 col-sm-4 col-xs-12">
+                                            <a href="http://www.decisiv.com/" target="_blank">
+                                                <img alt="" style="width:50px; height: 45px; vertical-align: middle;" src="~/Images/decisivlogo.jpg" />
+                                                <br />
+                                                <br />
+                                                <h4>Decisiv</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td table-bordered" align="center" colspan="2">
+                    <img src="~/images/ATA_FooterLogo.jpg">
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<script>
+    jQuery(document).ready(function () {
+
+        jQuery('.carousel[data-type="multi"] .item').each(function () {
+            var next = jQuery(this).next();
+            if (!next.length) {
+                next = jQuery(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo(jQuery(this));
+
+            for (var i = 0; i < 2; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = jQuery(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+
+    });
+</script>

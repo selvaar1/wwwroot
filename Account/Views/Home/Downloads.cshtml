@@ -1,0 +1,87 @@
+﻿@using MyResource = ResourceFile
+@{
+    ViewBag.PageTitle = "Digital Content Access";
+}
+@{
+    ViewBag.Title = "Digital Content Access";
+}
+@section featured {
+}
+
+<h1 class="page_title">@ViewBag.Title</h1>
+<h2>@ViewBag.Message</h2>
+
+@if (ViewBag.Downloads != null && ViewBag.Downloads.Count > 0 )
+{
+<table class="table table-striped contentBox">
+
+    <tr class="rowheader">
+
+        <th>
+            Document
+        </th>
+
+        <th>
+            Order Number
+        </th>
+
+        <th>
+            Download Available
+        </th>
+
+        <th>
+            Downloaded
+        </th>
+        <th>
+            Download Until
+        </th>
+        <th>
+            &nbsp;
+        </th>
+    </tr>
+
+    @foreach (var doc in ViewBag.Downloads) {
+
+    <tr>
+
+        <td>
+            @doc.Document
+        </td>
+
+        <td>
+            @doc.OrderNo
+        </td>
+
+        <td>
+            @(doc.DownloadAvailable>0 ? @doc.DownloadAvailable : "")
+        </td>
+        <td>
+            @doc.Downloaded
+        </td>
+        <td>
+            @doc.Expire
+        </td>
+
+        <td class="action">
+            <a href="@Url.Action("Download", "Home", new { OrderNumber = doc.OrderNo, OrderLineNo = doc.OrderLineNo, FileId = doc.FileId })"  class="btn btn-primary btn btn-info" id="Download">Download</a>
+        </td>
+    </tr>
+
+    }
+</table>
+
+        }
+        else {
+    <span>No downloads available</span>
+        }
+
+    <script>
+
+        $(document).ready(function () {
+            console.log("ready");
+
+            page_init();
+
+        });
+
+    </script>

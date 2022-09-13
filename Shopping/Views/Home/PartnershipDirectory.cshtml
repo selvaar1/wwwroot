@@ -1,0 +1,275 @@
+@{
+    ViewBag.Title = "Affinity Partnership";
+    Layout = "~/Views/Shared/_TopHeaderLayout.cshtml";
+    //var baseurl = "https://irbc.sirweb.org/Shopping/";
+    var baseurl = Url.Content("~/img/affinity-partners/");
+}
+
+<div class="scrollable">
+    <div class="breadcrumbTwo" role="navigation">Partner Directory</div>
+    <content id="content-box" class="content">
+
+        <div class="container">
+            <h1 class="partnerh1">Partner Directory</h1>
+            <p>
+                The IR Business Center vendor directory is a solution provider for Interventional Radiology practices.  It is a convenient way to search for vendors that offer services
+
+            </p>
+            <div id="partner-list" class="partner-list" data-test-data="something" data-partner-data='[{
+          "Company": "Abbott Vascular",
+          "Website": "https://www.cardiovascular.abbott/us/en/hcp/disease-management/peripheral-artery-disease.html",
+          "Long Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eum totam laboriosam incidunt. Animi architecto magnam vero vitae maiores adipisci incidunt quos tempore eos, numquam dolores amet nobis ipsa aliquid exercitationem, aspernatur eius facilis dolor. Ullam voluptatum doloribus aut illo praesentium culpa, voluptatem rem! Dolorem nostrum ad quas enim nihil natus hic rem veritatis!",
+          "Logo File Name": "SIR_logos_Abbott_468x360"
+        },
+        {
+          "Company": "AngioDynamics",
+          "Website": "http://angiodynamics.com",
+          "Long Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eum totam laboriosam incidunt. Animi architecto magnam vero vitae maiores adipisci incidunt quos tempore eos, numquam dolores amet nobis ipsa aliquid exercitationem, aspernatur eius facilis dolor. Ullam voluptatum doloribus aut illo praesentium culpa, voluptatem rem! Dolorem nostrum ad quas enim nihil natus hic rem veritatis!",
+          "Logo File Name": "SIR_logos_angiodynamics_468x360"
+        },
+        {
+          "Company": "Argon Medical Devices, Inc.",
+          "Website": "http://argonmedical.com",
+          "Long Description": "Argon is a US-based manufacturer with over 900 employees worldwide. Our brand is recognized for best-in-class products that improve patient outcomes via percutaneous, image-guided procedures. By utilizing a well-established sales and marketing infrastructure, we serve global customers through a direct sales organization and through long-standing relationships with medical device distributors, strategic partners and OEMs. ",
+          "Logo File Name": "SIR_logos_Argon_468x360"
+        },
+        {
+          "Company": "AstraZeneca",
+          "Website": "https://www.astrazeneca-us.com/",
+          "Long Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eum totam laboriosam incidunt. Animi architecto magnam vero vitae maiores adipisci incidunt quos tempore eos, numquam dolores amet nobis ipsa aliquid exercitationem, aspernatur eius facilis dolor. Ullam voluptatum doloribus aut illo praesentium culpa, voluptatem rem! Dolorem nostrum ad quas enim nihil natus hic rem veritatis!",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "Avail",
+          "Website": "http://www.avail.io/",
+          "Long Description": "Avail Medsystems is a pioneering healthcare technology company based in Silicon Valley. Its product,  the Avail surgical telepresence platform, is designed to seamlessly connect physicians and care teams to remote experts and device industry representatives to facilitate collaboration during medical procedures. Avail&#39;s immersive hardware and software platform enables instant, HIPAA-HITECH protected two-way audio/visual communication with high-definition video and surgical imaging views and telestration capabilities. Avail offers a SaaS-based pricing model without a capital equipment purchase and includes a comprehensive approach to service and support. For more information about Avail Medsystems, visit our website.",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "Bayer",
+          "Website": "",
+          "Long Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eum totam laboriosam incidunt. Animi architecto magnam vero vitae maiores adipisci incidunt quos tempore eos, numquam dolores amet nobis ipsa aliquid exercitationem, aspernatur eius facilis dolor. Ullam voluptatum doloribus aut illo praesentium culpa, voluptatem rem! Dolorem nostrum ad quas enim nihil natus hic rem veritatis!",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "BD",
+          "Website": "http://www.bd.com",
+          "Long Description": "BD is one of the largest global medical technology companies in the world and is advancing the world of health by improving medical discovery, diagnostics and the delivery of care. The company supports the heroes on the frontlines of health care by developing innovative technology, services and solutions that help advance both clinical therapy for patients and clinical process for health care providers. BD and its 65,000 employees have a passion and commitment to help improve patient outcomes, improve the safety and efficiency of clinicians&#39; care delivery process, enable laboratory scientists to better diagnose disease and advance researchers&#39; capabilities to develop the next generation of diagnostics and therapeutics. BD has a presence in virtually every country and partners with organizations around the world to address some of the most challenging global health issues. By working in close collaboration with customers, BD can help enhance outcomes, lower costs, increase efficiencies, improve safety and expand access to health care. In 2017, BD welcomed C. R. Bard and its products into the BD family. For more information on BD, please visit bd.com.",
+          "Logo File Name": "SIR_logos_BD_468x360"
+        },
+        {
+          "Company": "Boston Scientific",
+          "Website": "http://bostonscientific.com",
+          "Long Description": "Boston Scientific transforms lives through innovative medical solutions that improve the health of patients around the world. As a global medical technology leader for 40 years, we advance science for life by providing a broad range of high performance solutions that address unmet patient needs and reduce the cost of health care. Learn more at bostonscientific.com.",
+          "Logo File Name": "SIR_logos_BostonS_468x360"
+        },
+        {
+          "Company": "Bristol-Myers Squibb",
+          "Website": "",
+          "Long Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eum totam laboriosam incidunt. Animi architecto magnam vero vitae maiores adipisci incidunt quos tempore eos, numquam dolores amet nobis ipsa aliquid exercitationem, aspernatur eius facilis dolor. Ullam voluptatum doloribus aut illo praesentium culpa, voluptatem rem! Dolorem nostrum ad quas enim nihil natus hic rem veritatis!",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "Cook Medical",
+          "Website": "http://cookmedical.com",
+          "Long Description": "Since 1963, Cook Medical has worked closely with physicians to develop technologies that eliminate the need for open surgery. Today we are combining medical devices, biologic materials and cellular therapies to help the world&#39;s healthcare systems deliver better outcomes more efficiently. We have always remained family owned so that we have the freedom to focus on what we care about: patients, our employees and our communities. Find out more at cookmedical.com, and for the latest news, follow us on Twitter, Facebook and LinkedIn.",
+          "Logo File Name": "SIR_logos_Cook_468x360"
+        },
+        {
+          "Company": "Cordis",
+          "Website": "http://www.cordis.com",
+          "Long Description": "Cordis is a worldwide leader in the development and manufacture of interventional vascular technology, with a reputation for clinical acumen, training and services.  For more than 60-years, Cordis has delivered revolutionary products to treat millions of patients. With an established a legacy of innovation in high-quality and less-invasive cardiovascular products, Cordis has built a strong global footprint with operations in countries around the world. Our focus is on cardiology and endovascular platforms, with high-quality products such as diagnostic and interventional catheters, balloons, self-expanding stents, guide wires, and vascular closure devices. ",
+          "Logo File Name": "SIR_logos_Cordis_468x360"
+        },
+        {
+          "Company": "Genentech",
+          "Website": "",
+          "Long Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eum totam laboriosam incidunt. Animi architecto magnam vero vitae maiores adipisci incidunt quos tempore eos, numquam dolores amet nobis ipsa aliquid exercitationem, aspernatur eius facilis dolor. Ullam voluptatum doloribus aut illo praesentium culpa, voluptatem rem! Dolorem nostrum ad quas enim nihil natus hic rem veritatis!",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "GI Supply",
+          "Website": "http://www.gi-supply.com/renova",
+          "Long Description": "GI Supply is a physician founded company and we strive for deep clinical input into all that we do. We are working to broaden our portfolio with high quality solutions that allow physicians to perform procedures safely and efficiently.Today, GI Supply products are used daily by healthcare providers in more than 40 countries.GI Supply is proud to have expanded its portfolio as an authorized distributor of Laborie Medical Technologies Corp. products in the United States of America. With this expansion, GI Supply can address more physician needs and support a broader range of procedures.",
+          "Logo File Name": "SIR_logos_GI_468x360"
+        },
+        {
+          "Company": "Gore & Associates",
+          "Website": "http://www.goremedical.com/",
+          "Long Description": "Gore engineers medical devices that treat a range of cardiovascular and other health conditions. With more than 50 million medical devices implanted over the course of more than 45 years, Gore builds on its legacy of improving patient outcomes through research, education and quality initiatives. Product performance, ease of use and quality of service provide sustainable cost savings for physicians, hospitals and insurers. Gore is joined in service with clinicians and through this collaboration we are improving lives.",
+          "Logo File Name": "SIR_logos_Gore_468x360"
+        },
+        {
+          "Company": "Guerbet",
+          "Website": "https://www.guerbet.com/en-us",
+          "Long Description": "Guerbet has been supporting healthcare professionals specialized in diagnostic and interventional imaging since 1926. Guerbet develops and markets contrast media, delivery systems, medical devices, and related solutions adapted to their needs. Guerbet LLC&#39;s employees are committed to providing healthcare professionals with contrast media, medical devices, and innovative solutions that are vital for diagnostic and interventional imaging. Driven by passion, every day, we strive to combine performance, quality, and sustainable development.",
+          "Logo File Name": "SIR_logos_Guerbet_468x360"
+        },
+        {
+          "Company": "Histonics",
+          "Website": "",
+          "Long Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eum totam laboriosam incidunt. Animi architecto magnam vero vitae maiores adipisci incidunt quos tempore eos, numquam dolores amet nobis ipsa aliquid exercitationem, aspernatur eius facilis dolor. Ullam voluptatum doloribus aut illo praesentium culpa, voluptatem rem! Dolorem nostrum ad quas enim nihil natus hic rem veritatis!",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "Inari Medical",
+          "Website": "http://inarimedical.com",
+          "Long Description": "Inari Medical is pioneering therapeutic treatments for venous thromboembolism by developing thrombectomy products to extract large clot burden from big vessels without the need for thrombolytic drugs.",
+          "Logo File Name": "SIR_logos_Inari_468x360"
+        },
+        {
+          "Company": "Instylla",
+          "Website": "",
+          "Long Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eum totam laboriosam incidunt. Animi architecto magnam vero vitae maiores adipisci incidunt quos tempore eos, numquam dolores amet nobis ipsa aliquid exercitationem, aspernatur eius facilis dolor. Ullam voluptatum doloribus aut illo praesentium culpa, voluptatem rem! Dolorem nostrum ad quas enim nihil natus hic rem veritatis!",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "Margin Care",
+          "Website": "https://www.margin.care/",
+          "Long Description": "",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "Medtronic",
+          "Website": "http://www.medtronic.com",
+          "Long Description": "Patients are at the center of everything we do —and we believe medical technology can play an even greater role in improving people&#39;s lives. Join us in our commitment to take healthcare Further, Together. Be inspired at medtronic.com.",
+          "Logo File Name": "SIR_logos_Medtronic_468x360"
+        },
+        {
+          "Company": "Merck",
+          "Website": "",
+          "Long Description": "NeuWave™, now a part of the Ethicon™ family of companies, offers the first intelligent ablation system and the only system that has it all. The versatile probe portfolio with multi-probe synchronized energy allows physicians to tailor ablations with 1, 2 or 3 probes. Ablation Confirmation™ software now offers the only integrated in-procedure confirmation to evaluate the technical success of your procedure.",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "NeuWave",
+          "Website": "http://www.neuwave.com",
+          "Long Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eum totam laboriosam incidunt. Animi architecto magnam vero vitae maiores adipisci incidunt quos tempore eos, numquam dolores amet nobis ipsa aliquid exercitationem, aspernatur eius facilis dolor. Ullam voluptatum doloribus aut illo praesentium culpa, voluptatem rem! Dolorem nostrum ad quas enim nihil natus hic rem veritatis!",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "Penumbra, Inc.",
+          "Website": "http://www.penumbrainc.com",
+          "Long Description": "Penumbra, Inc., headquartered in Alameda, California, is a global healthcare company focused on innovative therapies. Penumbra designs, develops, manufactures and markets novel products and has a broad portfolio that addresses challenging medical conditions in markets with significant unmet need. Penumbra supports healthcare providers, hospitals and clinics in more than 100 countries.",
+          "Logo File Name": "SIR_logos_Penumbra_468x360"
+        },
+        {
+          "Company": "Philips",
+          "Website": "http://www.v-liveexperience.com/radiologyexperience/",
+          "Long Description": "Philips is a leading health technology company focused on improving people&#39;s lives across the health continuum – from healthy living and prevention, to diagnosis, treatment and home care. Applying advanced technologies and deep clinical and consumer insights, Philips delivers integrated solutions that address the Quadruple Aim: improved patient experience, better health outcomes, improved staff experience, and lower cost of care. Partnering with its customers, Philips seeks to transform how healthcare is delivered and experienced. The company is a leader in diagnostic imaging, image-guided therapy, patient monitoring and health informatics, as well as in consumer health and home care.",
+          "Logo File Name": "SIR_logos_Philips_468x360"
+        },
+        {
+          "Company": "RCCS",
+          "Website": "https://rccsinc.com/",
+          "Long Description": "Revenue Cycle Coding Strategies has provided specialty medical coding, revenue cycle, management, and compliance consulting services, as well as educational and training materials to the healthcare industry for over 20 years. RCCS&#39;s key to excellence lies in our extensive team of specialized coding experts and industry leaders, who create and implement customized revenue cycle solutions.",
+          "Logo File Name": "SIR_logos_RCCS_468x360"
+        },
+        {
+          "Company": "Shockwave Medical",
+          "Website": "https://shockwavemedical.com/",
+          "Long Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eum totam laboriosam incidunt. Animi architecto magnam vero vitae maiores adipisci incidunt quos tempore eos, numquam dolores amet nobis ipsa aliquid exercitationem, aspernatur eius facilis dolor. Ullam voluptatum doloribus aut illo praesentium culpa, voluptatem rem! Dolorem nostrum ad quas enim nihil natus hic rem veritatis!",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "Siemens Healthineers",
+          "Website": "http://siemens-healthineers.us/SIR2021",
+          "Long Description": "Minimally invasive image-guided treatment can result in better patient outcomes and lower costs. Siemens Healthineers offers a broad portfolio of systems and solutions for interventional radiology, computed tomography, and ultrasound. As a leading medical technology company headquartered in Erlangen, Germany, Siemens Healthineers enables healthcare providers worldwide through its regional companies to increase value by empowering them on their journey towards expanding precision medicine, transforming care delivery, improving the patient experience, and digitalizing healthcare. Siemens Healthineers is continuously developing its product and service portfolio, with AI-supported applications and digital offerings that play an increasingly important role in the next generation of medical technology. These new applications will enhance the company&#39;s foundation in in-vitro diagnostic, image-guided therapy, and in-vivo diagnostics. Siemens Healthineers also provides a range of services and solutions to enhance healthcare providers ability to provide high-quality, efficient care to patients. Further information is available at www.siemens-healthineers.com.",
+          "Logo File Name": "SIR_logos_Siemens_468x360"
+        },
+        {
+          "Company": "Sirtex Medical, Inc.",
+          "Website": "http://sirtex.com/us/clinicians/",
+          "Long Description": "Sirtex Medical is a global healthcare business with offices in the U.S., Australia, Germany and Singapore, working to improve outcomes in people with cancer. Our current lead product is a targeted radiation therapy for liver cancer called SIR-Spheres® Y-90 resin microspheres. Learn more about Sirtex in our interactive virtual booth: https://www.sirtexvirtualbooth.com.",
+          "Logo File Name": "SIR_logos_SirTex_468x360"
+        },
+        {
+          "Company": "Stryker Interventional Spine",
+          "Website": "http://strykerivs.com",
+          "Long Description": "Stryker Interventional Spine provides innovative solutions in the areas of vertebral compression fractures, radiofrequency nerve ablation, and contained disc herniations.  IVS offers a comprehensive, customizable approach to fracture treatment through the SpineJack System, AVAflex curved balloon system, iVAS Elite 808psi balloon, iVAS 13g balloon, Autoplex automatic cement mixing system with Verteplex HV cement, and other accessories.  The MultiGen 2 radiofrequency generator and Venom electrodes offer large lesion solutions for nerve ablation across multiple anatomic locations.",
+          "Logo File Name": "SIR_logos_stryker_468x360"
+        },
+        {
+          "Company": "Tactile Medical",
+          "Website": "https://tactilemedical.com/",
+          "Long Description": "Tactile Medical is a leader in developing and marketing at-home therapies for people suffering from underserved, chronic conditions including lymphedema, lipedema, chronic venous insufficiency and chronic pulmonary disease by helping them live better and care for themselves at home. We are proud to collaborate with clinicians to expand clinical evidence, raise awareness, increase access to care, reduce overall healthcare costs and improve the quality of life for tens of thousands of patients each year.  ",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "Terumo",
+          "Website": "https://www.terumois.com/",
+          "Long Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eum totam laboriosam incidunt. Animi architecto magnam vero vitae maiores adipisci incidunt quos tempore eos, numquam dolores amet nobis ipsa aliquid exercitationem, aspernatur eius facilis dolor. Ullam voluptatum doloribus aut illo praesentium culpa, voluptatem rem! Dolorem nostrum ad quas enim nihil natus hic rem veritatis!",
+          "Logo File Name": "SIR_logos_Terumo_468x360"
+        },
+        {
+          "Company": "TriSalus Life Sciences",
+          "Website": "http://trisaluslifesci.com/",
+          "Long Description": "TriSalus Life Sciences® is an interventional immunotherapy company on a mission to extend and improve the lives of patients living with liver and pancreatic tumors. By integrating an immunotherapeutic with innovative drug delivery technologies, TriSalus&#39; platform seeks to address two of the most significant barriers that limit the effectiveness of current treatments for liver and pancreatic tumors: immunosuppression and high intratumoral pressure.The company is studying the ability of SD-101, a potentially first-in-class, investigative TLR9 agonist, to reactivate the immune system within the liver and pancreas to enable more durable responses to other immunotherapeutics (e.g., checkpoint inhibitors, CAR T-cell therapy) and improve patient outcomes. The platform, which leverages TriSalus&#39; proprietary Pressure-Enabled Drug Delivery™ (PEDD™) method of administration, modulates pressure and flow within blood vessels to improve the amount of therapy delivered to the tumor. While meaningful progress in these difficult-to-treat diseases will not be easy, TriSalus is focused on advancing science and technological innovation to transform outcomes for patients.",
+          "Logo File Name": "SIR_logos_TriNav_468x360"
+        },
+        {
+          "Company": "US Renal",
+          "Website": "https://www.usrenalcare.com/",
+          "Long Description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nihil eum totam laboriosam incidunt. Animi architecto magnam vero vitae maiores adipisci incidunt quos tempore eos, numquam dolores amet nobis ipsa aliquid exercitationem, aspernatur eius facilis dolor. Ullam voluptatum doloribus aut illo praesentium culpa, voluptatem rem! Dolorem nostrum ad quas enim nihil natus hic rem veritatis!",
+          "Logo File Name": ""
+        },
+        {
+          "Company": "Varian, A Siemens Healthineers Company",
+          "Website": "http://www.varian.com/products/interventional-solutions",
+          "Long Description": "For more than 70 years, Varian has been at the forefront of the fight against cancer, enabling advances in oncology in the quest for better patient outcomes. Today, as a combined organization with Siemens Healthineers, we&#39;re assembling a portfolio of interventional solutions and looking to advance the field of interventional radiology by partnering with physicians and funding research to build the scientific data necessary to drive the adoption of minimally invasive, image-guided procedures.",
+          "Logo File Name": "SIR_logos_varian_468x360"
+        }
+      ]'></div>
+        </div>
+    </content>
+
+
+    <script>
+        const partnerList = document.querySelector('#partner-list');
+        const partnerListObj = JSON.parse(partnerList.dataset.partnerData);
+
+        function populateDescription(obj) {
+            const list = document.querySelector('.partner-list');
+
+            for (const partner of obj) {
+                const partnerBox = document.createElement('div');
+                const partnerContent = document.createElement('div');
+                const title = document.createElement('h2');
+                const description = document.createElement('p');
+                const website = document.createElement('p');
+                const image = document.createElement('img');
+                const imgSource = partner['Logo File Name'];
+                const company = partner["Company"];
+                const url = document.createElement('a');
+
+                partnerBox.classList.add('partner-box');
+                partnerContent.classList.add('partner-content');
+                if (imgSource) {
+                    image.src = '@baseurl' + imgSource +'.jpg';
+                }
+                image.alt = company;
+                image.classList.add('partner-logo');
+                title.textContent = partner["Company"];
+                const titlePart = partner["Company"].split(' ')
+                title.id = titlePart[0].replace(/^,|,$/g, "").toLowerCase();
+                description.classList.add('description');
+                description.textContent = partner["Long Description"];
+                url.setAttribute('href', partner["Website"]);
+                url.innerText = "Visit Website";
+
+                list.appendChild(partnerBox);
+                partnerBox.appendChild(image);
+                partnerBox.appendChild(partnerContent);
+
+                partnerContent.appendChild(title);
+                partnerContent.appendChild(description);
+                partnerContent.appendChild(url);
+            }
+        }
+        populateDescription(partnerListObj);
+    </script>
+
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+
+</div>
+

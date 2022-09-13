@@ -1,0 +1,235 @@
+﻿@{
+    ViewBag.Title = "Memberships Details";
+}
+<style>
+    .contentBox {
+        margin-bottom: 20px;
+    }
+
+    .datagrid {
+        padding: 10px;
+    }
+
+    .cb_body {
+        padding: 10px;
+    }
+
+    .nodata .cb_body {
+        font-style: italic !important;
+    }
+</style>
+<h1 class="page_title">@ViewBag.Title</h1>
+<div class="col-sm-12">
+    <div class="contentBox ">
+        <div class="cb_header">
+            Membership Summary
+        </div>
+        <div class="cb_body">
+            @if (ViewBag.MembershipSummary != null)
+            {
+                <div>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Status</td>
+                            @if (ViewBag.MembershipSummary.CycleEndDate > DateTime.Now) { 
+                                <td class="text-right" style="color:green">Active</td>
+                            }
+                            else
+                            {
+                                <td class="text-right" style="color:red">Expired</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>Start Date</td>
+                            <td class="text-right">@ViewBag.MembershipSummary.CycleBeginDate.ToString("MM/dd/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td>Paid Thru Date</td>
+                            <td class="text-right">@ViewBag.MembershipSummary.CycleEndDate.ToString("MM/dd/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td>Member Type</td>
+                            <td class="text-right">@ViewBag.MembershipSummary.Description</td>
+                        </tr>
+                        <tr>
+                            <td>Member Number</td>
+                            <td class="text-right">@ViewBag.MasterCustomerId</td>
+                        </tr>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <span>There are no memberships to display</span>
+            }
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="contentBox">
+        <div class="cb_header">
+            Current Membership
+        </div>
+        <div class="=cb_body">
+            <div class="datagrid">
+                @if (ViewBag.Memberships != null)
+                {
+                    <div class="withdata">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Member Type</td>
+                                    <td class="date">Start Date</td>
+                                    <td class="date">End Date</td>
+                                </tr>
+                            </thead>
+                            @foreach (SL.Data.OrderDetailInfo item in ViewBag.Memberships)
+                            {
+                                <tr>
+                                    <td>@item.Description</td>
+                                    <td>@item.CycleBeginDate.ToString("MM/dd/yyyy")</td>
+                                    <td>@item.CycleEndDate.ToString("MM/dd/yyyy")</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                { 
+                    <div class=" text-center">
+                        No records to display
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="contentBox">
+        <div class="cb_header">
+            Future Membership
+        </div>
+        <div class="=cb_body">
+            <div class="datagrid">
+                @if (ViewBag.FutureMemberships != null)
+                {
+                    <div class="withdata">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Member Type</td>
+                                    <td class="date">Start Date</td>
+                                    <td class="date">End Date</td>
+                                </tr>
+                            </thead>
+                            @foreach (SL.Data.OrderDetailInfo item in ViewBag.FutureMemberships)
+                            {
+                                <tr>
+                                    <td>@item.Description</td>
+                                    <td>@item.CycleBeginDate.ToString("MM/dd/yyyy")</td>
+                                    <td>@item.CycleEndDate.ToString("MM/dd/yyyy")</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                { 
+                    <div class=" text-center">
+                        No records to display
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="contentBox">
+        <div class="cb_header">
+            Past Membership(s)
+        </div>
+        <div class="=cb_body">
+            <div class="datagrid">
+                @if (ViewBag.PastMemberships != null)
+                {
+                    <div class="withdata">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Member Type</td>
+                                    <td class="date">Start Date</td>
+                                    <td class="date">End Date</td>
+                                </tr>
+                            </thead>
+                            @foreach (SL.Data.OrderDetailInfo item in ViewBag.PastMemberships)
+                            {
+                                <tr>
+                                    <td>@item.Description</td>
+                                    <td>@item.CycleBeginDate.ToString("MM/dd/yyyy")</td>
+                                    <td>@item.CycleEndDate.ToString("MM/dd/yyyy")</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                { 
+                    <div class=" text-center">
+                        No records to display
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-12">
+ <div class="contentBox">
+                    <div class="cb_header">
+                        My Subscriptions
+                    </div>
+                    <div class="datagrid">
+                        @if (ViewBag.Subscriptions != null || ViewBag.Subscriptions != null)
+            {
+                            <div class="withdata">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <td>Title</td>
+                                            <td class="date">Start Date</td>
+                                            <td class="date">End Date</td>
+                                        </tr>
+                                    </thead>
+
+                                    @if (ViewBag.Subscriptions != null)
+                                    {
+                                        foreach (SL.Data.OrderDetailInfo item in ViewBag.Subscriptions)
+                                        {
+                                            <tr>
+
+                                                <td>@item.Description</td>
+                                                <td>@item.CycleBeginDate.ToString("MM/dd/yyyy")</td>
+                                                <td>@item.CycleEndDate.ToString("MM/dd/yyyy")</td>
+
+                                            </tr>
+                                        }
+                                    }
+                                </table>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class=" text-center">
+                                No records to display
+                            </div>
+                        }
+                    </div>
+                </div>
+
+</div>
+
+            <script>
+                $(document).ready(function () {
+
+                });
+            </script>

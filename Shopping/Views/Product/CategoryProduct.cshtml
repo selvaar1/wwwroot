@@ -1,0 +1,180 @@
+﻿
+
+
+<!--search_with_category-->
+<div class="search_with_category">
+    <div class="dP_cat">
+
+        <select id="CategorySearch" style="height:36px;" class="selectSkin">
+            @*<option ng-repeat="item in ddlCategories" value="{{item.type}}">{{item.Description}}</option>*@
+            <option value="All">All</option>
+            <option value="Author">Author</option>
+            <option value="Title">Title</option>
+            <option value="Topic">Topic</option>
+            <option value="Keyword">Keyword</option>
+            <option value="OrderCode">Order Code</option>
+        </select>
+    </div>
+    <input type="search" name="search" id="search" class="search_input">
+    <input type="button" class="submit_btn" id="SearchCategories" ng-click="SearchProducts('search')" value="Search">
+</div>
+<h1 class="page_title">Products</h1>
+<div id="showFilter">Filter By <span><i></i><i></i><i></i></span></div>
+<div id="products_view" class="pd_gridView">
+    <div id="product_display">
+        <!-- Mobile Sorting -->
+        <div class="jplist-ios-button">Sorting Navigation</div>
+
+        <div id="preloader" style="display: none"><span></span></div>
+
+        <div class="sorting_navigation">
+
+            <!-- Sort Dropdown -->
+            <div class="sort_by">
+                <select ng-model="sortBy" ng-change="sort()" class="selectSkin">
+                    <option selected="selected">Sort by</option>
+                    <option value="A-Z">Title A-Z</option>
+                    <option value="Z-A">Title Z-A</option>
+                    <option value="PriceHL">High Price</option>
+                    <option value="PriceLH">Lowest Price</option>
+                    @*  <option value="highRating">High Rating</option>
+                        <option value="lowRating">Low Rating</option>*@
+                </select>
+            </div>
+            <!--jplist-drop-down-->
+            <!-- Items Per Page Dropdown -->
+            <div class="sort_by">
+                <select ng-model="pageSize" id="pageSize" ng-change="ProductsPerPage()" class="selectSkin">
+                    <option value="12">12 per page</option>
+                    <option value="24">24 per page</option>
+                    <option value="40">40 per page</option>
+                    <option value="60">60 per page</option>
+                    <option value="all">View All</option>
+                </select>
+            </div>
+
+            <!--jplist-drop-down-->
+            <!-- Sort Views -->
+            <div class="pdViews sort_by">
+                <span class="head_text">View As</span>
+                <button type="button" class="pdView pd_listView" id="pd_listView" onclick="viewChange(this.id)"></button>
+                <button type="button" class="pdView pd_gridView" id="pd_gridView" onclick="viewChange(this.id)"></button>
+            </div>
+            <!--jplist-views-->
+            <div class="pageInfo">
+                {{pageStartIndex}} - {{pageDynamicCount}} of @ViewBag.CatIDCount
+            </div>
+            <!-- Pagination Control -->
+            <div class="jplist-pagination">
+                <div class="pagination">
+                    <ul>
+                        <li ng-class="prevPageDisabled()" id="prev">
+                            <a href="javascript:;" ng-click="prevPage()">« Prev</a>
+                        </li>
+                        <li ng-repeat="n in range()" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                            <a href="javascript:;">{{n+1}}</a>
+                        </li>
+                        <li ng-class="nextPageDisabled()" id="next">
+                            <a href="javascript:;" ng-click="nextPage()">Next »</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!--sorting_navigation-->
+
+
+
+    </div>
+</div>
+
+<div id="products_view" class="pd_gridView">
+    <div id="product_display">
+        <div id="preloader" style="display: none"><span></span></div>
+
+        @*@{ Html.RenderPartial("~/Views/Home/_Products.cshtml");}*@
+
+        <div class="product_data" ng-switch="(Products | filter:search).length">
+            <span class="jplist-no-results" id="loadMsg" style="display: none;">Loading Results...</span>
+            <span class="jplist-no-results" style="display: none;" id="noResultMsg">No results found</span>
+            @*<div class="product_list" data-ng-repeat="product in Products" ng-switch-default data-ng-repeat-load-finish="ngRepeatFinished">*@
+            <div class="product_list" data-ng-if="product.Categories == @ViewBag.CatID" ng-repeat="product in Products | orderBy:sortType:sortReverse " ng-switch-default>
+
+                @*Need to replace "token" with "customer Id" *@
+
+
+                <div data-ng-if="product.StockAvailable <= 0 && product.IsUmbrellaProduct != true &&  product.BackorderAvailable == true &&  product.Inventoried == true && product.PreorderAvailableDate == null" data-bo="{{product.BackorderAvailable}}" id="bo" class="backOrder">ON BACKORDER</div>
+                <div data-ng-if="product.StockAvailable <= 0 &&  product.BackorderAvailable == true &&  product.Inventoried == true && product.PreorderAvailableDate != null" data-bo="{{product.BackorderAvailable}}" id="bo" class="backOrder">PRE-ORDER AVAILABLE</div>
+                <div data-ng-if="product.Discontinued == true" class="discontFlag">LIMITED QUANTITY</div>
+                <div style="height: 20px;">
+                    <a class="umbrellaFlag" href="javascript:;" onclick="viewProduct('/Login/Index')" tooltips data-ng-attr-tooltip-content="{{sesCustomerId !=''? '<b>Only for Member</b>':'<b>Only for Member</b><br />Click to login'}}" tooltip-side="bottom" data-ture="{{product.IsUmbrellaProduct}}"
+                       data-ng-show="product.IsMemberOnly" data-userinfo="{{sesCustomerId}}">
+                        <img src="~/Images/members-only.jpg" alt="Members Only" />
+                    </a>
+                </div>
+                <div class="book_img" data-id="{{product.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='" onclick="viewProduct($(this).attr('data-id'))" style="cursor:pointer">
+                    <img data-ng-src="{{product.ProductImage}}" no-image>
+                </div>
+                <div class="product_details ">
+                    <h3 class="product_title thumbView"><span limit-desc data-limit="40">{{product.ProductName}}</span> <span class="formatLbl">{{product.Format}}</span></h3>
+                    <h3 class="product_title listView"><a href="javascript:;" data-ng-init="url='/Product/viewproduct/?ProductId='" data-id="{{product.ProductId}}" onclick="viewProduct($(this).attr('data-id'))" style="cursor:pointer" data-ng-click="viewProduct(url + product.ProductId)">{{product.ProductName}}</a> @*<span class="formatLbl">Format: {{product.Format}}</span>*@</h3>
+                    <p class="desc" id="description" data-ng-bind-html="product.ShortDescription | sanitize" limit-desc data-limit="250"></p>
+
+
+                    <div class="cart_actions">
+                        <span style="display: none;">{{product.AvailableQty}}</span>
+                        <span id="aQval" style="display: none;">
+                            <span data-ng-class="product.IsUmbrellaProduct != true? 'ng-show': 'ng-hide'">{{product.StockAvailable}}</span>
+                        </span>
+
+                        <p class="pp">
+                            <span>SPECIAL PRICING FOR SIAM MEMBERS!</span>
+                            <br>
+                            <span class="priceview">Member:</span>
+                            <span class="priceview" data-ng-show="{{!product.IsUmbrellaProduct}}">{{product.MemberPrice | currency}}</span>
+                            <span class="priceview" data-ng-show="{{product.IsUmbrellaProduct}}">As low as </span>
+                            <span class="priceview dblPrice" data-ng-show="{{product.IsUmbrellaProduct}}">{{product.MinMemberPrice | currency}}</span>
+                            <br>
+                            <span class="priceview">List:</span>
+                            <span class="priceview" data-ng-show="{{!product.IsUmbrellaProduct}}">{{product.Price | currency}}</span>
+                            <span class="priceview" data-ng-show="{{product.IsUmbrellaProduct}}">As low as </span>
+                            <span class="priceview dblPrice" data-ng-show="{{product.IsUmbrellaProduct}}"> {{product.MinListPrice | currency}}</span>
+                            <br>
+                        </p>
+                        <div class="ui-helper-clearfix"></div>
+
+                        @*<button class="add_cart_btn" id="{{product.ProductId}}" data-ng-click="AddToCart($event, 'home')" data-iscostom="{{product.IsCustom}}"
+                            data-ng-if="product.IsCustom != true && product.Discontinued != true && product.IsUmbrellaProduct != true"></button>*@@*Add to Cart*@
+                            <button class="view_detail_btn" data-id="{{product.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='"
+                                    onclick="viewProduct($(this).attr('data-id'))"
+                                    data-ng-if="product.IsCustom != true && product.Discontinued != true && product.IsUmbrellaProduct != true">
+                                View Details
+                            </button>
+                            <button class="view_detail_btn single_vd" data-id="{{product.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='"
+                                    onclick="viewProduct($(this).attr('data-id'))"
+                                    data-ng-if="product.IsCustom == true || product.Discontinued == true || product.IsUmbrellaProduct == true">
+                                View Details
+                            </button>
+
+                        </div>
+                        <!--cart_actions  || data-ng-class="  ? 'ng-show': 'ng-hide'"  -->
+                    </div>
+                    <!--product_details-->
+
+                </div>
+                <div style="clear: both;"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var input = document.getElementById("search");
+        input.addEventListener("keyup", function (event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                document.getElementById("SearchCategories").click();
+            }
+        });
+    </script>

@@ -1,0 +1,2418 @@
+
+---------------------------------------
+--Date: 5/17/2022 1:30:53 AM--Scheduler Started
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:30:56 AM--Got webproductList from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:04 AM--Got all products from service. No of products : 506
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:06 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:06 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:06 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:07 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:07 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:07 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:07 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:07 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:09 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:09 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:09 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:09 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:09 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:09 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:10 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:10 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:10 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:10 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:10 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:10 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:10 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:10 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:10 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:11 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:11 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:11 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:11 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:11 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:11 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:12 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:12 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:12 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:12 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:13 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:13 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:14 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:15 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:16 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:22 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:24 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:25 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:25 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:25 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:28 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:30 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:37 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:37 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:37 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:37 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:37 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:37 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:38 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:38 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:38 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:38 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:38 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:38 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:39 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:39 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:39 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:39 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:39 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:39 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:39 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:40 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:40 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:40 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:40 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:40 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:41 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:41 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:41 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:41 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:41 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:41 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:41 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:41 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:42 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:42 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:42 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:43 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:43 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:43 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:43 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:43 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:43 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:43 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:43 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:44 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:44 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:44 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:44 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:44 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:44 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:44 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:45 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:45 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:45 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:46 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:46 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:46 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:46 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:47 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:47 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:47 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:47 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:47 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:47 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:48 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:48 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:48 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:48 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:48 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:49 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:49 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:49 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:49 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:49 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:49 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:50 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:50 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:50 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:50 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:50 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:50 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:50 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:50 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:51 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:51 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:51 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:51 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:51 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:51 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:51 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:51 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:52 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:52 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:52 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:52 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:52 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:52 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:52 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:53 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:53 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:53 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:53 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:53 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:53 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:55 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:56 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:56 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:56 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:56 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:56 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:56 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:57 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:57 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:57 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:57 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:57 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:57 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:57 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:58 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:58 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:58 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:59 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:59 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:31:59 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:00 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:00 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:00 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:00 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:02 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:03 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:03 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:03 AM--Get MeetingQuickInfo from service
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:03 AM--Update Product 370059216
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:03 AM--Update Product 370070731
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:03 AM--Update Product 370070926
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:03 AM--Update Product 370070929
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:03 AM--Update Product 370070937
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:04 AM--Update Product 370071397
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:04 AM--Update Product 370088846
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:04 AM--Update Product 370088888
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:04 AM--Update Product 370088899
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:04 AM--Update Product 370071278
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:04 AM--Update Product 370071293
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:04 AM--Update Product 370071301
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:04 AM--Update Product 370071307
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:04 AM--Update Product 370071310
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:05 AM--Update Product 370071323
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:05 AM--Product Table Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:05 AM--ProductComponents Table Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:05 AM--Category Table Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:05 AM--Category :Active Membership ACTIVE, Topic : UNCATEGORIZED Uncategorized, Product : Active Member(ACTMEM)(112602)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:05 AM--Category :Active Membership ACTIVE, Topic : UNCATEGORIZED Uncategorized, Product : Member- First Year of Practice(MEM_FY)(139763637)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Coding, Billing & Reimbursement CBRB, Topic : UNCATEGORIZED Uncategorized, Product : IR Coding Frequently Asked Questions Bundle (IRBC_FAQ_PACK01)(370071397)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Coding, Billing & Reimbursement CBRB, Topic : UNCATEGORIZED Uncategorized, Product : IR Evaluation and Managment FAQs(IRBC_FAQ_U001)(370088846)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Coding, Billing & Reimbursement CBRB, Topic : UNCATEGORIZED Uncategorized, Product : IR Central Venous Access FAQs(IRBC_FAQ_U002)(370088888)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Coding, Billing & Reimbursement CBRB, Topic : UNCATEGORIZED Uncategorized, Product : IR Arterial Access FAQs(IRBC_FAQ_U003)(370088899)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : 2022 IR Common Missed Coding Revenue Opportunities(2022_MISSED_REVENUE)(361954767)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : IR Evaluation and Management FAQs(2022_E/M_FAQ)(362684370)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : IR Venous FAQs(2022_VENOUS_FAQS)(362684403)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : IR Vascular Embolization FAQs(2022_VASCULAR_EMBO)(362684425)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : IR Nonvascular Intervention FAQs(2022_NONVASC_INTERV)(362684441)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product :  IR Central Venous Access FAQs(2022_CENT_VENOUS_ACCESS)(362684464)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : IR Dialysis Circuit FAQs(2022_DIALYSIS_CIRCUIT)(362684489)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : IR Miscellaneous Vascular Intervention FAQs(2022_MISC_VASC_INTERV)(362684533)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : IR Arterial Access FAQs(2022_ARTERIAL_ACCESS_FAQ)(362684801)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : IR Vascular Intervention FAQs(2022_VASC_INTERV)(362684864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : IR Endovascular Aneurysm Repair FAQs(2022_ENDO_VASC_REP)(362684880)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : 2022 IR Coding Book Update(IR_2022_CODING_UPDATE)(362685480)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : All inclusive 2022 IR Coding Book Update Bundle(CG2022_BUNDLE)(364103829)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : IR Coding Frequently Asked Questions Bundle (2022_IR_FAQ__BUNDLE)(364103845)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : 2022 Coding Update On-demand(E_CODE_22)(364839926)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : CODING Coding, Product : 2022 IR Coding Book Update and Webinar Bundle(E_22CODINGBOOKWEBINAR)(364940825)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : FAQs in Interventional Radiology Vol. 1 (eBook)(72A)(113112)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : FAQs in Interventional Radiology Bundle (eBook)(E74A)(585201)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : Patient Care in Vascular and Interventional Radiology Chapter CME Tests (Third edition)(E_BOOK_PATCARE_2016)(3464682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : Patient Care in Vascular and Interventional Radiology Bundle (Third ed.) (eBook)(E416)(3533864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : Patient Care in Vascular and Interventional Radiology Syllabus (eBook)(E414)(7551030)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : IR Basics: General Interventional Oncology - Part 1(E_BASICS_IO_PART1)(57470198)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : IR Basics: General Interventional Oncology - Part 2(E_BASICS_IO_PART2)(57470246)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : IR Basics: Bundle - Interventional Oncology Modules(E_BASICS_IO_BUNDLE)(81609723)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : IR Basics: Bundle - All Modules(E_BASICS_BUNDLE)(81609741)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : FAQs in Interventional Radiology Vol. 5 (eBook)(E77)(94648413)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : Standardized Report - Gastrojejunostomy Conversion(SIR_GASTROJEJUN_CONV)(108189062)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : Standardized Report - Gastrojejunostomy Exchange(SIR_GASTROJEJUN_EXCHANG)(108189063)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : Standardized Report - Gastrojejunostomy(SIR_GASTROJEJUNOSTOMY)(108189072)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : Standardized Report - Gastrostomy Exchange(SIR_GASTROSTOMY_EXCHAN)(108189073)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : Standardized Report - Gastrostomy Pull(SIR_GASTROSTOMY_PULL)(108189074)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : Standardized Report - Gastrostomy Push(SIR_GASTROSTOMY_PUSH)(108189075)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : Webinars for IRs: Innovating through IR(E_IRWEBINARS_INNOVAT)(157791321)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : FAQs in Interventional Radiology Vol. 6 (eBook)(E78)(162733291)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product :  JVIR CME 2019 June(E_JVIR_2019_06)(168771465)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : Standardized Report - Nasoenteric Tube(SIR_NASOENTERIC_TUBE)(178581180)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : SIR 2020 Digital Video Library (DVL) - Online Only(E_DVL_2020)(208522242)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : SIR 2020 Digital Video Library (DVL) -  Online AND Digital Download(E_DVLDDL_2020)(208522260)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : Webinars for IRs: Portal Vein Recanalization(E_IRWEBINARS_PORTALVEIN)(299305219)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : JVIR CME February 2021(E_JVIR_2021_02)(299338965)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:06 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : GASTRO_INTERVENTIONS Gastrointestinal, Product : 2021 JVIR CME Subscription Program(E_JVIR_2021_SUBSCRIPTION)(300216780)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : FAQs in Interventional Radiology Bundle (eBook)(E74A)(585201)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : Patient Care in Vascular and Interventional Radiology Chapter CME Tests (Third edition)(E_BOOK_PATCARE_2016)(3464682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : Patient Care in Vascular and Interventional Radiology Bundle (Third ed.) (eBook)(E416)(3533864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : Patient Care in Vascular and Interventional Radiology Syllabus (eBook)(E414)(7551030)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : Patient Information Brochure - Low Back Pain (100 pk)(139)(94648194)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : FAQs in Interventional Radiology Vol. 5 (eBook)(E77)(94648413)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : Standardized Report - Vertebral Aug Cavity Create Reg(SIR_VERTEBRAL_AUG_CAVITY)(108189236)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : Standardized Report - Vertebroplasty Reg(SIR_VERTEBROPLASTY_REG)(108189257)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : Standardized Report - Angiography Aorta(SIR_ANGIO_AORTA)(178580043)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : Pain Management On-demand 2019(E_2019_PAIN_MANAGEMENT)(186113474)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : SIR 2020 Digital Video Library (DVL) - Online Only(E_DVL_2020)(208522242)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : SIR 2020 Digital Video Library (DVL) -  Online AND Digital Download(E_DVLDDL_2020)(208522260)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : JVIR CME March 2021(E_JVIR_2021_03)(299338966)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:07 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : MUSCULOSKELETAL Musculoskeletal, Product : 2021 JVIR CME Subscription Program(E_JVIR_2021_SUBSCRIPTION)(300216780)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : FAQs in Interventional Radiology Vol. 1 (eBook)(72A)(113112)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Case-based Review Monograph 2012 (eBook)(367U)(113147)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Case-based Review Monograph 2011 (eBook)(365U)(113150)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Case-based Review Monograph 2008 (eBook)(360U)(113159)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Case-based Review Monograph Library (eBooks)(377U)(585101)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : FAQs in Interventional Radiology Bundle (eBook)(E74A)(585201)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Patient Care in Vascular and Interventional Radiology Chapter CME Tests (Third edition)(E_BOOK_PATCARE_2016)(3464682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Patient Care in Vascular and Interventional Radiology Bundle (Third ed.) (eBook)(E416)(3533864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Patient Information Brochure - Liver Cancer (100 pk)(136)(4326708)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Patient Care in Vascular and Interventional Radiology Syllabus (eBook)(E414)(7551030)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : IR Basics: General Interventional Oncology - Part 1(E_BASICS_IO_PART1)(57470198)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : IR Basics: General Interventional Oncology - Part 2(E_BASICS_IO_PART2)(57470246)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : IR Basics: Interventional Oncology - Vascular Therapy(E_BASICS_IO_VASCULAR)(57918957)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : IR Basics: Interventional Oncology - Local Tumor Ablation(E_BASICS_IO_LOCAL_TUMOR)(57918960)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : IR Basics: Bundle - Interventional Oncology Modules(E_BASICS_IO_BUNDLE)(81609723)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : IR Basics: Bundle - All Modules(E_BASICS_BUNDLE)(81609741)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : FAQs in Interventional Radiology Vol. 5 (eBook)(E77)(94648413)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Ablation Cryo(SIR_ABLATION_CRYO)(107725351)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Ablation Heat(SIR_ABLATION_HEAT)(107725367)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Embolization Liver DEBTACE(SIR_EMBO_HEPATIC_DEBTACE)(107725825)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Embolization Liver TACE(SIR_EMBO_HEPATIC_TACE)(107725826)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Embolization Liver TAE(SIR_EMBO_HEPATIC_TAE)(107725899)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Embolization Liver Y90 Admin(SIR_EMBO_HEPATIC_Y90_ADM)(107725902)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Embolization Liver Y90 Prep(SIR_EMBO_HEPATIC_Y90_PRE)(107725915)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : FAQs in Interventional Radiology Vol. 6 (eBook)(E78)(162733291)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : JVIR CME 2019 February(E_JVIR_2019_02)(168771336)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : JVIR CME 2019 July(E_JVIR_2019_07)(168771654)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : JVIR CME 2019 August(E_JVIR_2019_08)(168771655)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : JVIR CME 2019 October(E_JVIR_2019_10)(168771682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Ablation Chemical(SIR_ABLATION_CHEMICAL)(178579967)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Angiography Aorta Interv(SIR_ANGIO_AORTA_INTERV)(178580059)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Angiography Bronchial(SIR_ANGIO_BRONCHIAL)(178580082)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Angiography Renal(SIR_ANGIO_RENAL)(178580102)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Angiography Transp Interv(SIR_ANGIO_TRANSP_INTERV)(178580147)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Angiography Renal Intervention(SIR_ANGIO_RENAL_INTERV)(178580820)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Angiography Upper Extremity (SIR_ANGIO_UPPER EXTREMIT)(178580840)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Angiography Upper Extremity Interv(SIR_ANGIO_UPPER_EXTREMIT)(178580852)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Embolization Renal(SIR_EMBO_RENAL)(178581057)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Fiducial Placement(SIR_FIDUCIAL_PLACEMENT)(178581105)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Portal Vein Intervention(SIR_PORTAL_VEIN_INTERV)(178606627)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - TIPS Reduction(SIR_TIPS_REDUCTION)(178606648)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - TIPS Revision (SIR_TIPS_REVISION)(178606677)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Tunneled Drain Removal(SIR_TUNNELED_DRAIN_REMOV)(178606703)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Vein Sampling Adrenal(SIR_VEIN_SAMPLING_ADRENA)(178606734)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report  - Vein Sampling Parathyroid(SIR_VEIN_SAMPLING_PARATH)(178606749)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report - Embolization Perc vascular malformation(SIR_EMBO_PERC_VM)(178606778)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Pain Management On-demand 2019(E_2019_PAIN_MANAGEMENT)(186113474)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : SIR 2020 Digital Video Library (DVL) - Online Only(E_DVL_2020)(208522242)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : SIR 2020 Digital Video Library (DVL) -  Online AND Digital Download(E_DVLDDL_2020)(208522260)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Lung Ablation: Basics to advanced 2019(E_LUNG_2019)(228886674)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : JVIR CME January 2020(E_JVIR_2020_01)(231806614)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : JVIR CME August 2020(E_JVIR_2020_08)(231812214)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : JVIR CME November 2020(E_JVIR_2020_11)(231813467)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : 2020 JVIR CME Subscription Program(E_JVIR_2020_SUBSCRIPTION)(231880650)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Standardized Report – SIR Angio Cerebral v3(SIR_ANGIO_CEREBRAL_V3)(255796457)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : Webinars for IRs: Prostate Artery Embolization(E_IRWEBINARS_PAE)(299305284)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : JVIR CME March 2021(E_JVIR_2021_03)(299338966)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : JVIR CME July 2021(E_JVIR_2021_07)(299338987)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : JVIR CME August 2021(E_JVIR_2021_08)(299339888)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:08 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : ONCOLOGIC_INTERVENTIONS Oncologic, Product : 2021 JVIR CME Subscription Program(E_JVIR_2021_SUBSCRIPTION)(300216780)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : FAQs in Interventional Radiology Vol. 1 (eBook)(72A)(113112)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Case-based Review Monograph 2014  (eBook)(372U)(113140)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Case-based Review Monograph 2013 (eBook)(369U)(113144)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Case-based Review Monograph 2012 (eBook)(367U)(113147)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Case-based Review Monograph 2011 (eBook)(365U)(113150)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Case-based Review Monograph 2008 (eBook)(360U)(113159)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Case-based Review Monograph 2015 (eBook)(375U)(585041)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Case-based Review Monograph Bundle (eBooks)(376U)(585073)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Case-based Review Monograph Library (eBooks)(377U)(585101)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : FAQs in Interventional Radiology Bundle (eBook)(E74A)(585201)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Case-based Review Monograph 2016 (eBook)(378U)(2608557)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Patient Care in Vascular and Interventional Radiology Chapter CME Tests (Third edition)(E_BOOK_PATCARE_2016)(3464682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Patient Care in Vascular and Interventional Radiology Bundle (Third ed.) (eBook)(E416)(3533864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Patient Care in Vascular and Interventional Radiology Syllabus (eBook)(E414)(7551030)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : IR Basics: Peripheral Interventions - Evaluation and Management(E_BASICS_PAD_EVAL_MANAG)(57918931)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : IR Basics: Bundle - All Modules(E_BASICS_BUNDLE)(81609741)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Patient Information Brochure - Abdominal Aortic Aneurysm(100 pk)(138)(94648177)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : FAQs in Interventional Radiology Vol. 5 (eBook)(E77)(94648413)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Angiography Lower Extremity Interventions(SIR_ANGIO_LE_ITERVENT)(107725377)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Angiography Lower Extrememity(SIR_ANGIO_LE)(107725393)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Angiography Mesenteric Interventions (SIR_ANGIO_MESENTERIC_INT)(107725406)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Angiography Pelvic (SIR_ANGIO_PELVIC)(107725412)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Angiography Pulmonary Interventions(SIR_ANGIO_PULMONARY_INT)(107725430)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Angiography Pulmonary(SIR_ANGIO_PULMONARY)(107725447)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Angiography Mesenteric(SIR_ANGIO_MESENTERIC)(107725777)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Embolization Mesenteric(SIR_EMBO_MESENTERIC)(107725929)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Embolization Pelvic(SIR_EMBO_PELVIC)(107725941)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Embolization Prostate(SIR_EMBO_PROSTATE)(107725991)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Embolization Pulmonary(SIR_EMBO_PULMONARY)(108189045)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Embolization Uterine(SIR_EMBO_UTERINE)(108189046)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Thrombin Injection(SIR_THROMBIN_INJECTION)(108189098)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Webinars for IRs: Podiatry and IR - Toes and flows(E_IRWEBINARS_TOES)(157791316)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : FAQs in Interventional Radiology Vol. 6 (eBook)(E78)(162733291)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : JVIR CME 2019 April(E_JVIR_2019_04)(168771435)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : JVIR CME 2019 September(E_JVIR_2019_09)(168771681)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Embolization Bronchial(SIR_EMBO_BRONCHIAL)(178580988)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Embolization Pre OP Tumor(SIR_EMBO_PRE_OP_TUMOR)(178581010)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Embolization Splenic(SIR_EMBO_SPLENIC)(178581074)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report - Embolization Varicocele(SIR_EMBO_VARICOCELE)(178581093)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Below the Knee SA-CME On-demand(E_2019_BELOW_KNEE)(189321581)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Webinars for IRs: Managing Critical Limb Ischemia: Technical and Clinical Tips(E_IRWEBINARS_CLI)(207187695)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Acute Arterial Thrombosis On-demand 2019(E_2019_ACUTE_ARTERIAL)(208435827)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : SIR 2020 Digital Video Library (DVL) - Online Only(E_DVL_2020)(208522242)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : SIR 2020 Digital Video Library (DVL) -  Online AND Digital Download(E_DVLDDL_2020)(208522260)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Infra-inguinal disease: The essentials 2019 On-demand Course(E_2019_INFRA)(209163583)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : JVIR CME March 2020(E_JVIR_2020_03)(231808730)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : JVIR CME September 2020(E_JVIR_2020_09)(231812641)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : 2020 JVIR CME Subscription Program(E_JVIR_2020_SUBSCRIPTION)(231880650)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report – SIR BRTO-CARTO-PART v3(SIR BRTO-CARTO-PART_V3)(255796471)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report – SIR Complexity Modifier v3(SIR_COMPLEXITY_MODIFIER_)(255796480)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report – SIR Embo Pelvic Congestion v3(SIR_EMBO_PELVIC_CONGESTI)(255796493)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Standardized Report – SIR GU Cath Removal v3(SIR_GU_CATH_REMOVAL)(255796503)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : Patient Information Brochure - Peripheral Arterial Disease (Customizable)(134_CUSTOMIZE)(298549613)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : JVIR CME January 2022(E_JVIR_2022_01)(352623343)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : JVIR CME February 2022
+(E_JVIR_2022_02)(353581093)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:09 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PERIPHERAL_ARTERIAL Peripheral Arterial, Product : 2022 JVIR CME Subscription Program(E_JVIR_2022_SUBSCRIPTION)(354309464)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Case-based Review Monograph 2010 (eBook)(363U)(113153)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Case-based Review Monograph Library (eBooks)(377U)(585101)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : FAQs in Interventional Radiology Bundle (eBook)(E74A)(585201)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : SIR Socio-Economic Survey 2006-2007 (pdf)(E_502)(1044204)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Residency Webinar: Implementation(RESIDENCY_WEBINAR_2015)(1582820)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Care in Vascular and Interventional Radiology Chapter CME Tests (Third edition)(E_BOOK_PATCARE_2016)(3464682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Care in Vascular and Interventional Radiology Bundle (Third ed.) (eBook)(E416)(3533864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Residency Webinar: You Have an Accredited Program, Now What?(ODWEB_ACCRED PROG_2016)(4168479)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Information Brochure - Women's Health (100 pk)(133)(4326673)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Information Brochure - Liver Cancer (100 pk)(136)(4326708)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Information Brochure - Deep Vein Thrombosis (100 pk)(137)(4326710)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : RFS 2016 Webinar Series Part 2: IR Residency Applications Program Director's Perspective(E_ODWEB_PD_2016)(5037586)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Residency Webinar: Independent Residency Application Process(LWEB_RES_APP_2017)(7271946)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Care in Vascular and Interventional Radiology Syllabus (eBook)(E414)(7551030)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - CVA Venous Port Placement(SIR_CVA_PORT PLACEMENT)(7668910)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - CVA Non-tunneled Central Venous Catheter Placement(CVA_NONTUNNELEDPLACEMENT)(7804612)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - CVA PICC Placement(CVA_PICC PLACEMENT)(7804631)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - CVA Tunneled Catheter Placement(CVA_TUNNELED PLACEMENT)(7804670)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - CVA Tunneled Catheter Removal(CVA_TUNNELED REMOVAL)(7804698)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Venous Filter Insertion(VCP_IVCF INSERTION)(7804708)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Venous Filter Removal - Successful(VCP_IVCF RETRIEVAL)(7804719)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Venous Filter Removal - Unsuccessful(VCP_IVCF RETRIEVAL UNSUC)(7804723)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : All Standardized Reports -  Reports Library - XML Format Only(STRUCTURED_REPORTS_ALL)(7804736)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : 2017 ABR Certification Changes Webinar(ABR_IRDR_CERT_WEBINAR)(27823147)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Basics: Peripheral Interventions - Evaluation and Management(E_BASICS_PAD_EVAL_MANAG)(57918931)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Basics: Venous Interventions(E_BASICS_PAD_VENOUS)(57918944)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Basics: Practice Development(E_BASICS_PRACTICE)(57918949)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Basics: Bundle - All Modules(E_BASICS_BUNDLE)(81609741)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Interventional Radiology Coding Update 2018(CG2018)(94648140)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Information Brochure - Abdominal Aortic Aneurysm(100 pk)(138)(94648177)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Information Brochure - Low Back Pain (100 pk)(139)(94648194)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Information Brochure - Varicose Veins (100 pk)(140)(94648208)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Information Brochure - Varicoceles (100 pk)(141)(94648215)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Information Brochure - Pediatric IR (100 pk)(142)(94648222)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : FAQs in Interventional Radiology Vol. 5 (eBook)(E77)(94648413)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Ablation Cryo(SIR_ABLATION_CRYO)(107725351)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Ablation Heat(SIR_ABLATION_HEAT)(107725367)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Lower Extremity Interventions(SIR_ANGIO_LE_ITERVENT)(107725377)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Lower Extrememity(SIR_ANGIO_LE)(107725393)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Mesenteric Interventions (SIR_ANGIO_MESENTERIC_INT)(107725406)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Pelvic (SIR_ANGIO_PELVIC)(107725412)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Pulmonary Interventions(SIR_ANGIO_PULMONARY_INT)(107725430)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Pulmonary(SIR_ANGIO_PULMONARY)(107725447)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Biliary Drain Exchange(SIR_BILIARY_DRAIN_EXCHAN)(107725450)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Biliary Drain Placement(SIR_BILIARY_DRAIN_PLACE)(107725454)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Biliary Drain Removal (SIR_BILIARY_DRAIN_REMOVA)(107725457)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Biliary Stent Existing Access(SIR_BILIARY_STENT_EXIST)(107725495)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Biliary Stent New Access(SIR_BILIARY_STENT_NEW)(107725497)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Biopsy Transjugular Liver(SIR_BIOPSY_TRANS_LIVER)(107725501)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Biopsy Transjugular Liver with Pressures(SIR_BIOPSY_TRANS_LIVER_P)(107725504)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:11 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Chest Tube(SIR_CHEST_TUBE)(107725506)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Cholecystostomy(SIR_CHOLECYSTOSTOMY)(107725513)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - CVA Midline Catheter(SIR_CVA_MIDLINE_CATH)(107725516)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Mesenteric(SIR_ANGIO_MESENTERIC)(107725777)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - CVA Tunneled Catheter Conversion (SIR_CVA_TUNNELED _CATH_C)(107725782)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - CVA Tunneled Catheter Exchange(SIR_CVA_TUNNELED_CATH_E)(107725784)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - CVA Tunneled Dialysis Catheter(SIR_TUNNELED_DIALYSIS_CA)(107725785)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Dialysis Fistula Interventions(SIR_DIALYSIS_FISTULA_INT)(107725790)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Dialysis Fistulagram(SIR_DIALYSIS_FISTULAGRAM)(107725803)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Dialysis Graft Declot (SIR_DIALYSIS_GRAFT_DECLO)(107725807)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Drainage Aspiration(SIR_DRAINAGE_ASPIRATION)(107725816)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Drainage Catheter Exchange(SIR_DRAINAGE_CATH_EXCHA)(107725818)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Drainage Catheter Placement(SIR_DRAINAGE_CATH_PLACE)(107725821)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Drainage Check and Removal(SIR_DRAINAGE_CHECK_REMO)(107725824)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Liver DEBTACE(SIR_EMBO_HEPATIC_DEBTACE)(107725825)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Liver TACE(SIR_EMBO_HEPATIC_TACE)(107725826)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Liver TAE(SIR_EMBO_HEPATIC_TAE)(107725899)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Liver Y90 Admin(SIR_EMBO_HEPATIC_Y90_ADM)(107725902)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Liver Y90 Prep(SIR_EMBO_HEPATIC_Y90_PRE)(107725915)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Mesenteric(SIR_EMBO_MESENTERIC)(107725929)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Pelvic(SIR_EMBO_PELVIC)(107725941)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Portal Vein(SIR_EMBO_PORTAL_VEIN)(107725989)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Prostate(SIR_EMBO_PROSTATE)(107725991)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Pulmonary(SIR_EMBO_PULMONARY)(108189045)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Uterine(SIR_EMBO_UTERINE)(108189046)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Gastrojejunostomy Conversion(SIR_GASTROJEJUN_CONV)(108189062)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Gastrojejunostomy Exchange(SIR_GASTROJEJUN_EXCHANG)(108189063)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Gastrojejunostomy(SIR_GASTROJEJUNOSTOMY)(108189072)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Gastrostomy Exchange(SIR_GASTROSTOMY_EXCHAN)(108189073)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Gastrostomy Pull(SIR_GASTROSTOMY_PULL)(108189074)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Gastrostomy Push(SIR_GASTROSTOMY_PUSH)(108189075)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - GU Catheter Conversion(SIR_GU_CATH_CONVERSION)(108189076)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - GU Catheter Exchange(SIR_GU_CATH_EXCHANGE)(108189077)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - GU Catheter Placement(SIR_GU_CATH_PLACEMENT)(108189082)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - GU Suprapubic Catheter(SIR_GU_SUPRAPUBIC_CATH)(108189083)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Lymphangiography Interventions(SIR_LYMPHANGIOGRAPHY_INT)(108189087)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Lymphangiography(SIR_LYMPHANGIOGRAPHY)(108189088)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Paracentesis(SIR_PARACENTESIS)(108189091)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Thoracentesis (SIR_THORACENTESIS)(108189095)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Thrombin Injection(SIR_THROMBIN_INJECTION)(108189098)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - TIPS(SIR_TIPS)(108189100)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Tunneled Peritoneal Catheter(SIR_TUNNELED_PERITO_CATH)(108189103)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Tunneled Pleural Catheter(SIR_TUNNELED_PLEURAL_CAT)(108189114)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Venography and Follow-up Interventions(SIR_VENOGRAPHY_AND_FU_IN)(108189123)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Venography and Initial Interventions(SIR_VENOGRAPHY_AND_INT)(108189137)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Venography Diagnostic (SIR_VENOGRAPHY_DIAG)(108189179)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Vertebral Aug Cavity Create Reg(SIR_VERTEBRAL_AUG_CAVITY)(108189236)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Vertebroplasty Reg(SIR_VERTEBROPLASTY_REG)(108189257)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Residency Webinar: Independent IR Residency & ESIR(LWEB_RES_ESIR_2018)(148865034)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Webinars for IRs: Introduction to Research Online Program (ITROP)(E_IRWEBINARS_ITROP)(157766762)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Webinars for IRs: Developing the Mind of a Clinical Investigator(E_IRWEBINARS_INVEST)(157791345)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : FAQs in Interventional Radiology Vol. 6 (eBook)(E78)(162733291)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Residency Webinar: Preparing your Program for the IR Independent Match(LWEB_RES_IRMATCH_2018)(169515329)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Interventional Radiology Coding Update 2019(CG2019)(170958248)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Ablation Chemical(SIR_ABLATION_CHEMICAL)(178579967)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Aorta(SIR_ANGIO_AORTA)(178580043)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Aorta Interv(SIR_ANGIO_AORTA_INTERV)(178580059)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Bronchial(SIR_ANGIO_BRONCHIAL)(178580082)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Renal(SIR_ANGIO_RENAL)(178580102)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Transp Interv(SIR_ANGIO_TRANSP_INTERV)(178580147)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Renal Intervention(SIR_ANGIO_RENAL_INTERV)(178580820)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Upper Extremity (SIR_ANGIO_UPPER EXTREMIT)(178580840)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Angiography Upper Extremity Interv(SIR_ANGIO_UPPER_EXTREMIT)(178580852)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Biopsy CT and US(SIR_BIOPSY_CT_US)(178580866)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Biopsy CT(SIR_BIOPSY_CT)(178580888)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Biopsy US(SIR_BIOPSY_US)(178580910)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Biopsy Misc Guidance(SIR_BIOPSY_MISC_GUID)(178580921)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - CVA Catheter Check(CVA_CATH_CHECK)(178580932)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - CVA Port Removal (CVA_PORT_REMOVAL )(178580953)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Drain Sclerotherapy(SIR_DRAIN_SCLEROTHERAPY)(178580967)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Bronchial(SIR_EMBO_BRONCHIAL)(178580988)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Pre OP Tumor(SIR_EMBO_PRE_OP_TUMOR)(178581010)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Renal(SIR_EMBO_RENAL)(178581057)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Splenic(SIR_EMBO_SPLENIC)(178581074)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Varicocele(SIR_EMBO_VARICOCELE)(178581093)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Fiducial Placement(SIR_FIDUCIAL_PLACEMENT)(178581105)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Portal Vein Intervention(SIR_PORTAL_VEIN_INTERV)(178606627)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - TIPS Reduction(SIR_TIPS_REDUCTION)(178606648)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - TIPS Revision (SIR_TIPS_REVISION)(178606677)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Tunneled Drain Removal(SIR_TUNNELED_DRAIN_REMOV)(178606703)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Vein Sampling Adrenal(SIR_VEIN_SAMPLING_ADRENA)(178606734)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report  - Vein Sampling Parathyroid(SIR_VEIN_SAMPLING_PARATH)(178606749)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - Embolization Perc vascular malformation(SIR_EMBO_PERC_VM)(178606778)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Basics: The Business of IR - Part 1(E_BASICS_BUSINESS_PART1)(181115977)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Basics: The Business of IR - Part 2(E_BASICS_BUSINESS_PART2)(181115983)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : SIR Foundation CER Webinar: Introduction to Systematic Reviews and Meta-analysis(E_CERWEB_INTRO)(186113282)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : SIR Foundation CER Webinar: Medical Imaging AI Research - Why Everyone Should Do It(E_CERWEB_IMAGING)(186113290)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : SIR Foundation CER Webinar: Publicly Available Large Data Sets for Health Outcomes Research(E_CERWEB_DATASETS)(186113296)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Pain Management On-demand 2019(E_2019_PAIN_MANAGEMENT)(186113474)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Diversity and Inclusion Course(E_DIVERSITY)(190014207)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : SIR 2020 Digital Video Library (DVL) - Online Only(E_DVL_2020)(208522242)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : SIR 2020 Digital Video Library (DVL) -  Online AND Digital Download(E_DVLDDL_2020)(208522260)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Anticoagulation Essentials On-demand 2019(E_ANTICOAG_2019)(224130925)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report - SIR Angiography Carotid Intervention v3(SIR_ANGIO_CAROTID_INTERV)(255796347)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR Angio Cerebral v3(SIR_ANGIO_CEREBRAL_V3)(255796457)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR BRTO-CARTO-PART v3(SIR BRTO-CARTO-PART_V3)(255796471)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR Complexity Modifier v3(SIR_COMPLEXITY_MODIFIER_)(255796480)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR Embo Pelvic Congestion v3(SIR_EMBO_PELVIC_CONGESTI)(255796493)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR GU Cath Removal v3(SIR_GU_CATH_REMOVAL)(255796503)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR Joint Aspiration v3(SIR_JOINT_ASPIRATION_V3)(256195011)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR Joint Injection v3(SIR_JOINT_INJECTION_V3)(256195020)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR LP Diagnostic v3(SIR_LP_DIAGNOSTIC_V3)(256195031)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR LP Therapeutic v3(SIR_LP_THERAPEUTIC_V3)(256195048)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR Percutaneous Sclero v3(SIR_PERCUTANEOUS_SCLERO_)(256195083)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR Vein Ablation Chem v3(SIR_VEIN_ABLATION_CHEM_V)(256195117)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR Vein Ablation Laser v3(SIR_VEIN_ABLATION_LASER_)(256195127)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR Vein Ablation Mech v3(SIR_VEIN_ABLATION_MECH_V)(256195143)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Standardized Report – SIR Vein Ablation RF v3(SIR_ABLATION_RF_V3)(256195153)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Information Brochure - Peripheral Arterial Disease (Customizable)(134_CUSTOMIZE)(298549613)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Information Brochure - Deep Vein Thrombosis (Customizable)(137_CUSTOMIZE)(298549651)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Patient Information Brochure - Varicose Veins (Customizable)(140_CUSTOMIZE)(298549661)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Webinars for IRs: Lung Ablation - Do it like a Pro in 60 minutes(E_IRWEBINARS_LUNG)(299305234)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : Webinars for IRs: Prostate Artery Embolization(E_IRWEBINARS_PAE)(299305284)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : JVIR CME November 2021(E_JVIR_2021_11)(299339892)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : JVIR CME December 2021(E_JVIR_2021_12)(299339894)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : 2021 JVIR CME Subscription Program(E_JVIR_2021_SUBSCRIPTION)(300216780)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : 2022 IR Common Missed Coding Revenue Opportunities(2022_MISSED_REVENUE)(361954767)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Evaluation and Management FAQs(2022_E/M_FAQ)(362684370)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Venous FAQs(2022_VENOUS_FAQS)(362684403)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Vascular Embolization FAQs(2022_VASCULAR_EMBO)(362684425)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Nonvascular Intervention FAQs(2022_NONVASC_INTERV)(362684441)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product :  IR Central Venous Access FAQs(2022_CENT_VENOUS_ACCESS)(362684464)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Dialysis Circuit FAQs(2022_DIALYSIS_CIRCUIT)(362684489)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Miscellaneous Vascular Intervention FAQs(2022_MISC_VASC_INTERV)(362684533)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Arterial Access FAQs(2022_ARTERIAL_ACCESS_FAQ)(362684801)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Vascular Intervention FAQs(2022_VASC_INTERV)(362684864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Endovascular Aneurysm Repair FAQs(2022_ENDO_VASC_REP)(362684880)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : 2022 IR Coding Book Update(IR_2022_CODING_UPDATE)(362685480)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : All inclusive 2022 IR Coding Book Update Bundle(CG2022_BUNDLE)(364103829)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : IR Coding Frequently Asked Questions Bundle (2022_IR_FAQ__BUNDLE)(364103845)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : 2022 Coding Update On-demand(E_CODE_22)(364839926)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:12 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : PRACTICE_DEVELOPMENT Practice Development, Product : 2022 IR Coding Book Update and Webinar Bundle(E_22CODINGBOOKWEBINAR)(364940825)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : FAQs in Interventional Radiology Vol. 1 (eBook)(72A)(113112)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Case-based Review Monograph 2014  (eBook)(372U)(113140)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Case-based Review Monograph 2013 (eBook)(369U)(113144)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Case-based Review Monograph 2012 (eBook)(367U)(113147)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Case-based Review Monograph 2009 (eBook)(361U)(113156)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Case-based Review Monograph 2008 (eBook)(360U)(113159)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Case-based Review Monograph 2015 (eBook)(375U)(585041)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Case-based Review Monograph Bundle (eBooks)(376U)(585073)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Case-based Review Monograph Library (eBooks)(377U)(585101)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : FAQs in Interventional Radiology Bundle (eBook)(E74A)(585201)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Case-based Review Monograph 2016 (eBook)(378U)(2608557)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Patient Care in Vascular and Interventional Radiology Chapter CME Tests (Third edition)(E_BOOK_PATCARE_2016)(3464682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Patient Care in Vascular and Interventional Radiology Bundle (Third ed.) (eBook)(E416)(3533864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Patient Information Brochure - Deep Vein Thrombosis (100 pk)(137)(4326710)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Advanced Therapies in Venous Interventions (ACTiVE)(E_2017_ACTIVE)(7312927)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Patient Care in Vascular and Interventional Radiology Syllabus (eBook)(E414)(7551030)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - CVA Venous Port Placement(SIR_CVA_PORT PLACEMENT)(7668910)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - CVA Non-tunneled Central Venous Catheter Placement(CVA_NONTUNNELEDPLACEMENT)(7804612)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - CVA PICC Placement(CVA_PICC PLACEMENT)(7804631)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - CVA Tunneled Catheter Placement(CVA_TUNNELED PLACEMENT)(7804670)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - CVA Tunneled Catheter Removal(CVA_TUNNELED REMOVAL)(7804698)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - Venous Filter Insertion(VCP_IVCF INSERTION)(7804708)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - Venous Filter Removal - Successful(VCP_IVCF RETRIEVAL)(7804719)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - Venous Filter Removal - Unsuccessful(VCP_IVCF RETRIEVAL UNSUC)(7804723)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : IR Basics: Venous Interventions(E_BASICS_PAD_VENOUS)(57918944)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : IR Basics: Bundle - All Modules(E_BASICS_BUNDLE)(81609741)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : FAQs in Interventional Radiology Vol. 5 (eBook)(E77)(94648413)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - CVA Midline Catheter(SIR_CVA_MIDLINE_CATH)(107725516)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - CVA Tunneled Catheter Conversion (SIR_CVA_TUNNELED _CATH_C)(107725782)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - CVA Tunneled Catheter Exchange(SIR_CVA_TUNNELED_CATH_E)(107725784)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - CVA Tunneled Dialysis Catheter(SIR_TUNNELED_DIALYSIS_CA)(107725785)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - Dialysis Fistula Interventions(SIR_DIALYSIS_FISTULA_INT)(107725790)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - Dialysis Fistulagram(SIR_DIALYSIS_FISTULAGRAM)(107725803)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - Dialysis Graft Declot (SIR_DIALYSIS_GRAFT_DECLO)(107725807)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - Embolization Portal Vein(SIR_EMBO_PORTAL_VEIN)(107725989)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - TIPS(SIR_TIPS)(108189100)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - Venography and Follow-up Interventions(SIR_VENOGRAPHY_AND_FU_IN)(108189123)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - Venography and Initial Interventions(SIR_VENOGRAPHY_AND_INT)(108189137)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - Venography Diagnostic (SIR_VENOGRAPHY_DIAG)(108189179)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : FAQs in Interventional Radiology Vol. 6 (eBook)(E78)(162733291)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - CVA Catheter Check(CVA_CATH_CHECK)(178580932)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - CVA Port Removal (CVA_PORT_REMOVAL )(178580953)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Webinars for IRs: Inferior Vena Cava Filter Placement Retrieval(E_IRWEBINARS_IVC)(207187459)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : SIR 2020 Digital Video Library (DVL) - Online Only(E_DVL_2020)(208522242)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : SIR 2020 Digital Video Library (DVL) -  Online AND Digital Download(E_DVLDDL_2020)(208522260)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : JVIR CME December 2020(E_JVIR_2020_12)(231813865)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : 2020 JVIR CME Subscription Program(E_JVIR_2020_SUBSCRIPTION)(231880650)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report - SIR Angiography Carotid Intervention v3(SIR_ANGIO_CAROTID_INTERV)(255796347)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report – SIR Joint Aspiration v3(SIR_JOINT_ASPIRATION_V3)(256195011)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report – SIR Joint Injection v3(SIR_JOINT_INJECTION_V3)(256195020)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report – SIR LP Diagnostic v3(SIR_LP_DIAGNOSTIC_V3)(256195031)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report – SIR LP Therapeutic v3(SIR_LP_THERAPEUTIC_V3)(256195048)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report – SIR Percutaneous Sclero v3(SIR_PERCUTANEOUS_SCLERO_)(256195083)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report – SIR Vein Ablation Chem v3(SIR_VEIN_ABLATION_CHEM_V)(256195117)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report – SIR Vein Ablation Laser v3(SIR_VEIN_ABLATION_LASER_)(256195127)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report – SIR Vein Ablation Mech v3(SIR_VEIN_ABLATION_MECH_V)(256195143)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Standardized Report – SIR Vein Ablation RF v3(SIR_ABLATION_RF_V3)(256195153)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Patient Information Brochure - Deep Vein Thrombosis (Customizable)(137_CUSTOMIZE)(298549651)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : Webinars for IRs: Portal Vein Recanalization(E_IRWEBINARS_PORTALVEIN)(299305219)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : JVIR CME July 2021(E_JVIR_2021_07)(299338987)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : JVIR CME October 2021(E_JVIR_2021_10)(299339891)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : JVIR CME November 2021(E_JVIR_2021_11)(299339892)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : VENOUS_INTERVENTIONS Venous, Product : 2021 JVIR CME Subscription Program(E_JVIR_2021_SUBSCRIPTION)(300216780)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : Case-based Review Monograph 2009 (eBook)(361U)(113156)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : Case-based Review Monograph Library (eBooks)(377U)(585101)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : Patient Care in Vascular and Interventional Radiology Chapter CME Tests (Third edition)(E_BOOK_PATCARE_2016)(3464682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : Patient Care in Vascular and Interventional Radiology Bundle (Third ed.) (eBook)(E416)(3533864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : Patient Information Brochure - Women's Health (100 pk)(133)(4326673)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : Patient Care in Vascular and Interventional Radiology Syllabus (eBook)(E414)(7551030)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : Webinar: UFE - The fibroid fix: What women need to know(UFE_WEBINAR_17)(21914509)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : FAQs in Interventional Radiology Vol. 5 (eBook)(E77)(94648413)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : FAQs in Interventional Radiology Vol. 6 (eBook)(E78)(162733291)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : JVIR CME 2019 May(E_JVIR_2019_05)(168771463)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : SIR 2020 Digital Video Library (DVL) - Online Only(E_DVL_2020)(208522242)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : SIR 2020 Digital Video Library (DVL) -  Online AND Digital Download(E_DVLDDL_2020)(208522260)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : JVIR CME August 2020(E_JVIR_2020_08)(231812214)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : 2020 JVIR CME Subscription Program(E_JVIR_2020_SUBSCRIPTION)(231880650)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : Patient Information Brochure - Varicose Veins (Customizable)(140_CUSTOMIZE)(298549661)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : JVIR CME April 2022(E_JVIR_2022_04)(353581145)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : WOMENS_HEALTH Womens Health, Product : 2022 JVIR CME Subscription Program(E_JVIR_2022_SUBSCRIPTION)(354309464)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : FAQs in Interventional Radiology Vol. 1 (eBook)(72A)(113112)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : Case-based Review Monograph 2011 (eBook)(365U)(113150)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : Case-based Review Monograph 2008 (eBook)(360U)(113159)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : Case-based Review Monograph Library (eBooks)(377U)(585101)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : FAQs in Interventional Radiology Bundle (eBook)(E74A)(585201)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : Patient Care in Vascular and Interventional Radiology Chapter CME Tests (Third edition)(E_BOOK_PATCARE_2016)(3464682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : Patient Care in Vascular and Interventional Radiology Bundle (Third ed.) (eBook)(E416)(3533864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : Patient Care in Vascular and Interventional Radiology Syllabus (eBook)(E414)(7551030)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : IR Basics: General Interventional Oncology - Part 1(E_BASICS_IO_PART1)(57470198)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : IR Basics: General Interventional Oncology - Part 2(E_BASICS_IO_PART2)(57470246)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : IR Basics: Interventional Oncology - Vascular Therapy(E_BASICS_IO_VASCULAR)(57918957)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : IR Basics: Bundle - Interventional Oncology Modules(E_BASICS_IO_BUNDLE)(81609723)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : IR Basics: Bundle - All Modules(E_BASICS_BUNDLE)(81609741)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : FAQs in Interventional Radiology Vol. 5 (eBook)(E77)(94648413)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : Webinars for IRs: Innovating through IR(E_IRWEBINARS_INNOVAT)(157791321)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : FAQs in Interventional Radiology Vol. 6 (eBook)(E78)(162733291)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : JVIR CME 2019 May(E_JVIR_2019_05)(168771463)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : Prostate Artery Embolization 2019 On-demand Course(E_2019_PAE)(194226995)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : SIR 2020 Digital Video Library (DVL) - Online Only(E_DVL_2020)(208522242)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : SIR 2020 Digital Video Library (DVL) -  Online AND Digital Download(E_DVLDDL_2020)(208522260)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : JVIR CME April 2020(E_JVIR_2020_04)(231809478)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : JVIR CME November 2020(E_JVIR_2020_11)(231813467)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : 2020 JVIR CME Subscription Program(E_JVIR_2020_SUBSCRIPTION)(231880650)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : Basic Embolization On-demand 2020(E_2020_BASIC_EMB)(260182159)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : Webinars for IRs: Prostate Artery Embolization(E_IRWEBINARS_PAE)(299305284)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : JVIR CME April 2021(E_JVIR_2021_04)(299338984)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : JVIR CME May 2021(E_JVIR_2021_05)(299338985)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : JVIR CME June 2021(E_JVIR_2021_06)(299338986)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : 2021 JVIR CME Subscription Program(E_JVIR_2021_SUBSCRIPTION)(300216780)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : IR Residency Practicum 2021 On-Demand(E_PRACTICUM_21_ONDEMAND)(346787979)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : JVIR CME April 2022(E_JVIR_2022_04)(353581145)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:13 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : EMBOLIZATION Embolization, Product : 2022 JVIR CME Subscription Program(E_JVIR_2022_SUBSCRIPTION)(354309464)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : Case-based Review Monograph 2014  (eBook)(372U)(113140)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : Case-based Review Monograph 2015 (eBook)(375U)(585041)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : Case-based Review Monograph Bundle (eBooks)(376U)(585073)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : Case-based Review Monograph Library (eBooks)(377U)(585101)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : FAQs in Interventional Radiology Bundle (eBook)(E74A)(585201)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : Case-based Review Monograph 2016 (eBook)(378U)(2608557)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : Patient Care in Vascular and Interventional Radiology Chapter CME Tests (Third edition)(E_BOOK_PATCARE_2016)(3464682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : Patient Care in Vascular and Interventional Radiology Bundle (Third ed.) (eBook)(E416)(3533864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : Patient Care in Vascular and Interventional Radiology Syllabus (eBook)(E414)(7551030)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : IR Basics: General Interventional Oncology - Part 1(E_BASICS_IO_PART1)(57470198)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : IR Basics: General Interventional Oncology - Part 2(E_BASICS_IO_PART2)(57470246)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : IR Basics: Bundle - Interventional Oncology Modules(E_BASICS_IO_BUNDLE)(81609723)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : IR Basics: Bundle - All Modules(E_BASICS_BUNDLE)(81609741)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : JVIR CME 2019 April(E_JVIR_2019_04)(168771435)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : JVIR CME 2019 May(E_JVIR_2019_05)(168771463)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : Prostate Artery Embolization 2019 On-demand Course(E_2019_PAE)(194226995)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : Acute Arterial Thrombosis On-demand 2019(E_2019_ACUTE_ARTERIAL)(208435827)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : SIR 2020 Digital Video Library (DVL) - Online Only(E_DVL_2020)(208522242)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : SIR 2020 Digital Video Library (DVL) -  Online AND Digital Download(E_DVLDDL_2020)(208522260)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : JVIR CME March 2020(E_JVIR_2020_03)(231808730)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : JVIR CME April 2020(E_JVIR_2020_04)(231809478)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : 2020 JVIR CME Subscription Program(E_JVIR_2020_SUBSCRIPTION)(231880650)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : JVIR CME August 2021(E_JVIR_2021_08)(299339888)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : JVIR CME October 2021(E_JVIR_2021_10)(299339891)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : JVIR CME December 2021(E_JVIR_2021_12)(299339894)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : 2021 JVIR CME Subscription Program(E_JVIR_2021_SUBSCRIPTION)(300216780)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : JVIR CME January 2022(E_JVIR_2022_01)(352623343)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : JVIR CME February 2022
+(E_JVIR_2022_02)(353581093)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : JVIR CME March 2022 (E_JVIR_2022_03)(353581106)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : IMAGING Imaging, Product : 2022 JVIR CME Subscription Program(E_JVIR_2022_SUBSCRIPTION)(354309464)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NEUROVASCULAR_CAROTID Neurovascular and Carotid, Product : FAQs in Interventional Radiology Vol. 1 (eBook)(72A)(113112)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NEUROVASCULAR_CAROTID Neurovascular and Carotid, Product : Case-based Review Monograph 2008 (eBook)(360U)(113159)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NEUROVASCULAR_CAROTID Neurovascular and Carotid, Product : Case-based Review Monograph Library (eBooks)(377U)(585101)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NEUROVASCULAR_CAROTID Neurovascular and Carotid, Product : FAQs in Interventional Radiology Bundle (eBook)(E74A)(585201)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NEUROVASCULAR_CAROTID Neurovascular and Carotid, Product : Patient Care in Vascular and Interventional Radiology Chapter CME Tests (Third edition)(E_BOOK_PATCARE_2016)(3464682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NEUROVASCULAR_CAROTID Neurovascular and Carotid, Product : Patient Care in Vascular and Interventional Radiology Bundle (Third ed.) (eBook)(E416)(3533864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NEUROVASCULAR_CAROTID Neurovascular and Carotid, Product : Patient Care in Vascular and Interventional Radiology Syllabus (eBook)(E414)(7551030)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NEUROVASCULAR_CAROTID Neurovascular and Carotid, Product : Webinars for IRs: Updates on endovascular therapy for acute ischemic stroke(E_IRWEBINARS_STROKE)(157791328)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NEUROVASCULAR_CAROTID Neurovascular and Carotid, Product : 2019 The Stroke Course On-demand(E_2019_STROKE_ONDEMAND)(189896968)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NEUROVASCULAR_CAROTID Neurovascular and Carotid, Product : SIR 2020 Digital Video Library (DVL) - Online Only(E_DVL_2020)(208522242)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:14 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NEUROVASCULAR_CAROTID Neurovascular and Carotid, Product : SIR 2020 Digital Video Library (DVL) -  Online AND Digital Download(E_DVLDDL_2020)(208522260)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : FAQs in Interventional Radiology Vol. 1 (eBook)(72A)(113112)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Case-based Review Monograph 2014  (eBook)(372U)(113140)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Case-based Review Monograph 2013 (eBook)(369U)(113144)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Case-based Review Monograph 2012 (eBook)(367U)(113147)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Case-based Review Monograph 2015 (eBook)(375U)(585041)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Case-based Review Monograph Bundle (eBooks)(376U)(585073)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Case-based Review Monograph Library (eBooks)(377U)(585101)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : FAQs in Interventional Radiology Bundle (eBook)(E74A)(585201)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Case-based Review Monograph 2016 (eBook)(378U)(2608557)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Patient Care in Vascular and Interventional Radiology Chapter CME Tests (Third edition)(E_BOOK_PATCARE_2016)(3464682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Patient Care in Vascular and Interventional Radiology Bundle (Third ed.) (eBook)(E416)(3533864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Patient Care in Vascular and Interventional Radiology Syllabus (eBook)(E414)(7551030)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : IR Basics: General Interventional Oncology - Part 1(E_BASICS_IO_PART1)(57470198)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : IR Basics: General Interventional Oncology - Part 2(E_BASICS_IO_PART2)(57470246)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : IR Basics: Interventional Oncology - Vascular Therapy(E_BASICS_IO_VASCULAR)(57918957)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : IR Basics: Bundle - Interventional Oncology Modules(E_BASICS_IO_BUNDLE)(81609723)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : IR Basics: Bundle - All Modules(E_BASICS_BUNDLE)(81609741)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Webinars for IRs: Innovating through IR(E_IRWEBINARS_INNOVAT)(157791321)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : FAQs in Interventional Radiology Vol. 6 (eBook)(E78)(162733291)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : JVIR CME 2019 March(E_JVIR_2019_03)(168771337)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : JVIR CME 2019 July(E_JVIR_2019_07)(168771654)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Pain Management On-demand 2019(E_2019_PAIN_MANAGEMENT)(186113474)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Webinars for IRs: What to know for Tumor Board--Metastatic MSK Disease(E_IRWEBINARS_MSK)(207187681)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : SIR 2020 Digital Video Library (DVL) - Online Only(E_DVL_2020)(208522242)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : SIR 2020 Digital Video Library (DVL) -  Online AND Digital Download(E_DVLDDL_2020)(208522260)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : NONVASCULAR_INTERVENTION Nonvascular, Product : Webinars for IRs: Prostate Artery Embolization(E_IRWEBINARS_PAE)(299305284)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : RENAL_INSUFFICIENCY Renal Insufficiency, Product : Case-based Review Monograph 2014  (eBook)(372U)(113140)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : RENAL_INSUFFICIENCY Renal Insufficiency, Product : Case-based Review Monograph Library (eBooks)(377U)(585101)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : RENAL_INSUFFICIENCY Renal Insufficiency, Product : FAQs in Interventional Radiology Bundle (eBook)(E74A)(585201)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : RENAL_INSUFFICIENCY Renal Insufficiency, Product : Patient Care in Vascular and Interventional Radiology Chapter CME Tests (Third edition)(E_BOOK_PATCARE_2016)(3464682)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : RENAL_INSUFFICIENCY Renal Insufficiency, Product : Patient Care in Vascular and Interventional Radiology Bundle (Third ed.) (eBook)(E416)(3533864)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : RENAL_INSUFFICIENCY Renal Insufficiency, Product : Patient Care in Vascular and Interventional Radiology Syllabus (eBook)(E414)(7551030)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : RENAL_INSUFFICIENCY Renal Insufficiency, Product : SIR 2020 Digital Video Library (DVL) - Online Only(E_DVL_2020)(208522242)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : RENAL_INSUFFICIENCY Renal Insufficiency, Product : SIR 2020 Digital Video Library (DVL) -  Online AND Digital Download(E_DVLDDL_2020)(208522260)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : RENAL_INSUFFICIENCY Renal Insufficiency, Product : Renal case-based training 2019(E_RENALCASES_2019)(215216678)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : UNCATEGORIZED Uncategorized, Product : JVIR CME January 2021(E_JVIR_2021_01)(299338998)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : UNCATEGORIZED Uncategorized, Product : JVIR CME September 2021(E_JVIR_2021_09)(299339889)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :Clinical Topics CLINICAL_TOPICS, Topic : UNCATEGORIZED Uncategorized, Product : 2021 JVIR CME Subscription Program(E_JVIR_2021_SUBSCRIPTION)(300216780)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :IRs in Training IR_IN_TRAINING, Topic : UNCATEGORIZED Uncategorized, Product : Medical Student Member(MEDSTUD)(112621)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :IRs in Training IR_IN_TRAINING, Topic : UNCATEGORIZED Uncategorized, Product : Training (Scientist)(IT_SCI)(139763627)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :IRs in Training IR_IN_TRAINING, Topic : UNCATEGORIZED Uncategorized, Product : Resident- IR Integrated Member(RES_IR)(273666113)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :IRs in Training IR_IN_TRAINING, Topic : UNCATEGORIZED Uncategorized, Product : Resident- DR Resident Member(RES_DR)(273666116)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:15 AM--Category :IRs in Training IR_IN_TRAINING, Topic : UNCATEGORIZED Uncategorized, Product : Resident- IR Independent Member(RES_IND)(273666119)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:16 AM--Category :Patient Engagement & Education PEE, Topic : UNCATEGORIZED Uncategorized, Product : Adrenal Vein Sampling Consent(IRBC_CF_0001)(370059216)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:16 AM--Category :Patient Engagement & Education PEE, Topic : UNCATEGORIZED Uncategorized, Product : Bone Marrow Biopsy Consent(IRBC_CF_0002)(370070731)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:16 AM--Category :Patient Engagement & Education PEE, Topic : UNCATEGORIZED Uncategorized, Product : Angiogram Run-Off Consent(IRBC_CF_003)(370070926)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:16 AM--Category :Patient Engagement & Education PEE, Topic : UNCATEGORIZED Uncategorized, Product : Biopsy & Needle Loc Consent(IRBC_CF_0004)(370070929)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:16 AM--Category :Patient Engagement & Education PEE, Topic : UNCATEGORIZED Uncategorized, Product : Patient engagement and education - Consent Forms Package(IRBC_CF_PACKAGE01)(370070937)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:16 AM--Category :Patient Engagement & Education PEE, Topic : UNCATEGORIZED Uncategorized, Product : Abdominal Drainage Catheter Removal-After Care(IRBC_DI_0001)(370071278)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:16 AM--Category :Patient Engagement & Education PEE, Topic : UNCATEGORIZED Uncategorized, Product : AV Fistulagram - After Care (IRBC_DI_0002)(370071293)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:16 AM--Category :Patient Engagement & Education PEE, Topic : UNCATEGORIZED Uncategorized, Product : Biliary Drainage Tube- After Care (IRBC_DI_0003)(370071301)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:16 AM--Category :Patient Engagement & Education PEE, Topic : UNCATEGORIZED Uncategorized, Product : Chest Port Removal - After Care(IRBC_DI_0004)(370071307)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:16 AM--Category :Patient Engagement & Education PEE, Topic : UNCATEGORIZED Uncategorized, Product : Breast Drainage Tube- After Care (IRBC_DI_0005)(370071310)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:16 AM--Category :Patient Engagement & Education PEE, Topic : UNCATEGORIZED Uncategorized, Product : Patient Discharge Instructions Package(IRBC_DI_PACKAGE01)(370071323)
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:16 AM--Topic Table Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:20 AM--ProductTopic Table Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:20 AM--PrepareUmbrellaProducts 1
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:20 AM--PrepareUmbrellaProducts 2
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:20 AM--PrepareUmbrellaProducts 2
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:20 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:20 AM--SubProduct 113114 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:20 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:20 AM--SubProduct 113116 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:20 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:21 AM--SubProduct 113118 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:21 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:21 AM--SubProduct 113120 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:21 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:21 AM--SubProduct 113122 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:21 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:21 AM--SubProduct 113124 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:21 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:21 AM--SubProduct 113126 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:21 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:21 AM--SubProduct 585024 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:21 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:22 AM--SubProduct 585059 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:22 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:22 AM--SubProduct 585087 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:22 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:22 AM--SubProduct 2608501 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:22 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:22 AM--SubProduct 370071370 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:22 AM--SubProduct 370088819 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:23 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:23 AM--SubProduct 370071383 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:23 AM--SubProduct 370088827 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:23 AM--PrepareUmbrellaProducts 4
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:23 AM--SubProduct 370071386 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:23 AM--SubProduct 370088835 Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:23 AM--Productoption Table Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:23 AM--SubProducts Table Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:32:45 AM--ProductReview Table Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:33:05 AM--RelatedProducts Table Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:33:05 AM--ProductImage Table Updated
+---------------------------------------
+---------------------------------------
+--Date: 5/17/2022 1:33:05 AM--All Tables Updated Successfully
+---------------------------------------

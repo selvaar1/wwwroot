@@ -1,0 +1,99 @@
+#popup_container {
+    /*font-family: Arial, sans-serif;*/
+    font-size: 12px;
+    min-width: 300px; /* Dialog will be no smaller than this */
+    max-width: 600px; /* Dialog will wrap after this width */
+    background: #FFF;
+    border: solid 3px #008AB8;
+    color: #000;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px #303030;
+}
+
+#popup_title {
+    font-size: 14px;
+    /*font-weight: bold;*/
+    text-align: center;
+    line-height: 2.2em;
+    color: #fff;
+    background: url(../Images/headerBg.png) repeat-x 0 -16px #181616;
+    border: solid 1px #FFF;
+    border-bottom: solid 1px #999;
+    cursor: default;
+    padding: 0em;
+    margin: 0em;
+}
+
+#popup_content {
+    /*../Images/info.gif*/
+    background: 16px 16px no-repeat url('');
+    /*padding: 1em 1.75em;*/
+    margin: 0em;
+}
+
+    #popup_content.alert {
+        /*../Images/info.gif*/
+        background-image: url('');
+    }
+
+    #popup_content.confirm {
+        background-image: url(../Images/important.gif);
+    }
+
+    #popup_content.prompt {
+        background-image: url(../Images/help.gif);
+    }
+
+#popup_message {
+    /*padding-left: 48px;*/
+    padding: 20px;
+    text-align: center;
+}
+
+#popup_panel {
+    text-align: center;
+    /* margin: 1em 0em 0em 1em; */
+    padding: 5px 0;
+    /*margin-top: 20px;*/
+    background: #f1f1f1;
+    border: 1px solid #c5c5c5;
+}
+
+#popup_prompt {
+    margin: .5em 0em;
+}
+
+#popup_ok, #popup_cancel {
+    text-indent: 25px;
+    border: 0;
+    line-height: 25px;
+    font-size: 12px;
+    padding: 0 10px;
+}
+
+#popup_ok {
+    background: url("../Images/icon_save.png") no-repeat scroll 0 0 #fff;
+    color: #00B1FF;
+    border: 1px solid #00B1FF;
+}
+
+    #popup_ok:hover {
+        background: url("../Images/icon_save_hover.png") no-repeat scroll 0 0 #00B1FF;
+        color: #fff;
+        border: 1px solid #00B1FF;
+    }
+
+#popup_cancel {
+    margin: 0 0 0 10px;
+    background: url("../Images/icon_cancel_hover.png") no-repeat 0 0 #6D6D6D;
+    color: #fff;
+    border: 1px solid #6D6D6D;
+}
+
+    #popup_cancel:hover {
+        background: url("../Images/icon_cancel.png") no-repeat 0 0 #fff;
+        color: #00B1FF;
+        border: 1px solid #00B1FF;
+    }

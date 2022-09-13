@@ -1,0 +1,267 @@
+﻿@{
+    ViewBag.PageTitle = "Professional Interests";
+}
+@{
+    ViewBag.Title = "Professional Interests";
+}
+
+@section featured {
+
+}
+
+<h1 class="page_title">@ViewBag.Title</h1>
+<h2>@ViewBag.Message</h2>
+
+<style>
+    .contentBox div div:nth-child(odd+1) {
+        background-color: #f9f9f9;
+        border-top: 1px solid #DDD;
+        border-bottom: 1px solid #DDD;
+    }
+</style>
+<div class="registration_form">
+    <div class="form_row_submit" style="text-align: left;">
+        <h3 class="rand">Primary Professional Interests:</h3>
+        <div class="datagrid" style="margin-bottom: 20px;">
+            <div id="list2" class="list2">
+                Loading...
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+<style>
+    .interests-selected{
+        margin:5px;
+    } 
+    .interests-selected label {
+        font-size: 17px;
+        font-weight: normal !important;
+        margin-left:10px;
+        margin-bottom:3px !important;
+    }
+</style>
+<script id="template-list2" type="text/x-handlebars-template">
+    <div class="contentBox clearfix">
+        <div class="clearfix">
+            {{#each Data }}
+                {{#if SELECTED}}
+                    <div class="interests-selected">
+                        <label for="INT_{{VALUE}}">{{TEXT}}</label>
+                    </div>
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-primary" id="addeditPI">Add/Edit Professional Interests</button>
+    </div>
+</script>
+
+<script id="template-list-all" type="text/x-handlebars-template">
+
+        <div class="contentBox clearfix">
+            <div class="clearfix">
+                {{#each Data }}
+                <div class="col-lg-6 clearfix">
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" value="{{VALUE}}" {{SELECTED}} name="INT_{{VALUE}}" class="interest" />&nbsp;
+                        <label for="INT_{{VALUE}}">{{TEXT}}</label>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <div>
+                <button class="btn btn-primary" id="save2">Save</button> &nbsp;&nbsp;<button class="btn btn-primary" id="cancel">Cancel</button>
+        </div>
+</script>
+
+
+<script>
+
+    Array.prototype.remove = function () {
+        var what, a = arguments, L = a.length, ax;
+        while (L && this.length) {
+            what = a[--L];
+            while ((ax = this.indexOf(what)) !== -1) {
+                this.splice(ax, 1);
+            }
+        }
+        return this;
+    };
+
+    var listdata2 = null;
+
+    var toadd = [];
+    var todelete = [];
+
+    function ShowListdata2() {
+        console.log("ShowListdata2", listdata2);
+        renderTemplate(listdata2, '#template-list2', '#list2');
+    }
+
+    function page_init() {
+        callProxy(
+        "GetInterests",
+        null,
+        function (response) {
+            listdata2 = response;
+
+            ShowListdata2();
+        }
+        );
+
+        console.log("vind");
+
+        $('body').on('change', '.interest', function () {
+
+            console.log("save2");
+
+            var interest = $(this).val();
+
+            //var data = {
+            //    society: society
+
+            //};
+            //console.log("save data2", data);
+
+            if ($(this).is(':checked')) {
+
+                //remove it from delete
+
+                if (todelete.indexOf(interest) >= 0) {
+                    todelete.remove(interest);
+                }
+                else if (toadd.indexOf(interest) >= 0) {
+
+                }
+                else {
+                    toadd.push(interest);
+                }
+                
+                
+
+              
+
+                
+            }
+            else {
+                //remove it from add
+                if (toadd.indexOf(interest) >= 0) {
+                    toadd.remove(interest);
+                }
+                else if (todelete.indexOf(interest) >= 0) {
+
+                }
+                else {
+                    todelete.push(interest);
+                }
+
+                
+            }
+
+            console.log('change .interest', toadd, todelete);
+
+            return false;
+        });
+
+        $('body').on('click', '#save2', function () {
+
+            
+
+            var data = {
+                toadd: toadd.join(','),
+                todelete: todelete.join(',')
+            };
+
+            console.log('save2 data', data);
+
+            callProxy(
+           "UpdateInterests",
+           data,
+            function (response) {
+
+                toadd = [];
+                todelete = [];
+                listdata2 = response;
+
+                ShowListdata2();
+
+            }
+            );
+        });
+
+        $('body').on('click', '#cancel', function () {
+            callProxy(
+          "GetInterests",
+          null,
+          function (response) {
+              listdata2 = response;
+              ShowListdata2();
+          });
+        });
+
+        //$('body').on('change', '.interest', function () {
+
+        //    console.log("save2");
+
+        //    var interest = $(this).val();
+
+        //    var data = {
+        //        interest: interest
+
+        //    };
+        //    console.log("save data2", data);
+
+        //    if ($(this).is(':checked')) {
+
+        //        callProxy(
+        //            "AddInterests",
+        //            data,
+        //        function (response) {
+        //            listdata2 = response;
+        //            ShowListdata2();
+        //        }
+        //        );
+        //    }
+        //    else {
+        //        callProxy(
+        //       "DeleteInterests",
+        //       data,
+        //        function (response) {
+        //            listdata2 = response;
+
+        //            ShowListdata2();
+
+        //        }
+        //   );
+        //    }
+
+        //    return false;
+        //});
+
+        $('body').on('click', '#addeditPI', function () {
+            console.log('#addeditPI', listdata2);
+            renderTemplate(listdata2, '#template-list-all', '#list2');
+        });
+
+
+    }
+</script>
+
+
+<script>
+
+    $(document).ready(function () {
+        console.log("ready");
+
+        page_init();
+
+       
+
+    });
+
+</script>

@@ -1,0 +1,18 @@
+﻿@using MyResource = ResourceFile
+
+@{
+    ViewBag.PageTitle = "Welcome to " +MyResource.ResourceFile.VendoreName;
+    Layout = "~/Views/Shared/_LayoutLanding.cshtml";
+}
+@{
+    ViewBag.Title = "Welcome to " + MyResource.ResourceFile.VendoreName;
+}
+
+<div class="col-sm-9">
+    <p class="landingText">
+        
+    </p>
+</div>
+<div class="col-sm-3 pull-right text-center">
+    @Html.Partial("_dynamicActions", null)
+</div>

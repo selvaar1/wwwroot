@@ -1,0 +1,205 @@
+﻿@{
+    ViewBag.Title = "Place Order";
+    Layout = "~/Views/Shared/_Products.cshtml";
+}
+<div class="page_content_main">
+    <div class="page_content_left order-confirmation" data-ng-init="orderResponse()">
+
+        <!--order_print-->
+        <div class="order_received_details">
+            <h3 class="order_received">@*Your order has been received.*@
+Thank you for your order from the ATA Store! <span data-ng-if="userEmail != ''">Your order summary is below and
+a confirmation will be sent to you at <strong>{{userEmail}}</strong> within a few minutes. You will also
+receive a notification with tracking details once your order ships.</span>
+            </h3>
+
+            @*
+        <div class="order_purchase">
+            <h4>Thank you for your purchase!</h4>
+            <h5>Your order # is: {{orderNumber}}</h5>
+        </div>
+            *@
+        
+
+        <div class="order_print">
+            <div class="order_details">
+                <h4>Order Number:{{orderNumber}}</h4>
+            </div>
+            <div class="order_details">
+                <h4>Order Date: @DateTime.Now.ToString("MMMM dd yyyy")</h4>
+
+            </div>
+            @*<span>Confirmation of Order</span>*@
+            <a href="javascript:;" onclick="printOrder()" class="print_email">Print</a>
+            <a href="#" class="print_email" style="display: none;">Email</a>
+        </div>
+
+
+            <div class="item_purchase_table">
+                <table id="cart_table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="cartItem in repOrderData.Products">
+                            <td class="purchase_item">
+                                <span class="product-thumbnail">
+                                    <img ng-src="{{cartItem.ProductImage}}" no-image></span>
+                                <span class="purchase_item_right">
+                                    <h4>{{cartItem.Description}}</h4>
+                                    <p>{{cartItem.CartDescription}}</p>
+                                    <a href="" data-ng-if="cartItem.ECDDownloadsRemaining > 0" class="download"
+data-fileid="{{cartItem.ECDFileId}}" data-ordernumber="{{orderNumber}}" data-orderlinenumber="{{cartItem.RelatedLineNumber}}" 
+                                        data-filename="{{cartItem.ECDFileName}}" data-prodid="{{cartItem.ProductID}}">Download
+                                    </a>
+                                </span>
+                                
+                                <div data-ng-if="(cartItem.Components).length > 0">
+                                    <strong>Items included in package :</strong>
+                                    <ul class="showDetails">
+                                        <li data-ng-repeat="comName in cartItem.Components">
+                                            <span>{{comName.Description}} 
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                <span>{{cartItem.Quantity}}</span>
+                            </td>
+                            @* Member Price *@
+                            <td class="price mPrice" ng-if="sesUserIsMember == '1'">{{cartItem.MemberPrice | currency}}</td>
+                            <td class="price mPrice" ng-if="sesUserIsMember == '1'">{{cartItem.Quantity * cartItem.MemberPrice | currency}}</td>
+
+                            @* User Price *@
+                            <td class="price uPrice" ng-if="sesUserIsMember != '1'">{{cartItem.UnitPrice | currency}}</td>
+                            <td class="price uPrice" ng-if="sesUserIsMember != '1'">{{cartItem.Quantity * cartItem.UnitPrice | currency}}</td>
+                            @*<td class="price"><span>{{cartItem.product.Price | currency}}</span></td>
+                            <td class="price"><span>{{cartItem.product.Price * cartItem.Quantity | currency}}</span></td>
+                            *@
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!----page-content-left---->
+
+            <div class="sidebar_widget order_sum_widget">
+                @*<h4>Order Summary</h4>
+                *@
+                <ul>
+                    <li ng-if="repCouponSaving==null">Item({{repOrderData.Products.length}})<span>{{repOrderData.TotalAmount - repOrderData.TaxAmount - repOrderData.ShippingAmount | currency}}</span></li>
+                    <li ng-if="repCouponSaving!=null">Item({{repOrderData.Products.length}})<span>{{repOrderData.TotalAmount- repOrderData.TaxAmount - repOrderData.ShippingAmount + repCouponSaving  | currency}}</span></li>
+                    <li>Shipping Handling<span>{{repOrderData.ShippingAmount | currency}}</span></li>
+                    <li>Tax<span>{{repOrderData.TaxAmount  | currency}}</span></li>
+                    @*<li ng-if="repCouponSaving!=null">Coupons or Promo Code Applied (Automatic)<span>-{{repCouponSaving | currency}}</span></li>*@
+                    @*<li ng-if="repCouponSaving!=null">Coupons or Promo Code Applied (Total)<span>-{{repCouponSaving | currency}}</span></li>*@
+                    <li ng-if="repCouponSaving!=null" data-ng-repeat="coupon in repOrderData.Coupons">
+                        {{coupon.Description}}<span>-{{coupon.Amount | currency}}</span>
+                    </li>
+                    <li ng-if="sesUserIsMember == '1'" class="item_total">Total:  <span>{{ repOrderData.TotalAmount  | currency}}</span></li>
+                    <li ng-if="sesUserIsMember != '1'" class="item_total">Total:  <span>{{ repOrderData.TotalAmount  | currency}}</span></li>
+                </ul>
+            </div>
+
+
+            <div style="clear: both;"></div>
+            <table style="margin-top: 50px;">
+                <tr class="addInfo">
+                    <th>Billing Info:</th>
+                    <th>Shipping Info:</th>
+
+                </tr>
+                <tr>
+                    <td><span class="white-space-pre-line" data-ng-bind-html="repOrderData.BillAddress  | sanitize"></span></td>
+                    <td><span class="white-space-pre-line" data-ng-bind-html="repOrderData.ShipAddress  | sanitize"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Payment Method</strong>: {{repOrderData.ReceiptType}} **** {{repOrderData.PartialCrediCardNumber}}</td>
+                    <td><strong>Shipping Method</strong>: {{repOrderData.ShipViaCode}}</td>
+                </tr>
+            </table>
+            <!--order_received_details-->
+            <br />
+            <br />
+            <h3 class="order_received">Question about your order? Visit our 
+<a href="@System.Configuration.ConfigurationManager.AppSettings["ApplicationUrl"].ToString()/Footer/FAQ" target="_blank">FAQ</a> or contact our 
+<a href="@System.Configuration.ConfigurationManager.AppSettings["ApplicationUrl"].ToString()/Footer/CustomerService" target="_blank">ATA Store CUSTOMER SERVICE TEAM</a>. Your feedback is important to us, and allows us to continue to provide
+resources that are effective and relevant.
+            <br />
+                <br />
+                The ATA strives to provide the best resources to serve our members and support the
+profession of Optometry, working through our mission centered on improving the quality and availability of eye and vision care.
+            </h3>
+        </div>
+    </div>
+    <!----page-content-left---->
+
+</div>
+<!--page_content_main-->
+<script>
+    $(function () {
+        //$('.download').hide()
+        $(document).on('click', '.download', function () {
+            document.getElementById("preloader").style.display = "block";
+            var filename = $(this).data('filename');
+            var prodid = $(this).data('prodid');
+            var fileid = $(this).data('fileid');
+            var ordernumber = $(this).data('ordernumber');
+            var orderlinenumber = $(this).data('orderlinenumber');
+
+            $.ajax(
+            {
+                url: '@Url.Action("DownloadAttachment", "Order")',
+                contentType: 'application/json; charset=utf-8',
+                datatype: 'json',
+                
+                data: {
+                    filename: filename,
+                    prodid: prodid,
+                    fileid: fileid,
+                    ordernumber: ordernumber,
+                    orderlinenumber: orderlinenumber
+                },
+                type: "GET",
+                success: function (data) {
+                    if (data == "Success") {
+                        //window.location = '@Url.Action("Download", "Order")';
+                        //$('.download').hide();
+                        $.ajax(
+                        {
+                            url: '@Url.Action("IncreaseECDCounterinOrderSession", "Order")',
+                            contentType: 'application/json; charset=utf-8',
+                            datatype: 'json',
+                            data: {
+                                filename: filename,
+                                prodid: prodid,
+                                fileid: fileid,
+                                ordernumber: ordernumber,
+                                orderlinenumber: orderlinenumber
+                            },
+                            type: "GET",
+                            success: function (data) {
+                                if (data == "Success") {
+                                    window.location = '@Url.Action("Download", "Order")';
+                                    $('.download').hide();
+                                    document.getElementById("preloader").style.display = "none";
+                                }
+                                else {
+                                    document.getElementById("preloader").style.display = "none";
+                                }
+                            }
+                        });
+                    }
+                    else {
+                        document.getElementById("preloader").style.display = "none";
+                    }
+                }
+            });
+        });
+    });
+</script>

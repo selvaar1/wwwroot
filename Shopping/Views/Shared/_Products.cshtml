@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>@ViewBag.Title</title>
+
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta content="text/javascript" http-equiv="Content-Script-Type" />
+    <meta content="text/css" http-equiv="Content-Style-Type" />
+
+    @if (string.IsNullOrEmpty(((string)ViewBag.MetaDescription)))
+    {
+        <meta id="MetaDescription" name="DESCRIPTION" content="SIR Business Center" />
+    }
+    else
+    {
+        <meta id="MetaDescription" name="DESCRIPTION" content="@ViewBag.MetaDescription" />
+    }
+    @*@if (string.IsNullOrEmpty(((string)ViewBag.MetaKeyword)))
+        {
+            <meta id="MetaKeywords" name="KEYWORDS" content="Trucking Trends, Trucking reports, Trucking safety awards, safety awards, trucking meetings, trucking events, Trucking forecasts, trucking products, Truck industry, economics,DotNetNuke,DNN" />
+        }
+        else
+        {
+            <meta id="MetaKeywords" name="KEYWORDS" content="@ViewBag.MetaKeyword" />
+        }*@
+    <meta id="MetaKeywords" name="KEYWORDS" content="" />
+    <meta id="MetaCopyright" name="COPYRIGHT" content="Powered by Shufflelabs" />
+    <meta id="MetaAuthor" name="AUTHOR" content="Shufflelabs" />
+    <meta name="RESOURCE-TYPE" content="DOCUMENT" />
+    <meta name="DISTRIBUTION" content="GLOBAL" />
+    <meta id="MetaRobots" name="ROBOTS" content="INDEX, FOLLOW" />
+    <meta name="REVISIT-AFTER" content="1 DAYS" />
+
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico">
+    <link rel="apple-touch-icon" href="~/icon.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+
+    <link rel="stylesheet" href="~/bootstrap/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="~/bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/normalize.css">
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/mod.css">
+
+
+    @RenderSection("metatags", false)
+    <title>@ViewBag.Title</title>
+
+
+    @System.Web.Optimization.Styles.Render("~/Content/styles")
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    @System.Web.Optimization.Scripts.Render("~/bundles/angular")
+    <!--[if (gte IE 6)&(lte IE 8)]>
+        <link href="css/ie8.css" type="text/css" rel="stylesheet" media="all">
+        <script type="text/javascript" src="js/selectivizr.js"></script>
+    <![endif]-->
+    <script>
+        function popUpClosed() {
+            // window.location.reload();
+            window.location.href = window.location.href;
+        }
+    </script>
+
+
+</head>
+<body ng-app="AoaShopping" ng-controller="viewProductController" class="scrollable ng-cloak">
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+
+    <content id="content-box" class="content">
+        @Html.AntiForgeryToken()
+        <div class="breadcrumb" role="navigation">
+            Product
+
+            @*@if (Request.Url.AbsoluteUri.ToString().ToLower().Contains("viewproduct"))
+        {
+            <span>{{viewProduct.ProductName}}</span>
+
+        }
+        else
+        {
+            @ViewBag.Title
+
+        }*@
+
+
+        </div>
+
+        <div class="product-page-grid">
+            <div id="preloader" style="display: none"><span></span></div>
+
+            @RenderBody()
+
+        </div>
+    </content>
+
+
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+
+    <script src="~/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/main.js"></script>
+
+    @{ Html.RenderPartial("~/Views/Product/_CartPopup.cshtml");}
+    @{ Html.RenderPartial("~/Views/Product/_ProductPreview.cshtml");}
+    @System.Web.Optimization.Scripts.Render("~/bundles/app")
+
+
+
+</body>
+</html>
+

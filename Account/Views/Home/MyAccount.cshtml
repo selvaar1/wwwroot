@@ -1,0 +1,395 @@
+﻿@{
+    ViewBag.Title = "My Account";
+}
+
+<h1 class="page_title">My Account</h1>
+<div class="col-sm-7" id="content">
+    <div class="contentBox">
+        <div class="cb_header">
+            Current Membership
+        </div>
+        <div class="=cb_body">
+            <div class="datagrid">
+                @if (ViewBag.Memberships != null)
+                {
+                    <div class="withdata">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Member Type</td>
+                                    <td class="date">Start Date</td>
+                                    <td class="date">End Date</td>
+                                </tr>
+                            </thead>
+                            @foreach (SL.Data.OrderDetailInfo item in ViewBag.Memberships)
+                            {
+                                <tr>
+                                    @if (item.CycleBeginDate <= DateTime.Today && item.CycleEndDate >= DateTime.Today)
+                                    {
+                                        <td>@item.Description</td>
+                                        <td>@item.CycleBeginDate.ToString("MM/dd/yyyy")</td>
+                                        <td>@item.CycleEndDate.ToString("MM/dd/yyyy")</td>
+
+                                    }
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                { 
+                    <div class=" text-center">
+                        No records to display
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="contentBox">
+        <div class="cb_header">
+            My Subscriptions
+        </div>
+        <div class="datagrid">
+            @if (ViewBag.Subscriptions != null || ViewBag.Subscriptions != null)
+            { 
+                <div class="withdata">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Title</td>
+                                <td class="date">Start Date</td>
+                                <td class="date">End Date</td>
+                            </tr>
+                        </thead>
+
+                        @if (ViewBag.Subscriptions != null)
+                        {
+                            foreach (SL.Data.OrderDetailInfo item in ViewBag.Subscriptions)
+                            {
+                                <tr>
+                               
+                            <td>@item.Description</td>
+                                <td>@item.CycleBeginDate.ToString("MM/dd/yyyy")</td>
+                                <td>@item.CycleEndDate.ToString("MM/dd/yyyy")</td>
+                           
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+            }
+            else
+            { 
+                <div class=" text-center">
+                    No records to display
+                </div>
+            }
+        </div>
+    </div>
+    <div class="contentBox">
+        <div class="cb_header">
+            My Conferences
+        </div>
+        <div class="datagrid">
+            @if (ViewBag.Meetings != null && ViewBag.Meetings.Count > 0)
+            {
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Description</td>
+                            <td class="date">Date/Time</td>
+                            <td class="date">Location</td>
+                            <td class="date">Actions</td>
+                        </tr>
+                    </thead>
+
+                    @foreach (SL.Data.MyMeetingDetails item in ViewBag.Meetings)
+                    {
+                        <tr>
+                            <td>@item.ShortName</td>
+                            <td>@item.StartDate.ToString("MM/dd/yyyy hh:mm tt") - @item.EndDate.ToString("MM/dd/yyyy hh:mm tt")</td>
+                            <td>@item.Location</td>
+                            <td><a href="javascript:;" data-ord="@item.OrderNumber" class="showorderdetails">View Registration</a></td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <div class=" text-center">
+                    No records to display
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="col-sm-5">
+    <div class="contentBox ">
+        <div class="cb_header">
+            Membership Summary
+        </div>
+        <div class="cb_body">
+            @if (ViewBag.MembershipSummary != null)
+            {
+                <div class="col-md-16">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Status</td>
+                            @if (ViewBag.MembershipSummary.CycleEndDate > DateTime.Now)
+                            { 
+                                <td class="text-right" style="color: green">Active</td>
+                            }
+                            else
+                            {
+                                <td class="text-right" style="color: red">Expired</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>Start Date</td>
+                            <td class="text-right">@ViewBag.MembershipSummary.CycleBeginDate.ToString("MM/dd/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td>Paid Thru Date</td>
+                            <td class="text-right">@ViewBag.MembershipSummary.CycleEndDate.ToString("MM/dd/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td>Member Type</td>
+                            <td class="text-right">@ViewBag.MembershipSummary.Description</td>
+                        </tr>
+                        <tr>
+                            <td>Member Number</td>
+                            <td class="text-right">@ViewBag.MasterCustomerId</td>
+                        </tr>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <span>Customer ID: @ViewBag.MasterCustomerId</span><br />
+                <span>There are no memberships to display</span>
+            }
+        </div>
+        <div class="cb_footer" style="display:inline-flex;">
+            @if ((ViewBag.Memberships == null || ViewBag.Memberships.Count == 0) && (HttpContext.Current.Session["RenewalExists"] == null || Convert.ToBoolean(HttpContext.Current.Session["RenewalExists"]) == false))
+            {
+                <div class="cb_footer_actions">
+                    <a href="@System.Configuration.ConfigurationManager.AppSettings["JoinURL"].ToString()" class="btn btn-default">Join</a>
+                </div>
+            } else {
+                <a style="margin: 5px 10px 0px 0px;" href="~/Memberships">View Details</a>
+                    <div class="btnActions Pointer">
+                    @if (ViewBag.RenewalExists != null && ViewBag.RenewalExists == true)
+                    {
+                    <span> <a style="font-size:medium;color:#fff;background-color: #5cb85c;border-color:#4cae4c; padding: 6px 25px;" onclick="ValiateCart()">Renew</a></span>
+
+                        //href="@System.Configuration.ConfigurationManager.AppSettings["JoinURL"]?orderno=@ViewBag.OrderNo"
+                    }
+                    else if (ViewBag.AddonExists != null && ViewBag.AddonExists == true)
+                    {
+                        @*<a style="padding: 6px 25px;" href="/AddOnsFromOrder?orderno=@ViewBag.OrderNo">Renew</a>*@
+                        <span> <a style="padding: 6px 25px;" onclick="ValiateCart()">Renew</a></span>
+                    }
+                    </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal col-sm-12">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3>Invoice</h3>
+        </div>
+        <div class="modal-body">
+            <div id="invoice">
+            </div>
+        </div>
+        <div class="modal-footer">
+            @*<h4>Modal Footer</h4>*@
+        </div>
+    </div>
+
+</div>
+<script id="invoice-template-grid" type="text/x-handlebars-template">
+    <div style="padding: 15px;">
+        <div class="oAddressDiv col-xs-12">
+            <div class="col-xs-8">
+                <div class="billAddress col-xs-6">
+                    <h4>Billing Address</h4>
+                    <address>{{breaklines BillAddress}}</address>
+                </div>
+                <div class="shipAddress col-xs-6 shippinginfo">
+                    <h4>Shipping Address</h4>
+                    <address>{{breaklines ShipAddress}}</address>
+                </div>
+            </div>
+            <div class="col-xs-4 logo text-right">
+                <img src='@Url.Content("~/Images/print_logo.png")' width="150" />
+            </div>
+        </div>
+        <div class="links">
+            <a href="javasctiprt:;" id="printInvoice">Printable View</a>
+            <span>| </span>
+            <a href="javasctiprt:;" id="emailInvoice">Email to Another Address</a>
+        </div>
+        <div>
+            <h3>Order Number : {{OrderNumber}}</h3>
+        </div>
+        <div class="oDetails">
+            <table class="table table-striped">
+                {{#each Products}}
+                <tr class="cart_item" DeliveryMethodCode="{{DeliveryMethodCode}}">
+                    <td>{{Description}}</td>
+                    <td class="oQty">{{Quantity}}</td>
+                    <td class="text-right">$<span class="uPrice">{{formatMoney UnitPrice}}</span> {{../CurrencyCode}}</td>
+                </tr>
+                {{/each}}
+            </table>
+            <div>
+                <table class="text-right">
+                    <tr style="border-top: 1px solid lightgray;">
+                        <td>Sub Total:</td>
+                        <td style="width: 120px;">$<span class="tPrice">{{formatMoney UnitPrice}}</span> {{CurrencyCode}}</td>
+                    </tr>
+                    <tr>
+                        <td>Tax: </td>
+                        <td>${{formatMoney TaxAmount}} {{CurrencyCode}}</td>
+                    </tr>
+                    <tr class="shippinginfo">
+                        <td>Shipping: </td>
+                        <td>${{formatMoney ShippingAmount}} {{CurrencyCode}}</td>
+                    </tr>
+                    <tr>
+                        <td>Order Total: </td>
+                        <td>${{formatMoney TotalAmount}} {{CurrencyCode}}</td>
+                    </tr>
+                    <tr style="border-top: 1px solid lightgray;">
+                        {{#compare ReceiptAmount 0 operator="!="}}
+                            <td colspan="2">Paid on: {{formatDate ReceiptDate}} with {{ReceiptType}} ending in {{PartialCrediCardNumber}} for ${{formatMoney ReceiptAmount}} {{ReceiptCurrency}}</td>
+                        {{else}}
+                            <td>Paid: </td>
+                            <td>${{formatMoney ReceiptAmount}}  {{CurrencyCode}}</td>
+                        {{/compare}}
+                    </tr>
+                    <tr>
+                        <td>Balance: </td>
+                        <td>${{formatMoney BalanceAmount}}  {{CurrencyCode}}</td>
+                    </tr>
+                    <tr>
+                        <td>Amount: </td>
+                        <td>${{formatMoney BalanceAmount}} {{CurrencyCode}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</script>
+<script>
+    $(document).ready(function () {
+        // Get the modal
+        var modal = document.getElementById('myModal');
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        $(document).on('click', '.showorderdetails', function () {
+            var ono = $(this).data('ord');
+            GetOrderDetails(ono);
+        });
+
+        var ShowInvoice = true;
+        var allOrderInfo;
+        var isshippable = false;
+        function CalculateTotal() {
+            //cart_item
+            var total = 0;
+            $(".cart_item").each(function () {
+                //Check if shippable item exists
+                var dmc = $(this).attr('DeliveryMethodCode');
+                if (dmc != undefined && dmc!=null && dmc.length>0)
+                    isshippable = true;
+                //Get Quantity
+                var qty = $(this).find('.oQty').text(); console.log('Qty : ' + qty);
+                //Get Price
+                var price = parseFloat($(this).find('.uPrice').text()); console.log('price : ' + price);
+                //Multiply
+                total += (qty * price);
+
+            });
+            if (isshippable == false)
+            {
+                //Hide shipping values
+                $(".shippinginfo").hide();
+            }
+            $('.tPrice').html(total.formatMoney());
+        };
+
+        //for Popup
+        function GetOrderDetails(ordernumber) {
+            $.ajax(
+            {
+                url: '@Url.Action("GetOrderSummary", "Home")',
+                contentType: 'application/json; charset=utf-8',
+                datatype: 'json',
+                type: "GET",
+                data: {
+                    orderno: ordernumber,
+                    orderdate: ""
+                },
+                success: function (data) {
+                    if (data != null && data.Success == true) {
+                        console.log(data);
+                        var pdetailsSource = jQuery('#invoice-template-grid').html();
+                        var pdetailstemplate = Handlebars.compile(pdetailsSource);
+                        pdetails = pdetailstemplate(data.Details);
+                        $("#invoice").html(pdetails);
+                        //Show in popup
+                        modal.style.display = "block";
+                        CalculateTotal();
+                    }
+                }
+            });
+        }
+
+        //printOrders
+        $(document).on('click', '#printOrders', function () {
+            printOrder('#orderHistory');
+        });
+        $(document).on('click', '#printInvoice', function () {
+            printOrder('#myModal');
+        });
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+
+    function ValiateCart() {
+
+        $.ajax({
+            url: '@Url.Action("ValiateCart", "Home")',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: "",
+            success: function (response) {
+                console.log('Success', response);
+                if (response != null && response.Success == true) {
+
+                    if (response.AllowtoCart == false)
+                        alert("Please complete purchase of existing items from the cart or remove them from cart before starting a meeting modification");
+                    else
+                        window.location = response.path;
+                }
+
+            },
+            error: function (x) { nalert(x); }
+        });
+    }
+</script>

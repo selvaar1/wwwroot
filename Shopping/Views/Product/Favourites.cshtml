@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "ATA";
+    Layout = "~/Views/Shared/_Products.cshtml";
+}
+<div id="products_view" class="pd_listView">
+    <div id="product_display">
+        <div class="product_data" ng-switch="(FavouriteItems | filter:search).length">
+            <span data-ng-switch-when="0" class="jplist-no-results">No results found</span>
+            <div class="product_list" data-ng-repeat="fav in FavouriteItems | orderBy:sortType:sortReverse " ng-switch-default>
+
+                <div class="book_img" data-id="{{fav.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='" onclick="viewProduct($(this).attr('data-id'))" style="cursor:pointer">
+                    <img class="spinner" data-ng-show="loading" src="~/Images/ajax-loader-img.gif" />
+                    <img ng-src="{{fav.ProductImage}}" no-image>
+                </div>
+                <div class="product_details ">
+                    <h3 class="product_title vu_details" data-id="{{fav.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='" onclick="viewProduct($(this).attr('data-id'))">{{fav.ProductName}}</h3>
+                    <p class="desc">{{fav.CartDescription}}</p>
+                    @*<p class="author"><span>Author: CDAuthor1</span></p>*@
+                    <div class="cart_actions">
+                        <p class="price">
+                            <span style="margin:0 10px 0 0;" data-ng-show="{{!product.IsUmbrellaProduct}}">List Price: {{fav.Price | currency}}</span>
+                            <span style="margin:0 10px 0 0;" data-ng-show="{{product.IsUmbrellaProduct}}" class="dblPrice">List Price: As low as {{fav.MinListPrice | currency}}</span>
+                        </p>
+                        <p class="price">
+                            <span data-ng-show="{{!product.IsUmbrellaProduct}}">Member Price: {{fav.MemberPrice | currency}}</span>
+                            <span data-ng-show="{{product.IsUmbrellaProduct}}" class="dblPrice">Member Price: As low as {{fav.MinMemberPrice | currency}}</span>
+                        </p>
+                        <span id="aQval" style="display: none;">{{fav.AvailableQty}}</span>
+
+                        @*<button class="add_cart_btn" data-ng-click="AddToCart(fav.ProductId, $event, 'fav')"></button>*@
+                        <button class="view_detail_btn" data-id="{{fav.ProductId}}" data-ng-init="url='/Product/viewproduct/?ProductId='" onclick="viewProduct($(this).attr('data-id'))">View Details</button>
+                        &nbsp;&nbsp;<span class="qty">
+                            <b>Last Purchase Quantity</b>&nbsp;&nbsp;
+                            <input readonly="readonly" type="text" class="ProductQuantity" id="{{fav.ProductId}}" value="{{fav.Quantity}}" style="width:50px; text-align:center;">
+                        </span>
+                        <button class="remove-favourite" data-ng-click="DeleteFavouriteItem(fav.ProductId)" title="Delete this item from Favorites"></button>
+                        &nbsp;&nbsp;
+                        <button class="add_cart_btn_single" data-ng-click="AddToCart(fav.ProductId, $event, 'view')">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

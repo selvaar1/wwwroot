@@ -1,0 +1,15 @@
+﻿<div class="card-grid">
+
+    <div data-ng-repeat="Category in Categories" data-ng-click="getItemByCategory($event)" class="card card-{{Category.CategoryId}}" role="button">
+
+        <img src="http://sir-bc.mrtnrtvld.com/card-image.73788c80.png" alt="card-image">
+        <div class="card-content-box">
+            <div class="card-content">
+                <div id="card-number">{{$index+1}}</div>
+                <h2><a href="~/Listing/?category={{Category.CategoryId}}" style="text-decoration: none; color: rgb(246, 246, 245);">{{Category.CategoryName}}</a></h2>
+            </div>
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,187 @@
+﻿@using MyResource = ResourceFile
+@{
+    ViewBag.Title = "CommunicationPreferences";
+    SL.Data.CommunicationPreferences cp = ViewBag.CommunicationPreferences;
+}
+
+<h1 class="page_title">Communication Preferences 
+    <span style="float:right;" class="btn btn-default view  btn-primary btn btn-info" id="editCommPref">Edit</span>
+</h1>
+ <div id="cp">
+
+</div>
+<style>
+    .c {margin-left: 20px; }
+
+    legend { padding-left: 20px;
+    }
+</style>
+ <script id="cp-template-grid" type="text/x-handlebars-template">
+     {{#if CP}}
+     <div class="contentBox">
+         <div class="cb_header">
+             Solicitations
+         </div>
+         <div class="datagrid1">
+             <fieldset>
+                 <legend>Ok to send by:</legend>
+                 <div class="c">
+                     <input type="checkbox" id="email" value="Email" {{#compare  CP.AllowEmailFlag  true  operator="==" }} checked {{/compare}} /> <label for="email">Email</label>
+                 </div>
+                 <div class="c">
+                     <input type="checkbox" id="fax" value="Fax" {{#compare  CP.AllowFaxFlag  true  operator="==" }} checked {{/compare}} /> <label for="fax">Fax</label>
+                 </div>
+                 <div class="c">
+                     <input type="checkbox" id="postal" value="Postal Mail" {{#compare  CP.AllowInternalMailFlag  true  operator="==" }} checked {{/compare}} />
+                     <label for="postal">Postal Mail</label>
+                 </div>
+                 <div class="c">
+                     <input type="checkbox" id="phone" value="Phone" {{#compare  CP.AllowPhoneFlag  true  operator="==" }} checked {{/compare}} />
+                     <label for="phone">Phone</label>
+                 </div>
+                 <br/>
+             </fieldset>
+         </div>
+     </div>
+     <div class="contentBox">
+         <div class="cb_header">
+             Promotions
+         </div>
+         <div class="datagrid1">
+             <fieldset>
+                 <legend>Please send me:</legend>
+                 <div class="c">
+                     <input type="checkbox" id="infoPartner" value="Phone" {{#compare  CP.InformationFromPartners  true  operator="==" }} checked {{/compare}} /> <label for="infoPartner">Information from Partners</label>
+                     </div>
+                 <br/>
+             </fieldset>
+         </div>
+     </div>
+     <div class="contentBox">
+         <div class="cb_header">
+             Communications
+         </div>
+         <div class="datagrid1">
+             <fieldset>
+                 <legend>My Preferences are:</legend>
+                 <div class="c">
+
+                     <input type="checkbox" id="memDirect" value="Phone" disabled {{#compare  CP.MemberDirectoryFlag  true  operator="==" }} checked {{/compare}} /> <label for="memDirect">Include Profile in Member Directory</label>
+                 </div>
+                 <div class="c">
+                     <input type="checkbox" id="web" value="Phone" disabled {{#compare  CP.OnlineDirectoryFlag  true  operator="==" }} checked {{/compare}} /> <label for="web">Include Profile in Online Directory</label>
+                 </div>
+                 <div class="c">
+                     <label>
+                         <span>Preferred Communication Method:</span> <span class="view" id="commmethcode" data-code="{{CP.PreferredCommMethodCode}}">{{CP.PreferredCommMethodCode}}</span>
+                         <select class="edit" id="selectedcommmeth">
+                             <option value="EMAIL">Email</option>
+                             <option value="PHONE">Phone</option>
+                             <option value="MAIL">Mail</option>
+                         </select>
+                     </label>
+                     </div>
+                 <br/>
+             </fieldset>
+         </div>
+     </div>
+     <br/>
+     <div class="c edit">
+         <div class="action cb_footer">
+             <div class="cb_footer_actions text-right">
+                 <input type="button" id="btnSave" value="Save" class="btn btn-primary" />
+                 <a href="javascript:;" class="cancel btn btn-default">Cancel</a>
+             </div>
+         </div>
+     </div>
+     {{/if}}
+ </script>
+
+<script>
+    $(document).ready(function () {
+        //Global data to contain CP Info
+        var commPrefDataBeforeEdit;
+        $(document).scrollTop();
+
+        function GetCPs() {
+            $.ajax(
+            {
+                url: '@Url.Action("GetCommPreferences", "Home")',
+                contentType: 'application/json; charset=utf-8',
+                datatype: 'json',
+                type: "GET",
+                data: "",
+                success: function (data) {
+                    if (data.Success == true) {
+                        commPrefDataBeforeEdit = data;
+                        FillCommDataView(data);
+                    }
+                    else {
+                        nalert('Fail!');
+                    }
+                }
+            });
+        }
+        GetCPs();
+
+        function FillCommDataView(data) {
+            var cptemplatesource = jQuery('#cp-template-grid').html();
+            var cptemplate = Handlebars.compile(cptemplatesource);
+            cp = cptemplate(data);
+            jQuery('#cp').html(cp);
+
+            $('.contentBox input[type=checkbox]').attr('disabled', 'true');
+            $('.edit').hide();
+            $('.view').show();
+        }
+
+        $('body').on('click', '#btnSave', function () {
+            var commdata = JSON.stringify({
+                "AllowEmailFlag": $("#email").is(":checked"),
+                "AllowFaxFlag": $("#fax").is(":checked"),
+                "AllowInternalMailFlag": $("#postal").is(":checked"),
+                "AllowPhoneFlag": $("#phone").is(":checked"),
+                "InformationFromPartners": $("#infoPartner").is(":checked"),
+                "MemberDirectoryFlag": $("#memDirect").is(":checked"),//true,
+                "OnlineDirectoryFlag": $("#web").is(":checked"),
+                "PreferredCommMethodCode": $("#selectedcommmeth").val(),
+                "PreferredElectionMethodElectronics": $("#voteElectronic").is(":checked"),
+                "PreferredElectionMethodPaper": $("#votePaper").is(":checked"),
+            });
+
+            $.ajax(
+            {
+                url: '@Url.Action("SaveCommPreferences", "Home")',
+                contentType: 'application/json; charset=utf-8',
+                datatype: 'json',
+                type: "POST",
+                data: commdata,
+                success: function (data) {
+                    if (data.Success == true) {
+                        //location.reload();
+                        nalert('Communication Preferences Saved Successfully');
+                        GetCPs();
+                    }
+                    else {
+                        nalert('Fail!');
+                    }
+                }
+            });
+        });
+
+        $('body').on('click', '.cancel', function () {
+            FillCommDataView(commPrefDataBeforeEdit);
+           
+        });
+
+        $('body').on('click', '#editCommPref', function () {
+            //Get Communication Method Code
+            $('#selectedcommmeth').val($('#commmethcode').data('code'));
+            $('.edit').show();
+            $('.view').hide();
+            $('.contentBox input[type=checkbox]').removeAttr('disabled');
+            $('.contentBox input[type=radio]').removeAttr('disabled');
+            
+        });
+    });
+</script>

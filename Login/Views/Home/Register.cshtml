@@ -1,0 +1,735 @@
+﻿@{
+    ViewBag.PageTitle = "Register";
+}
+@{
+    ViewBag.Title = "Register to Create an Account";
+}
+@section featured {
+
+    <h1 class="page_title">@ViewBag.Title</h1>
+}
+
+
+    <div class="register" style="padding-top: 20px;width:60%">
+
+        <div class="panel panel-default">
+
+            <div class="row">
+                <div class="col-md-4" id="test">
+                    Email Address*:
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control required email" value="" id="email" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    Username*:
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control required" value="" id="username" />
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    Password*:
+                </div>
+                <div class="col-md-8">
+                    <input type="password" class="form-control" data-indicator="pwindicator" value="" id="password" />
+                    <div id="pwindicator">
+                        <div class="bar"></div>
+                        <div class="label"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    Confirm Password*:
+                </div>
+                <div class="col-md-8">
+                    <input type="password" class="form-control" value="" id="password2" />
+                </div>
+            </div>
+
+        </div>
+
+       
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col-md-4">
+                    Prefix:
+                </div>
+                <div class="col-md-8">
+                    <select type="text" class="input_text required" id="PREFIX">
+                        <option value="">--</option>
+                        @foreach (var item in @ViewBag.Prefixes)
+                        {
+                            <option value="@item.VALUE" @item.SELECTED>@item.TEXT</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    Sufix:
+                </div>
+                <div class="col-md-8">
+                    <select type="text" class="input_text required" id="SUFIX">
+                        <option value="">--</option>
+                        @foreach (var item in @ViewBag.Sufix)
+                        {
+                            <option value="@item.VALUE" @item.SELECTED>@item.TEXT</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    First Name*:
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control required" value="" id="firstname" />
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    Last Name*:
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control required" value="" id="lastname" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    Gender:
+                </div>
+                <div class="col-md-8">
+                    <select class="form-control" id="gender">
+                        <option value="">Select</option>
+                        @foreach (var item in @ViewBag.Gender)
+                        {
+                            <option value="@item.VALUE" @item.SELECTED>@item.TEXT</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    Primary Position:
+                </div>
+                <div class="col-md-8">
+                    <select class="form-control" id="position" name="position">
+                        <option value="">-- Select --</option>
+                        @foreach (var item in @ViewBag.JobFunction)
+                        {
+                            <option value="@item.VALUE" @item.SELECTED>@item.TEXT</option>
+                        }
+
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    Job Title:
+                </div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control required" value="" id="jobtitle" maxlength="80"/>
+                </div>
+            </div>
+
+
+        </div>
+
+
+            <div id="address" class="panel panel-default"></div>
+
+
+            <div class="panel panel-default">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        Phone Location:
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-control" id="LOCATION">
+                            @foreach (var item in @ViewBag.Locations)
+                        {
+                            <option value="@item.VALUE" @item.SELECTED>@item.TEXT</option>
+                    }
+                        </select>
+                    </div>
+                </div>
+
+
+                <div id="phone"></div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-md-12 text-right">
+
+                    <a href='@Url.Action("Index", "Home")' class="btn btn-default pull-left " id="cancel">Cancel</a>
+                    <input type="submit" class="btn btn-primary" id="newuser" value="Next" />
+
+                </div>
+            </div>
+
+        </div>
+
+        <script id="address-template-grid" type="text/x-handlebars-template">
+
+
+            <div class="row">
+                <div class="col-md-4">{{COUNTRYCAPTION}}:</div>
+                <div class="col-md-8">
+                    <select type="text" class="form-control {{COUNTRYREQUIRED}}" id="COUNTRY" style="margin-right: 20px;">
+                        {{#each COUNTRYOPTIONS}}
+                        <option value="{{VALUE}}" {{SELECTED}}>{{TEXT}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4"> Address Type*:</div>
+                <div class="col-md-8">
+                    <select type="text" class="form-control required" id="addresstype">
+                        @foreach (var item in @ViewBag.AddressType)
+                    {
+                        <option value="@item.VALUE" @item.SELECTED>@item.TEXT</option>
+                }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">Company*</div>
+                <div class="col-md-8 ui-widget">
+
+                    <input type="text" id="Company" name="CompanyName" class="form-control" placeholder="Enter to Search Company" />
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4">{{ADDRESS1CAPTION}}{{#if ADDRESS1REQUIRED}}<span class="asteriskField">*</span>{{/if}}:</div>
+                <div class="col-md-8"><input type="text" class="form-control {{ADDRESS1REQUIRED}}" value="" id="ADDRESS_1" maxlength="{{ADDRESS1MAXLENGTH}}" /></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">{{ADDRESS2CAPTION}}{{#if ADDRESS2REQUIRED}}<span class="asteriskField">*</span>{{/if}}:</div>
+                <div class="col-md-8"><input type="text" class="form-control {{ADDRESS2REQUIRED}}" value="" id="ADDRESS_2" maxlength="{{ADDRESS2MAXLENGTH}}" /></div>
+            </div>
+            {{#if ADDRESS3CAPTION}}
+            <div class="row">
+                <div class="col-md-4">{{ADDRESS3CAPTION}}{{#if ADDRESS3REQUIRED}}<span class="asteriskField">*</span>{{/if}}:</div>
+                <div class="col-md-8"><input type="text" class="form-control {{ADDRESS3REQUIRED}}" value="" id="ADDRESS_3" maxlength="{{ADDRESS3MAXLENGTH}}" /></div>
+            </div>
+            {{/if}}
+
+            {{#if ADDRESS4CAPTION}}
+            <div class="row">
+                <div class="col-md-4">{{ADDRESS4CAPTION}}{{#if ADDRESS4REQUIRED}}<span class="asteriskField">*</span>{{/if}}:</div>
+                <div class="col-md-8"><input type="text" class="form-control {{ADDRESS4REQUIRED}}" value="" id="ADDRESS_4" maxlength="{{ADDRESS4MAXLENGTH}}" /></div>
+            </div>
+            {{/if}}
+
+
+            {{#if CITYCAPTION}}
+            <div class="row">
+                <div class="col-md-4">{{CITYCAPTION}}{{#if CITYREQUIRED}}<span class="asteriskField">*</span>{{/if}}:</div>
+                <div class="col-md-8"><input type="text" class="form-control {{CITYREQUIRED}}" value="" id="CITY" maxlength="CITYMAXLENGTH"></div>
+            </div>
+            {{/if}}
+
+            {{#if STATECAPTION}}
+            <div class="row">
+                <div class="col-md-4">{{STATECAPTION}}{{#if STATEREQUIRED}}<span class="asteriskField">*</span>{{/if}}:</div>
+                <div class="col-md-8">
+                    {{#if STATEOPTIONS}}
+                    <select type="text" class="form-control {{STATEREQUIRED}}" id="STATE">
+                        {{#each STATEOPTIONS}}
+                        <option value="{{VALUE}}" {{SELECTED}}>{{TEXT}}</option>
+                        {{/each}}
+                    </select>
+
+                    {{else}}
+                    <input type="text" class="form-control" value="" id="STATE" maxlength="STATEMAXLENGTH" />
+                    {{/if}}
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if POSTALCODECAPTION}}
+            <div class="row">
+                <div class="col-md-4">{{POSTALCODECAPTION}}{{#if POSTALCODEREQUIRED}}<span class="asteriskField">*</span>{{/if}}:</div>
+                <div class="col-md-8"><input type="text" class="form-control {{POSTALCODEREQUIRED}}" value="" id="POSTAL_CODE" maxlength="POSTALCODEMAXLENGTH" /></div>
+            </div>
+            {{/if}}
+
+
+        </script>
+
+
+        <script id="phone-template-grid" type="text/x-handlebars-template">
+
+            <div class="row">
+                <div class="col-md-4">Phone Country:</div>
+                <div class="col-md-8">
+                    <select type="text" class="form-control" id="PHONECOUNTRY">
+                        {{#each COUNTRYOPTIONS}}
+                        <option value="{{VALUE}}" PROPERTY={{PROPERTY}} {{SELECTED}}>{{TEXT}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">Phone Number:</div>
+                <div class="col-md-8">
+                    {{#if PHONE_AREA_CODE }}
+                    <input type="text" class="form-control MobileNumber" value="" id="PHONE_AREA_CODE" onkeyup="movetoNext(this, 'PHONE_NUMBER')" maxlength="{{PHONE_AREA_CODE_MAXLENGTH}}" style="width:30%; display: inline;" /> -
+                    {{/if}}
+                    {{#if PHONE_NUMBER }}
+                    <input type="text" class="form-control MobileNumber" value="" id="PHONE_NUMBER" maxlength="{{PHONE_NUMBER_MAXLENGTH}}" style="width:50%; display: inline;" />
+                </div>
+                {{/if}}
+            </div>
+
+        </script>
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script type="text/javascript">
+
+    function BuildCompany() {
+        console.log('Build Company');
+        $("#Company").autocomplete({
+            hint: true,
+            highlight: true,
+            minLength: 3,
+            source: function (request, response) {
+                console.log(request);
+                $.ajax({
+                    url: '@Url.Action("GetCompany", "Home")',
+                    data: "{ 'prefix': '" + request.term + "'}",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        console.log('Build Company1');
+                        items = [];
+                        map = {};
+                        $.each(data, function (i, item) {
+
+                            var id = item.Id;
+                            var name = item.CompanyName;
+                            map[name] = { id: id, name: name };
+                            items.push(name);
+                        });
+                        console.log(items);
+                        response(items);
+
+                    },
+                    error: function (response) {
+
+                        console.log('Error',response.responseText);
+                    },
+                    failure: function (response) {
+                        console.log('failure',response.responseText);
+                    }
+                });
+            },
+            updater: function (item) {
+                Console.log(item);
+                return item;
+            }
+        });
+    }
+        </script>
+
+
+
+
+
+        <script>
+
+    function movetoNext(current, nextFieldID) {
+        if (current.value.length >= current.maxLength) {
+            document.getElementById(nextFieldID).focus();
+        }
+    }
+
+    $(document).ready(function () {
+        console.log("ready");
+        jQuery(function ($) {
+            $('#password').pwstrength();
+        });
+
+        function PopulateAddress() {
+
+            console.log("PopulateAddress");
+            $('#addresstype').val('WORK');
+            $('#Company').val('Company');
+            $('#COUNTRY').val('USA');
+            $('#ADDRESS_1 ').val('1014 West 36th Street');
+            $('#ADDRESS_2 ').val('');
+            $('#CITY ').val('Baltimore');
+            $('#STATE').val('MD');
+            $('#POSTAL_CODE ').val('21211');
+        }
+
+
+        if ('@System.Configuration.ConfigurationManager.AppSettings["jshelpers"]' == 'true') {
+            $('body').on('click', '#test', function () {
+                var n = Math.floor((Math.random() * 100000) + 1);
+
+                //$('#email').val('a' + n + 'user@test.com');
+
+                $('#email').val(n + 'ShuffleLabs'+ '@@' + "test.com");
+                $('#username').val(n + 'ShuffleLabs');
+                $('#password').val(n + 'ShuffleLabs');
+                $('#password2').val(n + 'ShuffleLabs');
+                $('#firstname').val(n + 'ShuffleLabs');
+                $('#lastname').val(n + 'ShuffleLabs');
+                $('#PREFIX').val('Mr.');
+                $('#SUFIX').val('JR');
+                $('#gender').val('M');
+
+                $('#position').val('ENG');
+                $('#jobtitle').val('jobtitle'+ n);
+               // $('#year').val(Math.floor((Math.random() * 100) + 1900));
+                $('#LOCATION').val('CELL');
+                $('#PHONE_AREA_CODE ').val('703');
+                $('#PHONE_NUMBER ').val(n);
+
+                PopulateAddress();
+
+
+            });
+
+            //$('body').on('click', '.Telephone', function () {
+            //    var n = Math.floor((Math.random() * 100000) + 1);
+
+             
+
+            //});
+
+        }
+
+
+
+
+        $('body').on('change', '#COUNTRY', function () {
+            var c = $(this).val();
+            console.log("c", c);
+            if (c.length > 0) {
+                BuildAddress(c);
+
+                $('#PHONECOUNTRY').val(c);
+            }
+        });
+
+        $('body').on('change', '#PHONECOUNTRY', function () {
+            var c = $(this).val();
+            console.log("c", c);
+            if (c.length > 0) {
+                BuildPhone($(this).val());
+            }
+        });
+
+        BuildAddress("USA");
+
+        function BuildAddress(country) {
+            $("#ajax_loader").show();
+
+            $.ajax({
+                url: '@Url.Action("GetAddressStructures", "Home")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { country: country },
+                success: function (response) {
+                    $("#ajax_loader").hide();
+                    console.log('GetAddressStructures Success', response, response.length);
+
+                    if (response != null) {
+
+                        var addresstemplatesource1 = jQuery('#address-template-grid').html();
+                        var addresstemplate1 = Handlebars.compile(addresstemplatesource1);
+                        address1 = addresstemplate1(response);
+                        //console.log("address1", address1);
+                        jQuery('#address').html(address1);
+
+
+                        if ('@System.Configuration.ConfigurationManager.AppSettings["POSmode"]' == "true") {
+
+                            PopulateAddress();
+
+                        }
+
+                        BuildCompany();
+
+
+                    }
+
+                },
+                error: function () { $("#ajax_loader").hide(); nalert('Error (2)'); }
+            });
+        }
+
+
+        BuildPhone("USA");
+
+        function BuildPhone(country) {
+            $("#ajax_loader").show();
+            $.ajax({
+                url: '@Url.Action("GetCustomerPhoneStructures", "Home")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { country: country },
+                success: function (response) {
+                    $("#ajax_loader").hide();
+                    console.log('GetCustomerPhoneStructures Success', response, response.length);
+
+                    if (response != null) {
+
+                        var phonetemplatesource1 = jQuery('#phone-template-grid').html();
+                        var phonetemplate1 = Handlebars.compile(phonetemplatesource1);
+                        phone1 = phonetemplate1(response);
+                        //console.log("address1", address1);
+                        jQuery('#phone').html(phone1);
+
+                    }
+
+                },
+                error: function () { $("#ajax_loader").hide(); nalert('Error (4)'); }
+            });
+        }
+
+
+        $('#newuser').click(function () {
+
+            console.log("newuser");
+            
+            var email = $('#email').val();
+            var username = $('#username').val();
+            var password = $('#password').val();
+            var password2 = $('#password2').val();
+            var firstname = $('#firstname').val();
+            var lastname = $('#lastname').val();
+
+            var gender = $('#gender').val();
+            var position = $('#position').val();
+            var jobtitle = $('#jobtitle').val();
+
+            // var year = $('#year').val();
+            var student = false;
+
+            var addresstype = $('#addresstype').val();
+            var Company = $('#Company').val();
+            var Prefix = $('#PREFIX').val();
+            var Sufix = $('#SUFIX').val();
+            
+
+            var country = $('#PHONECOUNTRY').val();
+            var address_1 = $('#ADDRESS_1').val();
+            var address_2 = $('#ADDRESS_2').val();
+            var address_3 = $('#ADDRESS_3').val();
+            var address_4 = $('#ADDRESS_4').val();
+            var city = $('#CITY').val();
+            var state = $('#STATE').val();
+            var postal_code = $('#POSTAL_CODE').val();
+
+            var location = $('#LOCATION').val();
+            var phone_country = $('#PHONECOUNTRY option:selected').val();
+            var phone_country_code = $('#PHONECOUNTRY option:selected').attr('property');
+            var phone_area_code = $('#PHONE_AREA_CODE').val();
+            var phone_number = $('#PHONE_NUMBER').val();
+
+
+            var errorMessage = "";
+            if (!(email.length > 0) || !isEmail(email)) {
+                $('#email').addClass('invalid');
+                errorMessage += '<br/>'+ "Invalid Email address";
+            }
+            else {
+                $('#email').removeClass('invalid');
+            }
+
+            if (!(username.length > 1)) {
+                $('#username').addClass('invalid');
+                errorMessage += '<br/>'+ "Invalid Username";
+            }
+            else {
+                $('#username').removeClass('invalid');
+            }
+
+            if (!(password.length > 1)) {
+                $('#password').addClass('invalid');
+                errorMessage += '<br/>' + "Invalid Password";
+            }
+            else {
+                $('#password').removeClass('invalid');
+            }
+
+            if (password != password2 ) {
+                $('#password2').addClass('invalid');
+                errorMessage += '<br/>' + "Invalid Confirm Password";
+            }
+            else {
+                $('#password2').removeClass('invalid');
+            }
+
+            if (!(firstname.length > 1)) {
+                $('#firstname').addClass('invalid');
+                errorMessage += '<br/>'+ "Invalid First Name";
+            }
+            else {
+                $('#firstname').removeClass('invalid');
+            }
+
+            if (!(lastname.length > 1)) {
+                    $('#lastname').addClass('invalid');
+                    errorMessage += '<br/>' + "Invalid Last Name";
+            }
+            else {
+                $('#lastname').removeClass('invalid');
+            }
+            if (!(Company.length > 1)) {
+                $('#Company').addClass('invalid');
+                errorMessage += '<br/>' + "Invalid Company";
+            }
+            else {
+                $('#Company').removeClass('invalid');
+            }
+
+            //if (!(year.length > 1)) {
+            //    $('#year').addClass('invalid');
+            //    errorMessage += '<br/>' + "Invalid Year of Birth";
+            //}
+            //else {
+            //    $('#year').removeClass('invalid');
+            //}
+
+            if ($('#address .required').filter(function () { return !$(this).val(); }).length > 0) {
+
+                $('#address .required').filter(function () { return !$(this).val(); }).addClass('invalid');
+
+                errorMessage += '<br/>'+ "Incomplete Address";
+            }
+            else {
+
+                $('#address .required').removeClass('invalid');
+            }
+
+            if (phone_country == "USA" || phone_country == "CAN") {
+                var f1 = ($('#PHONE_AREA_CODE').val().length > 0);
+                var f2 = ($('#PHONE_NUMBER').val().length > 0);
+
+                if ((f1 == true && f2 == false) || (f1 == false && f2 == true)) {
+
+                    $('#PHONE_AREA_CODE, #PHONE_NUMBER').addClass('invalid');
+                    errorMessage += '<br/>' + "Incomplete Phone Number";
+
+                }
+                else {
+                    $('#PHONE_AREA_CODE, #PHONE_NUMBER').removeClass('invalid');
+                }
+            }
+            if (errorMessage.length > 0) {
+
+                nalert(errorMessage);
+                return false;
+            }
+
+            $("#ajax_loader").show();
+
+            $.ajax({
+                url: '@Url.Action("AddNewUser", "Home")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: {
+
+                    ReturnURL : '@Request["ReturnURL"]',
+                    email :					email ,
+                    username:               username,
+                    password:               password,
+                    firstname:				firstname,
+                    lastname:				lastname,
+
+                    gender: gender,
+                    position: position,
+                    jobtitle: jobtitle,
+                    year: 1111,//Not used for ATA
+                    student: student,
+                    Prefix: Prefix,
+                    Sufix: Sufix,
+                    Company: Company,
+                    addresstype: addresstype,
+                    country :				country ,
+                    address_1 :				address_1 ,
+                    address_2 :				address_2 ,
+                    address_3 :				address_3 ,
+                    address_4 :				address_4 ,
+                    city :					city ,
+                    state :					state ,
+                    postal_code :			postal_code ,
+                    location: location,
+                    phone_country: phone_country,
+                    phone_country_code :	phone_country_code ,
+                    phone_area_code :		phone_area_code ,
+                    phone_number :			phone_number
+                },
+                success: function (response) {
+                    console.log('AddNewUser Success', response);
+
+                    if (response != null) {
+
+                        console.log('Success 2', response.Success == true);
+
+
+                        if (response.Success == true) { // alright then
+
+                            console.log('Success 3', response.Success, response.NextPageURL);
+
+                            $('#newuser').hide();
+                            window.location = response.SSOURL;
+
+                        }
+                        else {
+                            $("#ajax_loader").hide();
+                            if (response.Message != null && response.Message.length > 0) {
+                                nalert(response.Message);
+
+                            } else {
+                                nalert('Something is wrong');
+                            }
+                        }
+
+                    }
+                    else {
+                        $("#ajax_loader").hide();
+                    }
+
+                },
+                error: function () { $("#ajax_loader").hide(); nalert('Error (2)'); }
+            })
+
+            return false;
+        });
+
+
+    });
+
+        </script>

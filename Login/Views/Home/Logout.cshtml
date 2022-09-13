@@ -1,0 +1,95 @@
+﻿@{
+    Layout = String.Empty;
+    ViewBag.PageTitle = "Logout...";
+    ViewBag.Title = " ";
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Logout...</title>
+    <script src="@Url.Content("~/js/jquery.min.js")"></script>
+
+    <style>
+        #ajax_loader {
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100vh; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(255,255,255); /* Fallback color */
+            background-color: rgba(255,255,255,0.4); /* Black w/ opacity */
+        }
+
+            #ajax_loader img {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+            }
+    </style>
+</head>
+
+@{
+    List<string> LogoutURs = ViewBag.LogoutURs;
+}
+
+<body>
+
+    <div id='ajax_loader'>
+        @*<img src='@Url.Content("~/images/Loading.gif")' />*@
+        <div class="e-spinner e-spinner" data-loading-spinner="" style="padding-left: 45%;padding-top: 20%;">
+            <svg class="e-spinner__spinner" width="96px" height="96px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;">
+                <circle cx="50" cy="50" fill="none" stroke="#009cde" stroke-width="5" r="32" stroke-dasharray="150.79644737231007 52.26548245743669" transform="rotate(342.159 50.0001 50)">
+                    <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                </circle>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        var total = @(LogoutURs.Count);
+        function Redirect() {
+            total--;
+            console.log('total', total);
+            if (total == 0) {
+                console.log('redirect to @(ViewBag.ReturnURL)');
+				if (location.href.indexOf('stop')>0) {}
+				else { location.href = '@(ViewBag.ReturnURL)'; }
+            }
+        }
+    </script>
+
+
+    <script>
+
+
+
+    $(document).ready(function () {
+
+
+       @for (int i = 0; i < LogoutURs.Count; i++)
+       {
+       <text>
+	    var mf@(i) = document.createElement("iframe");
+		mf@(i).style.display = 'none';
+		mf@(i).onload = function() { console.log('load the iframe @(i)'); Redirect(); }
+		mf@(i).src = '@Html.Raw(LogoutURs[i])';
+		document.body.appendChild(mf@(i));
+	    </text>
+       }
+
+
+    });
+
+        if (location.href.indexOf('stop') > 0) { }
+        else { 
+            setTimeout(function () { location.href = '@(ViewBag.ReturnURL)'; }, 10000);
+        }
+
+    </script>
+
+
+</body>
+</html>
+

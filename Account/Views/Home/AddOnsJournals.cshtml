@@ -1,0 +1,207 @@
+﻿@using MyResource = ResourceFile
+@{
+    ViewBag.PageTitle = "Addons";
+    Layout = "~/Views/Shared/_LayoutLanding.cshtml";
+}
+@{
+    ViewBag.Title = "Addons";
+}
+@{
+    ViewBag.VendoreName = MyResource.ResourceFile.VendoreName;
+}
+@*@section featured {
+    }*@
+
+<h1 class="page_title">@ViewBag.Title</h1>
+<h2>@ViewBag.Message</h2>
+
+<div class="MembershipSelection" id="Content">
+
+    <div id="addon">
+        <div id="groupdiv">
+            <h3 class="rand2">Journal Products:</h3>
+            <h4 class="info">A complimentary subscription to @ViewBag.VendoreName Journal on Applied Dynamical Systems (SIADS) is included with membership in the Dynamical Systems @ViewBag.VendoreName Activity Group or the Life Sciences SIAM Activity Group.</h4>
+ <h4 class="info"><span style="font-size: 1.1em;">Students get their first two activity groups FREE.</span> The adjusted price will be shown on the order summary screen before you confirm your order.</h4>
+
+            <div id="plist" class="dg list2" style="margin-bottom: 20px;">
+                Loading...
+            </div>
+
+            <div style="text-align: right;">
+                <input type="submit" class="btn btn-primary" value="Next" id="next1" />
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script id="template-plist" type="text/x-handlebars-template">
+
+
+    {{#if Data.length}}
+
+    <table class="form-group">
+        <tr>
+            {{#each Data }}
+
+
+            <td>
+
+
+                <div class="checkbox checkbox-primary col-sm-12">
+                    <input type="checkbox" name="product" id="product{{ProductId}}" value="{{ProductId}}" {{#if Enabled}} {{else}} disabled {{/if}} {{Selected}} />
+                    <label name="description{{ProductId}}" for="product{{ProductId}}">{{ShortName}}</label>
+                </div>
+
+            </td>
+            <td>
+
+                <select name="price{{ProductId}}" class="price required">
+                    <option value="">Select</option>
+                    {{#each prices}}
+                    <option value="{{FormattedRateCodePrice}}" {{#if Selected}} selected {{/if}}>{{FormattedPrice}}</option>
+                    {{/each}}
+                </select>
+
+
+            </td>
+
+            {{#if_even @@index}}
+            <td style="background-color: #FFF; border-left: 1px solid #8C8C8C;border-right: 1px solid #8C8C8C; border-top: none;border-bottom: none;padding: 6px;"></td>{{/if_even}}
+
+            {{#if_odd @@index}}
+        </tr>
+        <tr>
+            {{/if_odd}}
+
+            {{/each}}
+
+            {{#if_odd Data.length}}
+            <td colspan="2"></td>
+            {{/if_odd}}
+        </tr>
+    </table>
+
+    {{else}}
+
+    {{/if}}
+
+
+</script>
+
+
+
+
+
+<script>
+    function ShowProducts(divid) {
+        renderTemplate(products, '#template-plist', divid);
+        $(divid).on('change', ' .price', function () {
+
+
+
+            var name = $(this).attr('name');
+            name = name.replace('price', 'product');
+
+            console.log('price change', name);
+            $('#' + name).attr('checked', true);
+        });
+
+        $(divid).on('change', "input[type='checkbox'][name=product]", function () {
+
+            $('.price').removeClass('invalid');
+
+            var price = $('[name=price' + $(this).val() + ']');
+
+            if ($(this).is(':checked')) {
+                console.log('price checked');
+                //unselect everythig else
+                $(divid + '.price').not(price).val('');
+                if ($(price).val().length < 1 && $(price).find('option').length == 2) {
+                    //select the price
+                    console.log('price select last');
+
+                    var value = $(price).find('option:last').val();
+                    $('[name=price' + $(this).val() + ']').val(value);
+                }
+            }
+            else {
+                console.log('price unchecked');
+                $('[name=price' + $(this).val() + ']').val('');
+            }
+        });
+    }
+
+    function FillJOURNAL() {
+        callProxy(
+             "GetJOURNALProductsWithPrice",
+            { "orderno": '@ViewBag.orderno' },
+             function (response) {
+                 products = response;
+                 ShowProducts('#plist');
+             },
+             function (response) {
+                 products = response;
+                 ShowProducts('#plist');
+             }
+
+         );
+         }
+
+
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        FillJOURNAL();
+
+
+
+        $('body').on('click', '#next1', function () {
+            $('.price').removeClass('invalid');
+            var isvalid = true;
+            var data = [];
+            $('[name=product]:enabled:checked').each(function () {
+                var productid = $(this).val();
+                var product = $('[name=price' + productid + ']').val();
+                var description = $('[name=description' + productid + ']').text();
+
+                if ((typeof product !== "undefined") && (product.length > 0)) {
+                }
+                else {
+
+                    $('[name=price' + productid + ']').addClass('invalid');
+                    console.log("save isvalid", productid);
+                    isvalid = false;
+                }
+                data.push(
+                {
+                    productid: productid,
+                    product: product,
+                    description: description
+
+                });
+            });
+
+
+            if (!isvalid) {
+                nalert("Please select a price");
+                return false;
+            }
+
+            var data = { "g": data, "orderno": '@ViewBag.orderno' };
+            callProxy(
+                "SaveJournalAddons",
+               data,
+            function (response) {
+                listdata2 = response;
+                location.href = response.nextpageURL;
+            }
+            );
+            return false;
+        });
+    });
+
+</script>

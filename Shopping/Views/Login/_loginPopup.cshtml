@@ -1,0 +1,115 @@
+﻿<div class="cart-popup" id="LoginPopup">
+    <div class="cart-popup-container">
+        <h3>Login</h3>
+        <a href="#0" class="cart-popup-close"></a>
+        <div class="cart-popup-form">
+            <div class="LoginpopLoader" id="LoginpopLoader" style="display: none;"><span>Please wait... </span></div>
+            @*<form id="login">
+                <table border="0">
+                    <tr>
+                        <td style="width: 30%">
+                            User Login
+                        </td>
+                        <td>
+                            <input type="text" data-ng-model="UserName" style="width: 100%" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%">
+                            Password
+                        </td>
+                        <td>
+                            <input type="password" data-ng-model="Password" style="width: 100%" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%"></td>
+                        <td>
+                            <button class="back step_trigger continue_form" data-ng-click="Login()">Login</button>
+                            &nbsp;&nbsp;
+                            <input type="checkbox" id="ChkRM" data-ng-model="ChkRM" />
+                            Remember me for 90 days.
+                        </td>
+                    </tr>
+                </table>
+            </form>*@
+            <table style="width: 100%; border-color: none;" border="0">
+
+                <tr>
+                    <td>
+                        <span style="text-align: center; line-height: 25px;">
+                            <i>First time here? </i>
+                            <br />
+                        </span><a class="Signup" href="javascript:;" onclick="register()">&nbsp; &nbsp;&nbsp; Create account</a>
+                    </td>
+                    <td>
+                        <ul class="LoginRestBlock">
+                            @*<li>I would like to reset my password. <a href="@System.Configuration.ConfigurationManager.AppSettings["SSOResetPassword"].ToString()" target="_blank">Click here.</a></li>
+                                <li>I would like to update my username. <a href="@System.Configuration.ConfigurationManager.AppSettings["SSOChangeUserName"].ToString()" target="_blank">Click here.</a></li>
+                                <li>I would like to register for a new account.  <a href="@System.Configuration.ConfigurationManager.AppSettings["SSORegister"].ToString()" target="_blank">Click here to register.</a></li>*@
+                            <li>I forgot my password. <a href="@System.Configuration.ConfigurationManager.AppSettings["SSOResetPassword"].ToString()" target="_blank">Click here to reset.</a></li>
+                            <li>I forgot my username. <a href="@System.Configuration.ConfigurationManager.AppSettings["SSORecoverUserName"].ToString()" target="_blank">Click here to retrieve.</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+<div class="cart-popup" id="GDPRPopup">
+    <div class="cart-popup-container">
+        <h3></h3>
+
+        <div class="cart-popup-form">
+            <div style="width:100%;border:1px dotted black;">
+                <p>
+                    As you know, the EU's General Data Protection Regulation (GDPR) entered into effect on May 25,2018 and applied
+                    new rules around the collection and use of data of anyone in the EU.
+                </p>
+
+                <p>
+                    We have updated our Privacy Policy to provide more information on how we collect and use data and to give
+                    you background on your rights under the GDPR. We encourge you to review the new Privacy policy here.
+                    You continued use of IIF products and services will be subject to the updated terms effective May 25, 2018
+                </p>
+                <p>
+                    If you have any questions or comments, please send them to our Data Privacy Officer, ATA ,at privacy@ATA.com
+                </p>
+
+            </div>
+            <br />
+            <br />
+            <div>
+                <button class="back step_trigger continue_form" onclick="SaveGDPR()">I AGREE *</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+function SaveGDPR() {
+        debugger;
+        $.ajax({
+            url: '@Url.Action("SaveGDPR", "Login")',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+
+            success: function (response) {
+            console.log('Success', response, response.length);
+
+            if (response != null) {
+
+            location.href = response.SSOURL;
+
+            }
+
+            }
+            });
+
+
+    }
+    </script>

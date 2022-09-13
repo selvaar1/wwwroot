@@ -1,0 +1,2615 @@
+﻿@{
+    //ViewBag.Title = "Cart";
+    //ViewBag.MembershipGroupUrl = System.Configuration.ConfigurationManager.AppSettings["JoinURL"] + "Groups";
+    //ViewBag.MembershipJournalUrl = System.Configuration.ConfigurationManager.AppSettings["JoinURL"] + "Journals";
+    //ViewBag.MembershipDonationUrl = System.Configuration.ConfigurationManager.AppSettings["JoinURL"] + "Donation";
+    //ViewBag.MembershipAddOnUrl = System.Configuration.ConfigurationManager.AppSettings["JoinURL"] + "AddOns";
+
+}
+<style>
+    .back {
+        cursor: pointer;
+    }
+
+    .Warning {
+        color: #8a6d3b;
+        background-color: #fcf8e3;
+        border-color: #faebcc;
+    }
+
+    .Question {
+        color: #31708f;
+        background-color: #d9edf7;
+        border-color: #bce8f1;
+    }
+
+    .addtionalhead {
+        color: #0054a9;
+        font-weight: bold;
+    }
+
+    .additionanswer {
+        color: gray;
+        font-weight: bold;
+        padding-left: 10px;
+    }
+</style>
+
+
+<div class="breadcrumb" role="navigation">Shopping Cart</div>
+
+
+<input type="hidden" data-iscustomermember="@System.Web.HttpContext.Current.Session["MembershipExists"]"
+       id="hdnMembership" value="@System.Web.HttpContext.Current.Session["MembershipExists"]" />
+
+<main class="mt-[30px]">
+    <div id="cartsview">
+    </div>
+</main>
+
+
+    <script id="cart-step1-template-grid" type="text/x-handlebars-template">
+        <div class="step1_MyCart">
+            {{#if CartItems}}
+
+            <div class="flex flex-col lg:flex-row gap-5 mb-4">
+            <div class="flex-1">
+                <div class="top h-[70px] bg-sir-header-blue flex items-center justify-center relative text-lg font-semibold text-white overflow-visible mb-[60px]">
+                    My Cart
+                    <span class="w-8 h-8 bg-sir-header-blue flex items-center justify-center text-center rounded-full border border-4 border-solid border-white absolute -bottom-6 left-1/2 transform -translate-x-1/2">1</span>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div class="top h-[70px] bg-[#50A8C7] flex items-center justify-center relative text-lg font-semibold text-white overflow-visible mb-[60px]">
+                    Address Information
+                    <span class="w-8 h-8 bg-[#50A8C7] flex items-center justify-center text-center rounded-full border border-4 border-solid border-white absolute -bottom-6 left-1/2 transform -translate-x-1/2">2</span>
+                </div>
+            </div>
+
+            <div class="flex-1">
+                <div class="top h-[70px] bg-[#50A8C7] flex items-center justify-center relative text-lg font-semibold text-white overflow-visible mb-[60px]">
+                    Payment
+                    <span class="w-8 h-8 bg-[#50A8C7] flex items-center justify-center text-center rounded-full border border-4 border-solid border-white absolute -bottom-6 left-1/2 transform -translate-x-1/2">3</span>
+                </div>
+            </div>
+        </div>
+
+            <div class="mt-[30px] nw flex flex-col xl:flex-row xl:gap-16">
+                <div class="left flex-1">
+
+                    @*<div class="title flex gap-12 items-end mb-10">
+                        <h2 class="cartTitle text-4xl text-sir-green-dark font-normal">Cart</h2>
+                    </div>*@
+
+                    <div class="cart flex flex-col">
+                        {{#each CartItems}}
+                        <div class="cart_item py-[30px] md:py-[60px] first:pt-0 last:pb-0 border-0 border-b border-solid border-sir-black last:border-b-0 flex flex-wrap xl:flex-nowrap xl:space-x-8" {{#compare  Subsystem  "MBR"  operator="==" }}
+                             {{#compare  RelatedWebShoppingCartItemId  "0"  operator="!=" }}
+                             style="display:none;"
+                             {{/compare}}
+                             {{/compare}}>
+                            <div class="left w-[120px] basis-1/4 lg:basis-1/12 shrink-0">
+                                <img src="images/cart-image.jpg" alt="">
+                            </div>
+                            <div class="mid ml-[20px] basis-1/3 lg:basis-1/1 flex-1">
+                                <span class="hiddeninfo"
+                                      data-webid="{{WebShoppingCartItemId}}"
+                                      data-prdid="{{ProductId}}"
+                                      data-shippable="{{#if ShippableFlag}}1{{else}}0{{/if}}"
+                                      data-subsystem="{{Subsystem}}"
+                                      data-level1="{{Level1}}"
+                                      data-level2="{{Level2}}"
+                                      data-availqty="{{InvCountAvailable}}"
+                                      data-orderno="{{OrderNumber}}"
+                                      data-orderlineno="{{OrderLineNumber}}"
+                                      data-parentprdid="{{RelatedWebShoppingCartItemId}}"
+                                      data-prodcode="{{ProductCode}}"
+                                      data-prodtypecode="{{ProductTypeCode}}"
+                                      data-WorkFlowID="{{WorkflowId}}"
+                                      data-isinorder="{{IsInOrder}}"></span>
+
+                                <h3 class="text-1.5xl text-sir-green-light font-normal">
+                                    {{#compare  ProductTypeCode  "M"  operator="!=" }}
+                                    {{#compare  ProductTypeCode  "I"  operator="!=" }}
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    {{/compare}}
+                                    {{/compare}}
+
+                                    {{ShortName}}
+
+                                    {{#each SubCartItems}}
+
+                                    {{#if LongName}}
+                                    <li>{{LongName}}</li>
+                                    {{else }}
+                                    {{#if DCDFileTitle}}
+                                    <li>{{DCDFileTitle}}</li>
+                                    {{/if}}
+                                    {{/if}}
+
+                                    {{/each}}
+                                </h3>
+                                <div class="flex flex-wrap xl:flex-nowrap gap-5 mt-8">
+                                    <div class="xl:w-1/2">
+                                        <table class="text-sir-green-dark">
+                                            <tr>
+                                                <td>Unit Price:</td>
+                                                <td class="uPrice font-medium px-2" price="{{Amount}}">{{PreferredCurrencySymbol}}{{formatMoney Amount}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total:</td>
+                                                <td class="font-medium px-2">
+                                                    {{#compare  IsInOrder  true  operator="!=" }}
+                                                    {{PreferredCurrencySymbol}}<span class="tPrice">{{formatMoney TotalOfYourPrice}}</span> {{CurrencyCode}}
+                                                    {{else}}
+                                                    {{#compare  Subsystem  "MTG"  operator="==" }}
+                                                    Already Registered
+                                                    {{else}}
+                                                    Already Purchased
+                                                    {{/compare}}
+
+                                                    {{/compare}}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="w-1/2 flex items-end space-x-2 text-sir-green-dark">
+                                        <span>Qty</span>
+                                        <input type="text" class="oQty w-[31px] h-5 border border-solid border-sir-green-dark text-center text-sir-green-dark" type="number" min="1" data-orderno="{{OrderNumber}}"
+                                               {{#if OrderNumber}} disabled{{/if}}
+                                               id="{{WebShoppingCartItemId}}_qty" data-prdid="{{ProductId}}" value="{{Quantity}}">
+                                        <button class="text-xs text-sir-header-blue appearance-none bg-transparent border-0 h-5 flex items-center leading-none cursor-pointer">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right ml-[120px] lg:ml-[30px] w-[206px] flex items-start">
+                                <div class="md:px-[30px] mt-[40px] md:mt-[0] flex-1 border-0 md:border-l border-solid border-sir-green-dark flex flex-col space-y-2">
+                                    {{#compare  Subsystem  "MTG"   operator="=="   }}
+                                    {{#compare  ProductTypeCode  "M"   operator="=="   }}
+
+                                    <a href="javascript:;" onclick="EditSession({{ProductId}})" class="uppercase font-medium w-full h-[42px] border border-2 border-solid border-sir-header-blue no-underline flex items-center justify-center text-sir-header-blue">Customize</a>
+                                    <a href="javascript:;" id="product-remove-conference" data-prodid="{{WebShoppingCartItemId}}" data-subsystem="{{Subsystem}}" class="text-sir-header-blue text-sm font-medium">
+                                        Remove
+                                    </a>
+                                    {{/compare}}
+                                    {{/compare}}
+
+                                    {{#compare  Subsystem  "ECD"   operator="=="   }}
+                                    <a href="javascript:;" onclick="Editstore({{ProductId}})" class="uppercase font-medium w-full h-[42px] border border-2 border-solid border-sir-header-blue no-underline flex items-center justify-center text-sir-header-blue">Customize</a>
+                                    <a href="javascript:;" id="product-remove-conference" data-prodid="{{WebShoppingCartItemId}}" data-subsystem="{{Subsystem}}" class="text-sir-header-blue text-sm font-medium">
+                                        Remove
+                                    </a>
+                                    {{/compare}}
+                                    {{#compare  Subsystem  "INV"   operator="=="   }}
+                                    <a href="javascript:;" onclick="Editstore({{ProductId}})" class="uppercase font-medium w-full h-[42px] border border-2 border-solid border-sir-header-blue no-underline flex items-center justify-center text-sir-header-blue">Customize</a>
+                                    <a href="javascript:;" id="product-remove-conference" data-prodid="{{WebShoppingCartItemId}}" data-subsystem="{{Subsystem}}" class="text-sir-header-blue text-sm font-medium">
+                                        Remove
+                                    </a>
+                                    {{/compare}}
+
+                                    {{#compare  Subsystem  "MBR"  operator="==" }}
+
+                                    <a href="javascript:;" onclick="Editstore({{ProductId}})" class="uppercase font-medium w-full h-[42px] border border-2 border-solid border-sir-header-blue no-underline flex items-center justify-center text-sir-header-blue">Customize</a>
+                                    <a href="javascript:;" id="product-remove-conference" data-prodid="{{WebShoppingCartItemId}}" data-subsystem="{{Subsystem}}" class="text-sir-header-blue text-sm font-medium">
+                                        Remove
+                                    </a>
+
+                                    {{/compare}}
+
+                                    {{#compare  Subsystem  "SUB"  operator="==" }}
+
+                                    <a href="javascript:;" onclick="Editstore({{ProductId}})" class="uppercase font-medium w-full h-[42px] border border-2 border-solid border-sir-header-blue no-underline flex items-center justify-center text-sir-header-blue">Customize</a>
+                                    <a href="javascript:;" id="product-remove-conference" data-prodid="{{WebShoppingCartItemId}}" data-subsystem="{{Subsystem}}" class="text-sir-header-blue text-sm font-medium">
+                                        Remove
+                                    </a>
+                                    {{/compare}}
+
+                                    {{#compare  Subsystem  "PCK"  operator="==" }}
+                                    <a href="javascript:;" onclick="Editstore({{ProductId}})" class="uppercase font-medium w-full h-[42px] border border-2 border-solid border-sir-header-blue no-underline flex items-center justify-center text-sir-header-blue">Customize</a>
+                                    <a href="javascript:;" id="product-remove-conference" data-prodid="{{WebShoppingCartItemId}}" data-subsystem="{{Subsystem}}" class="text-sir-header-blue text-sm font-medium">
+                                        Remove
+                                    </a>
+
+                                    {{/compare}}
+
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+
+
+                    <div class="h-[3px] bg-sir-green-dark w-full my-10 md:my-20"></div>
+                </div>
+                <div class="right w-[384px]">
+                    <div class="border border-solid border-sir-green-dark">
+                        <div class="top h-[52px] text-1.5xl text-white px-5 bg-sir-green-dark flex items-center">
+                            Summary
+                        </div>
+                        <div class="bottom">
+                            <div class="mid py-4 px-6 border-0 border-t border-dashed border-sir-green-dark text-sir-green-dark">
+                                <small class="text-xs italic">Coupon and promo codes can be entered at checkout.</small>
+                                <div class="flex justify-between mt-6">
+                                    <div class="text-lg font-medium">Total:</div>
+                                    <div class="text-lg font-medium" id="total_price"></div>
+                                </div>
+                            </div>
+                            <a href="checkout.html">&nbsp;</a>
+                            <a href="checkout1.html">&nbsp;</a>
+                            <a href="checkout2.html">&nbsp;</a>
+                            <a href="checkout3.html">&nbsp;</a>
+                            <a href="checkout4.html">&nbsp;</a>
+                            <div class="bottom py-8 px-4 border-0 border-t border-solid border-sir-green-dark flex">
+
+                                @if (@System.Web.HttpContext.Current.Session["ct"] != null)
+                                {
+                                <button id="myCart" class="mx-2 flex-1 text-[19px] uppercase h-[68px] bg-sir-green-light text-white border-0 flex items-center justify-center outline outline-dashed outline-sir-green-dark outline-offset-4 cursor-pointer">Checkout</button>
+                                }
+                                else
+                                {
+
+                                    @*<a  href='@Url.Action("LoginForm", "Home")' class="button">Login to Continue </a>*@
+                            <a href='@(System.Configuration.ConfigurationManager.AppSettings["LoginURL"] + "?ReturnURL="+ Request.Url.AbsoluteUri)' class="mx-2 flex-1 text-[19px] uppercase h-[68px] bg-sir-green-light text-white border-0 flex items-center justify-center outline outline-dashed outline-sir-green-dark outline-offset-4 cursor-pointer">Checkout </a>
+
+                                }
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+            @*@if (!string.IsNullOrEmpty(@ViewBag.Name))
+        {
+            <div class="col-sm-12">
+                <div class="contentBox">
+                    <div class="cb_header">
+                        Contact Information:
+                    </div>
+                    <div class="cb_body col-sm-6">
+                        <div style="width:519px;">
+                            <address>
+                                <span>@ViewBag.Name</span><br />
+                                <span>Phone:@ViewBag.Phone</span><br />
+                                <span>Email: @ViewBag.Email</span>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }*@
+            <div class="col-sm-12 meetinglinks">
+                <span style="display:none;" id="mtgurl">@System.Configuration.ConfigurationManager.AppSettings["MeetingURL"]</span>
+                <span style="display:none;" id="Memberurl">@System.Configuration.ConfigurationManager.AppSettings["JoinURL"]</span>
+                <span style="display:none;" id="MyAccounturl">@System.Configuration.ConfigurationManager.AppSettings["MyAccountURL"]</span>
+                @*<a href='javascript:;' style="float: left; margin:10px;" id="editmtgsession" class="btn btn-success">Edit Sessions</a>*@
+                @*<a href='javascript:;' style="float: left; margin:10px;" id="editadditionalinfo" class="btn btn-success">Edit Additional Information</a>*@
+                <a href='@(System.Configuration.ConfigurationManager.AppSettings["ShoppingCartURL"] + "")' style="float: left; margin:10px;display:none;" class="btn btn-success">Continue Shopping</a>
+
+            </div>
+
+        </div>
+            <div>
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <div id="alrtMsg" style="display: none;">No items in cart!</div>
+                    </div>
+                    <div class="col-sm-6 text-right btnActions">
+                        
+
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            <div class="col-sm-12" style="text-align: center;padding:10px;">
+                <strong><i> No items in Cart! </i></strong>
+            </div>
+            {{/if}}
+</script>
+    <script id="cart-step2-template-grid" type="text/x-handlebars-template">
+        <div id="step2_Shipping" class="stepContent">
+            @*<div class="row form_steps form-group text-center">
+            <div class="col-sm-4 steps rb-curve back" data-box="step1_MyCart">My Cart</div>
+            <div class="col-sm-4 active steps active_step">Shipping & Billing</div>
+
+            <div class="col-sm-4 steps lb-curve last_step">Review & Payment</div>
+        </div>*@
+
+            <div class="flex flex-col lg:flex-row gap-5 mb-4">
+
+                <div class="flex-1">
+                    <div class="top h-[70px] bg-[#50A8C7] flex items-center justify-center relative text-lg font-semibold text-white overflow-visible mb-[60px]">
+                        Cart
+                        <span class="w-8 h-8 bg-[#50A8C7] flex items-center justify-center text-center rounded-full border border-4 border-solid border-white absolute -bottom-6 left-1/2 transform -translate-x-1/2">1</span>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <div class="top h-[70px] bg-sir-header-blue flex items-center justify-center relative text-lg font-semibold text-white overflow-visible mb-[60px]">
+                        Address Information
+                        <span class="w-8 h-8 bg-sir-header-blue flex items-center justify-center text-center rounded-full border border-4 border-solid border-white absolute -bottom-6 left-1/2 transform -translate-x-1/2">2</span>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <div class="top h-[70px] bg-[#50A8C7] flex items-center justify-center relative text-lg font-semibold text-white overflow-visible mb-[60px]">
+                        Payment
+                        <span class="w-8 h-8 bg-[#50A8C7] flex items-center justify-center text-center rounded-full border border-4 border-solid border-white absolute -bottom-6 left-1/2 transform -translate-x-1/2">3</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- shipping -->
+            <div class="flex flex-col space-y-1 pt-3 shipping_step ship_preferance">
+                <span class="text-4xl text-sir-green-dark min-w-[75px] inline-block">Shipping Preference:</span>
+                <div>
+                    <div class="relative h-6 w-[500px] border border-solid border-sir-green-dark px-2 bg-white border border-solid border-sir-black">
+                        <select class="absolute left-0 top-0 w-full bg-transparent appearance-none border-0 outline-none z-10 px-2 text-base" id="shipViaCodeDD" required>
+                            <option value="">Please choose the shipping method for your order</option>
+                            {{#each ShippViaCodes}}
+                            <option value="{{VALUE}}" {{#if SELECTED}} selected{{/if}}>{{TEXT}}</option>
+                            {{/each}}
+                        </select>
+                        <span class="errorMsg"></span>
+                        <div class="absolute right-0 top-0 w-6 h-full flex items-center justify-center border-l border-0 border-solid border-sir-black">
+                            <img src="images/chevron.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <small class="text-xs italic text-sir-green-dark w-[500px] pt-0.5">Items may be shipped from different warehouses.</small>
+            </div>
+
+
+         
+            <style>
+                #shipViaCodeDD option {
+                    color: black;
+                }
+
+                    #shipViaCodeDD, #shipViaCodeDD option:first-child {
+                        color: red;
+                    }
+            </style>
+
+            <div style="clear: both"></div>
+
+
+
+
+
+            <div class="col-lg-12 contentBox">
+                <h2 class="text-4xl uppercase text-sir-green-dark font-medium mb-5 leading-none mb-10 mt-10">Shipping Address </h2>
+
+
+                <div class="cb_body">
+                    <div id="address_ship">
+
+                    </div>
+                    <div class="shipping_step form-group viewaddresses" id="viewaddresses">
+                        <div class="addressListDiv " id="shippingAddressList">
+                            <div>
+
+                                {{#if Addresses}}
+                                {{#each Addresses}}
+
+                                <address>
+                                    <div class="flex-1">
+                                        <div class="mid">
+                                            <div class="flex flex-col space-y-8">
+
+                                                <div class="flex space-x-5 items-center">
+                                                    <p class="text-lg !m-0 leading-0 flex items-center">
+                                                        <input type="checkbox" name="shippingAddId" id="{{CustomerAddressId}}" checked="{{ShipToFlag}}" class="w-6 h-6 border border-solid border-sir-green-dark mr-3 addCheckShiiping useAdd"
+                                                               data-shiiping="{{ShipToFlag}}" data-type="Shipping" data-addrid="{{CustomerAddressId}}" />
+                                                    </p>
+                                                </div>
+                                                <div class="flex flex-col space-y-3">
+                                                    <div class="font-medium">{{LabelName}}</div>
+
+                                                    <div>
+                                                        {{Address1}}<br />
+                                                        {{#compare  Address2  ""  operator="!=" }}
+                                                        {{Address2}}<br />
+                                                        {{/compare}}
+                                                        {{#compare  Address3  ""  operator="!=" }}
+                                                        {{Address3}}<br />
+                                                        {{/compare}}
+                                                    </div>
+                                                    <div> {{City}}, {{State}} {{PostalCode}}</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </address>
+
+
+
+
+                            </div>
+                            {{/each}}
+                            {{else}}
+                            <span class="jplist-no-results">No Address Available</span>
+                            {{/if}}
+
+                            <a href="javascript:;" class="font-medium uppercase w-[214px] border border-2 border-solid border-sir-header-blue no-underline text-sir-header-blue flex justify-center items-center h-10" id="addaddress_ship">Add New Address</a>
+                        </div>
+
+                        <div class="addressListDiv" id="billingAddressList">
+                            <h2 class="text-4xl uppercase text-sir-green-dark font-medium mb-5 leading-none  mb-10 mt-10">Billing Address </h2>
+
+
+                            {{#if Addresses}}
+                            {{#each Addresses}}
+                            <div class="">
+
+                                <address>
+                                    <div class="flex-1">
+                                        <div class="mid">
+                                            <div class="flex flex-col space-y-8">
+
+                                                <div class="flex space-x-5 items-center">
+                                                    <p class="text-lg !m-0 leading-0 flex items-center">
+                                                        <input type="checkbox" name="shippingAddId" id="{{CustomerAddressId}}" checked="{{BillToFlag}}" class="w-6 h-6 border border-solid border-sir-green-dark mr-3 addCheckShiiping useAdd"
+                                                               data-shiiping="{{BillToFlag}}" data-type="Shipping" data-addrid="{{CustomerAddressId}}" />
+                                                    </p>
+                                                </div>
+                                                <div class="flex flex-col space-y-3">
+                                                    <div class="font-medium">{{LabelName}}</div>
+
+                                                    <div>
+                                                        {{Address1}}<br />
+                                                        {{#compare  Address2  ""  operator="!=" }}
+                                                        {{Address2}}<br />
+                                                        {{/compare}}
+                                                        {{#compare  Address3  ""  operator="!=" }}
+                                                        {{Address3}}<br />
+                                                        {{/compare}}
+                                                    </div>
+                                                    <div> {{City}}, {{State}} {{PostalCode}}</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </address>
+
+
+
+
+                            </div>
+                            {{/each}}
+                            {{else}}
+                            <span class="jplist-no-results">No Address Available</span>
+                            {{/if}}
+                            <div id="address_bill">
+
+                            </div>
+
+                            <a href="javascript:;" class="font-medium uppercase w-[214px] border border-2 border-solid border-sir-header-blue no-underline text-sir-header-blue flex justify-center items-center h-10" id="addaddress_bill">Add New Address</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="cb_footer viewaddresses">
+                <div class="cb_footer_actions">
+                    <div class="my_cart_actions btnActions">
+
+                        <div class="mid flex items-end justify-center lg:h-[555px]">
+                            <div class="flex flex-col space-y-4 justify-center items-center">
+                                <a href="#" class="w-[176px] h-[48px] flex items-center justify-center uppercase text-white bg-sir-header-blue text-[19px] no-underline" id="addressTab">Next</a>
+                                <a href="#" class="text-1.5xl text-sir-header-blue" data-box="step1_MyCart">Cancel</a>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+            <!--shipping_step-->
+        </div>
+    </script>
+    <script id="address-template-grid" type="text/x-handlebars-template">
+
+        <div class="my-10 text-1.5xl uppercase text-sir-green-dark font-medium">New Address</div>
+        <form action="#" class="flex flex-col gap-5 text-lg font-light w-1/2">
+            <div class="singleline grid grid-cols-10 gap-5">
+                <div class="col-span-4">{{COUNTRYCAPTION}}{{#if COUNTRYREQUIRED}}<sup class="text-sir-red">*</sup>{{/if}}</div>
+                <div class="col-span-6">
+                    <div class="relative h-6 w-[190px] bg-white border border-solid border-sir-green-dark">
+                        <select class="absolute left-0 top-0 w-full bg-transparent appearance-none border-0 outline-none z-10 px-2 text-base {{COUNTRYREQUIRED}}" id="COUNTRY">
+                            {{#each COUNTRYOPTIONS}}
+                            <option value="{{VALUE}}" {{SELECTED}}>{{TEXT}}</option>
+                            {{/each}}
+                        </select>
+                        <span class="errorMsg"></span>
+                        <div class="absolute right-0 top-0 w-6 h-full flex items-center justify-center border-l border-0 border-solid border-sir-green-dark">
+                            <img src="images/chevron.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="singleline grid grid-cols-10 gap-5">
+                <div class="col-span-4">Address Type<sup class="text-sir-red">*</sup></div>
+                <div class="col-span-6">
+                    <div class="relative h-6 w-[190px] bg-white border border-solid border-sir-green-dark">
+                        <select class="absolute left-0 top-0 w-full bg-transparent appearance-none border-0 outline-none z-10 px-2 text-base" id="addresstype">
+                            @foreach (var item in @ViewBag.AddressType)
+                            {
+                                <option value="@item.VALUE" @item.SELECTED>@item.TEXT</option>
+                            }
+                        </select>
+                        <span class="errorMsg"></span>
+                        <div class="absolute right-0 top-0 w-6 h-full flex items-center justify-center border-l border-0 border-solid border-sir-green-dark">
+                            <img src="images/chevron.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="singleline grid grid-cols-10 gap-5">
+                <div class="col-span-4">{{ADDRESS1CAPTION}}{{#if ADDRESS1REQUIRED}}<sup class="text-sir-red">*</sup>{{/if}}</div>
+                <div class="col-span-6 flex">
+                    <input type="text" class="outline-none flex-1 h-6 border border-solid border-sir-green-dark px-2 text-base {{ADDRESS1REQUIRED}}" id="ADDRESS_1" maxlength="{{ADDRESS1MAXLENGTH}}" />
+                    <span class="errorMsg"></span>
+                </div>
+            </div>
+
+            <div class="singleline grid grid-cols-10 gap-5">
+                <div class="col-span-4">{{ADDRESS2CAPTION}}{{#if ADDRESS2REQUIRED}}<sup class="text-sir-red">*</sup>{{/if}}</div>
+                <div class="col-span-6 flex">
+                    <input type="text" class="outline-none flex-1 h-6 border border-solid border-sir-green-dark px-2 text-base {{ADDRESS2REQUIRED}}" id="ADDRESS_2" maxlength="{{ADDRESS2MAXLENGTH}}">
+                    <span class="errorMsg"></span>
+                </div>
+            </div>
+            {{#if ADDRESS3CAPTION}}
+            <div class="singleline grid grid-cols-10 gap-5">
+                <div class="col-span-4">{{ADDRESS3CAPTION}}{{#if ADDRESS3REQUIRED}}<sup class="text-sir-red">*</sup>{{/if}}</div>
+                <div class="col-span-6 flex">
+                    <input type="text" class="outline-none flex-1 h-6 border border-solid border-sir-green-dark px-2 text-base {{ADDRESS3REQUIRED}}" id="ADDRESS_3" maxlength="{{ADDRESS3MAXLENGTH}}">
+                    <span class="errorMsg"></span>
+                </div>
+            </div>
+            {{/if}}
+            {{#if ADDRESS4CAPTION}}
+            <div class="singleline grid grid-cols-10 gap-5">
+                <div class="col-span-4">{{ADDRESS4CAPTION}}{{#if ADDRESS4REQUIRED}}<sup class="text-sir-red">*</sup>{{/if}}</div>
+                <div class="col-span-6 flex">
+                    <input type="text" class="outline-none flex-1 h-6 border border-solid border-sir-green-dark px-2 text-base {{ADDRESS4REQUIRED}}" id="ADDRESS_4" maxlength="{{ADDRESS4MAXLENGTH}}">
+                    <span class="errorMsg"></span>
+                </div>
+            </div>
+            {{/if}}
+            {{#if CITYCAPTION}}
+            <div class="singleline grid grid-cols-10 gap-5">
+                <div class="col-span-4">{{CITYCAPTION}}{{#if CITYREQUIRED}}<sup class="text-sir-red">*</sup>{{/if}}</div>
+                <div class="col-span-6 flex">
+                    <input type="text" class="outline-none flex-1 h-6 border border-solid border-sir-green-dark px-2 text-base {{CITYREQUIRED}}" id="CITY" maxlength="{{CITYMAXLENGTH}}">
+                    <span class="errorMsg"></span>
+                </div>
+            </div>
+            {{/if}}
+            {{#if STATECAPTION}}
+            <div class="singleline grid grid-cols-10 gap-5">
+                <div class="col-span-4">{{STATECAPTION}}{{#if STATEREQUIRED}}<sup class="text-sir-red">*</sup>{{/if}}</div>
+                <div class="col-span-6">
+                    <div class="relative h-6 w-[190px] bg-white border border-solid border-sir-green-dark">
+                        {{#if STATEOPTIONS}}
+                        <select class="absolute left-0 top-0 w-full bg-transparent appearance-none border-0 outline-none z-10 px-2 text-base {{STATEREQUIRED}}" id="STATE">
+                            {{#each STATEOPTIONS}}
+                            <option value="{{VALUE}}" {{SELECTED}}>{{TEXT}}</option>
+                            {{/each}}
+                        </select>
+                        <span class="errorMsg"></span>
+                        <div class="absolute right-0 top-0 w-6 h-full flex items-center justify-center border-l border-0 border-solid border-sir-green-dark">
+                            <img src="images/chevron.svg" alt="">
+                        </div>
+                        {{else}}
+                        <input type="text" class="outline-none flex-1 h-6 border border-solid border-sir-green-dark px-2 text-base" id="STATE" maxlength="{{STATEMAXLENGTH}}" />
+                        <span class="errorMsg"></span>
+                        {{/if}}
+
+
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{#if POSTALCODECAPTION}}
+            <div class="singleline grid grid-cols-10 gap-5">
+                <div class="col-span-4">{{POSTALCODECAPTION}}{{#if POSTALCODEREQUIRED}}<sup class="text-sir-red">*</sup>{{/if}}</div>
+                <div class="col-span-6 flex">
+                    <input type="text" class="outline-none flex-1 h-6 border border-solid border-sir-green-dark px-2 text-base {{POSTALCODEREQUIRED}}" id="POSTAL_CODE" maxlength="{{POSTALCODEMAXLENGTH}}" >
+                    <span class="errorMsg"></span>
+                </div>
+            </div>
+            {{/if}}
+            <div class="singleline mt-10 flex space-x-10 items-center">
+                <button class="font-medium uppercase w-[214px] border border-2 border-solid border-sir-header-blue no-underline text-sir-header-blue flex justify-center items-center h-10 bg-white"  name="btnSaveAddress" id="btnSaveAddress">save address</button>
+                <a href="#" class="font-medium text-base text-sir-header-blue btncancel">Cancel</a>
+            </div>
+        </form>
+        
+
+       
+    </script>
+
+    <script id="Content-template" type="text/x-handlebars-template">
+        <div id="step3">
+            <div id="step3_AdditionalInfo" class="stepContent">
+                <div class="row form_steps form-group text-center">
+                    <div class="col-sm-4 steps rb-curve back" data-box="step1_MyCart">My Cart</div>
+                    <div class="col-sm-4 steps rb-curve back">Shipping & Billing</div>
+
+                    <div class="col-sm-4 active active_step steps last_step">Review & Payment</div>
+                </div>
+            </div>
+            <div class="contentBox col-sm-12">
+                <h2 class="headline">Additional Information</h2>
+                <hr />
+
+                {{#each Users}}
+                {{#each Infos}}
+                {{setIndex @('@')index}}
+                <div class="cb_body aInfo" Index="{{@('@')index}}" data-code="{{Code}}" data-optype="{{OptionType}}"
+                     data-qid="{{QuestionId}}" data-req="{{IsRequired}}" data-pID="{{productID}}">
+                    <span class="aInfoCode">{{OptionCode}}</span><br />
+                    <span class="aInfoQuestion" style="color:red;{{#compare  IsRequired  'N'  operator="==" }}display: none;{{/compare}}">*</span>
+                    <span class="aInfoQuestion">{{{OptionDescription}}}</span><br /><br />
+                    {{#compare  OptionType  'TEXT_BOX'  operator="==" }}@*{{#if ../../OrderNo}}{{/if}}*@
+                    <textarea cols="70" class="option {{#compare  IsRequired  'Y'  operator="==" }}required{{/compare}}">{{AnswerText}}</textarea>
+                    {{/compare}}
+                    {{#compare  OptionType  'DATE'  operator="==" }}
+                    <input type="date" class="option {{#compare  IsRequired  'Y'  operator="==" }}required{{/compare}}" value="{{AnswerText}}" />
+                    {{/compare}}
+                    {{#compare  OptionType  'RADIO_BUTTON'  operator="==" }}
+                    {{#if AdditionalSubCodes}}
+                    {{#each AdditionalSubCodes}}@*{{#if ../../../../OrderNo}}{{/if}}*@
+                    <input type="radio" class="option" name="{{../Code}}" {{checkedIf Selected}} value={{OptionCode}} />{{OptionDescription}}<br />
+                    {{/each}} {{!AdditionalSubCodes}}
+                    {{/if}}
+                    {{/compare}}
+                    {{#compare  OptionType  'CHECKBOX'  operator="==" }}
+                    {{#if AdditionalSubCodes}}
+                    {{#each AdditionalSubCodes}}@*{{#if ../../../../OrderNo}}{{/if}}*@
+                    <input type="checkbox" class="option" name="{{../Code}}" {{checkedIf Selected}} value={{OptionCode}} />{{OptionDescription}}<br />
+                    {{/each}} {{!AdditionalSubCodes}}
+                    {{/if}}
+                    {{/compare}}
+                    {{#compare  OptionType  'DROP_DOWN'  operator="==" }}
+                    {{#if AdditionalSubCodes}}
+                    <select {{#compare  IsRequired  'Y'  operator="==" }} required{{/compare}} class="option" name="{{../Code}}">
+                        {{#each AdditionalSubCodes}}@*{{#if ../../../../OrderNo}}{{/if}}*@
+                        <option {{checkedIf Selected}} value={{OptionCode}}>{{OptionDescription}}</option>
+                        {{/each}} {{!AdditionalSubCodes}}
+                    </select>
+                    {{/if}}
+                    {{/compare}}
+                </div>
+                {{/each}} {{!Infos}}
+                <div style="clear:both"></div>
+                {{/each}} {{!Users}}
+
+            </div>
+            <br />
+            <br />
+            <div class="cb_footer viewaddresses">
+                <div class="cb_footer_actions">
+                    <div class="my_cart_actions btnActions col-sm-12" style="margin: 20px;">
+                        <div class="col-sm-6">
+                            <button class="back btn btn-default" data-box="step2">Back</button>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <button id="AdditionalInfoTab" class="btn btn-success">Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </script>
+
+    <script id="cart-step4-template-grid" type="text/x-handlebars-template">
+        <div id="step4">
+            <div id="step4_CheckOut" class="stepContent">
+                <!-- menu -->
+                <div class="flex flex-col lg:flex-row gap-5 mb-4">
+
+                    <div class="flex-1">
+                        <div class="top h-[70px] bg-[#50A8C7] flex items-center justify-center relative text-lg font-semibold text-white overflow-visible mb-[60px]">
+                            Cart
+                            <span class="w-8 h-8 bg-[#50A8C7] flex items-center justify-center text-center rounded-full border border-4 border-solid border-white absolute -bottom-6 left-1/2 transform -translate-x-1/2">1</span>
+                        </div>
+                    </div>
+
+                    <div class="flex-1">
+                        <div class="top h-[70px] bg-[#50A8C7] flex items-center justify-center relative text-lg font-semibold text-white overflow-visible mb-[60px]">
+                            Address Information
+                            <span class="w-8 h-8 bg-[#50A8C7] flex items-center justify-center text-center rounded-full border border-4 border-solid border-white absolute -bottom-6 left-1/2 transform -translate-x-1/2">2</span>
+                        </div>
+                    </div>
+
+                    <div class="flex-1">
+                        <div class="top h-[70px] bg-sir-header-blue flex items-center justify-center relative text-lg font-semibold text-white overflow-visible mb-[60px]">
+                            Payment
+                            <span class="w-8 h-8 bg-sir-header-blue flex items-center justify-center text-center rounded-full border border-4 border-solid border-white absolute -bottom-6 left-1/2 transform -translate-x-1/2">3</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <table class="table table-bordered noMargin">
+                    <tbody>
+                        {{#if OrderSummary.ValidationIssues}}
+                        {{#each OrderSummary.ValidationIssues}}
+                        <tr class="vissue {{SeverityDescription}}">
+                            <td>
+                                <p class="msg" data-key="{{Key}}">{{Message}}</p>
+                                {{#if ResponseOptions}}
+                                {{#each ResponseOptions}}
+                                <span>
+                                    <input type="radio" name="{{../Key}}" value="{{Value}}" class="vresponse" {{#compare  IsDefault 'true' operator="==" }} checked{{/compare}} />{{Text}}
+                                </span>
+                                {{/each}}
+                                {{/if}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                        {{/if}}
+                    </tbody>
+                </table>
+
+                <div class="flex flex-col lg:flex-row gap-16">
+                    {{#if Addresses}}
+                    {{#each Addresses}}
+
+                    <div class="left flex-1">
+                        <div class="top mb-10 p-5 grid grid-cols-2 gap-10 border border-solid border-sir-black">
+                            {{#compare  OrderSummary.OrderBalance  0  operator=">" }}
+                            {{#if BillToFlag}}
+                            <div>
+                                <h3 class="text-lg font-medium uppercase !mb-4">Billing Address</h3>
+                                <div class="flex flex-col space-y-3">
+                                    <div class="font-medium">{{LabelName}}</div>
+                                    <div>{{Address1}}<br />{{Address2}}<br />{{Address3}}</div>
+                                    <div>{{City}}, {{State}} {{PostalCode}}</div>
+                                </div>
+                            </div>
+                            {{/if}}
+                            {{/compare}}
+
+                            {{#if ShipToFlag}}
+                            <div>
+                                <h3 class="text-lg font-medium uppercase !mb-4">Shipping Address</h3>
+                                <div class="flex flex-col space-y-3">
+                                    <div class="font-medium">{{LabelName}}</div>
+                                    <div>{{Address1}}<br />{{Address2}}<br />{{Address3}}</div>
+                                    <div>{{City}}, {{State}} {{PostalCode}}</div>
+                                </div>
+                            </div>
+                            {{/if}}
+
+                        </div>
+                        {{/each}}
+                        {{else}}
+                        <span class="jplist-no-results">No Address Available</span>
+                        {{/if}}
+
+                        <div id="address_bill">
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <!-- payment-->
+                        {{#compare  OrderSummary.OrderBalance  0  operator=">" }}
+                        <div class="mid mb-[40px] border border-solid border-sir-black">
+                            <div class="h-[52px] bg-sir-header-blue text-white flex items-center px-5 text-1.5xl font-medium">Payment</div>
+
+                            <div class="p-5 grid grid-cols-2 gap-10 pb-12">
+                                <div class="flex flex-col space-y-5">
+                                    <div class="flex space-x-5 items-center">
+                                        <span class="text-lg text-sir-black w-[180px]">We honor</span>
+                                        {{#if CCTypes}}
+                                        {{#each CCTypes}}
+
+                                        <input type="radio" name="cardType" class="radiobtn" value="{{ReceiptCode}}" id="{{ReceiptCode}}" />
+                                        <label for="{{ReceiptCode}}" style="white-space: nowrap;">
+                                            {{#compare ReceiptCode "AMEX" operator="=="}}<img src="images/american_express_logo_3.gif" style="display: inline-block;" />{{/compare}}
+                                            {{#compare ReceiptCode "DS" operator="=="}}<img src="images/discover_logo_3.gif" style="display: inline-block;" />{{/compare}}
+                                            {{#compare ReceiptCode "MC" operator="=="}}<img src="images/mastercard_logo_3.gif" style="display: inline-block;" />{{/compare}}
+                                            {{#compare ReceiptCode "VISA" operator="=="}}<img src="images/new_visa.gif" style="display: inline-block;" />{{/compare}}
+                                            {{ReceiptDescription}}
+                                        </label>
+                                        {{/each}}
+                                        {{/if}}
+                                        <span class="errorMsg"></span>
+                                    </div>
+
+                                    <div class="flex space-x-5 items-center">
+                                        <span class="text-lg text-sir-black w-[180px]">Credit Card Number<sup class="text-sir-red">*</sup></span>
+                                        <div>
+                                            <input type="text" class="w-[190px] h-[22px] border border-solid border-sir-green-dark px-2" id="CCNumber" maxlength="16" required>
+                                            <span class="errorMsg"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex space-x-5 items-center">
+                                        <span class="text-lg text-sir-black w-[180px]">Name on Card<sup class="text-sir-red">*</sup></span>
+                                        <div>
+                                            <input type="text" class="w-[190px] h-[22px] border border-solid border-sir-green-dark px-2" id="CCName" alpha-numberic="[^a-zA-Z0-9\-\s]">
+                                            <span class="errorMsg"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex space-x-5 items-start">
+                                        <span class="text-lg text-sir-black w-[180px]">Expiration Date<sup class="text-sir-red">*</sup></span>
+                                        <div class="flex space-x-[10px]">
+                                            <div class="flex flex-col space-y-1">
+                                                <span class="text-lg text-sir-black">Month<sup class="text-sir-red">*</sup></span>
+
+                                                <div class="relative h-6 w-[81px] border border-solid border-sir-green-dark px-2 bg-white border border-solid border-sir-black">
+                                                    <select class="absolute left-0 top-0 w-full bg-transparent appearance-none border-0 outline-none z-10 px-2 text-base" id="months" required>
+                                                        @for (int i = 1; i <= 12; i++)
+                                                        {
+                                                            if (i == DateTime.Now.Month)
+                                                            {
+                                                                <option value="@i" selected="selected">@i</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@i">@i</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                    <span class="errorMsg"></span>
+                                                    <div class="absolute right-0 top-0 w-6 h-full flex items-center justify-center border-l border-0 border-solid border-sir-black">
+                                                        <img src="images/chevron.svg" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col space-y-1">
+                                                <span class="text-lg text-sir-black">Year<sup class="text-sir-red">*</sup></span>
+                                                <div class="relative h-6 w-[81px] border border-solid border-sir-green-dark px-2 bg-white border border-solid border-sir-black">
+                                                    <select class="absolute left-0 top-0 w-full bg-transparent appearance-none border-0 outline-none z-10 px-2 text-base" id="years" required>
+                                                        @for (int i = DateTime.Now.Year; i < DateTime.Now.Year + 15; i++)
+                                                        {
+                                                            if (i == DateTime.Now.Year)
+                                                            {
+                                                                <option value="@i" selected="selected">@i</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@i">@i</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                    <span class="errorMsg"></span>
+                                                    <div class="absolute right-0 top-0 w-6 h-full flex items-center justify-center border-l border-0 border-solid border-sir-black">
+                                                        <img src="images/chevron.svg" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex space-x-5 items-center">
+                                        <span class="text-lg text-sir-black w-[180px]">Security Code</span>
+                                        <div>
+                                            <input type="text" class="w-[72px] h-[22px] border border-solid border-sir-green-dark px-2" id="CCcvv" required maxlength="4">
+                                            <span class="errorMsg"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex space-x-5 items-center">
+                                        <span class="text-lg text-sir-black w-[180px]"></span>
+                                        <div class="text-xs flex items-center">
+                                            <input type="checkbox" class="w-[12px] h-[12px] rounded-none border border-solid border-sir-black mr-1" id="saveCCCard">
+                                            Save credit card
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- order summary 2-->
+                        <div class="bottom px-5">
+                            <h3 class="text-1.5xl text-sir-black">Order Summary</h3>
+                            <div class="list divide divide-x-0 divide-y divide-dashed divide-sir-green-dark mt-3">
+
+                                {{#if OrderSummary.Details}}
+                                {{#each OrderSummary.Details}}
+                                <div class="py-2 flex text-lg"
+                                     {{#compare  Subsystem  "Membership Subsystem"  operator="==" }}
+                                     {{#compare  OrderLineNumber  RelatedLineNumber  operator="!=" }}
+                                     style="display:none;"
+                                     {{/compare}}
+                                     {{/compare}}>
+
+                                    <span class="w-5/6">
+                                        {{#compare  ProductTypeCode  "M"  operator="!=" }}
+                                        {{#compare  ProductTypeCode  "I"  operator="!=" }}
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        {{/compare}}
+                                        {{/compare}}
+
+                                        {{ProductDescription}}
+                                    </span>
+                                    <span class="w-1/6 text-right">
+                                        {{#compare  IsInCart  true  operator="==" }} @*if not in cart, it is already registered*@
+                                        {{#compare  Subsystem  "MTG"  operator="==" }}
+                                        {{#compare  ProductTypeCode  "M"  operator="!=" }} @*if session item*@
+                                        ${{formatMoney TotalLinePrice}}
+                                        {{else}} @*if in cart, but not meeting product*@
+                                        ${{formatMoney TotalLinePrice}}
+                                        {{/compare}}
+                                        {{else}} @*if in cart, but not meeting product*@
+                                        ${{formatMoney TotalLinePrice}}
+                                        {{/compare}}
+                                        {{else}}
+                                        {{#compare  Subsystem  "MTG"  operator="==" }}
+                                        Already Registered
+                                        {{else}}
+                                        Already Purchased
+                                        {{/compare}}
+                                        {{/compare}}
+                                    </span>
+                                    <span class="hiddeninfo" data-subsystem="{{Subsystem}}"></span>
+
+                                </div>
+                                {{/each}}
+                                {{else}}
+
+                                No items added
+
+                                {{/if}}
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    {{/compare}}
+
+
+
+                <div class="right w-[384px]">
+                    <div class="border border-solid border-sir-green-dark">
+                        <div class="top h-[52px] text-1.5xl text-white px-5 bg-sir-green-dark flex items-center">
+                            Summary
+                        </div>
+                        <div class="bottom">
+                            <div class="top flex flex-col space-y-2 pt-4 pb-6 px-6">
+                                <div class="flex justify-between">
+                                    <span class="text-sir-green-dark">Items ({{OrderSummary.ItemsCount}}):</span>
+                                    <span class="font-medium text-sir-green-dark">{{math OrderSummary.TotalUnitPrice}}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sir-green-dark">Tax:</span>
+                                    <span class="font-medium text-sir-green-dark" id="tax">${{formatMoney OrderSummary.TotalTaxAmount}}</span>
+                                </div>
+
+                                <div class="flex justify-between">
+                                    <span class="text-sir-green-dark">Coupon Amount:</span>
+                                    <span class="font-medium text-sir-green-dark" id="couponAmount">$0.00</span>
+                                </div>
+
+                                <div class="flex justify-between">
+                                    <span class="text-sir-green-dark">Shipping {{#if OrderSummary.ShipViaCode}}({{OrderSummary.ShipViaCode}}){{/if}}:</span>
+                                    <span class="font-medium text-sir-green-dark" id="shippingHandling">${{formatMoney OrderSummary.TotalShippingAmount}}</span>
+                                </div>
+                                @*<div class="flex flex-col space-y-1 pt-3">
+                        <span class="text-sir-green-dark min-w-[75px] inline-block">Shipping Preference:</span>
+                        <div>
+                            <div class="relative h-6 w-[215px] border border-solid border-sir-green-dark px-2 bg-white border border-solid border-sir-black">
+                                <select class="absolute left-0 top-0 w-full bg-transparent appearance-none border-0 outline-none z-10 px-2 text-base">
+                                    <option value="1">Value</option>
+                                </select>
+                                <div class="absolute right-0 top-0 w-6 h-full flex items-center justify-center border-l border-0 border-solid border-sir-black">
+                                    <img src="images/chevron.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-xs italic text-sir-green-dark w-[200px] pt-0.5">Items may be shipped from different warehouses.</small>
+                    </div>*@
+
+                                <div class="flex flex-col space-y-1 pt-2">
+                                    @if (ViewBag.OrderAllowBillMeFlag)
+                                    {
+                                        <input type="checkbox" id="billmelater" name="billmelater" value="terms" onchange="BillMeLater()" /> <label for="billmelater">Bill Me Later</label>
+                                    }
+                                </div>
+                                <div class="flex flex-col space-y-1 pt-2">
+                                    <span class="text-sir-green-dark min-w-[75px] inline-block">Add coupon or Promo code.:</span>
+                                    <div class="flex space-x-2 items-center">
+                                        <input type="text" class="w-[140px] h-[22px] border border-solid border-sir-green-dark px-2" id="txtCoupon">
+                                        <span class="text-xs text-sir-header-blue pl-1 inline-block" id="btnApplyCoupon">Apply</span>
+                                        <span class="text-xs text-sir-header-blue pl-1 inline-block" id="btnRemoveCoupon">Remove</span>
+                                        <span id="lblCouponMessage"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mid py-4 px-6 border-0 border-t border-dashed border-sir-green-dark text-sir-green-dark">
+                                <div class="flex justify-between mb-10">
+                                    <div class="text-lg font-semibold">Total:</div>
+                                    <div class="text-lg font-semibold" id="totalAmount">${{math OrderSummary.TotalUnitPrice "+" OrderSummary.TotalShippingAmount "+" OrderSummary.TotalTaxAmount }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- buttons-->
+                    <div class="buttonCon mt-10 flex gap-5 px-2">
+                        <div class="buttonCon float-right w-[500px] mt-10 flex gap-5 px-2">
+                            <button class="no-underline flex-1 text-[19px] uppercase h-[48px] bg-sir-green-light text-white border-0 flex items-center justify-center cursor-pointer" data-box="step2_Shipping" style="float: left;">Back</button>
+
+                            {{#compare  OrderSummary.OrderBalance  0  operator=">" }}
+                            <button class="placeorder no-underline flex-1 text-[19px] uppercase h-[48px] bg-sir-header-blue text-white border-0 flex items-center justify-center cursor-pointer" id="placeorder" style="float: right;">Place Order</button>
+                            {{else}}
+                            <button class="no-underline flex-1 text-[19px] uppercase h-[48px] bg-sir-header-blue text-white border-0 flex items-center justify-center cursor-pointer" id="Saveorder" style="float: right;">Place your order</button>
+                            {{/compare}}
+                        </div>
+
+                    </div>
+
+                </div>
+
+    
+               
+                </div>
+            </div>
+
+        </div>
+               
+
+            
+
+
+
+    
+    </script>
+
+
+
+    <script id="additionalinfo-template-grid" type="text/x-handlebars-template">
+
+        <div class="col-sm-6 ">
+            <div class="contentBox">
+                <div class="cb_header">
+                    Emergency Contact Information:
+                </div>
+                <div class="cb_body col-sm-6">
+                    {{#if EmergencyContactInfos}}
+                    {{#each EmergencyContactInfos}}
+                    {{#compare Priority  1  operator="=="}}
+                    <div style="width:519px;">
+                        <address>
+                            <span>{{ContactName}}</span><br />
+                            <span>Phone: {{PhoneNumber}}</span><br />
+                            <span>Relationship: {{Relationship}}</span>
+                        </address>
+                    </div>
+                    {{/compare}}
+                    {{/each}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        </br>
+        <div>
+            <div class="contentBox col-sm-12">
+                <div class="cb_header">
+                    Additional Information:
+                </div>
+                <div class="cb_body">
+                    {{#if AdditionalInfo}}
+                    {{#each AdditionalInfo}}
+                    <div style="margin: 10px;{{#compare  IsAnswered  false  operator="==" }}display:none;{{/compare}}">
+                        <span class="addtionalhead">{{OptionCode}}</span><br />
+                        <span>{{{OptionDescription}}}</span>
+                        {{#compare  OptionType  "TEXT_BOX"  operator="==" }}
+                        <span class="additionanswer">{{AnswerText}}</span>
+                        {{else}}
+                        {{#if AdditionalSubCodes}}
+                        {{#each AdditionalSubCodes}}
+                        {{#compare  Selected  true  operator="==" }}
+                        <span class="additionanswer">{{OptionDescription}}</span>
+                        {{/compare}}
+                        {{/each}}
+                        {{/if}}
+                        {{/compare}} {{!OptionType}}
+                    </div>
+                    {{/each}}
+                    {{/if}}
+
+                    <div id="badges" style="margin: 15px;">
+                        <span class="addtionalhead">Badges</span><br />
+                        {{#if CartItems}}
+                        {{#each CartItems}}
+                        {{#if ShoppingCartBadges}}
+                        {{#each ShoppingCartBadges}}
+                        <table>
+                            <tr><td style="font-weight:bold;">Full Name:</td><td>{{FullName}}</td></tr>
+                            <tr><td style="font-weight:bold;">Company Name:</td><td>{{CompanyName}}</td></tr>
+                        </table>
+                        {{/each}} {{!ShoppingCartBadges}}
+                        {{/if}}
+                        {{/each}} {{!CartItems}}
+                        {{/if}}
+                    </div>
+                    @*<div id="badges" style="margin: 15px;">
+                            <span class="addtionalhead">Badges</span><br />
+                            {{#if OrderSummary}}
+                                {{#if OrderSummary.Details}}
+                                    {{#each OrderSummary.Details}}
+                                        {{setIndex @('@')index}}
+                                        {{#compare  @('@')index  0  operator="==" }}
+                                            {{#if Badges}}
+                                                 {{#each Badges}}
+                            <table>
+                                <tr><td>Full Name:</td><td>{{LabelName}}</td></tr>
+                                <tr><td>Company Name:</td><td>{{Company}}</td></tr>
+                            </table>
+                                                {{/each}}
+                                            {{/if}}
+                                        {{/compare}}
+                                    {{/each}}
+                                {{/if}}
+                            {{/if}}
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </script>
+    <script>
+
+    Handlebars.registerHelper("math", function (lvalue, operator, rvalue, options) {
+        lvalue = parseFloat(lvalue);
+        rvalue = parseFloat(rvalue);
+
+        return {
+            "+": lvalue + rvalue,
+            "-": (lvalue - rvalue).formatMoney(),
+            "*": lvalue * rvalue,
+            "/": lvalue / rvalue,
+            "%": lvalue % rvalue
+        }[operator];
+    });
+
+        String.prototype.replaceAll = function (search, replacement) {
+            var target = this;
+            return target.replace(new RegExp(search, 'g'), replacement);
+        };
+
+        $(document).ready(function () {
+
+            var ordernumber = "";
+            var userdata = null;
+            var isShippingExists = false;
+            $('.meetinglinks').hide();
+            $('#additionalinfo').hide();
+            $("#site_header").load(" #site_header");
+
+            function CalculateTotal() {
+                //cart_item
+                var total = 0;
+                $(".cart_item").each(function () {
+                    //Get Quantity
+                    var qty = $(this).find('.oQty').val();
+                    //Get Price
+
+                    var p = $(this).find('.uPrice').attr('price');
+                    console.log("p", p);
+
+                    var price = parseFloat(p);
+                    //Multiply
+                    $(this).find('.tPrice').text((qty * price).formatMoney());
+
+                    console.log("price", qty, price, $(this).find('.uPrice').text().replaceAll(',', '').replaceAll('$', ''));
+
+                    total += (qty * price);
+
+                });
+
+                console.log("total_price", total);
+                $('#total_price').html('$'+(total).formatMoney());
+            };
+
+            var meetingproductid = 0;
+            var orderno = "";
+
+            function ShowHideMeetingLinks() {
+                var isMeetingItemExist = false;
+                var pcode = "";
+
+                $(".cart_item").each(function () {
+                  //
+                    var info = $(this).find('.hiddeninfo');
+                    var subsystem = info.data('subsystem');
+                    if (subsystem == 'MTG') {
+                        isMeetingItemExist = true;
+                        //if (info.data('orderlineno') == 1 && info.data('parentprdid') == 0) {
+                        if ((info.data('orderlineno') == 1 || info.data('prodtypecode') == 'M')
+                            && (info.data('parentprdid') == 0 || info.data('isinorder') == true)) {
+                            meetingproductid = info.data('prdid');
+                            orderno = info.data('orderno');
+                            pcode = info.data('prodcode');
+                        }
+                    }
+                });
+                if (isMeetingItemExist) {
+                    $('.meetinglinks').show();
+                    //if (isMeetingItemExist) {
+                    //    GetExistingOrderAdditionalInfos(meetingproductid);
+                    //}
+                    // $('#additionalinfo').show();
+                }
+                else {
+                    $('.meetinglinks').hide();
+                    $('#additionalinfo').hide();
+                }
+            }
+
+            //function GetOrderNumber() {
+            //    ordernumber = "";
+            //    $(".cartdetails").each(function () {
+            //        if (ordernumber == "")
+            //            ordernumber = $(this).data('orderno');
+            //    });
+
+            //    return ordernumber;
+            //}
+
+            Handlebars.registerHelper('setIndex', function (value) {
+                this.index = Number(value);
+            });
+            Handlebars.registerHelper("formatMoney", function (value, options) {
+
+                if (value == null) return null;
+                return toFloat(value).formatMoney();
+            });
+            Handlebars.registerHelper('compare', function (lvalue, rvalue, options) {
+
+                if (arguments.length < 3)
+                    throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
+
+                var operator = options.hash.operator || "==";
+
+                var operators = {
+                    '==': function (l, r) { return l == r; },
+                    '===': function (l, r) { return l === r; },
+                    '!=': function (l, r) { return l != r; },
+                    '<': function (l, r) { return l < r; },
+                    '>': function (l, r) { return l > r; },
+                    '<=': function (l, r) { return l <= r; },
+                    '>=': function (l, r) { return l >= r; },
+                    'typeof': function (l, r) { return typeof l == r; }
+                }
+
+                if (!operators[operator])
+                    throw new Error("Handlerbars Helper 'compare' doesn't know the operator " + operator);
+
+                var result = operators[operator](lvalue, rvalue);
+
+                if (result) {
+                    return options.fn(this);
+                } else {
+                    return options.inverse(this);
+                }
+
+            });
+
+            function ValidateCC() {
+                valid = true;
+                //var totalAmount = parseFloat($('#totalAmount').text().replace(",", ""));
+
+                //if (totalAmount > 0)
+                {
+                    if (!$('input[name=cardType]').is(':checked')) {
+                        $('input[name=cardType]').parent().find('.errorMsg').text('Please select card type!');
+                        valid = false;
+
+                    } else {
+                        $('input[name=cardType]').parent().find('.errorMsg').empty();
+                    }
+
+                    if (CCName.value == '') {
+                        $('#CCName').next().text('Please enter the Card Holder name!');
+                        valid = false;
+                    } else {
+                        $('#CCName').next().empty();
+                    }
+                    if (CCNumber.value == '') {
+                        $('#CCNumber').next().text('Please enter the Credit Card Number!');
+                        valid = false;
+                    } else {
+                        $('#CCNumber').next().empty();
+                    }
+                    if (CCcvv.value == '') {
+                        $('#CCcvv').next().text('Please enter the CVV Number!');
+                        valid = false;
+                    } else {
+                        $('#CCcvv').next().empty();
+                    }
+                    var today, someday;
+                    var exMonth = $('#months').val();
+                    var exYear = $('#years').val();
+                    today = new Date();
+                    someday = new Date();
+                    someday.setFullYear(exYear, exMonth, 1);
+
+                    if (someday < today) {
+                        $('#years').next().text("The expiry date is before today's date. Please select a valid expiry date!");
+                        valid = false;
+                    } else {
+                        $('#years').next().empty();
+                    }
+                }
+                return valid;
+            }
+
+            //editmtgsession
+
+            $('body').on('click', '#editadditionalinfo', function () {
+                var mtgurl = $('#mtgurl').text();
+                console.log(mtgurl);
+                mtgurl = mtgurl + "/Info/?ainfo=1&p=" + meetingproductid;
+                window.location = mtgurl;
+            });
+
+            $('body').on('click', '#Saveorder', function () {
+
+                console.log("#Saveorder");
+
+                $.ajax(
+                    {
+                        url: '@Url.Action("SaveOrder", "Home")',
+                        contentType: 'application/json; charset=utf-8',
+                        datatype: 'json',
+                        data: "",
+                        type: "GET",
+                        success: function (data) {
+                            userdata = data;
+
+                            if (data.Success == true) {
+                                location.href = '@Url.Action("Confirmation", "Home")' + '?' + '@ViewBag.CurrentMemberships';
+                            }
+                            else {
+                                console.log("save1");
+                                alert(data.ErrorMessage);
+                                console.log("save2");
+                            }
+                        }
+                    });
+
+            });
+
+            $('body').on('click', '#placeorder', function () {
+
+                //get Validationresponses
+                var vissues = [];
+                $(".vissue").each(function () {
+                    //
+                    var key = $(this).find('.msg').data('key');
+                    var rdata = $(this).find('.vresponse:checked').val();
+                    vissues.push({ 'key': key, 'SelectedResponse': rdata });
+                });
+
+                var totalAmount = parseFloat($('#totalAmount').text().replace(",", ""));
+
+                if ($('#billmelater:checked').length > 0) {
+                    totalAmount = 0; //bill me later
+                }
+
+                console.log("totalAmount", totalAmount);
+
+                ////Check for Billing Address
+                //var count = $('#billingAddressList address').length;
+                //if (count <= 0) {
+                //    nalert('Please add billing address to proceed');
+                //    return false;
+                //}
+                //else {
+
+                //if (ValidateCC()) {
+                //}
+
+
+                if (totalAmount > 0) {
+
+                    if (ValidateCC()) {
+
+                        //If total order amount >0 then make payment
+                        var ccType = $('input[name=cardType]:checked').val();
+                        var ccName = $('#CCName').val();
+                        var ccNumber = $('#CCNumber').val();
+                        var ccv2 = $('#CCcvv').val();
+                        var ccMonth = $('#months').val();
+                        var ccYear = $('#years').val();
+                        var ccinfo = { 'Type': ccType, 'Name': ccName, 'Number': ccNumber, 'Cvv2': ccv2, 'Month': ccMonth, 'Year': ccYear, 'IsCardSelected': true };
+                        var stateAssociation = $('#StateAssociation').val();
+
+                        $.ajax(
+                            {
+                                url: '@Url.Action("Payment", "Home")',
+                                contentType: 'application/json; charset=utf-8',
+                                datatype: 'json',
+                                data: JSON.stringify({ 'ccinfo': ccinfo, 'vissues': vissues, 'StateAssociation': stateAssociation }),
+                                type: "POST",
+                                success: function (data) {
+                                    userdata = data;
+
+                                    if (data.Success == true) {
+                                        location.href = '@Url.Action("Confirmation", "Home")' + '?' + '@ViewBag.CurrentMemberships';
+                                    }
+                                    else {
+                                        console.log("alert1");
+                                        alert(data.ErrorMessage);
+                                        console.log("alert2");
+                                    }
+                                }
+                            });
+                    }
+                }
+                    else {
+                        $.ajax(
+                        {
+                            url: '@Url.Action("SaveOrder", "Home")',
+                            contentType: 'application/json; charset=utf-8',
+                            datatype: 'json',
+                            data: "",
+                            type: "GET",
+                            success: function (data) {
+                                userdata = data;
+
+                                if (data.Success == true) {
+                                    location.href = '@Url.Action("Confirmation", "Home")' + '?' + '@ViewBag.CurrentMemberships';
+                                }
+                                else {
+                                    alert(data.ErrorMessage);
+                                }
+                            }
+                        });
+                    }
+
+                //}
+            });
+
+            //useAdd
+            $('body').on('click', '.useAdd', function () {
+                var isShopping;
+                var addrType = $(this).data('type');
+
+                if (addrType == "Shipping")
+                    isShopping = true;
+                else
+                    isShopping = false;
+
+                var addrId = $(this).data('addrid');
+
+                $.ajax(
+                {
+                    url: '@Url.Action("ChangeDefaultAddress", "Home")',
+                    contentType: 'application/json; charset=utf-8',
+                    datatype: 'json',
+                    data: JSON.stringify({ 'CustomerAddressId': addrId, 'ShipToFlag': isShopping }),
+                    type: "POST",
+                    success: function (data) {
+                        userdata = data;
+
+                        if (data.Success == true) {
+                            //if (addrType == "Shipping") ShowStep2();
+                            //else if (addrType == "Billing") ShowStep3();
+                            ShowStep2();
+                        }
+                        else {
+                            alert(data.ErrorMessage);
+                        }
+                    }
+                });
+            });
+
+            function ValidateMBRExist(curitemid) {
+
+                var issubscriptionproductexist = false;
+                var isdependantproductexist = false;
+                var isMbrLvl1Exist = false;
+                var iscustomermember = $("#hdnMembership").data('iscustomermember');
+
+                $(".cart_item").each(function () {
+                    var info = $(this).find('.hiddeninfo');     /*Get Additional Infos*/
+                    //
+                    //Check if there is a membership product with lavel1
+                    var subsystem = info.data('subsystem');
+                    var level1 = info.data('level1');
+                    var level2 = info.data('level2');
+                    var pid = info.data('prdid');
+
+                    if (subsystem == "MBR" && level1.toLowerCase() == "individual" && curitemid != pid) {
+                        isMbrLvl1Exist = true;
+                    }
+
+                    if (level1 == "SIAG" || level2 == "EPACK" || level2 == "EPACK" || level2 == "LOCUS" || level2 == "LOPACK") {
+                        isdependantproductexist = true;
+                    }
+
+                    if (subsystem == "SUB") {
+                        issubscriptionproductexist = true;
+                    }
+                });
+                //If Dependant product exist, dont allow to delete MBR
+                if (issubscriptionproductexist == true || isdependantproductexist == true) {
+                    if (isMbrLvl1Exist == false && (iscustomermember == "False" || iscustomermember == false)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            var isINVExists = false;
+            var isShippingEligible = false;
+            function IsINVProductsExists() {
+              //
+                $(".cart_item").each(function (i) {
+                  //
+                    var info = $(this).find('.hiddeninfo');     /*Get Additional Infos*/
+                    var ss = info.data('subsystem');
+                    var se = info.data('isinorder');
+                    if (ss == 'INV') {
+                        isINVExists = true;
+                    }
+                    if(ss == 'INV' && se=="")
+                    {
+                        isShippingEligible = true;
+                    }
+                });
+                if (!isINVExists) {
+                    $(".quantitydisplay").hide();
+                }
+            }
+
+            $('body').on('click', '#myCart', function () {
+                $(".cart_item").each(function () {
+                    var info = $(this).find('.hiddeninfo');     /*Get Additional Infos*/
+                    isshippable = info.data('shippable');
+                    var ss = info.data('subsystem');
+                    if (isshippable == 1) {
+                        isShippingExists = true;
+                    }
+                    if (ss == 'INV') {
+                        isINVExists = true;
+                    }
+                });
+                /*
+                if (ValidateMBRExist(0) == false) {
+                    nalert("Please add a membership product to proceed for checkout.");
+                    return false;
+                }
+                */
+                if (ordernumber.length > 0 || isShippingExists == false) {
+                    //Show Payment Page
+                    console.log("ShowCheckoutForm 4");
+                    //ShowCheckoutForm();
+                    ShowStep3();
+                }
+                else {
+                    //Update WebCart Items if change in quantity
+                    var updateQty = [];
+                    //hiddeninfo
+                    $(".cart_item").each(function () {
+                      //
+                        var info = $(this).find('.hiddeninfo');     /*Get Additional Infos*/
+                        var qty = $(this).find('.oQty').val();      /*Get Quantity*/
+                        var aqty = info.data('availqty');           /*Get Available Inv Qty*/
+                        var subsystem = info.data('subsystem');     /*Get Subsystem*/
+                        var webid = info.data('webid');             /*Get CartId*/
+                        var IsInOrder = info.data('isinorder');
+
+                        if (IsInOrder=="false" && qty > aqty && subsystem == 'INV') {     //&& subsystem == 'INV'
+                            var prodname = $('#' + webid + subsystem + "_name").html();
+                            alert('Available quantity for ' + prodname + ' is ' + aqty);
+                            return false;
+                        }
+                        updateQty.push({ 'cartid': webid, 'qty': qty });
+                    });
+
+                    if (updateQty != null && updateQty.length > 0) {
+                        //get selected shipping preference
+                        var shippreference = $('#shipViaCodeDD option:selected').val();
+
+                        $.ajax(
+                        {
+                            url: '@Url.Action("UpdateCartItems", "Home")',
+                            contentType: 'application/json; charset=utf-8',
+                            datatype: 'json',
+                            data: JSON.stringify({ oitems: updateQty, 'shipviacode': shippreference }),
+                            type: "POST",
+                            success: function (data) {
+                                userdata = data;
+                              //
+                                if (data.Success == true) {
+                                    ShowStep2();
+                                }
+                                else if (data.Message = "SessionOut") {
+                                    windows.location = "/";
+                                }
+                                else {
+                                    alert(data.ErrorMessage);
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+
+            GetCartData();
+            function GetCartData() {
+              //
+                $.ajax(
+                {
+                    url: '@Url.Action("GetCartData", "Home")',
+                    contentType: 'application/json; charset=utf-8',
+                    datatype: 'json',
+                    type: "GET",
+                    success: function (data) {
+                        userdata = data;
+                        console.log(userdata);
+                        console.log("User :" + userdata.User);
+                        if (data.Success == true) {
+                            ShowFirstForm();
+                        }
+                        else {
+                            nalert(data.ErrorMessage);
+                        }
+                    }
+                });
+            }
+
+            function ShowFirstForm() {
+
+                var cartstemplate = jQuery('#cart-step1-template-grid').html();
+                var compiledtemplate = Handlebars.compile(cartstemplate);
+                items = compiledtemplate(userdata.User);
+                jQuery('#cartsview').html(items);
+                CalculateTotal();
+                ShowHideMeetingLinks();
+                IsINVProductsExists();
+                //GetOrderAdditionalInfos
+
+            }
+
+            function ShowStep2() {
+                var cartstemplate = jQuery('#cart-step2-template-grid').html();
+                var compiledtemplate = Handlebars.compile(cartstemplate);
+
+                items = compiledtemplate(userdata.User);
+                jQuery('#cartsview').html(items);
+                $('#address_ship').hide();
+                if (isINVExists == false) {
+                    //Hide Shipping Preference
+                    $('.ship_preferance').hide();
+                }
+                if(isShippingEligible==false)
+                {
+                    $('.ship_preferance').hide();
+                }
+            }
+
+            function ShowStep3() {
+                console.log("ShowStep3");
+                AdditionalInfoQuestion();
+            }
+
+            function ShowStep4() {
+                console.log("ShowStep4");
+                var cartstemplate = jQuery('#cart-step4-template-grid').html();
+                var compiledtemplate = Handlebars.compile(cartstemplate);
+                items = compiledtemplate(userdata.User);
+                jQuery('#cartsview').html(items);
+                $('#address_bill').hide();
+                $('#btnRemoveCoupon').hide();
+                $("#coupontr").hide();
+                if (!isShippingExists) {
+                    $("#selectedshippingaddress").hide();
+                }
+                IsINVProductsExists();
+                $('.placeorder').prop('disabled', true);
+
+                var totalAmt = parseFloat($("#totalAmount").text().replace(",", ""));
+
+                if (totalAmt == "0.0") {
+                    $('.paymentSection').hide();
+                    $('.placeorder').prop('disabled', false);
+                }
+                else {
+                    $('.paymentSection').show();
+
+                }
+
+            }
+
+            function GetCardType(number) {
+                // visa
+                var re = new RegExp("^4");
+                if (number.match(re) != null)
+                    return "Visa";
+
+                // Mastercard
+                re = new RegExp("^5[1-5]");
+                if (number.match(re) != null)
+                    return "Mastercard";
+
+                // AMEX
+                re = new RegExp("^3[47]");
+                if (number.match(re) != null)
+                    return "AMEX";
+
+                // Discover
+                re = new RegExp("^(6011|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]|92[0-5]|64[4-9])|65)");
+                if (number.match(re) != null)
+                    return "Discover";
+
+                // Diners
+                re = new RegExp("^36");
+                if (number.match(re) != null)
+                    return "Diners";
+
+                // Diners - Carte Blanche
+                re = new RegExp("^30[0-5]");
+                if (number.match(re) != null)
+                    return "Diners - Carte Blanche";
+
+                // JCB
+                re = new RegExp("^35(2[89]|[3-8][0-9])");
+                if (number.match(re) != null)
+                    return "JCB";
+
+                // Visa Electron
+                re = new RegExp("^(4026|417500|4508|4844|491(3|7))");
+                if (number.match(re) != null)
+                    return "Visa Electron";
+
+                return "";
+            }
+
+            $('body').on('keypress', '#CCNumber', function () {
+                var type = GetCardType($(this).val());
+
+                $("input[name=cardType]").prop("checked", false);
+                switch (type) {
+                    case 'Visa':
+                        $("input[name=cardType][value='VISA']").prop("checked", true);
+                        break;
+                    case 'AMEX':
+                        $("input[name=cardType][value='AE']").prop("checked", true);
+                        break;
+                    case 'Mastercard':
+                        $("input[name=cardType][value='MC']").prop("checked", true);
+                        break;
+                    case 'Discover':
+                        $("input[name=cardType][value='DISCOVER']").prop("checked", true);
+                        break;
+                    default:
+
+                }
+                //cardType
+
+            });
+
+            $('body').on('focus', '#CCcvv', function () {
+                $(this).attr('type', 'password');
+            });
+
+            $('body').on('click', '.back', function () {
+                //
+                var prevform = $(this).data('box');
+
+                if ($(this).data('box') == "step1_MyCart") {
+                    GetCartData();
+                }
+                else if ($(this).data('box') == "step2_Shipping") {
+                    if (ordernumber.length > 0 || isShippingExists == false) {
+                        GetCartData();
+
+                    }
+                    else {
+                        ShowStep2();
+                    }
+                }
+                else if ($(this).data('box') == "step2") {
+                    ShowStep2();
+                }
+
+            });
+
+            //$('body').on('click', '#ShowInfo', function ()
+            //{
+            //  //
+            //    test(28539957);
+            //    $('#additionalinfo').show();
+
+            // });
+            //product-remove-confirmation
+            //For Main Meeting Product
+            $('body').on('click', '#product-remove-conference', function () {
+
+                var message = "";
+                if ($(this).data('subsystem')=="MTG")
+                    message = "Deleting this will delete the conference and sessions from your cart.\nAre you sure to delete?";
+                else if ($(this).data('subsystem')=="MBR" || $(this).data('subsystem')=="SUB")
+                    message = "All membership and subscription items are being removed.\nAre you sure to delete?";
+                else if ($(this).data('subsystem')=="MISC")
+                    message = "Deleting this will delete the Donation product from your cart.\nAre you sure to delete?";
+                else //if ($(this).data('subsystem') == "INV")
+                    message = "Deleting this will delete the product from your cart.\nAre you sure to delete?";
+                //debugger;
+                var r = confirm(message);
+                if (r==true) {
+                    var prod = $(this).data('prodid');
+                    $.ajax(
+                    {
+                        url: '@Url.Action("RemoveCartItem", "Home")',
+                        contentType: 'application/json; charset=utf-8',
+                        datatype: 'json',
+                        data: { WebShoppingCartItemId: prod },
+                        type: "GET",
+                        success: function (data) {
+                            userdata = data;
+
+                            if (data.Success == true) {
+                                //GetCartData();
+                                //$("#site_header").load(" #site_header");
+                                location.href = location.href;
+                            }
+                            else {
+                                nalert(data.ErrorMessage);
+                            }
+                        }
+                    });
+                }
+            });
+            //product-remove
+            $('body').on('click', '#product-remove', function () {
+              //
+                var prod = $(this).data('prodid');
+                var info = $(this).parent().parent().find('.hiddeninfo');
+
+                var subsystem = info.data('subsystem');
+                var level1 = info.data('level1');
+                var level2 = info.data('level2');
+                var pid = info.data('prdid');
+                var prodcode = info.data('prodcode');
+                var parentid = info.data('parentprdid');
+
+                if (subsystem == "MTG" && (prodcode.toLowerCase() == 'full' || prodcode.toLowerCase().indexOf('oneday') >= 0)) {
+                    //Check if Full or Onday Session will Available after deleting the session
+                    var isFullOrDaySessionExists = false;
+                    $(".cart_item").each(function () {
+                        var info1 = $(this).find('.hiddeninfo');     /*Get Additional Infos*/
+                        var pid1 = info1.data('prdid');
+                        var subsystem1 = info1.data('subsystem');
+                        var prodcode1 = info1.data('prodcode');
+
+                        if (pid1 != pid && subsystem1 == 'MTG') {
+                            if (prodcode1.toLowerCase() == 'full' || prodcode1.toLowerCase().indexOf('oneday') >= 0)
+                                isFullOrDaySessionExists = true;
+                        }
+                    });
+                    //If Full or OneDay session not available, Delete Full Conference So changing deleting productid as mainproductid
+                    if (!isFullOrDaySessionExists) {
+                        prod = parentid;
+                    }
+                }
+
+                /*
+                if (ValidateMBRExist(pid) == false && (subsystem == "MBR" && level1.toLowerCase() == "individual")) {
+                    nalert("There are items which are dependant on this product. You can not delete it.");
+                    return false;
+                }
+                */
+
+                    //else if (subsystem == "MBR" && level1.toLowerCase() == "individual" && $(".cart_item").length==1) {
+                    //    nalert("You can not delete the only membership item from cart.");
+                    //}
+                else {   //Remove WebCartItem
+                    $.ajax(
+                    {
+                        url: '@Url.Action("RemoveCartItem", "Home")',
+                        contentType: 'application/json; charset=utf-8',
+                        datatype: 'json',
+                        data: { WebShoppingCartItemId: prod },
+                        type: "GET",
+                        success: function (data) {
+                            userdata = data;
+                          //
+                            if (data.Success == true) {
+                                $('#cartsview').empty();
+                                GetCartData();
+                            }
+                            else {
+                                nalert(data.ErrorMessage);
+                            }
+                        }
+                    });
+                }
+            });
+
+            function AdditionalInfoQuestion() {
+
+            $.ajax({
+                url: '@Url.Action("GetAdditionalInfo", "Home")',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+
+                success: function (response) {
+                    console.log('Success', response);
+                    if (response != null && response.Success == true && response.Users != null) {
+
+                        if (response.Users[0].Infos.length <= 0) {
+                            console.log("ShowCheckoutForm 1");
+                            ShowCheckoutForm();
+                        }
+                        else {
+
+                            for (var i = 0; i < response.Users.length; i++) {
+                                for (var j = 0; j < response.Users[i].Infos.length; j++) {
+                                    if (response.Users[i].Infos[j].Selected === true) response.Users[i].Infos[j].CHECKED = "checked";
+                                }
+                            }
+                            var templatesource = jQuery('#Content-template').html();
+                            var template = Handlebars.compile(templatesource);
+                            var result = template(response);
+
+                            jQuery('#cartsview').html(result).show();
+                        }
+
+                        }
+                    }
+
+            });
+            }
+
+    function ShowCheckoutForm() {
+        console.log("ShowCheckoutForm");
+                var isVisible = $('#shipViaCodeDD').is(':visible');
+
+                var shipviacode = $('#shipViaCodeDD option:selected').val();
+                //shipviacode = "123";
+                if (isVisible=="true" && isINVExists && isShippingExists && (shipviacode == undefined || shipviacode.length <= 0)) {
+                    // shipviacode = "BR_2ND_DAY";
+                    //nalert('Please choose the shipping method for your order.');
+                    $('#shipViaCodeDD').parent().find('.errorMsg').text('Please choose the shipping method for your order');
+                    $('#shipViaCodeDD').css('border-color', 'red');//rgb(51, 122, 183)
+                    $('#shipViaCodeDD').focus();
+                    return false;
+                }
+                else {
+
+                    $.ajax(
+                    {
+                        url: '@Url.Action("GetTax", "Home")',
+                        contentType: 'application/json; charset=utf-8',
+                        datatype: 'json',
+                        type: "GET",
+                        data: { ShippingId: shipviacode },
+                        success: function (data) {
+                          //
+                            userdata = data;
+                            console.log(data);
+
+                            if (data != null && data.Success == true) {
+                                console.log("ShowStep4 1");
+                                ShowStep4();
+
+                            }
+                            else {
+                                nalert(data.ErrorMessage);
+                            }
+                        }, error: function (ex) {
+                            alert(xhr.ErrorMessage);
+
+                        }
+
+                    });
+                }
+            }
+            $('body').on('click', '#addressTab', function () {
+                //Check for Shipping Address
+
+                var countship = $('#shippingAddressList address').length;
+                var countbill = $('#billingAddressList address').length;
+
+		var isVisible = $('#shipViaCodeDD').is(':visible');
+		var shipViaCodeDD = $('#shipViaCodeDD option:selected').val().length;
+
+		if (isVisible && shipViaCodeDD <= 0) {
+                    nalert('Please choose the shipping method for your order');
+		     return false;
+                }
+
+                if (countship <= 0) {
+                    nalert('Please add shipping address to proceed');
+		     return false;
+                }
+                else if (countbill <= 0) {
+                    nalert('Please add billing address to proceed');
+                    return false;
+                }
+                else {
+                    console.log("ShowStep3 1");
+                    ShowStep3();
+                }
+            });
+
+
+            $('body').on('click', '#AdditionalInfoTab', function () {
+                   //validation
+
+            //
+            var data = [];
+
+            var isvalid = true;
+            $('.aInfo').each(function () {
+                //
+                var quesid = $(this).data('qid');
+                var isreq = $(this).data('req');
+                var desc = $(this).find('.aInfoCode').text();
+                var code = $(this).data('code');
+                var optype = $(this).data('optype');
+                //Get subcode value by input type
+                var subcode = "";
+                switch (optype) {
+                    case "TEXT_BOX":
+                        subcode = $(this).find('.option').val();
+                        break;
+                    case "DATE":
+                        subcode = $(this).find('.option').val();
+                        break;
+                    case "RADIO_BUTTON":
+                        var subcodebutton = $(this).find('.option');
+                        if ($(subcodebutton).is(':checked')) {
+                            subcode = $(this).find("input[class=option]:checked").val();//subcodebutton.val();
+                        }
+                        break;
+                    case "CHECKBOX":
+
+                        $(this).find("input[class=option]:checked").each(function () {
+                            subcode = subcode + $(this).val() + ', ';
+                        });
+                        if (subcode.length > 2)
+                            subcode = subcode.substr(0, subcode.length - 2);
+                        break;
+                    case "DROPDOWN":
+                        subcode = $(this).find('.option').val();
+                        break;
+                    default:
+                        subcode = "";
+                }
+                console.log("isreq", index2, isreq, quesid, subcode, desc);
+                //Validate
+                if (isreq == 'Y' && subcode.length == 0) {
+                    nalert('Please select mandatory fields (marked with *).');
+                    //$('#valissueinfo').html($('#valissueinfo').html() + 'Please select ' + desc + "<br/>");
+                    isvalid = false;
+                    //return false;
+                }
+                var index2 = $(this).attr('Index');
+                if (subcode.length > 0) {
+                    data.push({ "index1": 0, "index2": index2, "value": true, "questionid": quesid, "SelectedSubCode": subcode, "comment": desc });
+                }
+            });
+            if (isvalid == true) {
+                console.log("data", data);
+                $("#ajax_loader").show();
+                //save info
+                $.ajax({
+                    url: '@Url.Action("SaveAdditionalInfo", "Home")',
+                    contentType: "application/json; charset=utf-8",
+                    type: 'POST',
+                    dataType: "json",
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        if (response != null && response.Success == true ) {
+                            console.log("ShowCheckoutForm 2");
+                                 ShowCheckoutForm();
+
+                        }
+                        else {
+                            nalert('no data found');
+                            $("#ajax_loader").hide();
+                        }
+
+                    },
+                    error: function () { nalert('Error'); $("#ajax_loader").hide(); }
+                });
+            }
+
+            });
+            $('body').on('change', '#shipViaCodeDD', function () {
+                var shipviacode = $('#shipViaCodeDD').val();
+                if (shipviacode != undefined && shipviacode.length > 0) {
+                    $('#shipViaCodeDD').css('border-color', 'rgb(51, 122, 183)').css('color', 'black');
+                    $('#shipViaCodeDD').parent().find('.errorMsg').text('');
+                }
+                else {
+                    $('#shipViaCodeDD').css('border-color', 'red').css('color', 'red');
+                    $('#shipViaCodeDD').parent().find('.errorMsg').text('Please choose the shipping method for your order');
+                }
+            });
+            var selectedid = "";
+            $('body').on('click', '#addaddress_ship,#addaddress_bill', function () {
+                $('.viewaddresses').hide();
+                selectedid = $(this).prop('id').replace('add', '');
+
+                addressToEdit = null;
+                BuildAddress("USA", selectedid);
+            });
+            $('body').on('click', '.btncancel', function () {
+                $('.viewaddresses').show();
+                $('#' + selectedid + '').hide();
+            });
+
+            function BuildAddress(country, divid) {
+                $.ajax({
+                    url: '@Url.Action("GetAddressStructures", "Home", new { p = Session["pid"] })',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: { country: country },
+                    success: function (response) {
+                        if (response != null) {
+                            var addresstemplatesource1 = jQuery('#address-template-grid').html();
+                            var addresstemplate1 = Handlebars.compile(addresstemplatesource1);
+                            address1 = addresstemplate1(response);
+                            //jQuery('#address').html(address1);
+                            //$('#address').show();
+
+                            jQuery('#' + divid + '').html(address1);
+                            $('#' + divid + '').show();
+                        }
+
+                    },
+                    error: function () { nalert('Error (2)'); }
+                });
+            }
+
+            $('body').on('change', '#COUNTRY', function () {
+                var c = $(this).val();
+                if (c.length > 0) {
+                    BuildAddress(c, selectedid);
+                }
+            });
+
+            function ValidateRequiredFields(parentelement) {
+                var isvalid = true;
+                $("" + parentelement + " .required").each(function (index, el) {
+                    var name = $(this).attr('id');
+                    if ($(this).val().trim().length == 0) {
+                        var labelval = $(this).parent().parent().find('.fieldlabel').html();
+                        //labelval = labelval.replace('*', '').replace(':', '');
+                        $(this).parent().find('.errorMsg').text('Please enter ' + labelval);
+                        //nalert("" + labelval + " can not be blank"); $(this).focus();
+                        isvalid = false;
+                        //return false;
+                    }
+                });
+                return isvalid;
+            }
+
+            $('body').on('click', '#btnSaveAddress', function () {
+                var addrid = 0; var shiptoflag = false; var billtoflag = false;
+
+                if (selectedid == 'address_ship')
+                    shiptoflag = true;
+                else
+                    billtoflag = true;
+
+                if (ValidateRequiredFields('#' + selectedid + '')) {
+                    $.ajax(
+                    {
+                        url: '@Url.Action("SaveAddress", "Home")',
+                        contentType: 'application/json; charset=utf-8',
+                        datatype: 'json',
+                        type: "POST",
+                        data: JSON.stringify({
+                            'AddressId': addrid,
+                            'country': $('#COUNTRY').val(),
+                            'addresstype': $('#addresstype').val(),
+                            'address_1': $('#ADDRESS_1').val(),
+                            'address_2': $('#ADDRESS_2').val(),
+                            'address_3': $('#ADDRESS_3').val(),
+                            'address_4': $('#ADDRESS_4').val(),
+                            'city': $('#CITY').val(),
+                            'state': $('#STATE').val(),
+                            'postal_code': $('#POSTAL_CODE').val(),
+                            'shiptoflag': false,
+                            'billtoflag': false,
+                            'includeweb': false,
+                        }),
+                        success: function (data) {
+                            userdata = data;
+                            if (data.Success == true) {
+                                //ShowStep2();
+
+                                if (selectedid == 'address_ship')
+                                    ShowStep2();
+                                else {
+                                    console.log("ShowStep4 2");
+                                    ShowStep4();
+                                }
+
+                            }
+                            else {
+                                nalert(data.ErrorMessage);
+                            }
+                        }
+                    });
+                }
+            });
+
+            //btnApplyCoupon
+            $('body').on('click', '#btnApplyCoupon,#btnRemoveCoupon', function () {
+                var act = $(this).val();
+
+                ApplyCoupon(act);
+            });
+            $('body').on('click', '#btnRemoveCoupon', function () {
+                console.log("ShowCheckoutForm 3");
+                ShowCheckoutForm();
+            });
+            //Apply coupon
+            function ApplyCoupon(act) {
+                //
+                var coupon = $("#txtCoupon").val();
+
+                $('#popLoader').show();
+                var CouponApplied = false;
+                if (coupon != "") {
+                    $.ajax(
+                   {
+                       url: '@Url.Action("ApplyCouponforOrder", "Home")',
+                       contentType: 'application/json; charset=utf-8',
+                       datatype: 'json',
+                       type: "POST",
+                       data: JSON.stringify({ coupon: coupon, actionstring: act }),
+                       success: function (data) {
+                           userdata = data;
+
+                           if (data.Success == true) {
+                               $('#btnApplyCoupon').hide();
+                               $('#btnRemoveCoupon').show();
+                               $("#lblCouponMessage").html(data.Message);
+                               $("#lblCoupon").html(coupon);
+                               //$scope.shippingHandling = resultdata.Result.TotalShipping;
+                               //$scope.Tax = resultdata.Result.TotalTax;
+
+                               var originalshippingHandling = parseFloat($("#shippingHandling").text().replace(",", ""));
+                               var originaltax = parseFloat($("#tax").text().replace(",", ""));
+
+                               $('#shippingHandling').html(data.Result.TotalShipping.formatMoney());
+                               $('#tax').html(data.Result.TotalTax.formatMoney());
+
+
+                               if (data.Result.Coupons.length > 0) {
+                                   //
+                                   var totolSaving = 0;
+                                   var couponDesc = '';
+                                   var packagedisc = 0;
+                                   for (var i = 0; i < data.Result.Coupons.length; i++) {
+                                       if (data.Result.Coupons[i].Code == coupon && act == "apply")
+                                           CouponApplied = true;
+                                       totolSaving = totolSaving + data.Result.Coupons[i].Amount
+                                       if (data.Result.Coupons[i].Code == 'SYS_PCK_DISC')
+                                           packagedisc = packagedisc + data.Result.Coupons[i].Amount;
+                                       if (couponDesc.length > 0)
+                                           couponDesc = couponDesc + ', ';
+                                       if (data.Result.Coupons[i].Code != 'SYS_PCK_DISC')
+                                           couponDesc = couponDesc + data.Result.Coupons[i].Description;
+                                   }
+                                   //coupontr
+                                   $("#couponAmount").html("- " + totolSaving.formatMoney());
+                                   console.log("totolSaving", totolSaving);
+                                   var totalAmt = parseFloat($("#totalAmount").text().replace(",",""));
+
+                                   console.log("totalAmt", totalAmt);
+
+                                   totalAmt = totalAmt - totolSaving + data.Result.TotalShipping - originalshippingHandling + data.Result.TotalTax - originaltax;
+
+                                   console.log("totalAmt", totalAmt);
+
+                                   $("#totalAmount").html(totalAmt.formatMoney());
+
+                                   if (totalAmt == "0.0") {
+                                       $('.paymentSection').hide();
+                                       $('.placeorder').prop('disabled', false);
+                                   }
+                                   else {
+                                       $('.paymentSection').show();
+
+                                   }
+
+                                   $("#coupontr").show();
+                                   //    $scope.PackageDiscount = packagedisc;
+                                   //    $scope.CouponSaving = totolSaving;
+                                   //    $scope.CouponSavingDesc = couponDesc;
+                               }
+                               else if (data.Result.Coupons.length <= 0) {
+                                   var CouponSaving = null;
+                                   //$('#btnApplyCoupon').show();
+                                   //$('#btnRemoveCoupon').hide();
+                               }
+                           }
+                           else {
+                               $("#lblCouponMessage").html(data.ErrorMessage);
+                               //$('#btnApplyCoupon').show();
+                               //$('#btnRemoveCoupon').hide();
+                           }
+                       }
+                   });
+                }
+                else {
+                    nalert('Please enter coupon to apply!');
+                }
+            }
+
+        });
+
+        var IsAdditionInfoLoaded = false;
+        function loadAdditionalInfomation(currentdiv) {
+            $('div').each(function (i, ele) {
+                if (ele.hasAttribute("dyn") && ele.getAttribute("class") == 'show' && ele.getAttribute("id") == currentdiv) {
+                    ele.setAttribute("class", "hide")
+                    //$(ele.parentElement.childNodes[3].childNodes[2].nextSibling.childNodes[1].childNodes[1]).removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                    // $('#' + currentdiv).hide();
+                    currentdiv = 0;
+                }
+                else if (ele.hasAttribute("dyn") && ele.getAttribute("class") == 'hide' && ele.getAttribute("id") == currentdiv) {
+                    //$(ele.parentElement.childNodes[3].childNodes[2].nextSibling.childNodes[1].childNodes[1]).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                    ele.setAttribute("class", "show")
+                    currentdiv = 0;
+                }
+
+            });
+
+            if (currentdiv > 0) {
+
+                //if (IsAdditionInfoLoaded) {
+                //    $('#' + currentdiv).attr("class", "show");
+                //    return false;
+                //}
+                //else {
+                    $.ajax(
+                    {
+                        url: '@Url.Action("GetOrderAdditionalInfos", "Home")',
+                        contentType: 'application/json; charset=utf-8',
+                        datatype: 'json',
+                        type: "GET",
+                        data: { productcode: currentdiv },
+                        success: function (data) {
+                            console.log('Addition Info:');
+                            console.log(data);
+                            if (data.Success == true) {
+                                //
+                                var additionalinfotemplatesource1 = jQuery('#additionalinfo-template-grid').html();
+                                var additionalinfotemplate1 = Handlebars.compile(additionalinfotemplatesource1);
+                                additionalinfo1 = additionalinfotemplate1(data.User);
+                                $('#' + currentdiv).attr("class", "show");
+                                jQuery('#' + currentdiv).html(additionalinfo1);
+
+                                IsAdditionInfoLoaded = true;
+                                                            }
+                            else {                            }
+                        }
+                    });
+
+            }
+        }
+        function EditSession(meetingproductid) {
+            var mtgurl = $('#mtgurl').text();
+            console.log(mtgurl);
+            mtgurl = mtgurl + "/users/?p=" + meetingproductid;
+            window.location = mtgurl;
+        }
+    /*
+        function EditMembership(ProductLevel,workflowID)
+        {
+
+            var page = "";
+            var Memberurl = "";
+            if (workflowID == "ADDON" || workflowID == "JournalADDON") {
+                if (ProductLevel == "SIAG")
+                    page = "AddOns";
+                else
+                    page = "AddOnsJournals";
+
+                Memberurl = $('#MyAccounturl').text();
+            }
+            else {
+                if (ProductLevel == "Individual")
+                    page = "MembershipSelection";
+                else if (ProductLevel == "SIAG")
+                    page = "Groups";
+                else if (ProductLevel == "Publications")
+                    page = "Journals";
+                else
+                    page = "Journals";
+
+                Memberurl = $('#Memberurl').text();
+            }
+
+            console.log(Memberurl);
+            //if (OrderNumber > 0)
+            //    Memberurl = Memberurl + "/" + page + "/?orderno=" + OrderNumber;
+            //else
+                Memberurl = Memberurl + "/" + page;
+
+            window.location = Memberurl;
+        }
+        function EditDonations(OrderNumber)
+        {
+
+            var Memberurl = "";
+            if (($("#hdnMembership").data('iscustomermember'))=="false")
+                Memberurl = $('#Memberurl').text() + "/Donation";
+            else
+                Memberurl = $('#MyAccounturl').text() + "/Donation";  /// If Membership Exists then redirect to Donate Page
+
+            window.location = Memberurl;
+        }
+    */
+        function Editstore(productID)
+        {
+            //this has to be moved to Config file. Added for testing puprose
+        window.location = "@System.Configuration.ConfigurationManager.AppSettings["StoreURL"]/Product/viewproduct/" + productID + '@Html.Raw(!string.IsNullOrEmpty(Convert.ToString(Session["ct"])) ? "?ct=" + Session["ct"] : "")';
+    }
+
+    @*function AcceptTerms() {
+
+        if ($('#terms').prop('checked') == true) {
+
+            @if (ViewBag.ShippableFlag) {
+                <text>
+                    //CheckShippingCountry();
+                </text>
+            }
+            else
+            {
+            <text>
+            //$('.placeorder').prop('disabled', false);
+            </text>
+            }
+
+            $('.placeorder').prop('disabled', false);
+        }
+        else {
+            $('.placeorder').prop('disabled', true)
+        }
+    }*@
+
+    function BillMeLater() {
+        if ($('#billmelater:checked').length > 0) {
+            //hide payment
+            $('.paymentSection').hide();
+        }
+        else {
+            $('.paymentSection').show();
+        }
+    }
+
+    function Login() {
+        window.location.href ="@System.Configuration.ConfigurationManager.AppSettings["SSOLoginURL"]"
+    }
+    //If shipping country is out of valid countries then do not allow to create order, for subsytems: INV, PKG, SUB or DCD
+    function CheckShippingCountry() {
+
+        var res = null;
+          $.ajax(
+                    {
+                        url: '@Url.Action("CheckShippingCountryIsEligible", "Home")',
+                        contentType: 'application/json; charset=utf-8',
+                        datatype: 'json',
+                        type: "GET",
+                        success: function (data) {
+
+                            console.log(data.Success);
+                            if (data.Success == false) {
+                                res = true;
+                                console.log(res);
+                                //nalert("Shipping to international address, other than Mexico and Canada, is not currently supported. Please call ATA at 800-282-5463.");
+                                $('.placeorder').prop('disabled', true);
+                            }
+                            else
+                                $('.placeorder').prop('disabled', false);
+
+                        }
+            });
+        return res;
+
+    }
+
+    </script>
+
+
+    <style>
+
+            @@media only screen and (max-width: 800px) {
+                /* Force table to not be like tables anymore */
+                .no-more-tables table,
+                .no-more-tables thead,
+                .no-more-tables tbody,
+                .no-more-tables th,
+                .no-more-tables td,
+                .no-more-tables tr {
+                    display: block;
+                }
+                    /* Hide table headers (but not display: none;, for accessibility) */
+                    .no-more-tables thead tr {
+                        position: absolute;
+                        top: -9999px;
+                        left: -9999px;
+                    }
+
+                .no-more-tables tr {
+                    border: 1px solid #ccc;
+                }
+
+                .no-more-tables td {
+                    /* Behave  like a "row" */
+                    border: none;
+                    border-bottom: 1px solid #eee;
+                    position: relative;
+                    padding-left: 50%;
+                    white-space: normal;
+                    text-align: left;
+                }
+
+                    .no-more-tables td:before {
+                        /* Now like a table header */
+                        /*position: absolute;*/
+                        /* Top/left values mimic padding */
+                        top: 6px;
+                        left: 6px;
+                        width: 45%;
+                        padding-right: 10px;
+                        white-space: nowrap;
+                        text-align: left;
+                        font-weight: bold;
+                    }
+                    /*
+        Label the data
+        */
+                    .no-more-tables td:before {
+                        content: attr(data-title);
+                    }
+            }
+    </style>
+    <script>
+
+
+
+    </script>
+
+
+    <script type="text/javascript" src="https://apps4.highroadsolution.com/clients/ata/scripts/capture_update.js"></script>
+
+

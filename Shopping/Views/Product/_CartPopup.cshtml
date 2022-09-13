@@ -1,0 +1,584 @@
+﻿<div class="cart-popup" id="CartPopUp">
+    <div class="cart-popup-container" id="CartPopUpcontainer">
+        <h3>Shopping Cart</h3>
+        <a href="#0" class="cart-popup-close"></a>
+        <div class="cart-popup-form">
+            <div class="popLoader" id="popLoader" style="display: none;"><span>Please wait... </span></div>
+            <div id="step1_MyCart" class="stepContent step_active">
+
+                <div class="form_steps">
+                    <span class="active_step">My Cart</span>
+                    <span>Shipping</span>
+                    <span class="last_step">Review & Payment</span>
+                </div>
+                <!--form_steps-->
+
+                <table class="my_cart_table" ng-switch="CartDetails.length">
+                    <thead>
+                        <tr>
+                            <th style="width: 60%">Product Name</th>
+                            <th style="width: 10%">Quantity</th>
+                            <th style="width: 10%">Price</th>
+                            <th style="width: 10%">Total Price</th>
+                            <th style="width: 10%">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="cart_item" ng-repeat="item in CartDetails">
+                            <td>
+                                <h4><a href="javascript:;" onclick="viewProduct($(this).attr('data-prdId'))" data-prdid="{{item.product.ProductId}}" data-limit="50" limit-desc>{{item.product.ProductName}}</a></h4>
+                                <div data-ng-class="item.product.BackorderAvailable == true && item.product.IsUmbrellaProduct != true &&  item.product.Inventoried == true && item.product.StockAvailable <= 0? 'ng-show': 'ng-hide'" data-bo="{{item.product.BackorderAvailable}}" id="PopupBackOrder">ON BACKORDER</div>
+
+                                <div>
+                                    @*data-ng-class="item.product.ParentProductId == 0 && (item.product.Component).length == 0? 'ng-show': 'ng-hide'"*@
+                                    <b>
+                                        <span>Code : {{item.product.ProductCode}}</span>
+                                        <br />
+                                        <span>Available in quantities of : {{item.product.AvailableQty}}</span>
+                                    </b>
+                                </div>
+                                <div data-ng-class="item.product.ParentProductId > 0? 'ng-show': 'ng-hide'">
+                                    <b>
+                                        <span>{{item.product.Option1}}</span><br />
+                                        <span>{{item.product.Option2}}</span>
+                                    </b>
+                                </div>
+                                <div data-ng-if="(item.product.Component).length > 0">
+                                    <b><span>Code : {{item.product.ProductCode}}</span></b><br />
+                                    <a href="#" ng-click="showDetails=!showDetails">Show Details</a>
+                                    <ul ng-show="showDetails" class="showDetails">
+                                        <li data-ng-repeat="comName in item.product.Component">
+                                            <span>{{comName.ComponentName}} ({{comName.NoOfQtyInKit * comName.AvailableInQuantitiesOf}})</span>
+                                            <span data-ng-class="comName.Discontinued == true ? 'ng-show': 'ng-hide'">LIMITED QUANTITY</span>
+                                            <span data-ng-class="comName.BackorderAvailable == true &&  comName.Inventoried == true && comName.StockAvailable < comName.NoOfQtyInKit ? 'ng-show': 'ng-hide'" data-bo="{{comName.BackorderAvailable}}" id="PopupBackOrder">ON BACKORDER</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+
+                            <td class="product-quantity" style="position: relative; vertical-align: top;">
+                                <input style="width: 60px;text-align:right" type="number" min="1" id="{{item.product.ProductId}}" data-inventoried="{{item.product.Inventoried}}" data-ng-if="item.product.BackorderAvailable != true || item.product.StockAvailable != 0" class="cartdetails" data-bo="{{item.product.BackorderAvailable}}" data-limit-to="{{(item.product.StockAvailable+'').length}}" data-ng-value="{{item.Quantity}}">
+                                <input style="width: 60px;text-align:right" type="number" min="1" id="{{item.product.ProductId}}" data-inventoried="{{item.product.Inventoried}}" data-ng-if="item.product.BackorderAvailable == true && item.product.StockAvailable == 0" class="cartdetails" data-bo="{{item.product.BackorderAvailable}}" data-limit-to="3" data-ng-value="{{item.Quantity}}">
+                                <span id="itemAvQty" class="aqlVal" style="display: none;">{{item.product.StockAvailable}}</span>
+                            </td>
+
+                            @* Member Price *@
+                            <td class="product-price mPrice" style="vertical-align: top;" ng-if="sesUserIsMember == '1'">{{item.product.MemberPrice | currency}}</td>
+                            <td class="product-price mPrice" style="vertical-align: top;" ng-if="sesUserIsMember == '1'">{{item.Quantity * item.product.MemberPrice | currency}}</td>
+
+                            @* User Price *@
+                            <td class="product-price uPrice" style="vertical-align: top;" ng-if="sesUserIsMember != '1'">{{item.product.Price | currency}}</td>
+                            <td class="product-price uPrice" style="vertical-align: top;" ng-if="sesUserIsMember != '1'">{{item.Quantity * item.product.Price | currency}}</td>
+
+                            <td class="remove-product" style="vertical-align: top;">
+                                <button id="product-remove" ng-click="DeleteCart(item.product.ProductId)"></button>
+                            </td>
+                        </tr>
+
+                        <tr data-ng-switch-when="0">
+                            <td colspan="5">No items added</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+                <table class="my_cart_table">
+                    <tr class="cart_total">
+                        <td colspan="5">
+                            @*<p>Total Amount: <span id="total_price">{{TotalPrice | currency}}</span></p>*@
+<p>Total Amount: <span id="total_price" ng-if="sesUserIsMember == '1'">{{TotalMPrice | currency}}</span>
+                 <span id="total_price" ng-if="sesUserIsMember != '1'">{{TotalLPrice | currency}}</span></p>
+                        </td>
+                    </tr>
+                </table>
+                <div class="cartdiscmsg">Please note : All discounts are applied on final checkout screen</div>
+                <div class="my_cart_actions">
+                    <button id="update_cart" data-ng-click="UpdateToCart('cart')">Update</button>
+                    <button id="myCart" class="step_trigger continue_form" data-box="step2_Shipping">Continue</button>
+                </div>
+                <div id="alrtMsg" style="display: none;"></div>
+            </div>
+            <!--step1_MyCart-->
+            <div id="step2_Shipping" class="stepContent">
+
+                <div class="form_steps">
+                    <span>My Cart</span>
+                    <span class="active_step">Shipping</span>
+                    <span class="last_step">Review & Payment</span>
+                </div>
+                <!--form_steps-->
+                <div class="shipping_step">
+                    <h4>Shipping Preference</h4>
+                    <select data-ng-model="shipViaCodeDD" id="shipViaCodeDD" class="selectSkin" required data-ng-options="svc as svc.Description for svc in shipViaCode track by svc.Code"
+                            class="frmSelect" data-ng-change="UpdateToCart('cart')">
+                        <option value="" selected="selected">Select Shipping Preference</option>
+                    </select>
+                </div>
+
+                <div class="shipping_step">
+                    <h4>
+                        Shipping Address:
+                        <button class="edit" id="addNewAddress" data-ng-click="addBtnClick('Shipping')" style="float: right; top: -10px; height: 30px; padding: 0 15px; background: url('') no-repeat 5px #D39509; padding-left: 15px; display: inline-block">
+                            Add Shipping Address
+                        </button>
+                    </h4>
+                    @*
+                        <button class="edit">Edit</button>
+                    *@
+                    <div data-ng-switch="(ShippingAddresses).length" class="addressListDiv" id="shippingAddressList">
+                        <span data-ng-switch-when="0" class="jplist-no-results">No Address Available</span>
+                        <ul class="shwAddress">
+                            <li data-ng-repeat="sAddress in userAddress.ShippingAddresses track by $index">
+                                <span class="default" data-shiiping="{{sAddress.ShipToFlag}}" data-ng-class="sAddress.ShipToFlag == true? 'ng-show' : 'ng-hide'">Default Address</span>
+                                <input type="checkbox" name="shippingAddId" id="{{sAddress.CustomerAddressId}}" checked="checked" style="display: none" class="addCheckShiiping" />
+                                <span class="address"><strong>{{sAddress.LabelName}}</strong></span><br />
+                                <span class="address">
+                                    {{sAddress.Address1}}
+                                    <br />
+                                    {{sAddress.City}}, {{sAddress.State}} {{sAddress.PostalCode}}
+                                </span>
+                                <button class="btn useAdd" data-type="Shipping" data-true="{{sAddress.ShipToFlag}}" data-addid="{{sAddress.CustomerAddressId}}" data-ng-class="sAddress.ShipToFlag == true? 'btn_active' : ''"
+                                        data-ng-click="setDefaultAddress($event, $index, 'Shipping')">
+                                    Use This Address
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
+                <!--shipping_step-->
+                <div id="addAddress" class="addAddress" data-ng-if="shippingAddIdDiv == true">
+                    <h3>Add Shipping Address</h3>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td><span class="require">*</span>Type</td>
+                            <td>
+                                <select data-ng-model="$parent.addressType" id="addressType" class="selectSkin" class="frmSelect" ng-init="addressType = 'Shipping Address'">
+                                    @*<option value="">Select</option>
+                                    *@
+                                    @*<option value="Billing Address">Billing Address</option>
+                                    *@
+                                    <option value="Shipping Address" selected="selected">Shipping Address</option>
+                                </select>
+                                <span class="errorMsg"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="require">*</span>Country</td>
+                            <td>
+                                <select data-ng-model="$parent.Countrys" id="Countrys" class="selectSkin" data-ng-change="onCountryChange(Countrys)" required data-ng-options="country as country.CountryDescription for country in CountryList | orderBy:'CountryDescription' track by country.CountryCode" class="frmSelect">
+                                    <option value="">All Countries</option>
+                                </select>
+                                <span class="errorMsg"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="require">*</span>Address 1</td>
+                            <td>
+                                <input type="text" placeholder="Address" data-ng-model="$parent.address1" id="address1" class="frmInput" />
+                                <span class="errorMsg"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Address 2</td>
+                            <td>
+                                <input type="text" placeholder="Address (Optional)" data-ng-model="$parent.address2" id="address2" class="frmInput" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="require">*</span>City</td>
+                            <td>
+                                <input type="text" placeholder="City" data-ng-model="$parent.city" id="city" class="frmInput" />
+                                <span class="errorMsg"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="require">*</span>State</td>
+                            <td>
+                                <select data-ng-model="States" id="States" class="selectSkin" data-ng-if="inputEnbl != true" required data-ng-options="state as state.StateDescription for state in StateList  | orderBy:'StateDescription'  track by state.StateCode" class="frmSelect">
+                                    <option value="">Select</option>
+                                </select>
+                                <span class="errorMsg" data-ng-if="inputEnbl != true"></span>
+                                <input type="text" data-ng-model="States" id="States" class="frmInput" class="frmSelect" data-ng-if="inputEnbl == true" />
+                                <span class="errorMsg" data-ng-if="inputEnbl == true"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="require">*</span>Postal Code</td>
+                            <td>
+                                <input type="text" placeholder="Postal Code" data-ng-model="$parent.postCode" id="postCode" class="frmInput" />
+                                <span class="errorMsg"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button data-ng-click="cancelBtnClick()" class="btnCancel" data-box="step1_MyCart">Cancel</button>
+                                <button data-ng-click="addAddress()" class="continue_form">Save Address</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                @*<div class="addressList" style="display: none;">
+                        <h3>Chage Address</h3>
+                        <ul>
+                            <li data-ng-repeat="address in userAddress.AddressList track by address.CustomerAddressId">
+                                <input type="radio" data-type="Shipping" name="ShipToFlag" data-true="{{address.ShipToFlag}}" data-ng-checked="address.ShipToFlag? true:false" data-ng-click="setDefaultAddress($event, $index)" />
+                                <a href="javascript:;" data-type="Shipping" data-true="{{address.ShipToFlag}}" data-ng-click="setDefaultAddress($event, $index)">Set As Shipping Address</a>
+                                <input type="radio" data-type="Billing" name="BillToFlag" data-true="{{address.BillToFlag}}" data-ng-checked="address.BillToFlag? true:false" data-ng-click="setDefaultAddress($event, $index)" />
+                                <a href="javascript:;" data-type="Billing" data-true="{{address.BillToFlag}}" data-ng-click="setDefaultAddress($event, $index)">Set As Billing Address</a>
+                                <span class="address">{{address.FormattedAddress}}</span>
+                            </li>
+                        </ul>
+                        <button class="btnCancel" data-box="step1_MyCart">Cancel</button>
+                    </div>
+                *@
+                <div class="my_cart_actions">
+                    <span class="actions">
+                        @*
+                            <button class="edit" id="changeAddress">Change Address</button>*@
+                    </span>
+                    <button class="back step_trigger" data-box="step1_MyCart">Back</button>
+                    <button id="addressTab" class="step_trigger continue_form" data-box="step3_CheckOut">Continue</button>
+                </div>
+
+            </div>
+            <!--step2_Shipping-->
+            <div id="step3_CheckOut" class="stepContent">
+
+                <div class="form_steps">
+                    <span>My Cart</span>
+                    <span>Shipping</span>
+                    <span class="active_step last_step">Review & Payment</span>
+                </div>
+                <!--form_steps-->
+
+                <div class="checkout_step">
+                    <div class="validationIssues" data-ng-if="getTaxData.ValidationIssues != null">
+                        <div class="taxValidationsIssues" ng-repeat="valData in getTaxData.ValidationIssues">
+                            <p class="msg" data-key="{{valData.Key}}">{{valData.Message}}</p>
+                            <span data-ng-repeat="opKey in valData.ResponseOptions track by $index">
+                                <input type="radio" name="{{valData.Key}}" data-ng-model="validatioRadio" value="{{opKey.Value}}" data-ng-checked="{{opKey.IsDefault}}" />
+                                {{opKey.Text}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="sidebar_widget order_sum_widget">
+                        <h4>Order Summary</h4>
+                        <table class="my_cart_table" ng-switch="CartDetails.length">
+                            @*style="display: block; overflow: auto; overflow-x: hidden; min-height: 50px; max-height: 250px;"*@
+                            <thead>
+                                <tr>
+                                    <th style="width: 60%">Product Name</th>
+                                    <th style="width: 10%">Quantity</th>
+                                    <th style="width: 10%">Price</th>
+                                    <th style="width: 10%">Total Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="cart_item" ng-repeat="item in CartDetails">
+                                    <td>
+                                        <span data-limit="50" limit-desc>{{item.product.ProductName}}</span>
+                                        <div data-ng-class="item.product.BackorderAvailable == true && item.product.IsUmbrellaProduct != true &&  item.product.Inventoried == true && item.product.StockAvailable <= 0? 'ng-show': 'ng-hide'" data-bo="{{item.product.BackorderAvailable}}" id="PopupBackOrder">ON BACKORDER</div>
+
+                                        <div data-ng-class="item.product.ParentProductId == 0 && (item.product.Component).length == 0? 'ng-show': 'ng-hide'">
+                                            <b>
+                                                <span>Code : {{item.product.ProductCode}}</span>
+                                                <br />
+                                                <span>Available in quantities of : {{item.product.AvailableQty}}</span>
+                                            </b>
+                                        </div>
+                                        <div data-ng-class="item.product.ParentProductId > 0? 'ng-show': 'ng-hide'">
+                                            <b>
+                                                <span>{{item.product.Option1}}</span><br />
+                                                <span>{{item.product.Option2}}</span>
+                                            </b>
+                                        </div>
+                                        <div data-ng-if="(item.product.Component).length > 0">
+                                            <b><span>Code : {{item.product.ProductCode}}</span></b><br />
+                                            <a href="#" ng-click="showDetails=!showDetails">Show Details</a>
+                                            <ul ng-show="showDetails" class="showDetails">
+                                                <li data-ng-repeat="comName in item.product.Component">
+                                                    <span>{{comName.ComponentName}} ({{comName.NoOfQtyInKit * comName.AvailableInQuantitiesOf}})</span>
+                                                    <span data-ng-class="comName.Discontinued == true ? 'ng-show': 'ng-hide'">LIMITED QUANTITY</span>
+                                                    <span data-ng-class="comName.BackorderAvailable == true &&  comName.Inventoried == true && comName.StockAvailable < comName.NoOfQtyInKit ? 'ng-show': 'ng-hide'" data-bo="{{comName.BackorderAvailable}}" id="PopupBackOrder">ON BACKORDER</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+
+                                    <td class="product-quantity" style="position: relative; vertical-align: top;">
+                                        <label style="width: 40px" type="text" id="{{item.product.ProductId}}" data-ng-if="item.product.BackorderAvailable != true || item.product.StockAvailable != 0">{{item.Quantity}}</label>
+                                        <label style="width: 40px" type="text" id="{{item.product.ProductId}}" data-ng-if="item.product.BackorderAvailable == true && item.product.StockAvailable == 0">{{item.Quantity}}</label>
+                                        <span id="itemAvQty" class="aqlVal" style="display: none;">{{item.product.StockAvailable}}</span>
+                                    </td>
+
+                                    @* Member Price *@
+                                    <td class="product-price mPrice" style="vertical-align: top;" ng-if="sesUserIsMember == '1'">{{item.product.MemberPrice | currency}}</td>
+                                    <td class="product-price mPrice" style="vertical-align: top;" ng-if="sesUserIsMember == '1'">{{item.Quantity * item.product.MemberPrice | currency}}</td>
+
+                                    @* User Price *@
+                                    <td class="product-price uPrice" style="vertical-align: top;" ng-if="sesUserIsMember != '1'">{{item.product.Price | currency}}</td>
+                                    <td class="product-price uPrice" style="vertical-align: top;" ng-if="sesUserIsMember != '1'">{{item.Quantity * item.product.Price | currency}}</td>
+
+                                </tr>
+
+                                <tr data-ng-switch-when="0">
+                                    <td colspan="5">No items added</td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                        <div class="ApplyCoupon" >@*style="display:none;"*@
+                            Coupon Code: 
+                            <input data-ng-class="CouponApplied != true? 'ng-show' : 'ng-hide'" type="text" name="coupon" class="input" id="txtCoupon">
+                            <span data-ng-class="CouponApplied == true? 'ng-show' : 'ng-hide'" id="lblCoupon" style="font-weight:bold; color:blue;"></span>
+                            <input data-ng-class="CouponApplied != true? 'ng-show' : 'ng-hide'" type="submit" name="applycoupon" class="submit" id="btnApplyCoupon" value="Apply" ng-click="ApplyCoupon('apply')">
+                            <input data-ng-class="CouponApplied == true? 'ng-show' : 'ng-hide'" type="submit" name="applycoupon" class="submit" id="btnRemoveCoupon" value="Remove" ng-click="ApplyCoupon('remove')">
+                            <div style="padding-top:5px;color:red;">
+                                @*<span data-ng-class="CouponApplied == true? 'ng-show' : 'ng-hide'">Coupon Applied Successfully.</span>
+                                <span data-ng-class="CouponApplied == false? 'ng-show' : 'ng-hide'">Coupon not found.</span>*@
+                                <span id="lblCouponMessage"></span>
+                            </div>                
+                        </div>
+                <div style="width:100%;">
+                        <ul>
+                            <li>Item({{TotalItems}})<span>{{TotalPrice | currency}}</span></li>
+                            <li>Shipping Handling  ({{shipViaCodeDD.Description}})<span id="shippingHandling">{{shippingHandling | currency}}</span></li>
+                            <li>Tax <span id="tax">{{Tax | currency}}</span></li>
+                            @*<li ng-if="CouponSaving==null" class="item_total">Total: <span>{{ TotalPrice + Tax + shippingHandling | currency}}</span></li>
+                            <li ng-if="CouponSaving!=null" style="display:none;" >Coupons or Promo Code Applied (Automatic)<span>-{{CouponSaving | currency}}</span></li>
+                            <li ng-if="CouponSaving!=null" class="item_total">Total: <span>{{ TotalPrice + Tax + shippingHandling | currency}}</span></li>*@
+                            
+                            <li ng-if="CouponSaving!=null && CouponSavingDesc!='SYS_PCK_DISC' && CouponSaving!=PackageDiscount" cs="{{CouponSaving}}" pd="{{PackageDiscount}}">Coupons or Promo Code Applied ({{CouponSavingDesc}})<span>-{{CouponSaving-PackageDiscount | currency}}</span></li>
+                            <li ng-if="CouponSaving==null || CouponSavingDesc=='SYS_PCK_DISC'" class="item_total">Total: <span>{{ TotalPrice + Tax + shippingHandling | currency}}</span></li>
+                            <li ng-if="CouponSaving!=null && CouponSavingDesc!='SYS_PCK_DISC'" cs="{{CouponSaving}}" pd="{{PackageDiscount}}" class="item_total">Total: <span>{{ TotalPrice + Tax + shippingHandling-CouponSaving+PackageDiscount | currency}}</span></li>
+                        </ul>
+</div>
+                        
+
+                    </div>
+                    <div class="sidebar_widget order_sum_widget brd">
+                        <h4>
+                            Billing Address:
+                            <button class="addAddressNew" id="addAddressNew" data-ng-click="addBtnClick('billing')">Add Billing Address</button>
+                        </h4>
+                        <div data-ng-switch="(BillingAddresses).length" class="addressListDiv" id="billingAddressList">
+                            <span data-ng-switch-when="0" class="jplist-no-results">No Address Available</span>
+                            <ul class="shwAddress">
+                                <li data-ng-repeat="bAddress in userAddress.BillingAddresses track by $index">
+                                    <span class="default" data-shiiping="{{bAddress.BillToFlag}}" data-ng-class="bAddress.BillToFlag == true? 'ng-show' : 'ng-hide'">Default Address</span>
+                                    <input type="checkbox" name="billingAddId" id="{{bAddress.CustomerAddressId}}" checked="checked" style="display: none" class="addCheckBilling" />
+                                    <span class="address"><strong>{{bAddress.LabelName}}</strong></span><br />
+                                    <span class="address">
+                                        {{bAddress.Address1}}
+                                        <br />
+                                        {{bAddress.City}}, {{bAddress.State}} {{bAddress.PostalCode}}
+                                    </span>
+                                    <button class="btn useAdd" data-type="Billing" data-addid="{{bAddress.CustomerAddressId}}" data-true="{{bAddress.BillToFlag}}" data-ng-class="bAddress.BillToFlag == true? 'btn_active' : ''"
+                                            data-ng-click="setDefaultAddress($event, $index, 'Billing')">
+                                        Use This Address
+                                    </button>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div style="clear: both;"></div>
+                        <div id="addAddressBilling" class="addAddress" data-ng-if="billingAddIdDiv == true">
+                            <h3>Add Billing Address</h3>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td><span class="require">*</span>Type</td>
+                                    <td>
+                                        <select data-ng-model="$parent.addressType" id="addressType" class="selectSkin" class="frmSelect" ng-init="addressType = 'Billing Address'">
+                                            @*<option value="">Select</option>
+                                            *@
+                                            <option value="Billing Address" selected="selected">Billing Address</option>
+                                            @*<option value="Shipping Address">Shipping Address</option>
+                                            *@
+                                        </select>
+                                        <span class="errorMsg"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="require">*</span>Country</td>
+                                    <td>
+                                        <select data-ng-model="$parent.Countrys" id="Countrys" class="selectSkin" data-ng-change="onCountryChange(Countrys)" required data-ng-options="country as country.CountryDescription for country in CountryList | orderBy:'CountryDescription' track by country.CountryCode" class="frmSelect">
+                                            <option value="">All Countries</option>
+                                        </select>
+                                        <span class="errorMsg"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="require">*</span>Address 1</td>
+                                    <td>
+                                        <input type="text" placeholder="Address" data-ng-model="$parent.address1" id="address1" class="frmInput" />
+                                        <span class="errorMsg"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Address 2</td>
+                                    <td>
+                                        <input type="text" placeholder="Address (Optional)" data-ng-model="$parent.address2" id="address2" class="frmInput" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="require">*</span>City</td>
+                                    <td>
+                                        <input type="text" placeholder="City" data-ng-model="$parent.city" id="city" class="frmInput" />
+                                        <span class="errorMsg"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="require">*</span>State</td>
+                                    <td>
+                                        <select data-ng-model="$parent.States" id="States" class="selectSkin" data-ng-if="inputEnbl != true" required data-ng-options="state as state.StateDescription for state in StateList  | orderBy:'StateDescription'  track by state.StateCode" class="frmSelect">
+                                            <option value="">Select</option>
+                                        </select>
+                                        <span class="errorMsg" data-ng-if="inputEnbl != true"></span>
+                                        <input type="text" data-ng-model="$parent.States" id="States" class="frmInput" class="frmSelect" data-ng-if="inputEnbl == true" />
+                                        <span class="errorMsg" data-ng-if="inputEnbl == true"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="require">*</span>Postal Code</td>
+                                    <td>
+                                        <input type="text" placeholder="Postal Code" data-ng-model="$parent.postCode" id="postCode" class="frmInput" />
+                                        <span class="errorMsg"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <button data-ng-click="cancelBtnClick()" class="btnCancel" data-box="step1_MyCart">Cancel</button>
+                                        <button data-ng-click="addAddress()" class="continue_form">Save Address</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div data-ng-show="(TotalPrice + Tax + shippingHandling) > 0" class="sidebar_widget order_sum_widget brd">
+                        <h4>
+                            Payment Method:
+                            @*<button class="add_credit_cart_btn" data-ng-class="cCard.length != 0 ? 'ng-hide':'ng-show'">Add a New Credit Card</button>*@
+                        </h4>
+                        <span id="useOtherVal" style="display: none;">false</span>
+                        <div class="selectRadioOptions">
+                        </div>
+                        <div class="payment_detail" ng-repeat="cardData in cCard">
+                            <span>
+                                <input type="radio" id="ccType" checked="checked" name="ccardtype" value="1" data-partialcardnumber="{{cardData.PartialCardNumber | limitTo: -4}}">
+
+                                <span data-ng-class="(cardData.CreditCardType).toLowerCase() == 'visa' ?'ng-show': 'ng-hide'">
+                                <img src="~/images/new_visa.gif" /></span>
+                            <span data-ng-class="(cardData.CreditCardType).toLowerCase() == 'mastercard' ?'ng-show': 'ng-hide'">
+                                <img src="~/images/mastercard_logo_3.gif" /></span>
+                            <span data-ng-class="(cardData.CreditCardType).toLowerCase() == 'american express' ?'ng-show': 'ng-hide'">
+                                <img src="~/images/american_express_logo_3.gif" /></span>
+
+                                @*<label for="Visa">{{cardData.CreditCardType}} ending in {{cardData.PartialCardNumber | limitTo: -4}}</label>*@
+                                <label for="Visa">Use existing card ending with {{cardData.PartialCardNumber | limitTo: -4}}</label>
+                            </span>
+                            <span>
+                                <input type="radio" name="ccardtype" id="useOther" value="0" style="margin-left: 20px;" />&nbsp;&nbsp;<label>Use other card for payment</label>
+                            </span>
+                        </div>
+                        <!--payment_method-->
+                        <div style="clear: both;"></div>
+                        <div id="CreditCardForm" data-ng-class="cCard.length != 0 ? 'ng-hide':'ng-show'">
+                            <h3>Add New Credit Card</h3>
+                            @*<form data-ng-model="ccForm" novalidate>
+                            *@
+                            <table style="width: 100%">
+                                <tr>
+                                    <td colspan="3">
+										<img src="~/images/mastercard_logo_3.gif" style="margin-left: 20px;" />
+										<input type="radio" name="cardType" class="radiobtn" value="MasterCard" />
+										Master Card 
+										<img src="~/images/new_visa.gif" style="margin-left: 20px;" />
+										<input type="radio" name="cardType" class="radiobtn" value="Visa" />
+										Visa Card
+										<img src="~/images/american_express_logo_3.gif" style="margin-left: 20px;" />
+										<input type="radio" name="cardType" class="radiobtn" value="American Express" />
+										American Express
+										<span class="errorMsg"></span>
+									</td>
+                                </tr>
+                                <tr>
+                                    <td>Card Holder Name</td>
+                                    <td>
+                                        <input type="text" id="CCName" name="CCName" data-ng-model="CCName" alpha-numberic="[^a-zA-Z0-9\-\s]" placeholder="Card Holder Name" value="" class="frmInput" />
+                                        <span class="errorMsg"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Credit Card Number</td>
+                                    <td>
+                                        <input type="text" id="CCNumber" class="ccNumInput frmInput" data-ng-model="CCNumber" placeholder="Credit Card Number" maxlength="19" required value="" />
+                                        <span class="errorMsg"></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>Credit Card CVV Number</td>
+                                    <td>
+                                        <input type="text" id="CCcvv" placeholder="Credit Card Cvv Number" class="ccNumInput frmInput" data-ng-model="CCcvv" required maxlength="4" value="" class="frmInput" />
+                                        <span class="errorMsg"></span>
+                                    </td>
+                                    <script type="text/javascript">
+                                    $('#CCcvv').on('focus', function () {
+                                        $(this).attr('type', 'password');
+                                    });
+                                    </script>
+                                </tr>
+                                <tr>
+                                    <td>Expire Month</td>
+                                    <td>
+                                        <select data-ng-model="months" id="months" class="selectSkin" required data-ng-options="month for month in monthList" class="frmSelect"></select>
+                                        <span class="errorMsg"></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>Expire Year</td>
+                                    <td>
+                                        <select data-ng-model="years" id="years" class="selectSkin" required data-ng-options="year for year in yearList" class="frmSelect"></select>
+                                        <span class="errorMsg"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <input type="checkbox" id="saveCCCard" style="color: yellowgreen;" />&nbsp;&nbsp;Save this credit card
+                                    </td>
+                                </tr>
+                                <tr style="display: none;">
+                                    <td colspan="2">
+                                        <button class="btnCancel" data-box="step1_MyCart">Cancel</button>
+                                        <button value="Save" class="continue_form" data-ng-click="saveCreditCardDetails()">Save</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            @*
+                                </form>
+                            *@
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--checkout_step-->
+
+                <div class="my_cart_actions">
+                    <button class="back step_trigger" data-box="step2_Shipping" style="float: left;">Back</button>
+                    <button class="add_cart_btn_order" data-ng-click="placeOrder($event)" style="float: right;">Place Your Order</button>
+                </div>
+
+
+            </div>
+            <!--step3_CheckOut-->
+        </div>
+        <!--cart-popup-form-->
+    </div>
+    <!-- cart-popup-container -->
+</div>
+
+
